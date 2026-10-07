@@ -1,0 +1,161 @@
+[
+  {
+    "id": "portfolio",
+    "title": "Debotaro Portfolio",
+    "category": "Personal portfolio",
+    "summary": "A personal showcase that connects professional context, considered visual design and six working frontend concepts.",
+    "role": "Project direction and AI-assisted frontend development",
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "challenge": "Give recruiters a quick way to understand Deboraj’s frontend focus, explore working examples and start a conversation.",
+    "approach": "Lead with a clear professional introduction, place the portfolio itself first, and connect six distinct demos through a consistent gallery. Concise case studies explain the implementation choices behind the visuals.",
+    "highlights": [
+      "Responsive layouts with clear project navigation",
+      "Category filtering with an announced result count",
+      "Six working demos and public source code",
+      "Contact profiles and a downloadable résumé"
+    ],
+    "validation": "Desktop and mobile Chromium checks cover identity, filters, demo and source links, keyboard dialogs, menu behavior, clipboard contents, résumé download and document overflow.",
+    "limitations": "Personal concept project • AI-assisted development. Contact uses an email link; a downloadable résumé and public source are included. There is no contact backend."
+  },
+  {
+    "id": "nova",
+    "title": "NOVA OS",
+    "category": "Product system",
+    "summary": "A connected workspace for projects, tasks and local automation, with command search and a rule-based assistant.",
+    "role": "Project direction and AI-assisted frontend development",
+    "stack": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "challenge": "Keep projects, tasks, automation and assistant interactions connected so the workspace feels like one product.",
+    "approach": "Use a shared, typed data model across the dashboard and project views. Pair a restrained dark interface with command search, local automation and a separate marketing and onboarding journey.",
+    "highlights": [
+      "Task changes update project progress",
+      "Command search finds destinations and tasks",
+      "A rule-based assistant creates workspace tasks",
+      "An editable automation flow updates local state"
+    ],
+    "validation": "Next.js static export and TypeScript checks pass. Desktop and mobile Chromium scenarios cover task creation, command search, assistant task creation and automation execution.",
+    "limitations": "Personal concept project • AI-assisted development. Tasks persist in the browser; authentication, team collaboration and external integrations are simulated. The assistant uses deterministic rules."
+  },
+  {
+    "id": "atlas",
+    "title": "ATLAS Ops",
+    "category": "Product system",
+    "summary": "An operations workspace connecting local tasks and staffing views with a live, read-only GitHub issue queue.",
+    "role": "Project direction and AI-assisted frontend development",
+    "stack": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Recharts"
+    ],
+    "challenge": "Connect a practical operations dashboard to real external data while keeping remote issues and local planning clearly separate.",
+    "approach": "Keep operational charts and staffing data local, then add a public GitHub repository queue through a separate typed API boundary. Validate responses at runtime, cancel obsolete requests, handle timeouts and rate limits, and let users import an issue into local tasks without posting to GitHub.",
+    "highlights": [
+      "Editable task board with drag-and-drop and status controls",
+      "Live GitHub issues with loading, error and empty states",
+      "Validated responses, cancellation and retry handling",
+      "Duplicate-safe local issue import with a source link"
+    ],
+    "validation": "TypeScript checks and the Vite production build pass. Desktop/mobile Chromium checks cover task persistence and mocked GitHub success, loading, empty, malformed, network, rate-limit, timeout and stale-response behavior. A separate unmocked browser smoke check verified the actual public API.",
+    "limitations": "Personal concept project • AI-assisted development. GitHub reads live public repository data; the latest page contains at most 30 raw entries and excludes pull requests. API rate limits apply. Imported tasks, operations charts and staffing remain local; there are no GitHub writes, ERP connection or shared backend."
+  },
+  {
+    "id": "nila",
+    "title": "NILA Ledger",
+    "category": "Product system",
+    "summary": "A personal finance interface built around consistent transaction data, editable budgets and useful exports.",
+    "role": "Project direction and AI-assisted frontend development",
+    "stack": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Recharts"
+    ],
+    "challenge": "Make income, spending and budgets understandable without overwhelming the transaction view.",
+    "approach": "Use one financial model for the ledger, charts, budgets and reports. Store amounts as integer pennies, then format them for display; pair a quiet visual hierarchy with practical filters and exports.",
+    "highlights": [
+      "Transaction creation, editing and deletion",
+      "Monthly, category and date filters",
+      "Editable budgets linked to recorded spending",
+      "Filtered CSV exports and printable monthly reports"
+    ],
+    "validation": "TypeScript checks and the Vite production build pass. Desktop and mobile Chromium scenarios cover a £12.50 transaction, filtered CSV download, persisted data and budget editing.",
+    "limitations": "Personal concept project • AI-assisted development. Financial records are fictional and saved locally; there is no bank connection or account authentication."
+  },
+  {
+    "id": "aura",
+    "title": "AURA Reserve",
+    "category": "Brand experience",
+    "summary": "An atmospheric hospitality concept with a practical, validated stay enquiry journey.",
+    "role": "Project direction and AI-assisted frontend development",
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "GSAP"
+    ],
+    "challenge": "Preserve the atmosphere of a hospitality brand while making stay planning clear and usable.",
+    "approach": "Pair generous editorial spacing and cinematic imagery with a visible booking entry point. Validate the stay before displaying a residence and illustrative quote, and keep essential controls independent of optional animation.",
+    "highlights": [
+      "Date and sample availability validation",
+      "Capacity-aware residence selection",
+      "Calculated nightly quotes and enquiry completion",
+      "Native gallery dialogs with keyboard navigation"
+    ],
+    "validation": "Desktop and mobile Chromium scenarios cover a stay enquiry, quote calculation and keyboard gallery navigation. Core enquiry controls also work when the animation CDN is blocked.",
+    "limitations": "Personal concept project • AI-assisted development. Rates and availability are illustrative. The form creates a demo state; it does not send an email or reserve accommodation."
+  },
+  {
+    "id": "vanta",
+    "title": "VANTA Atelier",
+    "category": "Brand experience",
+    "summary": "An editorial fashion concept with size selection, a persistent shopping bag and a complete demo checkout.",
+    "role": "Project direction and AI-assisted frontend development",
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "challenge": "Combine a confident editorial identity with a shopping flow that remains easy to follow.",
+    "approach": "Use oversized typography and a restrained palette around a compact catalogue. Keep product size, quantities and totals consistent through selection, a persistent bag and a clearly labelled demo checkout.",
+    "highlights": [
+      "Category filters and product size selection",
+      "Cart entries keyed by product and size",
+      "Stored cart data validated against the catalogue",
+      "Keyboard focus preserved during cart updates"
+    ],
+    "validation": "Desktop and mobile Chromium scenarios cover filtering, size selection, persistence, quantity totals and demo checkout. Keyboard checks verify focus after size and quantity changes.",
+    "limitations": "Personal concept project • AI-assisted development. Products and photography are illustrative. Checkout collects no card details, processes no payment and fulfils no order."
+  },
+  {
+    "id": "rasa",
+    "title": "RASA Experience",
+    "category": "Brand experience",
+    "summary": "A travel concept that turns destination discovery into a sample itinerary through a globe, quiz and downloadable journey plan.",
+    "role": "Project direction and AI-assisted frontend development",
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Three.js"
+    ],
+    "challenge": "Give an inspirational travel page a clear path from destination discovery to a sample itinerary.",
+    "approach": "Connect destination buttons, an optional interactive globe and itinerary details. A three-step quiz offers a sample recommendation; a journey form turns selected preferences into an on-screen summary and downloadable plan.",
+    "highlights": [
+      "Interactive globe with geographic destination pins",
+      "Destination buttons as a keyboard and WebGL fallback",
+      "Three-step quiz with sample recommendations",
+      "Itinerary selection and downloadable text plans"
+    ],
+    "validation": "Desktop and mobile Chromium scenarios cover destination selection, itinerary details, quiz output and a sample plan download. Essential controls also work when the Three.js CDN is blocked.",
+    "limitations": "Personal concept project • AI-assisted development. Recommendations, prices and itineraries are illustrative. No travel operator is contacted and no transport or accommodation is booked."
+  }
+]
