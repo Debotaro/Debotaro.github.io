@@ -15,7 +15,7 @@ http.createServer((req,res) => {
     const relative = path.relative(base,file);
     if(relative.startsWith('..') || path.isAbsolute(relative)) {res.writeHead(403);res.end();return;}
     if(!production) {
-      for(const [name,out] of [['nova-os','out'],['atlas-ops','dist'],['nila-ledger','dist']]) {
+      for(const [name,out] of [['relay-os','dist'],['nova-os','out'],['atlas-ops','dist'],['nila-ledger','dist']]) {
         if(requestPath.startsWith(`/${name}/`)) file=path.join(root,name,out,requestPath.slice(name.length+2));
       }
     }

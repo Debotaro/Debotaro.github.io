@@ -2,11 +2,11 @@
 
 Prepared from the source in this repository on 7 October 2026. This is a study and practice guide, not a claim that Deboraj has already mastered each topic or personally written every line.
 
-The seven projects were developed with AI assistance. The repository describes Deboraj's role as **project direction and AI-assisted frontend development**; Codex assisted with implementation and iteration. The sample answers below are explanations to learn, then adapt to what you can actually explain and demonstrate. Do not memorise an answer and present it as experience you have not had.
+The seven independent demos and personal portfolio were developed with AI assistance. The repository describes Deboraj's role as **project direction and AI-assisted frontend development**; Codex assisted with implementation and iteration. The sample answers below are explanations to learn, then adapt to what you can actually explain and demonstrate. Do not memorise an answer and present it as experience you have not had.
 
 ## Start here
 
-For a typical junior frontend interview, prepare **NILA, NOVA and the portfolio first**. NOVA now supports both shared React state and a live repository/milestone API discussion; add ATLAS for a task-board or issue-import example. Use VANTA, AURA and RASA as supporting examples of JavaScript, forms, accessibility and progressive enhancement. You do not need to present all seven in one interview.
+For a typical junior frontend interview, prepare **NILA, NOVA and the portfolio first**. NOVA now supports both shared React state and a live repository/milestone API discussion; add ATLAS for a task-board or issue-import example. Use VANTA, AURA and RASA as supporting examples of JavaScript, forms, accessibility and progressive enhancement. Add RELAY when you can explain its linked review records and the difference between demo permissions and backend authorisation. You do not need to present all eight case studies in one interview.
 
 For every feature you practise, follow this cycle:
 
@@ -20,7 +20,7 @@ Keep an honest learning log: date, task, files changed, what you understood, wha
 
 ### A 30–45 second introduction to adapt
 
-> I'm Deboraj Sarkar, also known as Debotaro. I'm a Frontend Developer focused on responsive interfaces using HTML, CSS, JavaScript, React, Next.js and TypeScript. My portfolio contains a personal website and six working concept projects. They were developed with AI assistance, including Codex. I'm preparing to explain the code clearly and improve features myself. The examples I'm focusing on are NILA's transaction and budget model, NOVA's shared workspace state, and ATLAS's operations interface. I'm looking for a frontend role where I can contribute and keep developing within a professional team.
+> I'm Deboraj Sarkar, also known as Debotaro. I'm a Frontend Developer focused on responsive interfaces using HTML, CSS, JavaScript, React, Next.js and TypeScript. My portfolio contains a personal website and seven working concept projects. They were developed with AI assistance, including Codex. I'm preparing to explain the code clearly and improve features myself. The examples I'm focusing on are NILA's transaction and budget model, NOVA's shared workspace state, and ATLAS's operations interface. I'm looking for a frontend role where I can contribute and keep developing within a professional team.
 
 Replace “preparing to” with a completed capability only after you can demonstrate it. Do not add years of experience, clients, team leadership, production users, business metrics, a qualification, or deployment history that has not been supplied or verified.
 
@@ -52,7 +52,7 @@ These are talk tracks. Aim for roughly 90–120 seconds while showing the demo: 
 
 ### 1. Debotaro Portfolio
 
-> This is the entry point to my frontend work. The goal is to let a recruiter understand my focus, open a working project, read a case study and find my contact details quickly. The portfolio itself is featured first, with six demos organised into product systems and brand experiences.
+> This is the entry point to my frontend work. The goal is to let a recruiter understand my focus, open a working project, read a case study and find my contact details quickly. The portfolio itself is featured first, with seven demos organised into product systems and brand experiences.
 >
 > It uses HTML, CSS and JavaScript. Category buttons update each project's `hidden` state and `aria-pressed`, and update a result count. Case-study content is fetched once from a JSON file, then displayed in a native dialog. The close handler returns focus to the button that opened it. Dynamic text is escaped before the dialog HTML is built.
 >
@@ -64,7 +64,21 @@ These are talk tracks. Aim for roughly 90–120 seconds while showing the demo: 
 
 **Read:** `index.html`, `assets/portfolio.css`, `assets/portfolio.js`, `data/case-studies.json`, `tests/personal-portfolio.spec.ts`.
 
-### 2. NOVA OS
+### 2. RELAY OS
+
+> RELAY addresses the handoff between planning and design review. A project has tasks and design assets; an asset has revisions, pinned feedback and a review decision. Feedback can become a linked task, so a requested change is visible in the delivery workflow. The overview and analytics derive their numbers from the same records.
+>
+> The app uses React, TypeScript and Vite. It fits this portfolio's static GitHub Pages deployment through relative assets and hash navigation; it does not need server-rendered pages. A typed domain model links records and keeps changes predictable. Command search opens relevant work, while activity entries make decisions easier to trace.
+>
+> The public demo persists in the current browser. Admin, Project Manager, Designer and Client switching demonstrates workflow permissions, but it is not an authentication or security boundary. A separate Supabase adapter and SQL/storage policies are supplied for external setup. A configured cloud service would need real authentication, membership enforcement and security tests; the local demo does not establish those outcomes.
+>
+> This capstone was developed with AI assistance. My technical discussion should focus on a record relationship I can trace, permission handling I can explain and a real check documented in the validation report. I should not claim real team usage, audited security, formal accessibility conformance or a deployed cloud backend.
+
+**Show:** open RELAY; create or edit a task; open a design revision; add a pin with feedback and convert it into a task; switch a demo role and explain the changed actions; record a review decision; reload and show local persistence. Use command search as a second example.
+
+**Read:** `relay-os/src/domain.ts`, `relay-os/src/useRelay.ts`, the view modules, `relay-os/src/repository.ts`, `relay-os/README.md`, `relay-os/supabase/README.md` and `tests/relay.spec.ts`. Follow the actual handler, state transition and rendered result rather than treating this talk track as proof of knowledge.
+
+### 3. NOVA OS
 
 > NOVA connects projects, tasks, a local assistant and automation in one workspace. It also reads live public GitHub repository metadata and open milestones. A repository becomes a local project, and each selected milestone becomes one local planning task. Task changes feed the task table, project progress and workspace metrics.
 >
@@ -78,7 +92,7 @@ These are talk tracks. Aim for roughly 90–120 seconds while showing the demo: 
 
 **Read:** `nova-os/pages/_app.tsx`, `nova-os/pages/app/github.tsx`, `nova-os/components/store.tsx`, `nova-os/components/workspace-data.ts`, `nova-os/components/github-api.ts`, `nova-os/components/github-workspace.tsx`, `nova-os/components/workspace.tsx`, `nova-os/components/assistant.ts`, `nova-os/components/ui.tsx`, `nova-os/next.config.js`.
 
-### 3. ATLAS Ops
+### 4. ATLAS Ops
 
 > ATLAS explores a practical operations workspace: tasks, staffing coverage, notifications and performance charts. A user can create or edit a task, move it between statuses, filter the board and switch to a list. The same task data feeds the overview and notifications.
 >
@@ -92,7 +106,7 @@ These are talk tracks. Aim for roughly 90–120 seconds while showing the demo: 
 
 **Read:** `atlas-ops/src/github.ts`, `atlas-ops/src/GitHubQueue.tsx`, `atlas-ops/src/App.tsx` (`importIssue`, `Tasks`, `TaskEditor`, `Overview`, `CoveragePage`), `atlas-ops/src/data.ts`, `tests/atlas-api.spec.ts`.
 
-### 4. NILA Ledger
+### 5. NILA Ledger
 
 > NILA is a personal-finance concept where the ledger, budgets, charts and reports share one consistent transaction model. The goal is to make income and spending clear while still supporting useful actions: create, edit, delete, filter, export and print.
 >
@@ -106,7 +120,7 @@ These are talk tracks. Aim for roughly 90–120 seconds while showing the demo: 
 
 **Read:** `nila-ledger/src/data.ts`, `nila-ledger/src/App.tsx`, `nila-ledger/src/components/ui.tsx`, `nila-ledger/src/styles.css`.
 
-### 5. AURA Reserve
+### 6. AURA Reserve
 
 > AURA is a hospitality concept combining an editorial visual design with a usable stay enquiry. A user can choose dates and guests, view a residence and see an illustrative total before completing the demo form.
 >
@@ -120,7 +134,7 @@ These are talk tracks. Aim for roughly 90–120 seconds while showing the demo: 
 
 **Read:** `aura/index.html`, especially `renderCalendar`, `stayError`, `updateQuote`, `openBooking` and `moveImage`; `tests/static.spec.ts`.
 
-### 6. VANTA Atelier
+### 7. VANTA Atelier
 
 > VANTA is a fashion concept with an editorial catalogue and a complete demo shopping flow. The technical focus is keeping product size, cart quantity and totals consistent as the user filters products, chooses a size and adjusts the bag.
 >
@@ -134,7 +148,7 @@ These are talk tracks. Aim for roughly 90–120 seconds while showing the demo: 
 
 **Read:** `vanta/index.html`, especially stored-cart loading, `renderSizes`, `renderCart`, `restoreCartFocus`, `save` and `total`; `tests/static.spec.ts`.
 
-### 7. RASA Experience
+### 8. RASA Experience
 
 > RASA is a travel concept that connects destination discovery to a sample itinerary. Users can choose a destination, explore its day-by-day plan, take a three-question quiz and download a text journey summary.
 >
@@ -437,7 +451,7 @@ Be ready to perform a real small workflow: inspect `git status` and the diff, cr
 
 **26. How do you translate a Figma design?**
 
-Explain the work you can demonstrate: inspect spacing, type scale, colours, constraints and component states; identify reusable patterns; map them to semantic HTML and responsive rules; compare the implementation at relevant widths. The supplied profile lists Figma, but the repository does not establish that these seven projects originated from a specific Figma file. Do not invent a design handoff or Figma prototype.
+Explain the work you can demonstrate: inspect spacing, type scale, colours, constraints and component states; identify reusable patterns; map them to semantic HTML and responsive rules; compare the implementation at relevant widths. The supplied profile lists Figma, but the repository does not establish that these projects originated from a specific Figma file. Do not invent a design handoff or Figma prototype.
 
 **27. What would change for a production backend?**
 
@@ -507,6 +521,12 @@ Trace either NOVA's repository/milestone request (`components/github-workspace.t
 
 **Check:** success, empty data, slow request followed by a faster one, HTTP failure, network failure, cancellation, timeout and retry. Explain which records are server data and which choices are browser-local state. Add a duplicate-import check and explain why a disabled button alone would not replace the state-level guard. Use mocked responses to check the lifecycle reliably; a successful real request alone cannot verify every state. Compare with the matching NOVA GitHub API/workspace tests or `tests/atlas-api.spec.ts`; describe the one-page/no-application-cache limits and the difference between importing one milestone and importing one issue.
 
+### Exercise I — review state and permission boundaries (35–45 minutes)
+
+Trace RELAY's feedback-to-task conversion and review decision rules. In a practice copy, write a pure helper that converts a comment only once, preserves its revision link and rejects an action a demo role cannot perform. Then explain why the same checks must also be enforced by a real backend, rather than trusting a browser role selector.
+
+**Check:** a valid conversion creates one linked task; a repeated click creates no duplicate; a missing revision is rejected; forbidden actions leave state unchanged; prior state remains unmodified. Explain the distinction between a helpful UI gate and authenticated server authorisation. Compare the optional backend policies and their setup requirements; do not claim that source inspection is a security audit.
+
 ## A manageable five-day preparation schedule
 
 Aim for **75–90 focused minutes a day** with a short break. If you need more time, repeat a day; five days is an initial preparation cycle, not a guarantee of job readiness. Start each session by opening the relevant demo. End by speaking without looking at the guide.
@@ -555,7 +575,7 @@ If any of the last two honesty/scope items are uncertain, resolve them before pr
 
 ## Evidence and limits
 
-`VALIDATION.md` records the current combined checks and their limits. NOVA's GitHub API/workspace and data-helper suites separate remote request contracts from local imports/storage; the assistant regression suite covers current-state updates and cancellation. ATLAS's API suite separately covers issue reads/imports. Deterministic API scenarios mock responses; an unmocked smoke verifies connectivity and rendering rather than every failure mode. Refer to the latest validation report for completed results and final counts. Source inspection and tests do not establish individual authorship or certify accessibility, measured performance, backend security or other browsers.
+`VALIDATION.md` records the current combined checks and their limits. NOVA's GitHub API/workspace and data-helper suites separate remote request contracts from local imports/storage; the assistant regression suite covers current-state updates and cancellation. ATLAS's API suite separately covers issue reads/imports. Deterministic API scenarios mock responses; an unmocked smoke verifies connectivity and rendering rather than every failure mode. RELAY adds domain/workflow checks and a browser demonstration of reviews, roles and local persistence; its separately configured backend is outside the public demo. Refer to the latest validation report for completed results and final counts. Source inspection and tests do not establish individual authorship or certify accessibility, measured performance, backend security or other browsers.
 
 Useful reading order:
 
@@ -565,6 +585,7 @@ Useful reading order:
 4. `nova-os/pages/_app.tsx` → `components/store.tsx` → `components/workspace-data.ts` → `components/github-api.ts` → `components/github-workspace.tsx` → `pages/app/github.tsx` → `components/workspace.tsx` → `components/assistant.ts`. Follow with the NOVA GitHub API/workspace, data and assistant regression tests.
 5. `atlas-ops/src/data.ts` → `src/App.tsx` → `src/GitHubQueue.tsx` → `src/github.ts` → `tests/atlas-api.spec.ts`.
 6. `assets/portfolio.js` → `index.html` → `assets/portfolio.css`.
-7. `tests/projects.spec.ts`, `tests/static.spec.ts`, `tests/personal-portfolio.spec.ts` and `playwright.config.ts`.
+7. `relay-os/README.md` → its source model, store and views → optional backend guide → `tests/relay.spec.ts`.
+8. `tests/projects.spec.ts`, `tests/static.spec.ts`, `tests/personal-portfolio.spec.ts` and `playwright.config.ts`.
 
 Do not study generated `dist/`, Next.js `out/` chunks or the screenshots as substitutes for source. Keep future process notes connected to real work you can explain.

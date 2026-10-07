@@ -28,6 +28,7 @@ jobs:
           cache: npm
           cache-dependency-path: |
             package-lock.json
+            relay-os/package-lock.json
             nova-os/package-lock.json
             atlas-ops/package-lock.json
             nila-ledger/package-lock.json
@@ -35,8 +36,10 @@ jobs:
         run: npm ci
       - name: Install application dependencies
         run: npm run setup
-      - name: Build all six projects
+      - name: Build all seven projects
         run: npm run build
+      - name: Run RELAY domain and backend contract checks
+        run: npm run test:unit
       - name: Install test browser
         run: npx playwright install --with-deps chromium
       - name: Run frontend regression checks

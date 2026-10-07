@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { cpSync } from 'node:fs';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const browser=await chromium.launch();
-const projects=[['nova','nova-os/app/'],['atlas','atlas-ops/#/overview'],['nila','nila-ledger/#/dashboard'],['aura','aura/'],['vanta','vanta/'],['rasa','rasa/']];
+const projects=[['relay','relay-os/'],['nova','nova-os/app/'],['atlas','atlas-ops/#/overview'],['nila','nila-ledger/#/dashboard'],['aura','aura/'],['vanta','vanta/'],['rasa','rasa/']];
 const only=process.argv[2];
 for(const [name,route] of projects.filter(([n])=>!only||only==='static'?(!only||['aura','vanta','rasa'].includes(n)):n===only)){
   const page=await browser.newPage({viewport:{width:1440,height:1000},deviceScaleFactor:1,reducedMotion:'reduce'});

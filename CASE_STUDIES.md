@@ -1,6 +1,6 @@
 # Debotaro — Selected frontend work
 
-Seven projects exploring responsive interfaces, useful interactions and distinct visual identities. Each is a **personal concept project with AI-assisted development**. Deboraj Sarkar (Debotaro) provided project direction, requirements and personalisation; Codex assisted with implementation and iteration. Operational and business demonstrations use sample data; NOVA additionally reads live public GitHub repositories/milestones, and ATLAS reads live public GitHub issues. Project results describe working frontend behaviour and documented validation.
+Seven independent demos plus the portfolio explore responsive interfaces, useful interactions and distinct visual identities. Each is a **personal concept project with AI-assisted development**. Deboraj Sarkar (Debotaro) provided project direction, requirements and personalisation; Codex assisted with implementation and iteration. Operational and business demonstrations use sample data; NOVA additionally reads live public GitHub repositories/milestones, and ATLAS reads live public GitHub issues. RELAY adds a browser-local creative handoff workflow and optional Supabase backend source requiring separate setup. Project results describe implemented behaviour and documented validation.
 
 **Role across the collection:** Project direction and AI-assisted frontend development.
 
@@ -10,7 +10,7 @@ Seven projects exploring responsive interfaces, useful interactions and distinct
 
 **Challenge.** Give recruiters a quick way to understand Deboraj’s frontend focus, explore working examples and start a conversation.
 
-**Approach.** Lead with a clear professional introduction, place the portfolio itself first, and connect six distinct demos through a consistent project gallery. Concise case studies explain the implementation choices behind the visuals.
+**Approach.** Lead with a clear professional introduction, place the portfolio itself first, and connect seven distinct demos through a consistent project gallery. Concise case studies explain the implementation choices behind the visuals.
 
 **Implementation highlights.** Responsive layouts; category filtering with an announced result count; working demos and public source links; email, professional profiles and a downloadable résumé.
 
@@ -18,7 +18,21 @@ Seven projects exploring responsive interfaces, useful interactions and distinct
 
 **Scope.** A frontend showcase with a project-based résumé. Contact uses an email link; there is no contact backend.
 
-## 02 / NOVA OS
+## 02 / RELAY OS
+
+**Creative handoff capstone · React, TypeScript, Vite; optional Supabase backend**
+
+**Challenge.** Connect project planning, design feedback and approval decisions so a handoff remains understandable from the first revision to delivery.
+
+**Approach.** Model projects, tasks, asset revisions, pinned feedback and review decisions as linked records. Keep the public demo usable with browser-local state and explicit role previews, while separating the optional authenticated backend adapter and access policies from demo permissions. Use hash navigation and relative assets to fit the existing static portfolio deployment.
+
+**Implementation highlights.** Project/task editing; image-pin feedback linked to revisions and convertible into tasks; review and approval states with activity history; derived delivery analytics and command search. Admin, Project Manager, Designer and Client previews demonstrate different available actions.
+
+**Evidence.** See [VALIDATION.md](VALIDATION.md) for the completed TypeScript/build, domain and desktop/mobile browser checks. [RELAY's README](relay-os/README.md) identifies setup commands, the source architecture, a demonstration sequence and backend prerequisites.
+
+**Scope.** The public demo stores sample work in the current browser. Switching demo roles does not authenticate or authorise real users. Optional Supabase Auth, database, RLS and private-storage code requires an external project, configuration and security verification before use; no cloud deployment, live teamwork, security audit or formal accessibility conformance is claimed.
+
+## 03 / NOVA OS
 
 **Product system · Next.js, React, TypeScript, Tailwind CSS**
 
@@ -32,7 +46,7 @@ Seven projects exploring responsive interfaces, useful interactions and distinct
 
 **Scope.** GitHub reads public data without credentials: one page of at most 30 open milestones, with page-local search, no application cache or polling, and public rate limits. Each milestone becomes one local task; its issues are not imported. Local completion never writes GitHub. Imports, source metadata and up to 100 local activity entries persist only when browser storage is available. Authentication, team collaboration and other service integrations remain simulated; the assistant uses deterministic rules. There is no shared backend, private-repository access or production AI service.
 
-## 03 / ATLAS Ops
+## 04 / ATLAS Ops
 
 **Product system · React, TypeScript, Vite, Recharts**
 
@@ -46,7 +60,7 @@ Seven projects exploring responsive interfaces, useful interactions and distinct
 
 **Scope.** GitHub reads live public data; the latest page contains up to 30 raw entries with pull requests excluded. Rate limits apply. Imported tasks and operational data remain local; no GitHub writes, ERP connection, live staffing system or shared backend is provided.
 
-## 04 / NILA Ledger
+## 05 / NILA Ledger
 
 **Product system · React, TypeScript, Vite, Recharts**
 
@@ -60,7 +74,7 @@ Seven projects exploring responsive interfaces, useful interactions and distinct
 
 **Scope.** Personal finance demonstration with fictional data. There is no bank connection or account authentication.
 
-## 05 / AURA Reserve
+## 06 / AURA Reserve
 
 **Brand experience · HTML, CSS, JavaScript, optional GSAP**
 
@@ -74,7 +88,7 @@ Seven projects exploring responsive interfaces, useful interactions and distinct
 
 **Scope.** Availability and rates are illustrative. Completing the form creates an on-screen demo state; it does not send an email or reserve accommodation.
 
-## 06 / VANTA Atelier
+## 07 / VANTA Atelier
 
 **Brand experience · HTML, CSS, JavaScript**
 
@@ -88,7 +102,7 @@ Seven projects exploring responsive interfaces, useful interactions and distinct
 
 **Scope.** Fictional products and illustrative photography. Checkout collects no card details, processes no payment and fulfils no order.
 
-## 07 / RASA Experience
+## 08 / RASA Experience
 
 **Brand experience · HTML, CSS, JavaScript, Three.js**
 
@@ -104,4 +118,4 @@ Seven projects exploring responsive interfaces, useful interactions and distinct
 
 ## Validation context
 
-The collection and personalised portfolio passed 126 deterministic Chromium checks across desktop and mobile contexts on 7 October 2026, with further project-level and unmocked API checks documented in [VALIDATION.md](VALIDATION.md). These checks verify specific frontend behaviours. Business impact, formal accessibility conformance and complete browser coverage are outside that validation scope. See the validation file for the current checks and limits.
+The latest completed collection, app-domain and desktop/mobile browser checks are documented in [VALIDATION.md](VALIDATION.md), alongside the unmocked GitHub API checks. These checks verify specific frontend behaviours. Business impact, formal accessibility conformance and complete browser coverage are outside that validation scope. See the validation file for the current checks and limits.

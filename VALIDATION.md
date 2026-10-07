@@ -4,21 +4,24 @@ Verified on 7 October 2026, using Node.js 24 and Chromium through Playwright.
 
 ## Build and dependencies
 
-- Root `npm run build` completes successfully and assembles all six projects in `dist/`.
+- Root `npm run build` completes successfully and assembles all seven projects in `dist/`.
+- RELAY OS: strict TypeScript check and Vite production build pass.
 - NOVA OS: TypeScript check and Next.js static export pass; 20 generated routes including the new GitHub workspace and the 404 page.
 - ATLAS Ops: TypeScript check and Vite production build pass.
 - NILA Ledger: TypeScript check and Vite production build pass.
-- Production dependency audits for all three apps report zero vulnerabilities at the time of validation. Dependency status can change later.
-- Every app works from its own subdirectory in the combined static bundle. Hash routes preserve navigation in ATLAS and NILA; NOVA has an explicit `/nova-os` build prefix.
+- Production dependency audits for all four compiled apps report zero vulnerabilities at the time of validation. RELAY's audit was repeated after its final dependency changes. Dependency status can change later.
+- Every app works from its own subdirectory in the combined static bundle. Hash routes preserve navigation in RELAY, ATLAS and NILA; NOVA has an explicit `/nova-os` build prefix.
 
 ## Automated browser checks
 
-`npm test` passes **126 checks**: 63 deterministic scenarios each in desktop and mobile Chromium contexts. Two optional ATLAS live API checks are skipped in this suite; a separate unmocked ATLAS desktop check previously passed against GitHub. NOVA's live repository/milestone import, completion and reload journey passed separately at 1440, 390 and 320px widths. The browser contexts use reduced motion and clean per-test storage.
+The browser suite verifies **152 checks**: 76 deterministic scenarios each in desktop and mobile Chromium contexts. Two optional ATLAS live API checks are skipped in this suite; a separate unmocked ATLAS desktop check previously passed against GitHub. NOVA's live repository/milestone import, completion and reload journey passed separately at 1440, 390 and 320px widths. The browser contexts use reduced motion and clean per-test storage.
 
 | Area | Verified behaviour |
 |---|---|
-| Portfolio | Supplied identity/contact URLs, own portfolio featured first, six local demo links, all preview images, category filters and announced count |
-| Personal interactions | Seven case-study dialogs with demo scope and public source links, Escape/close focus restoration, 320px menu keyboard behavior, resize reset, clipboard copy, reduced motion, real PDF download and printable résumé contacts/layout |
+| Portfolio | Supplied identity/contact URLs, own portfolio featured first, seven local demo links, all preview images, category filters and announced count |
+| Personal interactions | Eight case-study dialogs with demo scope and public source links, Escape/close focus restoration, 320px menu keyboard behavior, resize reset, clipboard copy, reduced motion, real PDF download and printable résumé contacts/layout |
+| RELAY | Project/task CRUD and cascade deletion, archive/restore guards, cross-tab changes and stale-form errors, normalized keyboard/pointer feedback pins, duplicate-safe comment-to-task conversion, revision history, review-first approval transitions and demo role restrictions |
+| RELAY recovery and navigation | Upload type/size guards, command-search results and rapid reopen focus, sidebar keyboard focus, themes, activity export, malformed/blocked storage, empty workspaces and 320px layout |
 | NOVA | Task creation, command search, assistant task creation, automation execution and persisted task data; current-state delayed commands, summary immutability, cancellation on departure/clear chat and recovery |
 | NOVA live API and imports | Parallel credential-free reads, runtime response validation, canonical links, loading/empty/search/error/retry, rate limits, shared timeout, obsolete request cancellation, duplicate-safe imports, source attribution, reload, independent local completion, verified repository renames and atomic rejected-import recovery |
 | NOVA storage and empty state | Legacy data compatibility, strict type/relationship/size limits, malformed-data recovery, session-only storage warnings, capped immutable activity, and empty-workspace metrics/task/automation guards |
@@ -37,17 +40,25 @@ The API checks use controlled responses so CI does not depend on GitHub availabi
 
 The NOVA regression helper is the production pure updater exercised with intervening task/message changes and frozen inputs. Browser clock checks additionally verify real UI cancellation and a fresh command after clearing chat. A delayed command now consumes React's current state instead of replacing tasks from the send-time snapshot.
 
+## RELAY domain and database checks
+
+`npm run test:unit` passes **25 checks**: 13 domain tests and 12 embedded PostgreSQL tests using PGlite 0.5.8. These execute the actual migration with explicit test-only authentication and storage schema stubs. They exercise workspace isolation, role and column permissions, archived-project guards, server-owned timestamps, approval transitions, atomic comment conversion, revision relationships and storage cleanup permissions after cascade deletion.
+
+The configured Supabase adapter implements authentication, database writes, private uploads, signed previews and realtime subscriptions. No hosted Supabase project was configured for this release. Auth/JWT verification, email delivery, private file transfer, signed-URL HTTP requests and WebSocket delivery have not been tested against that service. The supplied pgTAP checks are separate from the executed embedded tests. See [the setup guide](relay-os/supabase/README.md) before enabling shared cloud use.
+
 ## Résumé and publishing
 
 The one-page résumé PDF was rendered and visually inspected. Text extraction confirmed the supplied identity, contact details and project content; its eight URI annotations use the intended profile, portfolio, email and demo destinations. The editable HTML version passed desktop/mobile contact and overflow checks. Education, employment and certifications remain omitted until confirmed by Deboraj.
 
 The résumé, printable HTML, editable sources, case study and interview guide now describe NOVA's live GitHub feature and retain the distinction between public reads, browser-local planning and simulated authentication.
 
-The public repository is [Debotaro/Debotaro.github.io](https://github.com/Debotaro/Debotaro.github.io), with [debotaro.github.io](https://debotaro.github.io/) as the domain-root Pages destination. The committed workflow installs locked dependencies, builds all six demos, runs the browser suite and deploys `dist/` only after validation succeeds. Live deployment status is available in the repository's Actions tab.
+The public repository is [Debotaro/Debotaro.github.io](https://github.com/Debotaro/Debotaro.github.io), with [debotaro.github.io](https://debotaro.github.io/) as the domain-root Pages destination. The committed workflow installs locked dependencies, builds all seven demos, runs RELAY's 25 domain/database checks and the browser suite, and deploys `dist/` only after validation succeeds. Live deployment status is available in the repository's Actions tab.
 
 ## Visual review and corrections
 
-Actual screenshots of all six projects were captured at 1440×1000 and 390×844. The gallery thumbnails use those screenshots. Desktop and mobile layouts were inspected, including hero imagery and application charts.
+Actual screenshots of all seven projects were captured at 1440×1000 and 390×844. The gallery thumbnails use those screenshots. Desktop and mobile layouts were inspected, including hero imagery and application charts.
+
+RELAY's overview and design review were captured at both sizes (`previews/relay.png`, `previews/relay-mobile.png`, `previews/relay-review.png` and `previews/relay-review-mobile.png`). Review images preserve their original aspect ratio and pins use normalized coordinates. QA corrected rapid command-palette focus restoration, stale-form error announcements inside modal dialogs, closed mobile navigation visibility and review-first approval rules.
 
 NOVA's updated navigation and live GitHub screen were captured and inspected at both sizes (`previews/nova-github.png` and `previews/nova-github-mobile.png`). The unmocked journey reported no page errors or document overflow at 1440, 390 or 320px. The production bundle passed after the final copy and scope changes.
 

@@ -14,8 +14,8 @@ const dialog=document.getElementById('case-dialog'),caseBody=document.getElement
 let caseOpener;
 document.querySelectorAll('[data-case]').forEach(button=>button.addEventListener('click',()=>{caseOpener=button}));
 dialog.addEventListener('close',()=>caseOpener?.focus({preventScroll:true}));
-const routes={portfolio:'#top',nova:'nova-os/',atlas:'atlas-ops/',nila:'nila-ledger/',aura:'aura/',vanta:'vanta/',rasa:'rasa/'};
-const sourceDirectories={portfolio:'',nova:'nova-os',atlas:'atlas-ops',nila:'nila-ledger',aura:'aura',vanta:'vanta',rasa:'rasa'};
+const routes={portfolio:'#top',relay:'relay-os/',nova:'nova-os/',atlas:'atlas-ops/',nila:'nila-ledger/',aura:'aura/',vanta:'vanta/',rasa:'rasa/'};
+const sourceDirectories={portfolio:'',relay:'relay-os',nova:'nova-os',atlas:'atlas-ops',nila:'nila-ledger',aura:'aura',vanta:'vanta',rasa:'rasa'};
 const sourceUrl=id=>'https://github.com/Debotaro/Debotaro.github.io'+(sourceDirectories[id]?'/tree/main/'+sourceDirectories[id]:'');
 const escapeHtml=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const caseData=fetch('data/case-studies.json').then(response=>{if(!response.ok)throw new Error('Case studies unavailable');return response.json()}).catch(()=>null);

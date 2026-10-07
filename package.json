@@ -9,6 +9,7 @@
     "dev": "node scripts/serve.mjs",
     "preview": "node scripts/serve.mjs",
     "test": "playwright test",
+    "test:unit": "node scripts/test-unit.mjs",
     "test:install": "playwright install chromium"
   },
   "devDependencies": { "@playwright/test": "1.63.0" }

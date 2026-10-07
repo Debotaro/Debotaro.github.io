@@ -3,7 +3,7 @@
     "id": "portfolio",
     "title": "Debotaro Portfolio",
     "category": "Personal portfolio",
-    "summary": "A personal showcase that connects professional context, considered visual design and six working frontend concepts.",
+    "summary": "A personal showcase that connects professional context, considered visual design and seven working project concepts.",
     "role": "Project direction and AI-assisted frontend development",
     "stack": [
       "HTML",
@@ -11,15 +11,38 @@
       "JavaScript"
     ],
     "challenge": "Give recruiters a quick way to understand Deboraj’s frontend focus, explore working examples and start a conversation.",
-    "approach": "Lead with a clear professional introduction, place the portfolio itself first, and connect six distinct demos through a consistent gallery. Concise case studies explain the implementation choices behind the visuals.",
+    "approach": "Lead with a clear professional introduction, place the portfolio itself first, and connect seven distinct demos through a consistent gallery. Concise case studies explain the implementation choices behind the visuals.",
     "highlights": [
       "Responsive layouts with clear project navigation",
       "Category filtering with an announced result count",
-      "Six working demos and public source code",
+      "Seven working demos and public source code",
       "Contact profiles and a downloadable résumé"
     ],
     "validation": "Desktop and mobile Chromium checks cover identity, filters, demo and source links, keyboard dialogs, menu behavior, clipboard contents, résumé download and document overflow.",
     "limitations": "Personal concept project • AI-assisted development. Contact uses an email link; a downloadable résumé and public source are included. There is no contact backend."
+  },
+  {
+    "id": "relay",
+    "title": "RELAY OS",
+    "category": "Product system / Creative handoff",
+    "summary": "A creative delivery workspace connecting projects, versioned design reviews, pinned feedback and approval decisions.",
+    "role": "Project direction and AI-assisted frontend development",
+    "stack": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Optional Supabase backend"
+    ],
+    "challenge": "Keep project planning, design feedback and approval decisions connected so a handoff stays understandable from first revision to delivery.",
+    "approach": "Model projects, tasks, design revisions, pinned feedback and decisions as linked records. Use browser-local state for the public demo, explicit role previews for workflow exploration, and a separate optional Supabase adapter for authenticated persistence. Relative assets and hash navigation preserve the existing static deployment.",
+    "highlights": [
+      "Project and task workflows with derived delivery progress",
+      "Versioned image reviews with pins and comment-to-task conversion",
+      "Approval decisions, activity history and four demo role previews",
+      "Command search, responsive views and optional backend architecture"
+    ],
+    "validation": "Strict TypeScript and Vite production build pass. 24 desktop/mobile browser checks cover the handoff workflow and recovery states; 25 domain and embedded PostgreSQL checks exercise record validation and database policies. Hosted Supabase services remain unconfigured. See VALIDATION.md for results and limits.",
+    "limitations": "Personal concept project • AI-assisted development. The public demo uses sample work saved in the current browser; role switching is a workflow preview, not real authentication. Optional Supabase Auth, database, RLS and private storage require an external project and configuration. No cloud deployment, live teamwork, audited backend security or formal accessibility conformance is claimed."
   },
   {
     "id": "nova",

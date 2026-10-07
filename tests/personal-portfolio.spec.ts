@@ -8,8 +8,9 @@ test('Personal portfolio presents the supplied identity and contacts, with its o
   await expect(page.locator('.hero-intro')).toContainText('AI-assisted development workflows');
   await expect(page.locator('.availability')).toHaveText('Open to remote frontend roles and relocation for the right opportunity.');
   expect(await page.locator('.featured-project').evaluate(feature=>Boolean(feature.compareDocumentPosition(document.querySelector('.grid')!)&Node.DOCUMENT_POSITION_FOLLOWING))).toBeTruthy();
-  await expect(page.locator('[data-case]')).toHaveCount(7);
-  await expect(page.locator('.card')).toHaveCount(6);
+  await expect(page.locator('[data-case]')).toHaveCount(8);
+  await expect(page.locator('.card')).toHaveCount(7);
+  await expect(page.locator('.card').first()).toHaveAttribute('href','relay-os/');
   for(const [name,href] of [['GitHub','https://github.com/Debotaro'],['LinkedIn','https://www.linkedin.com/in/deborajsarkar/'],['Dribbble','https://dribbble.com/Debotaro']]){
     const link=page.locator('.socials').getByRole('link',{name:new RegExp(name)});
     await expect(link).toHaveAttribute('href',href);await expect(link).toHaveAttribute('rel','noopener noreferrer');
@@ -23,9 +24,9 @@ test('Personal portfolio presents the supplied identity and contacts, with its o
   expect(errors).toEqual([]);
 });
 
-test('Seven case studies expose their working details, demo scope and keyboard focus restoration',async({page})=>{
+test('Eight case studies expose their working details, demo scope and keyboard focus restoration',async({page})=>{
   await page.goto('/');
-  const cases=[['portfolio','Debotaro Portfolio'],['nova','NOVA OS'],['atlas','ATLAS Ops'],['nila','NILA Ledger'],['aura','AURA Reserve'],['vanta','VANTA Atelier'],['rasa','RASA Experience']];
+  const cases=[['portfolio','Debotaro Portfolio'],['relay','RELAY OS'],['nova','NOVA OS'],['atlas','ATLAS Ops'],['nila','NILA Ledger'],['aura','AURA Reserve'],['vanta','VANTA Atelier'],['rasa','RASA Experience']];
   for(const [id,title] of cases){
     const trigger=page.locator(`[data-case="${id}"]`);await trigger.click();
     const dialog=page.getByRole('dialog',{name:title,exact:true});await expect(dialog).toBeVisible();
@@ -34,6 +35,11 @@ test('Seven case studies expose their working details, demo scope and keyboard f
     await expect(dialog.locator('.case-limitations')).toContainText('Personal concept project');
     await expect(dialog.getByRole('link',{name:'View source code'})).toHaveAttribute('href',new RegExp('^https://github.com/Debotaro/Debotaro\\.github\\.io'));
     if(id==='nova')await expect(dialog.locator('.case-limitations')).toContainText('deterministic rules');
+    if(id==='relay'){
+      await expect(dialog.getByRole('link',{name:'Explore the demo'})).toHaveAttribute('href','relay-os/');
+      await expect(dialog.getByRole('link',{name:'View source code'})).toHaveAttribute('href','https://github.com/Debotaro/Debotaro.github.io/tree/main/relay-os');
+      await expect(dialog.locator('.case-limitations')).toContainText('browser');
+    }
     await page.keyboard.press('Escape');await expect(dialog).not.toBeVisible();await expect(trigger).toBeFocused();
   }
   await page.locator('[data-case="portfolio"]').click();
