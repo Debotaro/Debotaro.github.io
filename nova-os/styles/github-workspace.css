@@ -1,0 +1,70 @@
+.nova-github-heading h1{font-size:30px}
+.nova-github-heading>.button{flex-shrink:0}
+.nova-github-connect{padding:26px;margin-bottom:22px}
+.nova-github-intro{display:flex;align-items:center;gap:15px;margin-bottom:24px}
+.nova-github-symbol{width:48px;height:48px;display:grid;place-items:center;border:1px solid var(--border);border-radius:12px;background:var(--soft);color:var(--accent);flex-shrink:0}
+.nova-github-intro h2{font-size:15px;font-weight:500;margin-bottom:7px}
+.nova-github-intro p{font-size:12px;color:var(--muted);line-height:1.7}
+.nova-github-tag{margin-left:auto;padding:6px 10px;border:1px solid var(--border);border-radius:20px;font-size:10px;color:var(--green);white-space:nowrap}
+.nova-github-form{display:flex;align-items:flex-end;gap:10px}
+.nova-github-form label{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px;font-size:11px;color:var(--muted)}
+.nova-github-form .input{font-size:13px}
+.nova-github-form .button{flex-shrink:0}
+.nova-github-hint,.nova-github-input-error{font-size:11px;margin-top:14px;line-height:1.8}
+.nova-github-hint{color:var(--muted)}
+.nova-github-hint button{padding:0;margin-left:10px;border:0;background:none;color:var(--accent);font-size:inherit;text-decoration:underline;text-underline-offset:3px}
+.nova-github-input-error{color:#f2a49e}
+:root[data-theme=light] .nova-github-input-error{color:#9b3028}
+.nova-github-storage-note{font-size:12px;line-height:1.8;padding:12px 16px;border-left:2px solid var(--accent);background:var(--soft);margin-bottom:18px}
+.nova-github-loading{padding:26px}
+.nova-github-loading>p{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.nova-github-loading>p svg{color:var(--accent)}
+.nova-github-skeleton{display:grid;gap:16px;margin-top:24px}
+.nova-github-skeleton>div{padding:18px;border:1px solid var(--border);border-radius:8px}
+.nova-github-skeleton span{display:block;height:11px;background:var(--surface2);border-radius:6px;margin-bottom:12px}
+.nova-github-skeleton span:first-child{width:30%}.nova-github-skeleton span:nth-child(2){width:65%}.nova-github-skeleton span:last-child{width:85%;margin:0}
+.nova-github-error{display:flex;align-items:center;gap:20px;padding:28px}
+.nova-github-error>svg{color:var(--accent);flex-shrink:0}
+.nova-github-error>div{flex:1;min-width:0}
+.nova-github-error h2{font-size:17px;font-weight:500;margin-bottom:9px}
+.nova-github-error p{font-size:12px;color:var(--muted);line-height:1.8;overflow-wrap:anywhere}
+.nova-github-repository{display:flex;justify-content:space-between;gap:28px;padding:28px;background:linear-gradient(120deg,var(--soft),var(--surface) 70%)}
+.nova-github-repository>div:first-child{min-width:0;flex:1}
+.nova-github-repository .eyebrow{display:block;color:var(--accent);font-size:8px}
+.nova-github-repository h2{font-size:24px;font-weight:500;letter-spacing:-.6px}
+.nova-github-repository h2 a{display:flex;align-items:center;gap:10px;overflow-wrap:anywhere}
+.nova-github-repository p{font-size:12px;color:var(--muted);line-height:1.8;max-width:660px;margin-top:12px}
+.nova-github-stats{display:flex;flex-wrap:wrap;gap:20px;color:var(--muted);font-size:11px;margin-top:20px}
+.nova-github-stats>span{display:flex;align-items:center;gap:7px}
+.nova-github-project-actions{align-self:center;display:flex;flex-direction:column;align-items:flex-end;gap:12px;flex-shrink:0}
+.nova-github-imported{display:flex;align-items:center;gap:6px;color:var(--green);font-size:11px}
+.nova-github-list-toolbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:26px 0 18px}
+.nova-github-list-toolbar h2{font-size:17px;font-weight:500}.nova-github-list-toolbar h2 span{font-size:12px;margin-left:6px;color:var(--muted)}
+.nova-github-list-toolbar p{font-size:10px;color:var(--muted);margin-top:8px;line-height:1.7}
+.nova-github-search{position:relative;width:min(280px,100%)}
+.nova-github-search>svg{position:absolute;left:12px;top:13px;color:var(--muted)}
+.nova-github-search>.input{padding-left:37px;font-size:12px}
+.nova-github-milestones{display:grid;gap:14px}
+.nova-github-milestone{padding:24px;display:flex;justify-content:space-between;gap:30px}
+.nova-github-milestone-content{min-width:0;flex:1}
+.nova-github-milestone-meta{font-size:9px;letter-spacing:.6px;color:var(--muted);display:block;margin-bottom:12px}
+.nova-github-milestone h3{font-size:16px;font-weight:500}.nova-github-milestone h3 a{display:flex;align-items:center;gap:8px;overflow-wrap:anywhere}
+.nova-github-milestone-content>p{font-size:12px;line-height:1.8;color:var(--muted);margin-top:11px;overflow-wrap:anywhere;max-width:750px}
+.nova-github-progress-label{display:flex;justify-content:space-between;gap:12px;font-size:10px;color:var(--muted);margin-top:18px;max-width:470px}
+.nova-github-progress-label b{color:var(--accent);font-weight:500}
+.nova-github-progress{height:5px;border-radius:5px;background:var(--surface2);margin-top:9px;max-width:470px;overflow:hidden}
+.nova-github-progress>span{height:100%;display:block;background:var(--accent);border-radius:inherit}
+.nova-github-milestone-actions{display:flex;flex-direction:column;align-items:flex-end;gap:15px;justify-content:center;flex-shrink:0}
+.nova-github-milestone-actions .text-link{font-size:10px;color:var(--muted)}
+.nova-github-empty{text-align:center;padding:42px 24px}.nova-github-empty>svg{color:var(--accent);margin-bottom:17px}
+.nova-github-empty h2{font-size:19px;font-weight:500}.nova-github-empty p{font-size:12px;line-height:1.8;color:var(--muted);margin:12px auto 18px;max-width:500px}
+.nova-github-empty>.text-link{justify-content:center;font-size:12px}.nova-github-empty .button{margin-top:6px}
+.nova-github-disclosure{font-size:10px;line-height:1.9;color:var(--muted);margin:18px 0 0;max-width:930px}
+.nova-github-activity{margin-top:25px;padding:24px}.nova-github-activity ul{list-style:none;margin:0;padding:0;display:grid;gap:17px}
+.nova-github-activity li{display:flex;gap:12px;align-items:flex-start}.nova-github-activity-dot{width:6px;height:6px;border-radius:50%;background:var(--green);margin-top:6px;flex-shrink:0}
+.nova-github-activity li p{font-size:12px;line-height:1.7;overflow-wrap:anywhere}.nova-github-activity time{display:block;font-size:10px;color:var(--muted);margin-top:4px}
+.nova-task-source{display:flex;align-items:center;gap:4px;font-size:9px;color:var(--accent);margin:6px 0 0 24px;width:fit-content}
+.nova-project-source{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--green);margin-top:14px}
+.nova-project-source-link{font-size:11px;color:var(--accent);display:inline-flex;align-items:center;gap:6px}
+@media(max-width:1100px){.nova-github-form{flex-wrap:wrap}.nova-github-form label{flex-basis:100%}.nova-github-repository{gap:20px}.nova-github-repository h2{font-size:21px}}
+@media(max-width:700px){.nova-github-heading{display:block}.nova-github-heading h1{font-size:26px}.nova-github-heading>.button{margin-top:16px;font-size:12px;min-height:38px;width:auto;padding:0 13px}.nova-github-connect{padding:20px}.nova-github-intro{align-items:flex-start;gap:11px}.nova-github-symbol{width:39px;height:39px}.nova-github-intro h2{font-size:14px;line-height:1.5}.nova-github-intro p{font-size:11px}.nova-github-tag{display:none}.nova-github-form{gap:9px}.nova-github-form label{font-size:11px}.nova-github-form .button{font-size:11px;padding:0 12px;min-height:38px}.nova-github-hint button{display:inline-block;margin-left:8px}.nova-github-repository{padding:22px;flex-direction:column;gap:23px}.nova-github-repository h2{font-size:21px}.nova-github-project-actions{align-self:stretch;align-items:flex-start}.nova-github-stats{gap:15px}.nova-github-list-toolbar{align-items:flex-start;flex-direction:column;gap:15px}.nova-github-search{width:100%}.nova-github-milestone{padding:21px;flex-direction:column;gap:20px}.nova-github-milestone-actions{align-items:flex-start;flex-direction:row;align-items:center;justify-content:space-between;gap:12px}.nova-github-milestone-actions .button{font-size:11px;padding:0 11px;min-height:38px}.nova-github-milestone-actions .text-link{font-size:9px}.nova-github-progress,.nova-github-progress-label{max-width:none}.nova-github-error{padding:22px;flex-wrap:wrap;gap:14px}.nova-github-error>div{flex-basis:calc(100% - 50px)}.nova-github-error>.button{margin-left:44px}.nova-github-empty{padding:32px 20px}.nova-github-empty h2{font-size:17px}.nova-github-activity{padding:21px}.nova-github-activity .section-heading{align-items:flex-start;gap:10px}.nova-github-activity .section-heading .text-xs{font-size:9px}.nova-github-disclosure{font-size:10px}}

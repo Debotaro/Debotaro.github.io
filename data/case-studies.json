@@ -25,7 +25,7 @@
     "id": "nova",
     "title": "NOVA OS",
     "category": "Product system",
-    "summary": "A connected workspace for projects, tasks and local automation, with command search and a rule-based assistant.",
+    "summary": "A shared local workspace that turns live public GitHub repositories and milestones into projects and planning tasks.",
     "role": "Project direction and AI-assisted frontend development",
     "stack": [
       "Next.js",
@@ -33,16 +33,16 @@
       "TypeScript",
       "Tailwind CSS"
     ],
-    "challenge": "Keep projects, tasks, automation and assistant interactions connected so the workspace feels like one product.",
-    "approach": "Use a shared, typed data model across the dashboard and project views. Pair a restrained dark interface with command search, local automation and a separate marketing and onboarding journey.",
+    "challenge": "Connect real repository context to a coherent local workspace for projects, tasks, automation and assistant interactions without implying remote synchronisation.",
+    "approach": "Keep local planning in shared typed state and read public GitHub repositories/milestones through a runtime-validated API boundary. Handle loading, empty, errors, timeout, retry and obsolete requests; import records with duplicate guards and canonical source metadata. Reconcile verified repository renames by stable ID while preserving local planning edits.",
     "highlights": [
-      "Task changes update project progress",
-      "Command search finds destinations and tasks",
-      "A rule-based assistant creates workspace tasks",
-      "An editable automation flow updates local state"
+      "Live repositories and milestones with recovery states",
+      "Duplicate-safe local imports with source attribution",
+      "Stable-ID rename reconciliation and capped import history",
+      "Validated browser storage with session-only warnings"
     ],
-    "validation": "Next.js static export and TypeScript checks pass. Desktop and mobile Chromium scenarios cover task creation, command search, assistant task creation and automation execution.",
-    "limitations": "Personal concept project • AI-assisted development. Tasks persist in the browser; authentication, team collaboration and external integrations are simulated. The assistant uses deterministic rules."
+    "validation": "TypeScript and static export pass. Desktop/mobile Chromium checks cover request recovery, imports, reload, duplicates, canonical renames, storage failures and empty workspaces. A separate unmocked GitHub import/completion/reload journey passed at 1440, 390 and 320px. See VALIDATION.md for the complete checks and limits.",
+    "limitations": "Personal concept project • AI-assisted development. Public GitHub reads return one page of up to 30 open milestones; search is page-local, rate limits apply, and there is no application cache or polling. A milestone becomes one local task, not its issues. Local completion never writes GitHub. Imports and up to 100 activity entries persist when browser storage is available. Authentication, team collaboration and other service integrations are simulated; the assistant uses deterministic rules. No private-repository access or shared backend."
   },
   {
     "id": "atlas",

@@ -6,7 +6,7 @@ The seven projects were developed with AI assistance. The repository describes D
 
 ## Start here
 
-For a typical junior frontend interview, prepare **NILA, NOVA and the portfolio first**. Add ATLAS for a task-board or API discussion, then use VANTA, AURA and RASA as supporting examples of JavaScript, forms, accessibility and progressive enhancement. You do not need to present all seven in one interview.
+For a typical junior frontend interview, prepare **NILA, NOVA and the portfolio first**. NOVA now supports both shared React state and a live repository/milestone API discussion; add ATLAS for a task-board or issue-import example. Use VANTA, AURA and RASA as supporting examples of JavaScript, forms, accessibility and progressive enhancement. You do not need to present all seven in one interview.
 
 For every feature you practise, follow this cycle:
 
@@ -66,17 +66,17 @@ These are talk tracks. Aim for roughly 90–120 seconds while showing the demo: 
 
 ### 2. NOVA OS
 
-> NOVA is a concept workspace connecting projects, tasks, a local assistant and automation in one interface. The useful part is that a task change is reflected across the task table, project progress and workspace metrics rather than existing only as a decorative interaction.
+> NOVA connects projects, tasks, a local assistant and automation in one workspace. It also reads live public GitHub repository metadata and open milestones. A repository becomes a local project, and each selected milestone becomes one local planning task. Task changes feed the task table, project progress and workspace metrics.
 >
-> It uses Next.js's Pages Router, React and TypeScript. `_app.tsx` wraps the pages in a shared `StoreProvider`. The store owns typed tasks, projects, messages, automation nodes, theme and notifications. Components update this state with functional state setters. Progress is derived from the current tasks, so it does not need a separate stored percentage.
+> It uses Next.js's Pages Router, React and TypeScript. `_app.tsx` wraps the pages in a shared `StoreProvider`. Functional updates preserve current state, and local project progress is derived from tasks. The API boundary validates unknown responses before rendering and constructs canonical source links. Loading, empty, errors, retry, rate limits and a 12-second timeout are handled; cleanup cancels obsolete requests and prevents stale results replacing the current repository.
 >
 > Command search combines pages, projects and tasks, filters them by a query and navigates to the selected result. The assistant understands a few deterministic commands such as “Create task: Plan the launch”; it changes local task data and appends conversation messages. It does not call an AI service. Automation tests evaluate a sample task, conditions and actions locally.
 >
-> The app is statically exported and saves demo state in local storage after the initial browser load. That makes it easy to host, but it provides no real authentication, team synchronisation or external integrations. The trend chart contains illustrative history, while task counts reflect the current local workspace. This was an AI-assisted project, and those boundaries matter when presenting it.
+> Imports have persisted source metadata and duplicate guards. Verified repository renames update canonical source links by stable repository ID while preserving local edits. Storage restoration validates records and relationships, with invalid-data recovery and session-only warnings when saving fails. The static app has no real authentication or shared backend. GitHub reads one page of up to 30 milestones; search is page-local, with no app cache or polling. One milestone task does not import its issues, and local completion never changes GitHub. Other integrations and team accounts remain simulations. This was an AI-assisted project.
 
-**Show:** create a task; open Ctrl/⌘+K; find the task; create another through the assistant; run the automation; reload.
+**Show:** open `/nova-os/app/github/`; load a public repository; import a milestone; open its local project and source link; complete the local task; reload and show duplicate prevention. Explain that the milestone's GitHub progress is separate. Use command search, the deterministic assistant or automation as a second example.
 
-**Read:** `nova-os/pages/_app.tsx`, `nova-os/components/store.tsx`, `nova-os/components/workspace.tsx`, `nova-os/components/assistant.ts`, `nova-os/components/ui.tsx`, `nova-os/next.config.js`.
+**Read:** `nova-os/pages/_app.tsx`, `nova-os/pages/app/github.tsx`, `nova-os/components/store.tsx`, `nova-os/components/workspace-data.ts`, `nova-os/components/github-api.ts`, `nova-os/components/github-workspace.tsx`, `nova-os/components/workspace.tsx`, `nova-os/components/assistant.ts`, `nova-os/components/ui.tsx`, `nova-os/next.config.js`.
 
 ### 3. ATLAS Ops
 
@@ -150,22 +150,30 @@ These are talk tracks. Aim for roughly 90–120 seconds while showing the demo: 
 
 ## Trace the architecture before the interview
 
-### NOVA: shared state across Next.js pages
+### NOVA: live source data and shared local state across Next.js pages
 
 ```text
 pages/_app.tsx
   └─ StoreProvider (components/store.tsx)
-      ├─ state: tasks, projects, messages, nodes, theme, notifications
+      ├─ state: tasks, projects, messages, nodes, theme, notifications, activity
       ├─ useStore() → Workspace and its views
       ├─ event → functional setState → new state → component render
-      └─ browser effect → localStorage and document theme
+      ├─ GitHubWorkspace → github-api.ts → public repository/milestones
+      │    └─ workspace-data.ts → validated local imports and source reconciliation
+      └─ browser effect → validated localStorage and document theme
 ```
 
 | Source | What to understand |
 |---|---|
 | `nova-os/pages/_app.tsx:6` | One provider wraps every Pages Router page. A page such as `pages/app/projects.tsx` renders `Workspace` with a view prop. |
-| `nova-os/components/store.tsx:3`–`:7` | `Task`, `Project`, `FlowNode` and `State` model the data. Status/priority unions constrain TypeScript code. |
-| `nova-os/components/store.tsx:17` | The store starts with seed state. On mount it reads browser storage and sets `ready`. The persistence effect waits for `ready`, preventing the initial seed from immediately overwriting a saved workspace. |
+| `nova-os/components/store.tsx`, type declarations | `Task`, `Project`, `FlowNode`, `ActivityEntry` and `State` model local data. Optional source records retain stable GitHub IDs, canonical URLs and import timestamps; status/priority unions constrain typed code. |
+| Same file, `StoreProvider` | Starts with seed state, restores validated browser data on mount and sets `ready`. Persistence waits for readiness and validates before writing. Invalid data restores the sample; access, write or size failures announce session-only saving. |
+| `nova-os/components/workspace-data.ts`, `parseStoredWorkspace` | Validates unknown JSON, text lengths, enums, dates, IDs, canonical source URLs and task/project relationships. Strips unknown fields, enforces supported limits and accepts supported legacy records without activity. It does not turn local storage into authentication. |
+| Same file, `importGitHubProject` / `importGitHubMilestone` / `recordActivity` | Pure helpers validate drafts and guard duplicates inside functional updates. Repository import adds a project; milestone import adds one linked task. Caller-supplied IDs/timestamps keep updater replay deterministic. Activity is capped at 100 entries. |
+| Same file, `reconcileGitHubRepository` | Matches a verified renamed repository by stable ID, updates linked source names/URLs and preserves local task/project edits. Conflicting canonical identities are not silently reassigned. |
+| `nova-os/components/github-api.ts`, `fetchGitHubWorkspace` | Parallel credential-free repository and open-milestone GETs, runtime response validation, constructed URLs, rate-limit errors and a shared 12-second abort timeout. |
+| `nova-os/components/github-workspace.tsx`, effects and import handlers | Loading/success/error union, derived empty/search-empty views, refresh revision, cleanup abort plus stale-result guard, page-local search and committed-import announcements. A milestone import creates the repository project if absent. |
+| `nova-os/pages/app/github.tsx`; `components/workspace.tsx` | The page selects `Workspace`'s GitHub view; navigation and the GitHub integration card open it. Other integration cards toggle local preview states. |
 | `nova-os/components/workspace.tsx`, `NewTask` | The controlled title and `FormData` fields become a typed task, prepended through `setState(s => ...)`. |
 | Same file, `TaskTable` and `ProjectCard` | Status changes map by ID. Progress is derived by filtering tasks for a project and counting `Done`. |
 | Same file, `Workspace` | Command results combine navigation, projects and tasks. Query-string links select a project and highlight a task. The keyboard listener has effect cleanup. |
@@ -175,9 +183,27 @@ pages/_app.tsx
 | `nova-os/components/ui.tsx`, `Modal` | Shared Radix dialog with title, description, overlay and close control. |
 | `nova-os/next.config.js:2` | Static export, trailing slash and environment-controlled base path. This repository uses the Pages Router, not the App Router. |
 
-**Tell the story:** “Submit NewTask → prepend to store tasks → ProjectCard derives a new completion percentage → effect writes state to storage → after reload the mount effect restores it.” The percentage changes only when counts or statuses warrant it; creating a Todo task can lower a project's percentage.
+**Tell the story:** “Load public repository → validate repository/milestone responses → import milestone through a functional updater → guard duplicate source IDs → create or reuse the repository project → add one local task and activity entry → validated persistence → restore after reload.” Completing that task changes local project progress, while the milestone's GitHub issue counters remain remote data. The original local path still applies: submit `NewTask` → prepend to tasks → derive progress → persist. A new Todo task can lower the local completion percentage.
 
-**Tradeoffs you can defend:** Context is easy to understand for a small demo; a single context value also means consumers can re-render for unrelated state changes. Split state/actions or use selectors only if scale and measurement justify it. The local assistant is predictable and works without an API, but recognises a limited command set. Authentication and integrations are UI simulations.
+**Tradeoffs you can defend:** Context is easy to understand for a small demo; a single context value also means consumers can re-render for unrelated state changes. Split state/actions or use selectors only if scale and measurement justify it. GitHub provides real public reads; local imports are snapshots rather than two-way synchronisation. The local assistant is predictable and works without an AI API, but recognises a limited command set. Authentication, team collaboration and integrations for other services remain UI simulations.
+
+### NOVA GitHub workspace: precise API and import scope
+
+```text
+repository input → fetchGitHubWorkspace(repository, signal)
+  ├─ GET /repos/{owner}/{repo}
+  └─ GET /repos/{owner}/{repo}/milestones?state=open&sort=due_on&direction=asc&per_page=30
+       → validate unknown responses → loading/success/error UI
+       → repository import → one local Project
+       → milestone import → one local Task in that Project
+       → source links + activity → validated browser persistence
+```
+
+**Explain these boundaries:** Requests omit credentials and use `cache: 'no-cache'` to revalidate browser HTTP data. There is no application-level cache or automatic polling. At most 30 open milestones are fetched, sorted by due date; search sees only that page. An empty page is not proof about all repository activity. GitHub rate limits and network availability still apply. Milestone cards show GitHub's issue counts, but importing a milestone does not fetch or import those issues. One milestone becomes one local task, with an optional due date and persisted source record. Local completion neither closes the milestone nor changes GitHub issues. Refresh reads source data again; it does not overwrite local planning titles or completion status. Private repositories, account authentication, GitHub writes and shared/cloud persistence are outside scope.
+
+**Trace cancellation and identity:** A route/repository change clears the component's current-result guard and aborts the request; navigation cancellation is ignored, whereas the API timeout becomes a visible error. Successful canonical names come from validated repository metadata. A stable repository ID lets the import helper reconcile a verified rename without duplicating the local project or losing local edits. Disabled import controls help the UI, but the state-level guard is what protects against duplicate updates.
+
+**Read/check:** `tests/nova-github-api.spec.ts` covers the API boundary; `tests/nova-github-workspace.spec.ts` covers the UI/import journey; `tests/nova-data.spec.ts` exercises data/import/storage helpers. Check the latest `VALIDATION.md` before stating which checks passed. The import history retains up to 100 local entries and displays the latest five; it is not a server audit log or team activity feed.
 
 **Completed review correction:** The earlier assistant calculated a task array before the timeout and later assigned that snapshot, so an intervening update could be replaced—even for a summary prompt. Review corrected this by calling the pure `applyAssistantRequest(current, request)` inside the store updater. It reads the current task/name/project/message data, preserves the task-array reference for nonmutating prompts, and does not mutate its input. The timer is cancelled on unmount and when chat is cleared. `tests/nova-assistant-state.spec.ts` checks concurrent additions/status changes, current summaries, a removed completion target, departure cancellation and clearing a pending chat. This correction was performed with AI assistance during review; it does not establish that Deboraj personally diagnosed or implemented it.
 
@@ -337,7 +363,7 @@ Keys identify siblings across renders. Tasks use task IDs, so a task keeps its i
 
 **9. What does TypeScript catch, and what does it miss?**
 
-The `Status` union catches unsupported statuses in typed code. A generic field helper such as ATLAS `TaskEditor`'s `<K extends keyof Task>(key: K, value: Task[K])` connects a key to its correct value type. Types disappear at runtime: stored JSON, form strings and API responses still need validation. A type assertion does not validate data. NILA parses JSON as `unknown` and checks it.
+The `Status` union catches unsupported statuses in typed code. A generic field helper such as ATLAS `TaskEditor`'s `<K extends keyof Task>(key: K, value: Task[K])` connects a key to its correct value type. Types disappear at runtime: stored JSON, form strings and API responses still need validation. A type assertion does not validate data. NILA checks stored JSON; NOVA separately validates GitHub responses and saved records, including canonical source identities and task/project relationships.
 
 **10. Controlled or uncontrolled forms?**
 
@@ -359,7 +385,7 @@ Create a Blob with the correct content type, call `URL.createObjectURL`, set an 
 
 **14. What are local storage's limits?**
 
-It stores strings for the current origin and is synchronous. JSON must be parsed and validated; access/writes can fail. NILA and ATLAS report session-only saving on failure. It is convenient demo persistence, not authentication, a shared database or appropriate storage for secrets. The current apps do not synchronise multiple browser tabs with a storage-event listener.
+It stores strings for the current origin and is synchronous. JSON must be parsed and validated; access/writes can fail. NOVA, NILA and ATLAS report session-only saving on failure. NOVA validates supported records, source relationships and size limits, restores the sample after invalid saved data and caps import activity at 100 entries. This is convenient demo persistence, not authentication, a shared database or appropriate storage for secrets. The current apps do not synchronise multiple browser tabs with a storage-event listener.
 
 **15. How do promises and errors appear in this repository?**
 
@@ -367,7 +393,7 @@ Portfolio case-study data is one fetch promise. The code checks `response.ok`, p
 
 **16. Where could race conditions occur?**
 
-NOVA's reviewed assistant avoids a stale task snapshot by applying the command to current state inside its updater, and clears a pending timer when the assistant closes or chat is reset. ATLAS's GitHub effect uses an AbortController and a `current` flag cleared during cleanup so an old request cannot replace current results. `load` increments a revision, supporting a refresh of the same repository. Its cancellation is ignored by the obsolete component request, while the API's timeout produces a visible error.
+NOVA's reviewed assistant applies commands to current state and cancels a pending timer on departure or chat reset. Both NOVA's repository/milestone workspace and ATLAS's issue queue use an AbortController plus a current-result guard cleared during cleanup, so an old request cannot replace new visible data. Refresh increments a revision even for the same repository. Navigation/repository-change cancellation is ignored by the obsolete component request, while the 12-second API timeout produces a visible error. Import guards also live inside functional updates, rather than relying only on a disabled button.
 
 **17. Are all date strings interchangeable?**
 
@@ -477,9 +503,9 @@ Build three category buttons and four project cards, with `hidden`, `aria-presse
 
 ### Exercise H — live API request lifecycle (35–45 minutes)
 
-Trace an ATLAS request from repository input to rendered issue rows using `src/GitHubQueue.tsx` and `src/github.ts`. In a practice component or mock, implement loading/success/error states and derive empty results from success. Optionally add an explicit idle state if your practice UI loads only on submit; the actual ATLAS queue starts loading immediately. Cancel the old request when the repository changes; prevent an older response from overwriting a newer one.
+Trace either NOVA's repository/milestone request (`components/github-workspace.tsx` and `components/github-api.ts`) or ATLAS's repository/issue request (`src/GitHubQueue.tsx` and `src/github.ts`). In a practice component or mock, implement loading/success/error states and derive empty results from success. Optionally add an explicit idle state if your practice UI loads only on submit; the actual workspaces start loading immediately. Cancel the old request when the repository changes; prevent an older response from overwriting a newer one.
 
-**Check:** success, empty data, slow request followed by a faster one, HTTP failure, network failure, cancellation, timeout and retry. Explain which records are server data and which choices are browser-local state. Add a duplicate-import check and explain why a disabled button alone would not replace the state-level guard. Use mocked responses to check the lifecycle reliably; a successful real request alone cannot verify every state. Compare with `tests/atlas-api.spec.ts`; describe the actual one-page/no-application-cache limits.
+**Check:** success, empty data, slow request followed by a faster one, HTTP failure, network failure, cancellation, timeout and retry. Explain which records are server data and which choices are browser-local state. Add a duplicate-import check and explain why a disabled button alone would not replace the state-level guard. Use mocked responses to check the lifecycle reliably; a successful real request alone cannot verify every state. Compare with the matching NOVA GitHub API/workspace tests or `tests/atlas-api.spec.ts`; describe the one-page/no-application-cache limits and the difference between importing one milestone and importing one issue.
 
 ## A manageable five-day preparation schedule
 
@@ -488,7 +514,7 @@ Aim for **75–90 focused minutes a day** with a short break. If you need more t
 | Day | Practice | End-of-day evidence |
 |---|---|---|
 | **1 — NILA and JavaScript** | 15 min: trace £12.50 through form/state/totals. 25 min: Exercise A. 25 min: Exercise B. 15 min: record the NILA pitch and answer questions 4, 9 and 11. | Explain pennies, derived totals and runtime validation; show your own pure function and checked examples. |
-| **2 — NOVA and React** | 20 min: trace provider, task creation, search and the reviewed assistant updater. 35 min: Exercise E. 20 min: answer questions 2, 5, 6 and 7. 10 min: record the NOVA pitch. | Draw the shared-state flow; show your own ambiguity-handling improvement in a practice copy; explain the existing delayed-update fix and assistant limits. |
+| **2 — NOVA and React** | 20 min: trace provider, milestone import, source metadata and the reviewed assistant updater. 35 min: Exercise E. 20 min: answer questions 2, 5, 6 and 7. 10 min: record the NOVA pitch. | Draw the local/remote data boundary; show your own ambiguity-handling improvement in a practice copy; explain duplicate guards, storage warnings and assistant limits. |
 | **3 — ATLAS and API/UI state** | 20 min: trace task status and nested coverage updates. 25 min: Exercise C. 30 min: trace the GitHub queue and attempt the core lifecycle in Exercise H. 10 min: discuss cancellation, local imports and one-page limits. | Demonstrate an immutable update; explain local state separately from server data; distinguish loading, empty and error. |
 | **4 — Portfolio and accessibility** | 20 min: trace filter/dialog/menu code. 30 min: Exercise G or F. 20 min: reproduce VANTA focus and RASA fallback behaviour. 15 min: deliver the portfolio pitch and one documented QA explanation. | Complete a keyboard journey and explain focus restoration; accurately describe what the recorded QA proves. |
 | **5 — Mock interview and review** | 10 min: introduction and AI-assistance answer. 20 min: one project demo with follow-ups. 25 min: redo one earlier coding exercise from blank. 15 min: inspect your diff and practise a change/validation summary. 15 min: assess readiness below. | One recorded mock interview, one independent exercise, a learning log, and a specific list of remaining gaps. |
@@ -529,14 +555,14 @@ If any of the last two honesty/scope items are uncertain, resolve them before pr
 
 ## Evidence and limits
 
-`VALIDATION.md` records the current combined checks and their limits. The original portfolio validation snapshot had 38 automated Chromium checks (19 scenarios at desktop and mobile sizes). The ATLAS GitHub upgrade separately reports passing typecheck/build, **18 deterministic desktop/mobile checks** in `tests/atlas-api.spec.ts`, and a separate actual GitHub smoke check. Those deterministic API checks mock responses; the live smoke verifies connectivity and rendering, not every failure mode. The NOVA review adds `tests/nova-assistant-state.spec.ts` for current-state updates and cancellation. Source inspection and tests do not establish individual authorship or certify accessibility, performance, backend security or other browsers. Refer to the latest validation report for the final suite result rather than adding historical counts yourself.
+`VALIDATION.md` records the current combined checks and their limits. NOVA's GitHub API/workspace and data-helper suites separate remote request contracts from local imports/storage; the assistant regression suite covers current-state updates and cancellation. ATLAS's API suite separately covers issue reads/imports. Deterministic API scenarios mock responses; an unmocked smoke verifies connectivity and rendering rather than every failure mode. Refer to the latest validation report for completed results and final counts. Source inspection and tests do not establish individual authorship or certify accessibility, measured performance, backend security or other browsers.
 
 Useful reading order:
 
 1. `README.md` — run commands, scope and hosting assumptions.
 2. `VALIDATION.md` and `CASE_STUDIES.md` — recorded validation and honest project context.
 3. `nila-ledger/src/data.ts` → `src/App.tsx` → `src/components/ui.tsx`.
-4. `nova-os/components/store.tsx` → `pages/_app.tsx` → `components/workspace.tsx` → `components/assistant.ts` → `tests/nova-assistant-state.spec.ts`.
+4. `nova-os/pages/_app.tsx` → `components/store.tsx` → `components/workspace-data.ts` → `components/github-api.ts` → `components/github-workspace.tsx` → `pages/app/github.tsx` → `components/workspace.tsx` → `components/assistant.ts`. Follow with the NOVA GitHub API/workspace, data and assistant regression tests.
 5. `atlas-ops/src/data.ts` → `src/App.tsx` → `src/GitHubQueue.tsx` → `src/github.ts` → `tests/atlas-api.spec.ts`.
 6. `assets/portfolio.js` → `index.html` → `assets/portfolio.css`.
 7. `tests/projects.spec.ts`, `tests/static.spec.ts`, `tests/personal-portfolio.spec.ts` and `playwright.config.ts`.

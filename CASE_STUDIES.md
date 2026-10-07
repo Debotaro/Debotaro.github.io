@@ -1,6 +1,6 @@
 # Debotaro — Selected frontend work
 
-Seven projects exploring responsive interfaces, useful interactions and distinct visual identities. Each is a **personal concept project with AI-assisted development**. Deboraj Sarkar (Debotaro) provided project direction, requirements and personalisation; Codex assisted with implementation and iteration. Operational and business demonstrations use sample data; ATLAS additionally reads live public GitHub issues. Project results describe working frontend behaviour and documented validation.
+Seven projects exploring responsive interfaces, useful interactions and distinct visual identities. Each is a **personal concept project with AI-assisted development**. Deboraj Sarkar (Debotaro) provided project direction, requirements and personalisation; Codex assisted with implementation and iteration. Operational and business demonstrations use sample data; NOVA additionally reads live public GitHub repositories/milestones, and ATLAS reads live public GitHub issues. Project results describe working frontend behaviour and documented validation.
 
 **Role across the collection:** Project direction and AI-assisted frontend development.
 
@@ -22,15 +22,15 @@ Seven projects exploring responsive interfaces, useful interactions and distinct
 
 **Product system · Next.js, React, TypeScript, Tailwind CSS**
 
-**Challenge.** Keep projects, tasks, automation and assistant interactions connected so the workspace feels like one product.
+**Challenge.** Connect real repository context to a coherent local workspace for projects, tasks, automation and assistant interactions without implying remote synchronisation.
 
-**Approach.** Use a shared, typed data model across the dashboard and project views. Pair a restrained dark interface with command search, local automation and a separate marketing and onboarding journey.
+**Approach.** Use shared typed state for local planning, and a separate runtime-validated API boundary for public repository/milestone reads. Handle request cancellation, timeout, retry and empty results; import selected source records through pure, duplicate-safe state helpers. Pair these workflows with command search, deterministic assistant actions and local automation.
 
-**Implementation highlights.** Task changes update project progress; command search finds destinations and tasks; a rule-based assistant creates tasks; an editable automation flow updates local workspace state.
+**Implementation highlights.** Live repository/milestone reads; repository-to-project and milestone-to-task imports with persisted provenance; stable-ID reconciliation after verified repository renames; strict storage validation and session-only warnings; capped local import activity. Task progress, command search, the deterministic assistant and automation share the local workspace state.
 
-**Evidence.** Next.js static export and TypeScript checks pass. Desktop and mobile Chromium scenarios cover task creation, command search, assistant task creation and automation execution. Delayed-command regressions verify preservation of intervening state changes, summary immutability and cancellation on departure or clearing chat.
+**Evidence.** See the latest [validation report](VALIDATION.md) for completed build and browser checks, including the GitHub request/import lifecycle. Existing delayed-command regressions cover preservation of intervening state changes, summary immutability and cancellation on departure or clearing chat. Source inspection explains the implementation; it does not establish individual manual authorship or measured performance.
 
-**Scope.** Tasks persist in the browser. The assistant is deterministic; authentication, team collaboration and external integrations are simulated.
+**Scope.** GitHub reads public data without credentials: one page of at most 30 open milestones, with page-local search, no application cache or polling, and public rate limits. Each milestone becomes one local task; its issues are not imported. Local completion never writes GitHub. Imports, source metadata and up to 100 local activity entries persist only when browser storage is available. Authentication, team collaboration and other service integrations remain simulated; the assistant uses deterministic rules. There is no shared backend, private-repository access or production AI service.
 
 ## 03 / ATLAS Ops
 
@@ -104,4 +104,4 @@ Seven projects exploring responsive interfaces, useful interactions and distinct
 
 ## Validation context
 
-The collection and personalised portfolio passed 68 automated Chromium checks across desktop and mobile viewports on 7 October 2026, with further project-level and unmocked API checks documented in [VALIDATION.md](VALIDATION.md). These checks verify specific frontend behaviours. Business impact, formal accessibility conformance and complete browser coverage are outside that validation scope. See the validation file for the current checks and limits.
+The collection and personalised portfolio passed 126 deterministic Chromium checks across desktop and mobile contexts on 7 October 2026, with further project-level and unmocked API checks documented in [VALIDATION.md](VALIDATION.md). These checks verify specific frontend behaviours. Business impact, formal accessibility conformance and complete browser coverage are outside that validation scope. See the validation file for the current checks and limits.

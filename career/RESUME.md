@@ -37,7 +37,7 @@ Next.js, React, TypeScript, Tailwind CSS | [View demo](https://debotaro.github.i
 
 - Developed a connected workspace for projects, tasks and editable automation flows using shared typed data and browser persistence.
 
-- Implemented command search and a deterministic local assistant; authentication and external integrations are clearly labelled simulations.
+- Integrated live GitHub milestones with validated responses and duplicate-safe local imports. The assistant uses deterministic rules; authentication is simulated.
 
 
 ### NILA Ledger

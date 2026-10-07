@@ -16,12 +16,14 @@ Project names open their source folders. Demo links open the published applicati
 
 | Project source | Live demo | Stack | Main interactions |
 |---|---|---|---|
-| [NOVA OS](nova-os/) | [Open workspace](https://debotaro.github.io/nova-os/app/) | Next.js, TypeScript, Tailwind, Radix, GSAP | Editable projects/tasks, assistant actions, command search, automation flows, analytics, simulated integrations, persistent theme |
+| [NOVA OS](nova-os/) | [Open workspace](https://debotaro.github.io/nova-os/app/) | Next.js, TypeScript, Tailwind, Radix, GSAP | Editable projects/tasks, live GitHub repository/milestone reads and local imports, assistant actions, command search, automation flows, analytics, persistent theme |
 | [ATLAS Ops](atlas-ops/) | [Open operations](https://debotaro.github.io/atlas-ops/#/overview) | React, TypeScript, Vite, Tailwind, Radix, Recharts | Task CRUD and Kanban, live GitHub issue queue, safe local issue imports, chart filters/targets, coverage scheduling, notifications, CSV export |
 | [NILA Ledger](nila-ledger/) | [Open ledger](https://debotaro.github.io/nila-ledger/#/dashboard) | React, TypeScript, Vite, Tailwind, Recharts, GSAP | Transaction CRUD and filters, accurate penny-based totals, adjustable budgets, CSV exports, printable reports |
 | [AURA Reserve](aura/) | [Explore AURA](https://debotaro.github.io/aura/) | One HTML file with embedded CSS/JS, optional GSAP | Property gallery, availability calendar, stay dates, validated enquiry, sample price calculation |
 | [VANTA Atelier](vanta/) | [Explore VANTA](https://debotaro.github.io/vanta/) | One HTML file with embedded CSS/JS | Collection filters, lookbook, product sizes, persistent cart, quantities, demo checkout |
 | [RASA Experience](rasa/) | [Explore RASA](https://debotaro.github.io/rasa/) | One HTML file with embedded CSS/JS, optional Three.js | Destination globe, itineraries, travel quiz, journey enquiry, downloadable sample plan |
+
+**New in NOVA:** [Explore the live GitHub workspace](https://debotaro.github.io/nova-os/app/github/) and turn public repository milestones into local planning tasks.
 
 <details>
 <summary>View screenshots of all six demos</summary>
@@ -29,6 +31,8 @@ Project names open their source folders. Demo links open the published applicati
 ### NOVA OS — connected project workspace
 
 [![NOVA OS workspace with projects, tasks and navigation](previews/nova.png)](https://debotaro.github.io/nova-os/app/)
+
+[![NOVA's live GitHub workspace with repository metadata and milestone imports](previews/nova-github.png)](https://debotaro.github.io/nova-os/app/github/)
 
 ### ATLAS Ops — operational planning
 
@@ -111,11 +115,12 @@ See [VALIDATION.md](VALIDATION.md) for the verified checks and [CASE_STUDIES.md]
 
 ## Demo behaviour
 
-- All projects use sample data. No backend or server account is required.
+- Local business demonstrations use sample data. NOVA and ATLAS additionally read live public GitHub data. No backend or server account is required.
+- NOVA's GitHub workspace reads public repositories and one page of up to 30 open milestones without credentials. Loading, empty, errors, retry, rate limits, a 12-second timeout and obsolete-request cancellation are handled. Importing a repository creates a local project; a milestone becomes one local planning task, not its individual issues. Duplicate guards, source links and import history persist when browser storage is available. Verified repository renames update source identities by stable ID. There is no application cache, automatic polling or GitHub write; local completion is independent of GitHub.
 - ATLAS's GitHub queue additionally reads real public repository and issue data using credential-free GitHub REST requests. Loading, empty, errors, timeout, rate limits and stale requests are handled. Imports become browser-local tasks; they do not change GitHub. The queue shows one page of up to 30 raw entries with pull requests excluded.
 - NOVA's assistant uses deterministic local rules. It creates and updates real local demo tasks, but does not call an AI API.
-- Login, signup, onboarding, integration and booking screens are clearly identified simulations. They do not authenticate users, connect services, send email, reserve rooms, purchase products or charge money.
-- NOVA, ATLAS, NILA and VANTA store demo state in browser local storage. ATLAS and NILA include confirmed reset controls. Local state belongs to the current browser and origin. Changing the host/port starts a separate storage context.
+- Login, signup, onboarding and booking actions are clearly identified simulations. NOVA's GitHub workspace reads real public data; its other integration cards remain local previews. No screen authenticates users, connects private accounts, sends email, reserves rooms, purchases products or charges money.
+- NOVA, ATLAS, NILA and VANTA store demo state in browser local storage. NOVA validates supported records, relationships and storage size before restoration/saving, reports invalid saved data, and warns when saving is session-only. Its import activity is capped at 100 entries. ATLAS and NILA include confirmed reset controls. Local state belongs to the current browser and origin. Changing the host/port starts a separate storage context.
 - Resort and travel enquiry details are used for the on-screen confirmation and are not saved. VANTA does not retain checkout identity or address.
 - CSV files and the RASA text itinerary are real downloads. NILA's PDF action opens browser printing; choose **Save as PDF** to create a file. It is not a server PDF generator.
 - Fonts, illustrative photographs and optional visual libraries need an internet connection. Native system fonts and accessible controls remain usable if external resources fail. RASA's destination buttons work without WebGL. Photography has replacement comments in the source.
