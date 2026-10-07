@@ -1,17 +1,56 @@
 # Deboraj Sarkar (Debotaro) — Portfolio
 
+[![Build and deployment](https://github.com/Debotaro/Debotaro.github.io/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/Debotaro/Debotaro.github.io/actions/workflows/pages.yml)
+
+**[View live portfolio](https://debotaro.github.io/)** · **[Download résumé](https://debotaro.github.io/downloads/Deboraj-Sarkar-Resume.pdf)** · **[Read case studies](CASE_STUDIES.md)** · **[Review validation](VALIDATION.md)**
+
+[![Deboraj Sarkar's portfolio: Ideas into interfaces, with the Debotaro D/T identity](previews/portfolio-cover.png)](https://debotaro.github.io/)
+
 A personal portfolio for **Deboraj Sarkar**, also known as **Debotaro**, focused on frontend job opportunities. The portfolio itself is featured first, followed by six independent, working frontend concepts. The page includes a custom D/T identity, the supplied bio and skills, email and professional profiles, and seven case studies with explicit AI-assisted development and demo scope.
 
 Public availability is phrased as “Open to remote frontend roles and relocation for the right opportunity.” The résumé uses supplied details and verified projects; unconfirmed education and employment are omitted. Contact: `mail.deborajsarkar@gmail.com`. Profiles: GitHub `Debotaro`, LinkedIn `deborajsarkar`, Dribbble `Debotaro`.
 
-| Project | Stack | Main interactions |
-|---|---|---|
-| NOVA OS | Next.js, TypeScript, Tailwind, Radix, GSAP | Editable projects/tasks, assistant actions, command search, automation flows, analytics, simulated integrations, persistent theme |
-| ATLAS Ops | React, TypeScript, Vite, Tailwind, Radix, Recharts | Task CRUD and Kanban, live GitHub issue queue, safe local issue imports, chart filters/targets, coverage scheduling, notifications, CSV export |
-| NILA Ledger | React, TypeScript, Vite, Tailwind, Recharts, GSAP | Transaction CRUD and filters, accurate penny-based totals, adjustable budgets, CSV exports, printable reports |
-| AURA Reserve | One HTML file with embedded CSS/JS, optional GSAP | Property gallery, availability calendar, stay dates, validated enquiry, sample price calculation |
-| VANTA Atelier | One HTML file with embedded CSS/JS | Collection filters, lookbook, product sizes, persistent cart, quantities, demo checkout |
-| RASA Experience | One HTML file with embedded CSS/JS, optional Three.js | Destination globe, itineraries, travel quiz, journey enquiry, downloadable sample plan |
+## Explore the six demos
+
+Project names open their source folders. Demo links open the published applications.
+
+| Project source | Live demo | Stack | Main interactions |
+|---|---|---|---|
+| [NOVA OS](nova-os/) | [Open workspace](https://debotaro.github.io/nova-os/app/) | Next.js, TypeScript, Tailwind, Radix, GSAP | Editable projects/tasks, assistant actions, command search, automation flows, analytics, simulated integrations, persistent theme |
+| [ATLAS Ops](atlas-ops/) | [Open operations](https://debotaro.github.io/atlas-ops/#/overview) | React, TypeScript, Vite, Tailwind, Radix, Recharts | Task CRUD and Kanban, live GitHub issue queue, safe local issue imports, chart filters/targets, coverage scheduling, notifications, CSV export |
+| [NILA Ledger](nila-ledger/) | [Open ledger](https://debotaro.github.io/nila-ledger/#/dashboard) | React, TypeScript, Vite, Tailwind, Recharts, GSAP | Transaction CRUD and filters, accurate penny-based totals, adjustable budgets, CSV exports, printable reports |
+| [AURA Reserve](aura/) | [Explore AURA](https://debotaro.github.io/aura/) | One HTML file with embedded CSS/JS, optional GSAP | Property gallery, availability calendar, stay dates, validated enquiry, sample price calculation |
+| [VANTA Atelier](vanta/) | [Explore VANTA](https://debotaro.github.io/vanta/) | One HTML file with embedded CSS/JS | Collection filters, lookbook, product sizes, persistent cart, quantities, demo checkout |
+| [RASA Experience](rasa/) | [Explore RASA](https://debotaro.github.io/rasa/) | One HTML file with embedded CSS/JS, optional Three.js | Destination globe, itineraries, travel quiz, journey enquiry, downloadable sample plan |
+
+<details>
+<summary>View screenshots of all six demos</summary>
+
+### NOVA OS — connected project workspace
+
+[![NOVA OS workspace with projects, tasks and navigation](previews/nova.png)](https://debotaro.github.io/nova-os/app/)
+
+### ATLAS Ops — operational planning
+
+[![ATLAS Ops overview with financial charts, task progress and priorities](previews/atlas.png)](https://debotaro.github.io/atlas-ops/#/overview)
+
+### NILA Ledger — personal finance
+
+[![NILA Ledger dashboard with balances, spending and recent transactions](previews/nila.png)](https://debotaro.github.io/nila-ledger/#/dashboard)
+
+### AURA Reserve — hospitality experience
+
+[![AURA Reserve resort landing page with stay enquiry controls](previews/aura.png)](https://debotaro.github.io/aura/)
+
+### VANTA Atelier — editorial storefront
+
+[![VANTA Atelier fashion storefront and collection presentation](previews/vanta.png)](https://debotaro.github.io/vanta/)
+
+### RASA Experience — travel discovery
+
+[![RASA Experience travel landing page with destination discovery](previews/rasa.png)](https://debotaro.github.io/rasa/)
+
+</details>
 
 ## Open the complete portfolio
 
