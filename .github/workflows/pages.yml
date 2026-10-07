@@ -41,7 +41,14 @@ jobs:
       - name: Run RELAY domain and backend contract checks
         run: npm run test:unit
       - name: Install test browser
-        run: npx playwright install --with-deps chromium
+        timeout-minutes: 5
+        run: |
+          # The runner's Azure HTTP mirror can stall before Chromium installs.
+          if [ -f /etc/apt/apt-mirrors.txt ]; then
+            printf '%s\n' 'https://archive.ubuntu.com/ubuntu' | sudo tee /etc/apt/apt-mirrors.txt >/dev/null
+          fi
+          printf '%s\n' 'Acquire::Retries "2";' 'Acquire::http::Timeout "20";' 'Acquire::https::Timeout "20";' | sudo tee /etc/apt/apt.conf.d/80-portfolio-network >/dev/null
+          npx playwright install --with-deps chromium
       - name: Run frontend regression checks
         run: npm test
       - name: Upload browser report
