@@ -58,7 +58,7 @@ The public repository is [Debotaro/Debotaro.github.io](https://github.com/Debota
 
 Actual screenshots of all seven projects were captured at 1440×1000 and 390×844. The gallery thumbnails use those screenshots. Desktop and mobile layouts were inspected, including hero imagery and application charts.
 
-RELAY's overview and design review were captured at both sizes (`previews/relay.png`, `previews/relay-mobile.png`, `previews/relay-review.png` and `previews/relay-review-mobile.png`). Review images preserve their original aspect ratio and pins use normalized coordinates. QA corrected rapid command-palette focus restoration, stale-form error announcements inside modal dialogs, closed mobile navigation visibility and review-first approval rules.
+RELAY's overview and design review were captured at both sizes (`previews/relay.png`, `previews/relay-mobile.png`, `previews/relay-review.png` and `previews/relay-review-mobile.png`). Review images preserve their original aspect ratio and pins use normalized coordinates. QA corrected rapid command-palette and cross-dialog focus restoration, stale-form error announcements inside modal dialogs, closed mobile navigation visibility and review-first approval rules. The final focus regression passed 80 immediate task-save-to-search transitions and 80 rapid palette navigation cycles across desktop and mobile contexts.
 
 NOVA's updated navigation and live GitHub screen were captured and inspected at both sizes (`previews/nova-github.png` and `previews/nova-github-mobile.png`). The unmocked journey reported no page errors or document overflow at 1440, 390 or 320px. The production bundle passed after the final copy and scope changes.
 

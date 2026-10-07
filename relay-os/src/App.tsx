@@ -165,7 +165,10 @@ function Modal({
           className="modal"
           onCloseAutoFocus={(event) => {
             event.preventDefault();
-            previous.current?.focus();
+            // Radix closes focus scopes asynchronously. A newly opened dialog
+            // owns focus even if this older scope finishes closing afterward.
+            if (!document.querySelector('[role="dialog"]'))
+              previous.current?.focus();
           }}
         >
           <div className="modal-heading">
@@ -1925,7 +1928,11 @@ export default function App() {
               className="command-palette"
               onCloseAutoFocus={(event) => {
                 event.preventDefault();
-                if (!paletteOpen.current) searchButton.current?.focus();
+                if (
+                  !paletteOpen.current &&
+                  !document.querySelector('[role="dialog"]')
+                )
+                  searchButton.current?.focus();
               }}
             >
               <Dialog.Title className="sr-only">

@@ -193,13 +193,22 @@ test('RELAY provides a keyboard path to image feedback and restores modal focus'
 
 test('RELAY command search opens with the keyboard, finds local work and closes accessibly', async ({ page }) => {
   await open(page);
-  await createTask(page, 'Investigate command navigation');
-  await page.keyboard.press('Control+k');
   const modal = page.getByRole('dialog');
   const search = modal.getByRole('textbox', { name: 'Search RELAY', exact: true });
+  for (let cycle = 0; cycle < 5; cycle++) {
+    const title = `Investigate command navigation ${cycle + 1}`;
+    await createTask(page, title);
+    // Open as soon as the editor disappears: its deferred close-focus callback
+    // must not move focus out of the new palette.
+    await page.keyboard.press('Control+k');
+    await expect(search).toBeFocused();
+    await search.fill(title);
+    await expect(modal).toContainText(title);
+    await page.keyboard.press('Escape');
+    await expect(modal).not.toBeVisible();
+  }
+  await page.keyboard.press('Control+k');
   await expect(search).toBeFocused();
-  await search.fill('Investigate command navigation');
-  await expect(modal).toContainText('Investigate command navigation');
   await search.fill('no matching project anywhere');
   await expect(modal.getByRole('heading', { name: 'Nothing here just yet', exact: true })).toBeVisible();
   await page.keyboard.press('Escape');
