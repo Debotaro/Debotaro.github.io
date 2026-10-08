@@ -28,6 +28,8 @@ Project names open their source folders. Demo links open the published applicati
 
 **New in NOVA:** [Explore the live GitHub workspace](https://debotaro.github.io/nova-os/app/github/) and turn public repository milestones into local planning tasks.
 
+NOVA, ATLAS and RELAY use different information hierarchies as well as different visual identities. NOVA is a paper-and-lavender daily planning canvas with an agenda and task focus. ATLAS is a technical operations console with a monitoring rail, financial signals and priority interventions. RELAY is a warm creative review studio led by artwork, project covers, revisions and feedback. Their existing state, imports and review workflows remain connected to the redesigned views.
+
 <details>
 <summary>View screenshots of all seven demos</summary>
 

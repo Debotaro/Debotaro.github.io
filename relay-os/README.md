@@ -4,6 +4,8 @@
 
 RELAY connects project planning, design revisions, pinned feedback and approval decisions in one creative workspace. It is the seventh independent concept in Deboraj Sarkar's portfolio, developed with AI assistance. The public demo uses labelled sample projects and saves work in the current browser. Demo roles preview different workflows; switching a role does not authenticate a real user.
 
+The interface is an artwork-led review studio: a horizontal studio masthead, visual project covers, a featured review with its feedback brief, and a wide design canvas beside the conversation. Project covers open that project's designs; the review journey and approval labels derive from the selected revision's actual state. Mobile navigation supports Escape and returns focus to its opener. Light and dark themes keep the same studio layout.
+
 ## Why React, TypeScript and Vite
 
 This app has interactive workspace views and no server-rendered content requirement. Vite's static output, relative assets (`base: './'`) and hash routes fit the existing GitHub Pages portfolio alongside the six earlier projects. React shares the domain state across views; TypeScript describes its records and actions. The optional Supabase adapter is a separate boundary for externally configured authentication and persistence. This keeps the public demonstration runnable without cloud credentials.
@@ -30,7 +32,7 @@ For the integrated portfolio, run `npm run setup`, `npm run build` and `npm run 
 
 ## A short demonstration
 
-1. Open the overview and inspect the sample projects, delivery progress and review queue.
+1. Open the overview and inspect the featured artwork, feedback brief and review journey. Open a project cover to review its designs.
 2. Create a project, add a task and change its status. Show that project progress reflects the same task records.
 3. Open the Forma design review. Add feedback directly on the image, then convert the comment into a linked task. Repeated conversion cannot create another task for the same comment.
 4. Add a new revision and review its version history. A decision belongs to the selected revision; approved versions stay final, and later changes need a new revision.

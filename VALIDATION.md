@@ -1,6 +1,6 @@
 # Validation
 
-Verified on 7 October 2026, using Node.js 24 and Chromium through Playwright.
+Verified on 8 October 2026, using Node.js 24 and Chromium through Playwright.
 
 ## Build and dependencies
 
@@ -9,23 +9,24 @@ Verified on 7 October 2026, using Node.js 24 and Chromium through Playwright.
 - NOVA OS: TypeScript check and Next.js static export pass; 20 generated routes including the new GitHub workspace and the 404 page.
 - ATLAS Ops: TypeScript check and Vite production build pass.
 - NILA Ledger: TypeScript check and Vite production build pass.
-- Production dependency audits for all four compiled apps report zero vulnerabilities at the time of validation. RELAY's audit was repeated after its final dependency changes. Dependency status can change later.
+- The 7 October production dependency audits for all four compiled apps reported zero vulnerabilities. Dependencies and lockfiles are unchanged in the 8 October redesign. Dependency status can change later.
 - Every app works from its own subdirectory in the combined static bundle. Hash routes preserve navigation in RELAY, ATLAS and NILA; NOVA has an explicit `/nova-os` build prefix.
 
 ## Automated browser checks
 
-The browser suite verifies **152 checks**: 76 deterministic scenarios each in desktop and mobile Chromium contexts. Two optional ATLAS live API checks are skipped in this suite; a separate unmocked ATLAS desktop check previously passed against GitHub. NOVA's live repository/milestone import, completion and reload journey passed separately at 1440, 390 and 320px widths. The browser contexts use reduced motion and clean per-test storage.
+The browser suite verifies **158 checks**: 79 deterministic scenarios each in desktop and mobile Chromium contexts. Two optional ATLAS live API checks are skipped in this suite; a separate unmocked ATLAS desktop check previously passed against GitHub. NOVA's live repository/milestone import, completion and reload journey passed again on 8 October at 1440, 390 and 320px widths. The browser contexts use reduced motion and clean per-test storage.
 
 | Area | Verified behaviour |
 |---|---|
 | Portfolio | Supplied identity/contact URLs, own portfolio featured first, seven local demo links, all preview images, category filters and announced count |
 | Personal interactions | Eight case-study dialogs with demo scope and public source links, Escape/close focus restoration, 320px menu keyboard behavior, resize reset, clipboard copy, reduced motion, real PDF download and printable résumé contacts/layout |
 | RELAY | Project/task CRUD and cascade deletion, archive/restore guards, cross-tab changes and stale-form errors, normalized keyboard/pointer feedback pins, duplicate-safe comment-to-task conversion, revision history, review-first approval transitions and demo role restrictions |
-| RELAY recovery and navigation | Upload type/size guards, command-search results and rapid reopen focus, sidebar keyboard focus, themes, activity export, malformed/blocked storage, empty workspaces and 320px layout |
+| RELAY recovery and navigation | Upload type/size guards, command-search results and rapid reopen focus, studio navigation keyboard focus, themes, activity export, malformed/blocked storage, empty workspaces and 320px layout |
 | NOVA | Task creation, command search, assistant task creation, automation execution and persisted task data; current-state delayed commands, summary immutability, cancellation on departure/clear chat and recovery |
 | NOVA live API and imports | Parallel credential-free reads, runtime response validation, canonical links, loading/empty/search/error/retry, rate limits, shared timeout, obsolete request cancellation, duplicate-safe imports, source attribution, reload, independent local completion, verified repository renames and atomic rejected-import recovery |
 | NOVA storage and empty state | Legacy data compatibility, strict type/relationship/size limits, malformed-data recovery, session-only storage warnings, capped immutable activity, and empty-workspace metrics/task/automation guards |
 | ATLAS | Task creation, status changes, editing, search and persistence after reload |
+| Redesigned product workflows | NOVA focus selection/completion across agenda and project views, saved theme and long-profile layout; ATLAS scoped chart filters, target persistence, seven-point CSV export, intervention editing and coverage navigation; RELAY project-cover selection, image upload and revision approval after reload |
 | ATLAS live API | Validated repository/issues, pull-request exclusion, search, refresh, loading/empty/error/retry, network failure, malformed responses, primary/secondary rate limits, timeout, obsolete response cancellation and duplicate-safe persisted imports with source attribution |
 | NILA | Transaction creation, penny-based amounts, filters, CSV download, persistence and budget editing |
 | AURA | Stay dates, capacity-aware residence selection, quote total, form completion and keyboard gallery navigation |
@@ -56,7 +57,11 @@ The public repository is [Debotaro/Debotaro.github.io](https://github.com/Debota
 
 ## Visual review and corrections
 
-Actual screenshots of all seven projects were captured at 1440×1000 and 390×844. The gallery thumbnails use those screenshots. Desktop and mobile layouts were inspected, including hero imagery and application charts.
+Actual screenshots of all seven projects were captured at 1440×1000 and 390×844. The gallery thumbnails use those screenshots. NOVA, ATLAS, RELAY and the portfolio previews were refreshed on 8 October after the three product redesigns. Desktop and mobile layouts were inspected, including hero imagery and application charts.
+
+The three interfaces now use different hierarchies: NOVA's daily agenda, selected focus task and project notebooks; ATLAS's telemetry, signals, intervention queue and coverage matrix; and RELAY's artwork, feedback brief, project covers and review canvas. Existing shared task state, source attribution, local persistence and review rules remain covered by the regression suite. QA darkened low-contrast metadata and primary controls, checked both NOVA and RELAY themes, and corrected supported long NOVA profile/workspace names at 320px and 390px. The new NOVA regression includes those saved-name bounds.
+
+A separate route audit passed **87 layout checks**: NOVA's 15 marketing/auth/workspace routes, ATLAS's eight routes and RELAY's six routes at 320, 768 and 1440px. Each fresh document returned HTTP 200 with no page errors or document overflow; workspace routes exposed their main content. Public GitHub responses were controlled for this layout audit. It is separate from the unmocked NOVA API journey and does not establish live backend availability.
 
 RELAY's overview and design review were captured at both sizes (`previews/relay.png`, `previews/relay-mobile.png`, `previews/relay-review.png` and `previews/relay-review-mobile.png`). Review images preserve their original aspect ratio and pins use normalized coordinates. QA corrected rapid command-palette and cross-dialog focus restoration, stale-form error announcements inside modal dialogs, closed mobile navigation visibility and review-first approval rules. The final focus regression passed 80 immediate task-save-to-search transitions and 80 rapid palette navigation cycles across desktop and mobile contexts.
 

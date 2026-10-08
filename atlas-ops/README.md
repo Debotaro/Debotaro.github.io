@@ -1,6 +1,12 @@
 # ATLAS Ops
 
-A complete, responsive operations workspace built with React, TypeScript and Vite. A quiet navy navigation system meets a bright, considered dashboard.
+A responsive operations command center built with React, TypeScript and Vite. Navy and steel surfaces, orange attention signals and technical typography support a dense monitoring and dispatch workflow.
+
+## Design identity
+
+ATLAS uses an indexed control rail and a compact command header. Its overview reads as a monitoring console: a continuous telemetry register, financial signal chart, workload bars, a priority-ranked intervention queue, regional shift matrix and event log. This structure is distinct from NOVA's personal planning canvas and RELAY's artwork review studio.
+
+`src/OperationsConsole.tsx` owns the overview and `src/OperationsLanding.tsx` previews the command center. `src/command-center.css` defines the console's visual system across the existing task, coverage, notification, GitHub and settings modules. The mobile rail traps keyboard focus while open; Escape or the backdrop closes it and restores focus to the opener.
 
 ## Run locally
 
@@ -31,7 +37,7 @@ Preview is on `http://127.0.0.1:4174`. Built files are in `dist/`.
 - `#/settings`: workspace/profile/timezone preferences, compact layout, stored digest/alert preferences and a confirmed reset to the initial demo.
 - `#/login`: local demo entry; no actual authentication.
 
-Changes are saved to `localStorage` under `atlas-ops-v1`. Reset in Settings restores original demo records, including removing imported tasks. The dashboard and coverage data are fictional; the GitHub queue is labelled as live public data. No backend, real account, emails or financial services are connected. The coverage schedule is deliberately one fixed sample week. Dashboard comparisons use fictional prior-period percentages; current totals and chart data respond to filters.
+Changes are saved to `localStorage` under `atlas-ops-v1`. Reset in Settings restores original demo records, including removing imported tasks. The operational and coverage data are fictional; the GitHub queue is labelled as live public data. No backend, real account, emails or financial services are connected. The coverage schedule is deliberately one fixed sample week. Telemetry totals, workload bars, open priority counts and regional coverage respond to the selected location and saved local records; financial chart data is a generated sample series.
 
 Radix Dialog and Switch primitives provide shadcn-style accessible form controls; native labelled inputs/selects preserve keyboard interaction. Tailwind v4 is integrated through the official Vite plugin. The Recharts graphics include a textual data view. The application uses no photo placeholders and needs no API keys.
 

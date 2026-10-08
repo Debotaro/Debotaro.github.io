@@ -1,6 +1,6 @@
 # NOVA OS
 
-An interactive workspace portfolio concept built with Next.js Pages Router, React, TypeScript, Tailwind, Radix Dialog, CVA, Lucide and GSAP. Live public GitHub repositories and milestones connect to browser-local projects and planning tasks; the assistant uses deterministic local rules.
+A calm daily planning workspace with a top navigation ribbon, a live task agenda, an interactive focus space and notebook-style project boards. Built with Next.js Pages Router, React, TypeScript, Tailwind, Radix Dialog, CVA, Lucide and GSAP. Live public GitHub repositories and milestones connect to browser-local projects and planning tasks; the assistant uses deterministic local rules.
 
 ## Run
 
@@ -17,7 +17,9 @@ The root portfolio build sets `PORTFOLIO_BASE_PATH=/nova-os`. Standalone builds 
 
 - Marketing: landing, product, pricing, story and contact.
 - Demo authentication: login, signup and three-step onboarding; no real accounts, password storage, or payments.
-- Workspace: overview, projects, task list and draggable boards, local assistant, automation builder, analytics, a live GitHub workspace and simulated integrations for other services.
+- Daily space: Today, Next up and All tasks agenda views, with future or undated tasks kept in a separate Looking ahead section. Choose any unfinished task with Focus task, complete it directly, or continue inside its project. The agenda, focus picker and project progress share the same task state.
+- Workspace: project notebooks, task lists and draggable boards, local assistant, automation builder, analytics, a live GitHub workspace and simulated integrations for other services.
+- Layout: compact top workspace navigation on desktop; an accessible menu on smaller screens. New sessions start with the paper/lavender light theme. Existing light or dark preferences stay intact.
 - GitHub workspace: `/app/github/` reads a public repository and its open milestones without credentials. Repository import creates a local project; milestone import creates one local task with source attribution, not the milestone's individual issues.
 - Command palette: Ctrl/Cmd K searches pages, projects and tasks.
 - Tasks and projects can be added and completed. Supported data and the dark/light preference persist in this browser's localStorage after runtime validation. Storage failures are reported as session-only saving.

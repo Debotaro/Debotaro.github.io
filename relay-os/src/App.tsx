@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { FormEvent, ReactNode } from "react";
+import type { CSSProperties, FormEvent, ReactNode } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import {
   ArrowDown,
@@ -8,7 +8,6 @@ import {
   Bell,
   Check,
   CheckCheck,
-  ChevronDown,
   CircleHelp,
   Clock3,
   Command,
@@ -20,7 +19,6 @@ import {
   Loader2,
   Menu,
   MessageCircle,
-  MoreHorizontal,
   Pencil,
   Plus,
   Search,
@@ -29,7 +27,6 @@ import {
   Sparkles,
   Trash2,
   Upload,
-  Users,
   WifiOff,
   X,
 } from "lucide-react";
@@ -53,12 +50,7 @@ import type {
 } from "./domain";
 
 type View =
-  | "overview"
-  | "projects"
-  | "tasks"
-  | "review"
-  | "activity"
-  | "settings";
+  "overview" | "projects" | "tasks" | "review" | "activity" | "settings";
 type Editor =
   | { kind: "project"; item?: Project }
   | { kind: "task"; item?: Task }
@@ -311,9 +303,24 @@ export default function App() {
     (item) => item.status === "review" && !superseded.has(item.id),
   );
   const openTasks = state.tasks.filter((task) => task.status !== "done");
-  const projectTasks = state.tasks.filter(
-    (task) => task.projectId === project?.id,
+  const featuredAsset =
+    pendingReviews.find((item) =>
+      activeProjects.some((project) => project.id === item.projectId),
+    ) ||
+    state.assets
+      .filter((item) => !superseded.has(item.id))
+      .sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0];
+  const featuredProject = state.projects.find(
+    (item) => item.id === featuredAsset?.projectId,
   );
+  const featuredComments = state.comments.filter(
+    (item) => item.assetId === featuredAsset?.id,
+  );
+  function openDesign(item: Asset) {
+    setProjectId(item.projectId);
+    setAssetId(item.id);
+    go("review");
+  }
   async function act(action: Action, message: string) {
     try {
       await relay.dispatch(action);
@@ -446,22 +453,70 @@ export default function App() {
           }}
         />
       )}
-      <aside className={`sidebar ${navOpen ? "is-open" : ""}`}>
-        <a className="wordmark" href="#/overview">
-          <img src={import.meta.env.BASE_URL + "relay.svg"} alt="" />
-          <span>
-            RELAY<span className="wordmark-os">OS</span>
-            <small>FROM FEEDBACK TO FORWARD.</small>
+      <header className="topbar studio-masthead">
+        <div className="studio-identity">
+          <button
+            className="icon-button mobile-menu"
+            ref={menuButton}
+            aria-label="Open navigation"
+            aria-expanded={navOpen}
+            onClick={() => setNavOpen((open) => !open)}
+          >
+            <Menu size={21} />
+          </button>
+          <a className="wordmark" href="#/overview">
+            <img src={import.meta.env.BASE_URL + "relay.svg"} alt="" />
+            <span>
+              RELAY<span className="wordmark-os">OS</span>
+            </span>
+          </a>
+          <span className="studio-divider" />
+          <span className="studio-name">
+            Debotaro Studio<small>Creative review space</small>
           </span>
-        </a>
-        <div className="workspace-name">
-          <span className="workspace-avatar">D</span>
-          <div>
-            Debotaro Studio<small>Creative workspace</small>
-          </div>
-          <ChevronDown size={15} />
         </div>
-        <span className="nav-label">WORKSPACE</span>
+        <div className="topbar-actions">
+          <span className={`connection ${online ? "" : "offline"}`}>
+            {online ? <i /> : <WifiOff size={13} />}
+            {mode === "cloud" ? "Cloud workspace" : "Local demo"}
+          </span>
+          <button
+            ref={searchButton}
+            className="search-trigger"
+            onClick={() => {
+              setSearch("");
+              setPalette(true);
+            }}
+            aria-label="Search workspace"
+          >
+            <Search size={16} />
+            <span>Find a project or design</span>
+            <kbd>⌘ K</kbd>
+          </button>
+          <button
+            className="icon-button notification-button"
+            aria-label="View workspace activity"
+            onClick={() => go("activity")}
+          >
+            <Bell size={18} />
+            {state.activity.length > 0 && <i />}
+          </button>
+          <button
+            className="studio-profile"
+            aria-label="Workspace settings"
+            onClick={() => go("settings")}
+          >
+            <span className="avatar avatar-orange">{initials(actor.name)}</span>
+            <span>
+              {roleNames[actor.role]}
+              <small>{mode === "demo" ? "Demo role" : actor.name}</small>
+            </span>
+          </button>
+        </div>
+      </header>
+      <aside
+        className={`sidebar studio-navigation ${navOpen ? "is-open" : ""}`}
+      >
         <nav aria-label="Workspace navigation">
           {navigation.map((item) => (
             <a
@@ -470,7 +525,7 @@ export default function App() {
               aria-current={view === item.id ? "page" : undefined}
               onClick={() => setNavOpen(false)}
             >
-              <item.icon size={18} />
+              <item.icon size={16} />
               {item.label}
               {item.id === "review" && pendingReviews.length > 0 && (
                 <span className="nav-counter">{pendingReviews.length}</span>
@@ -478,95 +533,11 @@ export default function App() {
             </a>
           ))}
         </nav>
-        <div className="sidebar-projects">
-          <span className="nav-label">IN MOTION</span>
-          {activeProjects.slice(0, 4).map((item) => (
-            <button
-              key={item.id}
-              onClick={() => selectProject(item.id, "review")}
-            >
-              <i style={{ background: item.color }} />
-              <span>{item.title}</span>
-              <ArrowUpRight size={12} />
-            </button>
-          ))}
-          {!activeProjects.length && <p>No active projects yet.</p>}
-        </div>
-        <div className="sidebar-note">
-          <span className="tiny-star">✳</span>
-          <h3>
-            Good work travels
-            <br />
-            better together.
-          </h3>
-          <p>A clearer handoff. A calmer day.</p>
-          <a href="../">
-            Debotaro’s portfolio <ArrowUpRight size={14} />
-          </a>
-        </div>
-        <button className="profile-card" onClick={() => go("settings")}>
-          <span className="avatar avatar-orange">{initials(actor.name)}</span>
-          <span>
-            {actor.name}
-            <small>
-              {roleNames[actor.role]}
-              {mode === "demo" ? " · Demo role" : ""}
-            </small>
-          </span>
-          <MoreHorizontal size={17} />
-        </button>
+        <a className="studio-portfolio" href="../">
+          Made by Debotaro <ArrowUpRight size={14} />
+        </a>
       </aside>
       <div className="workspace-content">
-        <header className="topbar">
-          <div className="breadcrumbs">
-            <button
-              className="icon-button mobile-menu"
-              ref={menuButton}
-              aria-label="Open navigation"
-              aria-expanded={navOpen}
-              onClick={() => setNavOpen((open) => !open)}
-            >
-              <Menu size={20} />
-            </button>
-            <span>Debotaro Studio</span>
-            <span className="breadcrumb-slash">/</span>
-            <b>{navigation.find((item) => item.id === view)?.label}</b>
-          </div>
-          <div className="topbar-actions">
-            <span className={`connection ${online ? "" : "offline"}`}>
-              {online ? <i /> : <WifiOff size={13} />}{" "}
-              {mode === "cloud" ? "Cloud workspace" : "Local demo"}
-            </span>
-            <button
-              ref={searchButton}
-              className="search-trigger"
-              onClick={() => {
-                setSearch("");
-                setPalette(true);
-              }}
-              aria-label="Search workspace"
-            >
-              <Search size={16} />
-              <span>Find anything</span>
-              <kbd>⌘ K</kbd>
-            </button>
-            <button
-              className="icon-button notification-button"
-              aria-label="View workspace activity"
-              onClick={() => go("activity")}
-            >
-              <Bell size={19} />
-              {state.activity.length > 0 && <i />}
-            </button>
-            <button
-              className="avatar avatar-orange header-avatar"
-              aria-label="Workspace settings"
-              onClick={() => go("settings")}
-            >
-              {initials(actor.name)}
-            </button>
-          </div>
-        </header>
         {!online && (
           <div className="notice-bar">
             <WifiOff size={15} />
@@ -588,36 +559,30 @@ export default function App() {
                 : "")}
           </div>
         )}
-        <main id="main-content" tabIndex={-1}>
+        <main id="main-content" className={`view-${view}`} tabIndex={-1}>
           {view === "overview" && (
-            <>
-              <div className="page-heading overview-heading">
+            <div className="studio-home">
+              <div className="studio-introduction">
                 <div>
-                  <span className="eyebrow">
-                    YOUR WORK, WITH A LITTLE MORE FLOW
-                  </span>
+                  <span className="eyebrow">A SPACE FOR WORK IN PROGRESS</span>
                   <h1>
-                    Less back-and-forth.
+                    Good work.
                     <br />
-                    More <em>forward.</em>
-                    <span className="headline-spark">✳</span>
+                    <em>Better together.</em>
+                    <span className="studio-asterisk" aria-hidden="true">
+                      ✳
+                    </span>
                   </h1>
-                  <p>
-                    A shared direction for every project, every detail, every
-                    next step.
-                  </p>
                 </div>
-                <div className="heading-actions">
-                  <span className="date-chip">
-                    {new Date().toLocaleDateString("en-GB", {
-                      weekday: "short",
-                      day: "numeric",
-                      month: "long",
-                    })}
-                  </span>
+                <div className="studio-intro-note">
+                  <p>
+                    From the first direction to the final yes. Bring your
+                    designs, your feedback and your next version into one
+                    conversation.
+                  </p>
                   {manageProjects && (
                     <button
-                      className="button primary"
+                      className="button secondary"
                       onClick={() => setEditor({ kind: "project" })}
                     >
                       <Plus size={16} />
@@ -626,223 +591,284 @@ export default function App() {
                   )}
                 </div>
               </div>
-              <section className="metrics" aria-label="Workspace summary">
-                <Metric
-                  label="Projects in motion"
-                  value={String(activeProjects.length).padStart(2, "0")}
-                  detail="Ideas becoming something"
-                  icon={<FolderKanban size={18} />}
-                  color="orange"
-                />
-                <Metric
-                  label="Next steps"
-                  value={String(openTasks.length).padStart(2, "0")}
-                  detail={`${state.tasks.filter((task) => task.status === "done").length} tasks already complete`}
-                  icon={<ArrowUpRight size={19} />}
-                  color="green"
-                />
-                <Metric
-                  label="Ready for a fresh eye"
-                  value={String(pendingReviews.length).padStart(2, "0")}
-                  detail="Versions awaiting review"
-                  icon={<MessageCircle size={18} />}
-                  color="purple"
-                />
-                <Metric
-                  label="Moving forward"
-                  value={percent(state.tasks) + "%"}
-                  detail="Of your local task plan"
-                  icon={<CheckCheck size={18} />}
-                  color="yellow"
-                />
-              </section>
-              <div className="overview-grid">
-                <section className="panel spotlight">
-                  <div className="section-header">
-                    <span className="eyebrow">IN THE SPOTLIGHT</span>
-                    <button
-                      className="text-button"
-                      onClick={() => go("review")}
-                    >
-                      All design reviews <ArrowUpRight size={15} />
-                    </button>
-                  </div>
-                  {project && asset ? (
-                    <>
-                      <button
-                        className="spotlight-image"
-                        onClick={() => go("review")}
-                        aria-label={`Review ${asset.name}`}
-                      >
-                        <img
-                          src={asset.url}
-                          alt={`Design preview for ${project.title}`}
-                        />
-                        <span className="image-caption">
-                          <span className="pill pill-review">
-                            Design handoff
-                          </span>
-                          <span>
-                            V{asset.version.toString().padStart(2, "0")}{" "}
-                            <ArrowUpRight size={18} />
-                          </span>
-                        </span>
-                        <span className="mock-pin mock-pin-one">1</span>
-                        <span className="mock-pin mock-pin-two">2</span>
-                      </button>
-                      <div className="spotlight-meta">
-                        <div>
-                          <h2>{project.title}</h2>
-                          <p>
-                            {project.client} <span>•</span> {asset.name}
-                          </p>
-                        </div>
-                        <button
-                          className="round-button"
-                          aria-label="Open design review"
-                          onClick={() => go("review")}
-                        >
-                          <ArrowUpRight size={21} />
-                        </button>
-                      </div>
-                    </>
-                  ) : (
-                    <Empty title="Your next idea starts here">
-                      Create a project and upload a design to start the
-                      conversation.
-                    </Empty>
-                  )}
-                </section>
-                <section className="panel next-steps">
-                  <div className="section-header">
-                    <div>
-                      <span className="eyebrow">A LITTLE MOMENTUM</span>
-                      <h2>Next up.</h2>
+              {featuredAsset && featuredProject ? (
+                <section
+                  className="studio-feature"
+                  aria-label="Featured design review"
+                >
+                  <div className="studio-artwork">
+                    <div className="studio-artwork-label">
+                      <span>
+                        <i />
+                        ON THE REVIEW TABLE
+                      </span>
+                      <span>
+                        V{featuredAsset.version.toString().padStart(2, "0")}
+                      </span>
                     </div>
-                    {editable && (
-                      <button
-                        className="icon-button"
-                        aria-label="New task"
-                        onClick={newTask}
-                      >
-                        <Plus size={19} />
-                      </button>
-                    )}
-                  </div>
-                  <div className="next-list">
-                    {openTasks.slice(0, 5).map((task) => (
-                      <div className="next-task" key={task.id}>
-                        <button
-                          className="task-check"
-                          disabled={
-                            !editable ||
-                            busy ||
-                            state.projects.find(
-                              (item) => item.id === task.projectId,
-                            )?.status !== "active"
-                          }
-                          aria-label={`Complete ${task.title}`}
-                          onClick={() =>
-                            act(
-                              {
-                                type: "update_task",
-                                id: task.id,
-                                patch: { status: "done" },
-                              },
-                              "One less thing. Task completed.",
-                            )
-                          }
-                        >
-                          <Check size={13} />
-                        </button>
-                        <div>
-                          <button
-                            className="task-title"
-                            onClick={() => {
-                              setTaskQuery(task.title);
-                              go("tasks");
-                            }}
-                          >
-                            {task.title}
-                          </button>
-                          <span>
-                            {
-                              state.projects.find(
-                                (item) => item.id === task.projectId,
-                              )?.title
-                            }{" "}
-                            <b>·</b> {dateLabel(task.dueDate)}
-                          </span>
-                        </div>
-                        <span
-                          className={`priority-dot priority-${task.priority}`}
-                          aria-label={`${task.priority} priority`}
-                        />
+                    <button
+                      className="studio-feature-canvas"
+                      aria-label={`Review ${featuredAsset.name}`}
+                      onClick={() => openDesign(featuredAsset)}
+                    >
+                      <img
+                        src={featuredAsset.url}
+                        alt={`Design preview for ${featuredProject.title}`}
+                      />
+                      <span className="canvas-open">
+                        <ArrowUpRight size={19} />
+                        Enter review
+                      </span>
+                    </button>
+                    <div className="studio-artwork-caption">
+                      <div>
+                        <h2>{featuredProject.title}</h2>
+                        <span>
+                          {featuredProject.client} · {featuredAsset.name}
+                        </span>
                       </div>
-                    ))}
-                    {!openTasks.length && (
-                      <Empty title="A little breathing room">
-                        Your task plan is complete. Make room for the next idea.
-                      </Empty>
-                    )}
+                      <Pill status={featuredAsset.status} />
+                    </div>
                   </div>
-                  <button className="next-footer" onClick={() => go("tasks")}>
-                    See the whole picture <ArrowRight size={16} />
-                  </button>
-                  <div className="handoff-note">
-                    <span>↗</span>
+                  <div className="studio-review-brief">
+                    <span className="eyebrow">A FRESH PAIR OF EYES</span>
+                    <h2>
+                      {featuredAsset.status === "approved"
+                        ? "A direction, agreed."
+                        : "The next version starts here."}
+                    </h2>
                     <p>
-                      Feedback is a beginning.
-                      <br />
-                      <b>Give it a clear next step.</b>
+                      {featuredAsset.status === "review"
+                        ? "This design is ready for a decision. Find the details, leave a thought and agree on the way forward."
+                        : featuredAsset.status === "approved"
+                          ? "This version has been approved. Explore its feedback or begin a fresh revision."
+                          : "Keep the conversation beside the work. Every note stays with the version that inspired it."}
                     </p>
+                    <div
+                      className="review-journey"
+                      aria-label="Design approval journey"
+                    >
+                      <span className="complete">
+                        <Check size={12} />
+                        Design
+                      </span>
+                      <i />
+                      <span
+                        className={
+                          featuredAsset.status !== "draft" ? "complete" : ""
+                        }
+                      >
+                        <MessageCircle size={12} />
+                        Review
+                      </span>
+                      <i />
+                      <span
+                        className={
+                          featuredAsset.status === "approved" ? "complete" : ""
+                        }
+                      >
+                        <ShieldCheck size={12} />
+                        Approval
+                      </span>
+                    </div>
+                    <div className="studio-comment-peek">
+                      <div className="peek-label">
+                        <span>THE CONVERSATION</span>
+                        <span>{featuredComments.length} notes</span>
+                      </div>
+                      {featuredComments.slice(0, 2).map((comment) => (
+                        <div key={comment.id} className="peek-comment">
+                          <span className="avatar tiny">
+                            {initials(comment.author)}
+                          </span>
+                          <div>
+                            <b>{comment.author}</b>
+                            <p>{comment.body}</p>
+                          </div>
+                        </div>
+                      ))}
+                      {!featuredComments.length && (
+                        <p className="no-comments">
+                          A clean canvas. Leave the first thought.
+                        </p>
+                      )}
+                    </div>
+                    <button
+                      className="button primary studio-review-cta"
+                      aria-label="Open design review"
+                      onClick={() => openDesign(featuredAsset)}
+                    >
+                      Open design review <ArrowUpRight size={17} />
+                    </button>
+                    <small>
+                      {featuredComments.filter((item) => !item.resolved).length}{" "}
+                      open notes · {pendingReviews.length}{" "}
+                      {pendingReviews.length === 1
+                        ? "design awaits"
+                        : "designs await"}{" "}
+                      review
+                    </small>
                   </div>
                 </section>
-              </div>
-              <section className="panel project-strip">
+              ) : (
+                <div className="studio-start">
+                  <span className="studio-asterisk" aria-hidden="true">
+                    ✳
+                  </span>
+                  <Empty title="Your next direction starts here">
+                    Create a project, upload a design and make space for the
+                    conversation.
+                  </Empty>
+                  <button
+                    className="button primary"
+                    onClick={() => go("projects")}
+                  >
+                    Open projects <ArrowRight size={16} />
+                  </button>
+                </div>
+              )}
+              <section
+                className="studio-project-wall"
+                aria-label="Active creative projects"
+              >
                 <div className="section-header">
                   <div>
-                    <span className="eyebrow">THE BIG PICTURE</span>
-                    <h2>A few things taking shape.</h2>
+                    <span className="eyebrow">THE WORK IN MOTION</span>
+                    <h2>On the studio wall.</h2>
                   </div>
                   <button
                     className="text-button"
                     onClick={() => go("projects")}
                   >
-                    All projects <ArrowUpRight size={15} />
+                    All projects <ArrowUpRight size={16} />
                   </button>
                 </div>
-                <div className="compact-projects">
-                  {activeProjects.slice(0, 3).map((item) => (
-                    <button
-                      key={item.id}
-                      onClick={() => selectProject(item.id, "projects")}
-                    >
-                      <i style={{ background: item.color }} />
-                      <div>
-                        <h3>{item.title}</h3>
-                        <p>{item.client}</p>
-                        <Progress
-                          value={percent(
-                            state.tasks.filter(
-                              (task) => task.projectId === item.id,
-                            ),
-                          )}
+                <div className="studio-cover-grid">
+                  {activeProjects.slice(0, 3).map((item, index) => {
+                    const cover = state.assets
+                      .filter(
+                        (image) =>
+                          image.projectId === item.id &&
+                          !superseded.has(image.id),
+                      )
+                      .sort((a, b) =>
+                        b.createdAt.localeCompare(a.createdAt),
+                      )[0];
+                    const notes = state.comments.filter(
+                      (comment) =>
+                        comment.projectId === item.id && !comment.resolved,
+                    ).length;
+                    return (
+                      <button
+                        className="studio-cover-card"
+                        key={item.id}
+                        onClick={() =>
+                          cover
+                            ? openDesign(cover)
+                            : selectProject(item.id, "review")
+                        }
+                      >
+                        <ProjectCover
+                          project={item}
+                          asset={cover}
+                          index={index}
                         />
-                      </div>
-                      <span>
-                        {percent(
-                          state.tasks.filter(
-                            (task) => task.projectId === item.id,
-                          ),
-                        )}
-                        %
-                      </span>
-                    </button>
-                  ))}
+                        <div className="cover-card-caption">
+                          <div>
+                            <h3>{item.title}</h3>
+                            <p>{item.client}</p>
+                          </div>
+                          <ArrowUpRight size={17} />
+                        </div>
+                        <span className="cover-card-detail">
+                          {cover
+                            ? `${state.assets.filter((image) => image.projectId === item.id).length} design versions · ${notes} open notes`
+                            : "A new direction, ready to begin"}
+                        </span>
+                      </button>
+                    );
+                  })}
+                  {!activeProjects.length && (
+                    <Empty title="Room for something new">
+                      Your active projects will appear here.
+                    </Empty>
+                  )}
                 </div>
               </section>
-            </>
+              <section
+                className="studio-next-actions"
+                aria-label="Next creative steps"
+              >
+                <div>
+                  <span className="eyebrow">FROM FEEDBACK TO FORWARD</span>
+                  <h2>
+                    Give the idea
+                    <br />
+                    <em>a next step.</em>
+                  </h2>
+                  <button className="text-button" onClick={() => go("tasks")}>
+                    All next steps <ArrowRight size={16} />
+                  </button>
+                </div>
+                <div className="studio-next-list">
+                  {openTasks.slice(0, 3).map((task) => (
+                    <div className="studio-next-item" key={task.id}>
+                      <button
+                        className="task-check"
+                        disabled={
+                          !editable ||
+                          busy ||
+                          state.projects.find(
+                            (item) => item.id === task.projectId,
+                          )?.status !== "active"
+                        }
+                        aria-label={`Complete ${task.title}`}
+                        onClick={() =>
+                          act(
+                            {
+                              type: "update_task",
+                              id: task.id,
+                              patch: { status: "done" },
+                            },
+                            "One less thing. Task completed.",
+                          )
+                        }
+                      >
+                        <Check size={13} />
+                      </button>
+                      <div>
+                        <button
+                          className="task-title"
+                          onClick={() => {
+                            setTaskQuery(task.title);
+                            go("tasks");
+                          }}
+                        >
+                          {task.title}
+                        </button>
+                        <p>
+                          {
+                            state.projects.find(
+                              (item) => item.id === task.projectId,
+                            )?.title
+                          }{" "}
+                          · {dateLabel(task.dueDate)}
+                        </p>
+                      </div>
+                      <span
+                        className={`priority-dot priority-${task.priority}`}
+                        aria-label={`${task.priority} priority`}
+                      />
+                    </div>
+                  ))}
+                  {!openTasks.length && (
+                    <Empty title="A little breathing room">
+                      Your next steps are complete.
+                    </Empty>
+                  )}
+                </div>
+              </section>
+            </div>
           )}
           {view === "projects" && (
             <>
@@ -850,10 +876,10 @@ export default function App() {
                 eyebrow="KEEP THE BIG PICTURE CLOSE"
                 title={
                   <>
-                    Good ideas. <em>In motion.</em>
+                    The studio <em>wall.</em>
                   </>
                 }
-                description="A home for the work, the people and the details that connect them."
+                description="Every direction has a home. Open a project to see the design, the conversation and the next version."
               >
                 {manageProjects && (
                   <button
@@ -866,12 +892,37 @@ export default function App() {
                 )}
               </PageHeading>
               <div className="project-grid">
-                {state.projects.map((item) => {
+                {state.projects.map((item, index) => {
                   const tasks = state.tasks.filter(
                     (task) => task.projectId === item.id,
                   );
+                  const cover = state.assets
+                    .filter(
+                      (image) =>
+                        image.projectId === item.id &&
+                        !superseded.has(image.id),
+                    )
+                    .sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0];
                   return (
                     <article className="panel project-card" key={item.id}>
+                      <button
+                        className="project-cover-button"
+                        aria-label={`Open ${item.title} designs`}
+                        onClick={() =>
+                          cover
+                            ? openDesign(cover)
+                            : selectProject(item.id, "review")
+                        }
+                      >
+                        <ProjectCover
+                          project={item}
+                          asset={cover}
+                          index={index}
+                        />
+                        <span className="project-cover-tag">
+                          <Pill status={item.status} />
+                        </span>
+                      </button>
                       <div className="project-card-top">
                         <span
                           className="project-monogram"
@@ -974,10 +1025,10 @@ export default function App() {
                 eyebrow="MAKE THE NEXT STEP CLEAR"
                 title={
                   <>
-                    Small steps. <em>Good progress.</em>
+                    The handoff <em>list.</em>
                   </>
                 }
-                description="Turn the conversation into a plan you can actually move through."
+                description="A clear next step for every design decision. Feedback becomes work, without losing the conversation."
               >
                 {editable && (
                   <button className="button primary" onClick={newTask}>
@@ -1130,10 +1181,10 @@ export default function App() {
                 eyebrow="GOOD FEEDBACK GOES SOMEWHERE"
                 title={
                   <>
-                    A fresh eye. <em>A clear direction.</em>
+                    The review <em>room.</em>
                   </>
                 }
-                description="Pin a thought, connect a next step and keep every version in context."
+                description="The work at the center. The conversation right beside it."
               >
                 {uploadAllowed && project && (
                   <label
@@ -1325,6 +1376,31 @@ export default function App() {
                       </span>
                     </div>
                     <div className="approval-bar">
+                      <div
+                        className="approval-journey"
+                        aria-label="Current version approval journey"
+                      >
+                        <span className="complete">
+                          <Check size={13} /> Design ready
+                        </span>
+                        <i />
+                        <span
+                          className={asset.status !== "draft" ? "complete" : ""}
+                        >
+                          <MessageCircle size={13} />{" "}
+                          {asset.status === "changes"
+                            ? "Changes requested"
+                            : "In review"}
+                        </span>
+                        <i />
+                        <span
+                          className={
+                            asset.status === "approved" ? "complete" : ""
+                          }
+                        >
+                          <ShieldCheck size={13} /> Approved
+                        </span>
+                      </div>
                       <div>
                         <ShieldCheck size={18} />
                         <p>
@@ -1553,8 +1629,8 @@ export default function App() {
                 <section className="panel version-history">
                   <div className="section-header">
                     <div>
-                      <span className="eyebrow">NOTHING GETS LOST</span>
-                      <h2>The work, as it evolves.</h2>
+                      <span className="eyebrow">THE PATH TO THE FINAL YES</span>
+                      <h2>The revision trail.</h2>
                     </div>
                     <span className="muted">
                       {assets.length}{" "}
@@ -1987,30 +2063,40 @@ export default function App() {
   );
 }
 
-function Metric({
-  label,
-  value,
-  detail,
-  icon,
-  color,
+function ProjectCover({
+  project,
+  asset,
+  index,
 }: {
-  label: string;
-  value: string;
-  detail: string;
-  icon: ReactNode;
-  color: string;
+  project: Project;
+  asset?: Asset;
+  index: number;
 }) {
   return (
-    <div className={"metric metric-" + color}>
-      <div>
-        <span>{label}</span>
-        <i>{icon}</i>
-      </div>
-      <b>{value}</b>
-      <small>{detail}</small>
-    </div>
+    <span
+      className={`project-cover cover-treatment-${index % 3}`}
+      style={{ "--project-color": project.color } as CSSProperties}
+    >
+      {asset ? (
+        <img src={asset.url} alt={`Creative direction for ${project.title}`} />
+      ) : (
+        <>
+          <span className="cover-shape cover-shape-one" aria-hidden="true" />
+          <span className="cover-shape cover-shape-two" aria-hidden="true" />
+          <span className="cover-placeholder-kicker">PROJECT DIRECTION</span>
+          <span className="cover-placeholder-title">
+            {project.client || project.title.split("—")[0]}
+          </span>
+          <span className="cover-placeholder-footer">
+            A blank canvas.
+            <br />A new possibility. <ArrowUpRight size={21} />
+          </span>
+        </>
+      )}
+    </span>
   );
 }
+
 function PageHeading({
   eyebrow,
   title,

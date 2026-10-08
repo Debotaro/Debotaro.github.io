@@ -45,9 +45,9 @@ export function GitHubQueue({ tasks, onImport, go }: Props) {
   const data = result.status === 'success' ? result.data : null;
   const visibleIssues = data?.issues.filter(issue => `${issue.title} ${issue.number} ${issue.author} ${issue.labels.map(label => label.name).join(' ')}`.toLowerCase().includes(query.toLowerCase().trim())) || [];
   return <>
-    <div className="page-heading github-heading"><div><span className="eyebrow">LIVE PUBLIC DATA · LOCAL PLANNING</span><h1>GitHub queue</h1><p>Give an open issue a place in your next plan.</p></div><Button variant="secondary" onClick={() => go('tasks')}>View local tasks <ArrowRight size={16}/></Button></div>
+    <div className="page-heading github-heading"><div><span className="eyebrow">LIVE PUBLIC DATA · LOCAL PLANNING</span><h1>GitHub queue</h1><p>Inspect live public issues and dispatch them to the local queue.</p></div><Button variant="secondary" onClick={() => go('tasks')}>View local tasks <ArrowRight size={16}/></Button></div>
     <section className="panel github-connect" aria-label="Choose a GitHub repository">
-      <div className="github-connect-title"><span className="github-mark"><CodeXml size={22}/></span><div><h2>A clear view of the work ahead.</h2><p>Read public issues from GitHub. Imported tasks stay in this browser.</p></div><span className="github-readonly">Read only</span></div>
+      <div className="github-connect-title"><span className="github-mark"><CodeXml size={22}/></span><div><h2>Connect a public issue source.</h2><p>Read public issues from GitHub. Imported tasks stay in this browser.</p></div><span className="github-readonly">Read only</span></div>
       <form className="github-repository-form" onSubmit={event => {
         event.preventDefault();
         const repository = input.trim();

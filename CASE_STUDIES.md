@@ -24,7 +24,7 @@ Seven independent demos plus the portfolio explore responsive interfaces, useful
 
 **Challenge.** Connect project planning, design feedback and approval decisions so a handoff remains understandable from the first revision to delivery.
 
-**Approach.** Model projects, tasks, asset revisions, pinned feedback and review decisions as linked records. Keep the public demo usable with browser-local state and explicit role previews, while separating the optional authenticated backend adapter and access policies from demo permissions. Use hash navigation and relative assets to fit the existing static portfolio deployment.
+**Approach.** Make artwork the starting point: visual project covers, compact studio navigation and feedback alongside the revision being reviewed. Model projects, tasks, asset revisions, pinned feedback and review decisions as linked records. Keep the public demo usable with browser-local state and explicit role previews, while separating the optional authenticated backend adapter and access policies from demo permissions. Hash navigation and relative assets fit the existing static deployment.
 
 **Implementation highlights.** Project/task editing; image-pin feedback linked to revisions and convertible into tasks; review and approval states with activity history; derived delivery analytics and command search. Admin, Project Manager, Designer and Client previews demonstrate different available actions.
 
@@ -38,7 +38,7 @@ Seven independent demos plus the portfolio explore responsive interfaces, useful
 
 **Challenge.** Connect real repository context to a coherent local workspace for projects, tasks, automation and assistant interactions without implying remote synchronisation.
 
-**Approach.** Use shared typed state for local planning, and a separate runtime-validated API boundary for public repository/milestone reads. Handle request cancellation, timeout, retry and empty results; import selected source records through pure, duplicate-safe state helpers. Pair these workflows with command search, deterministic assistant actions and local automation.
+**Approach.** Build a calm personal work canvas around a daily agenda, task-linked focus pane and project notebooks. A compact top ribbon replaces dashboard-style side navigation. Use shared typed state for local planning and a separate validated API boundary for public repository/milestone reads. Handle request cancellation, timeout, retry and empty results; import selected source records through duplicate-safe state helpers. Command search, deterministic assistant actions and local automation share the same planning data.
 
 **Implementation highlights.** Live repository/milestone reads; repository-to-project and milestone-to-task imports with persisted provenance; stable-ID reconciliation after verified repository renames; strict storage validation and session-only warnings; capped local import activity. Task progress, command search, the deterministic assistant and automation share the local workspace state.
 
@@ -52,7 +52,7 @@ Seven independent demos plus the portfolio explore responsive interfaces, useful
 
 **Challenge.** Connect a practical operations dashboard to real external data while keeping remote issues and local planning clearly separate.
 
-**Approach.** Keep operations charts and staffing local, then add a public GitHub queue through a typed API boundary. Validate responses, cancel obsolete requests, handle timeout/rate limits and import selected issues into local planning. Board actions support drag-and-drop and explicit status controls.
+**Approach.** Build a dense technical monitoring console with an indexed navigation rail, a continuous telemetry strip, financial signals, workload bars, regional coverage and a priority intervention queue. Keep operations charts and staffing local, then add a public GitHub queue through a typed API boundary. Validate responses, cancel obsolete requests, handle timeout/rate limits and import selected issues into local planning. Board actions support drag-and-drop and explicit status controls.
 
 **Implementation highlights.** Editable task board; live GitHub repository/issue reads; clear loading, error and empty states; runtime validation, cancellation and retry; duplicate-safe local imports with source traceability.
 

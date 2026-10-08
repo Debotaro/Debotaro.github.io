@@ -25,7 +25,7 @@
     "id": "relay",
     "title": "RELAY OS",
     "category": "Product system / Creative handoff",
-    "summary": "A creative delivery workspace connecting projects, versioned design reviews, pinned feedback and approval decisions.",
+    "summary": "An artwork-led review studio connecting visual project covers, design revisions, pinned feedback and approval decisions.",
     "role": "Project direction and AI-assisted frontend development",
     "stack": [
       "React",
@@ -34,21 +34,21 @@
       "Optional Supabase backend"
     ],
     "challenge": "Keep project planning, design feedback and approval decisions connected so a handoff stays understandable from first revision to delivery.",
-    "approach": "Model projects, tasks, design revisions, pinned feedback and decisions as linked records. Use browser-local state for the public demo, explicit role previews for workflow exploration, and a separate optional Supabase adapter for authenticated persistence. Relative assets and hash navigation preserve the existing static deployment.",
+    "approach": "Lead with artwork, visual project covers and a revision-specific review canvas. Compact studio navigation keeps feedback and approvals close to the design. Link projects, tasks, revisions, comments and decisions through typed records; use browser-local state for the public demo and a separate optional Supabase adapter for authenticated persistence. Relative assets and hash navigation preserve the static deployment.",
     "highlights": [
-      "Project and task workflows with derived delivery progress",
+      "Artwork-led studio layout and visual project covers",
       "Versioned image reviews with pins and comment-to-task conversion",
       "Approval decisions, activity history and four demo role previews",
       "Command search, responsive views and optional backend architecture"
     ],
-    "validation": "Strict TypeScript and Vite production build pass. 24 desktop/mobile browser checks cover the handoff workflow and recovery states; 25 domain and embedded PostgreSQL checks exercise record validation and database policies. Hosted Supabase services remain unconfigured. See VALIDATION.md for results and limits.",
+    "validation": "Strict TypeScript and Vite production build pass. 26 desktop/mobile browser checks cover project-cover selection, the handoff workflow and recovery states; 25 domain and embedded PostgreSQL checks exercise record validation and database policies. Hosted Supabase services remain unconfigured. See VALIDATION.md for results and limits.",
     "limitations": "Personal concept project • AI-assisted development. The public demo uses sample work saved in the current browser; role switching is a workflow preview, not real authentication. Optional Supabase Auth, database, RLS and private storage require an external project and configuration. No cloud deployment, live teamwork, audited backend security or formal accessibility conformance is claimed."
   },
   {
     "id": "nova",
     "title": "NOVA OS",
-    "category": "Product system",
-    "summary": "A shared local workspace that turns live public GitHub repositories and milestones into projects and planning tasks.",
+    "category": "Product system / Personal planning",
+    "summary": "A calm daily work canvas with an agenda, task-linked focus view, project notebooks and live GitHub milestone imports.",
     "role": "Project direction and AI-assisted frontend development",
     "stack": [
       "Next.js",
@@ -57,21 +57,21 @@
       "Tailwind CSS"
     ],
     "challenge": "Connect real repository context to a coherent local workspace for projects, tasks, automation and assistant interactions without implying remote synchronisation.",
-    "approach": "Keep local planning in shared typed state and read public GitHub repositories/milestones through a runtime-validated API boundary. Handle loading, empty, errors, timeout, retry and obsolete requests; import records with duplicate guards and canonical source metadata. Reconcile verified repository renames by stable ID while preserving local planning edits.",
+    "approach": "Use a compact workspace ribbon, a daily agenda and a task-linked focus pane to support personal planning. Project notebooks, command search, the assistant and automation share typed local state. Read public GitHub repositories/milestones through a validated API boundary with recovery, cancellation and duplicate guards; preserve provenance and stable-ID rename reconciliation.",
     "highlights": [
-      "Live repositories and milestones with recovery states",
-      "Duplicate-safe local imports with source attribution",
-      "Stable-ID rename reconciliation and capped import history",
-      "Validated browser storage with session-only warnings"
+      "Daily agenda and a task-linked focus pane",
+      "Project notebooks, command search and local automation",
+      "Validated milestone imports with canonical source attribution",
+      "Shared planning state and resilient browser storage"
     ],
-    "validation": "TypeScript and static export pass. Desktop/mobile Chromium checks cover request recovery, imports, reload, duplicates, canonical renames, storage failures and empty workspaces. A separate unmocked GitHub import/completion/reload journey passed at 1440, 390 and 320px. See VALIDATION.md for the complete checks and limits.",
+    "validation": "TypeScript and static export pass. Desktop/mobile Chromium checks cover focus completion across views, saved themes and long profile names, request recovery, imports, reload, duplicates, canonical renames, storage failures and empty workspaces. A separate unmocked GitHub import/completion/reload journey passed at 1440, 390 and 320px. See VALIDATION.md for the complete checks and limits.",
     "limitations": "Personal concept project • AI-assisted development. Public GitHub reads return one page of up to 30 open milestones; search is page-local, rate limits apply, and there is no application cache or polling. A milestone becomes one local task, not its issues. Local completion never writes GitHub. Imports and up to 100 activity entries persist when browser storage is available. Authentication, team collaboration and other service integrations are simulated; the assistant uses deterministic rules. No private-repository access or shared backend."
   },
   {
     "id": "atlas",
     "title": "ATLAS Ops",
-    "category": "Product system",
-    "summary": "An operations workspace connecting local tasks and staffing views with a live, read-only GitHub issue queue.",
+    "category": "Product system / Operations",
+    "summary": "A technical operations console connecting sample financial signals, workload, regional coverage and an intervention queue.",
     "role": "Project direction and AI-assisted frontend development",
     "stack": [
       "React",
@@ -80,14 +80,14 @@
       "Recharts"
     ],
     "challenge": "Connect a practical operations dashboard to real external data while keeping remote issues and local planning clearly separate.",
-    "approach": "Keep operational charts and staffing data local, then add a public GitHub repository queue through a separate typed API boundary. Validate responses at runtime, cancel obsolete requests, handle timeouts and rate limits, and let users import an issue into local tasks without posting to GitHub.",
+    "approach": "Use an indexed operations rail, compact command header and a continuous telemetry strip. Group financial signals, workload, regional coverage and priority interventions into a monitoring console. Keep sample operations data local, and read public GitHub issues through a separate validated API boundary with cancellation, recovery and duplicate-safe task imports.",
     "highlights": [
-      "Editable task board with drag-and-drop and status controls",
-      "Live GitHub issues with loading, error and empty states",
-      "Validated responses, cancellation and retry handling",
-      "Duplicate-safe local issue import with a source link"
+      "Operations console with charts and an intervention queue",
+      "Workload and coverage linked to editable local records",
+      "Live GitHub issues with validated recovery states",
+      "Duplicate-safe imports and task-board status controls"
     ],
-    "validation": "TypeScript checks and the Vite production build pass. Desktop/mobile Chromium checks cover task persistence and mocked GitHub success, loading, empty, malformed, network, rate-limit, timeout and stale-response behavior. A separate unmocked browser smoke check verified the actual public API.",
+    "validation": "TypeScript checks and the Vite production build pass. Desktop/mobile Chromium checks cover scoped chart filters, saved targets, CSV contents, intervention editing, coverage navigation, task persistence and mocked GitHub success, loading, empty, malformed, network, rate-limit, timeout and stale-response behavior. A separate unmocked browser smoke check verified the actual public API.",
     "limitations": "Personal concept project • AI-assisted development. GitHub reads live public repository data; the latest page contains at most 30 raw entries and excludes pull requests. API rate limits apply. Imported tasks, operations charts and staffing remain local; there are no GitHub writes, ERP connection or shared backend."
   },
   {

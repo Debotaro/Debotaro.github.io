@@ -1,6 +1,6 @@
 # Deboraj Sarkar (Debotaro) — practical frontend interview preparation
 
-Prepared from the source in this repository on 7 October 2026. This is a study and practice guide, not a claim that Deboraj has already mastered each topic or personally written every line.
+Prepared from the source in this repository on 8 October 2026. This is a study and practice guide, not a claim that Deboraj has already mastered each topic or personally written every line.
 
 The seven independent demos and personal portfolio were developed with AI assistance. The repository describes Deboraj's role as **project direction and AI-assisted frontend development**; Codex assisted with implementation and iteration. The sample answers below are explanations to learn, then adapt to what you can actually explain and demonstrate. Do not memorise an answer and present it as experience you have not had.
 
@@ -66,7 +66,7 @@ These are talk tracks. Aim for roughly 90–120 seconds while showing the demo: 
 
 ### 2. RELAY OS
 
-> RELAY addresses the handoff between planning and design review. A project has tasks and design assets; an asset has revisions, pinned feedback and a review decision. Feedback can become a linked task, so a requested change is visible in the delivery workflow. The overview and analytics derive their numbers from the same records.
+> RELAY addresses the handoff between planning and design review. Its studio starts with artwork and visual project covers, then places feedback alongside a selected revision. A project has tasks and design assets; an asset has revisions, pinned feedback and a review decision. Feedback can become a linked task, so a requested change is visible in the delivery workflow. Review and analytics views derive their values from the same records.
 >
 > The app uses React, TypeScript and Vite. It fits this portfolio's static GitHub Pages deployment through relative assets and hash navigation; it does not need server-rendered pages. A typed domain model links records and keeps changes predictable. Command search opens relevant work, while activity entries make decisions easier to trace.
 >
@@ -80,7 +80,7 @@ These are talk tracks. Aim for roughly 90–120 seconds while showing the demo: 
 
 ### 3. NOVA OS
 
-> NOVA connects projects, tasks, a local assistant and automation in one workspace. It also reads live public GitHub repository metadata and open milestones. A repository becomes a local project, and each selected milestone becomes one local planning task. Task changes feed the task table, project progress and workspace metrics.
+> NOVA is a calm personal planning workspace with a daily agenda, task-linked focus pane and project notebooks. It connects projects, tasks, a local assistant and automation through shared state. It also reads live public GitHub repository metadata and open milestones. A repository becomes a local project, and each selected milestone becomes one local planning task. Task changes feed the agenda, task table and project progress.
 >
 > It uses Next.js's Pages Router, React and TypeScript. `_app.tsx` wraps the pages in a shared `StoreProvider`. Functional updates preserve current state, and local project progress is derived from tasks. The API boundary validates unknown responses before rendering and constructs canonical source links. Loading, empty, errors, retry, rate limits and a 12-second timeout are handled; cleanup cancels obsolete requests and prevents stale results replacing the current repository.
 >
@@ -94,7 +94,7 @@ These are talk tracks. Aim for roughly 90–120 seconds while showing the demo: 
 
 ### 4. ATLAS Ops
 
-> ATLAS explores a practical operations workspace: tasks, staffing coverage, notifications and performance charts. A user can create or edit a task, move it between statuses, filter the board and switch to a list. The same task data feeds the overview and notifications.
+> ATLAS is a technical operations console with financial signals, workload bars, regional coverage and a priority intervention queue. A user can create or edit a task, move it between statuses, filter the board and switch to a list. The same task data feeds the console and notifications.
 >
 > It is a React and TypeScript app built with Vite. `App` owns persisted operational state and passes callbacks to feature components. Task updates create new arrays. Status changes work through both drag-and-drop and a select control. The local overview derives task and coverage metrics; revenue and costs are generated sample data.
 >
@@ -399,7 +399,7 @@ Create a Blob with the correct content type, call `URL.createObjectURL`, set an 
 
 **14. What are local storage's limits?**
 
-It stores strings for the current origin and is synchronous. JSON must be parsed and validated; access/writes can fail. NOVA, NILA and ATLAS report session-only saving on failure. NOVA validates supported records, source relationships and size limits, restores the sample after invalid saved data and caps import activity at 100 entries. This is convenient demo persistence, not authentication, a shared database or appropriate storage for secrets. The current apps do not synchronise multiple browser tabs with a storage-event listener.
+It stores strings for the current origin and is synchronous. JSON must be parsed and validated; access/writes can fail. NOVA, NILA, ATLAS and RELAY report session-only saving on failure. NOVA validates supported records, source relationships and size limits, restores the sample after invalid saved data and caps import activity at 100 entries. This is convenient demo persistence, not authentication, a shared database or appropriate storage for secrets. RELAY also validates storage events to reflect saved changes in another tab of the same browser origin; NOVA, NILA and ATLAS do not provide that cross-tab synchronisation.
 
 **15. How do promises and errors appear in this repository?**
 
