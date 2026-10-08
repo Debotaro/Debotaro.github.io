@@ -17,7 +17,7 @@ Deboraj directed requirements and visual choices, reviewed generated interfaces,
 - Employment bullets summarise the existing LinkedIn responsibilities without adding numerical results, leadership scope or unconfirmed frontend work.
 - The selected projects are NOVA, ATLAS and RELAY. Four other concepts are named in a short portfolio line.
 - Location is Kokrajhar, Assam, India. Availability is within one week, with remote roles and relocation for the right opportunity.
-- The reviewed resume includes the supplied phone number and has been promoted from `output/pdf/` into `downloads/` for this portfolio release. Publication is pending the release CI and GitHub Pages deployment; the default generator still writes only to the local review folder.
+- The reviewed resume includes the supplied phone number and was promoted from `output/pdf/` into `downloads/`, then published through the successful GitHub Pages release of `903c78c` (run `37787318267`). The published PDF matches the reviewed release file; the default generator still writes only to the local review folder.
 
 ## Design and print quality
 
@@ -29,7 +29,7 @@ Employment dates and design responsibilities are supported by the existing Linke
 
 ## Profile alignment in this release
 
-- LinkedIn: headline and About saved with the confirmed frontend focus, graphic design background and AI-assisted contribution. Current location is Kokrajhar. University of the People education saved as an ongoing bachelor's degree in Computer Science, starting June 2025, with no invented end date. The verified Wecanstore.com work record was preserved.
+- LinkedIn: headline and About saved with the confirmed frontend focus, graphic design background and AI-assisted contribution. Current location is Kokrajhar. University of the People education saved as an ongoing bachelor's degree in Computer Science, starting June 2025, with no invented end date, and selected for the education header. The verified Wecanstore.com work record was preserved. The reviewed PDF was uploaded and verified as Featured Media; portfolio is first and résumé second.
 - GitHub: name, biography, portfolio website, social links and availability for hire saved through the signed-in profile editor. Location is Kokrajhar. The public profile README is published at `https://github.com/Debotaro/Debotaro`; the portfolio repository description now refers to seven projects.
 - Dribbble: the location form saved Kokrajhar, Assam, India; the public location displays India, while the saved biography explicitly names Kokrajhar. The biography also includes the ongoing degree, contribution, one-week availability and portfolio URL. The education form required a graduation year, so the unsaved entry was removed and the confirmed education was included in the biography instead.
-- The portfolio release publishes the reviewed résumé and matching background. Final deployment results and platform evidence are recorded separately after CI completes.
+- The portfolio release published the reviewed résumé and matching background. All seven demo routes returned HTTP 200. Deployment results, the public PDF checksum and platform evidence are documented in [`PUBLICATION_RECORD.md`](PUBLICATION_RECORD.md).

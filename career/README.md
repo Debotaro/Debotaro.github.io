@@ -8,7 +8,7 @@ This folder contains Deboraj Sarkar's résumé source and interview preparation.
 
 The public résumé deliveries live in `downloads/`. Source and QA helpers remain separate from those downloads.
 
-The 8 October 2026 update was generated and visually reviewed in `output/pdf/`, then promoted into `downloads/` for the portfolio release. It includes confirmed education, paid design experience, contact details, one-week availability and selected Coursera credentials. Publication is pending release CI and the GitHub Pages deployment. `RESUME_REVIEW_NOTES.md` records sources and editorial decisions; `resume.json` retains all twelve verified specialization/professional certificates, with a `selected` flag controlling the concise résumé.
+The 8 October 2026 update was generated and visually reviewed in `output/pdf/`, then promoted into `downloads/` and published through the successful GitHub Pages release of `903c78c`. It includes confirmed education, paid design experience, contact details, one-week availability and selected Coursera credentials. [`PUBLICATION_RECORD.md`](PUBLICATION_RECORD.md) records the verified deployment and profile updates. `RESUME_REVIEW_NOTES.md` records sources and editorial decisions; `resume.json` retains all twelve verified specialization/professional certificates, with a `selected` flag controlling the concise résumé.
 
 To generate the local review copy:
 

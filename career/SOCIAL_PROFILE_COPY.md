@@ -64,11 +64,11 @@ Deboraj Sarkar — Frontend Developer Résumé
 
 Description:
 
-Computer Science student with paid graphic design experience. Seeking junior frontend/React roles; available within one week. Includes selected projects, Coursera certificates and contact details.
+Computer Science student with paid graphic design experience. Seeking junior frontend/React roles; available within one week. Includes selected projects, Coursera certificates and contact details. Latest download: https://debotaro.github.io/downloads/Deboraj-Sarkar-Resume.pdf
 
 URL: https://debotaro.github.io/downloads/Deboraj-Sarkar-Resume.pdf
 
-Use the public URL only after the reviewed résumé has been included in the deployment. The résumé intentionally includes the supplied phone number; ordinary profile bios below use email only.
+The reviewed résumé is available at this public URL following the successful release of `903c78c`. LinkedIn's direct-link preview failed, so the PDF was uploaded as Featured Media and its saved state was verified. Featured order is portfolio first, résumé second. The résumé intentionally includes the supplied phone number; ordinary profile bios below use email only.
 
 ## LinkedIn skills, in priority order
 
@@ -105,6 +105,20 @@ This is the saved biography, including paragraph breaks. The ongoing degree is i
 - GitHub username: Debotaro
 - LinkedIn username: deborajsarkar
 
+## Dribbble RELAY shot
+
+Title:
+
+RELAY OS — Design reviews, in context.
+
+Description:
+
+RELAY OS connects artwork, pinned feedback, versions and approvals. My role: visual direction, interface review and iteration; AI-assisted implementation. Explore the browser-local demo: https://debotaro.github.io/relay-os/
+
+Shot URL: https://dribbble.com/shots/27794867-RELAY-OS-Design-reviews-in-context
+
+Saved tags: dashboard, design feedback, portfolio, product design, react, ui design, web design.
+
 ## GitHub biography
 
 Frontend Developer with a graphic design background. CS student at University of the People. Visual direction & AI-assisted projects. Open to junior roles.
@@ -139,9 +153,9 @@ These are completed Coursera course credentials, not claims of passed vendor cer
 
 ## Applied profile update record — 8 October 2026
 
-- LinkedIn: the headline and About above were saved, current location was updated to Kokrajhar, and the University of the People bachelor's degree in Computer Science was saved with a June 2025 start and no end date. The verified paid Graphic Designer record at Wecanstore.com was preserved. Previously saved portfolio/contact links, skills and featured portfolio remain available. The featured résumé text above is prepared for the reviewed public résumé release.
+- LinkedIn: the headline and About above were saved, current location was updated to Kokrajhar, and the University of the People bachelor's degree in Computer Science was saved with a June 2025 start and no end date. University of the People was selected for the education header and the intro saved. The verified paid Graphic Designer record at Wecanstore.com was preserved. The featured portfolio description was updated to match the copy above. Four existing Coursera titles were corrected to their verified Professional Certificate names: Google UX Design, AWS Cloud Solutions Architect, Google Digital Marketing & E-commerce and Google Project Management. Three missing verified credentials were added: Introduction to Data Science (IBM, June 2025), AWS Fundamentals (Amazon Web Services, April 2023) and Tally Bookkeeper (Tally Education, May 2025), bringing the recorded collection to twelve. The résumé PDF was uploaded as Featured Media with the title and description above; the saved media and order were verified, with portfolio first and résumé second.
 - GitHub: name, biography, location, portfolio website, social links and availability for hire were saved through the signed-in browser. The profile README was published at [Debotaro/Debotaro](https://github.com/Debotaro/Debotaro), commit `490be3543d1a3239ec2d78074757ff9183fc4559`; its public source returned HTTP 200 and matched `career/GITHUB_PROFILE.md`. The portfolio repository description now says seven projects; its homepage and frontend/React/TypeScript topics were verified.
-- Dribbble: the biography above was saved. The location form saved Kokrajhar, Assam, India; the public location displays India and the biography carries the exact city. An unsaved education entry was removed when the form required a graduation year; education is accurately represented in the biography instead. Existing name, profile links, language, specialty and technical skills were retained.
-- Résumé: the reviewed A4 vector PDF and printable HTML were promoted into `downloads/`; publication is pending release CI and GitHub Pages deployment. Default generation continues to use `output/pdf/` for local review.
+- Dribbble: the biography above was saved. The location form saved Kokrajhar, Assam, India; the public location displays India and the biography carries the exact city. An unsaved education entry was removed when the form required a graduation year; education is accurately represented in the biography instead. The RELAY shot above was uploaded with seven tags. Work preferences saved Web Design, UI / Visual Design and Brand / Graphic Design specialties, with messages enabled. Full-time job matching was left unconfigured because required salary and work-authorisation answers were unconfirmed.
+- Résumé: the reviewed A4 vector PDF and printable HTML were promoted into `downloads/` and published through the successful GitHub Pages release of `903c78c`, run `37787318267`. All seven demo routes returned HTTP 200. Default generation continues to use `output/pdf/` for local review.
 
-Dribbble previously reported a Limited Account requiring a work upload before a Designer application. No Designer application, subscription or paid upgrade was submitted. Existing browser proof is outside the Git repository in `X:/Six Portfolio Projects/profile-updates/`.
+The free Dribbble Designer application was submitted. When a later refresh offered Reapply, the completed profile was submitted again and the interface confirmed “Your application was submitted successfully!” The account remains Limited; Designer approval and public-feed visibility are not yet confirmed. No subscription or paid upgrade was purchased. Browser proof is outside the Git repository in `X:/Six Portfolio Projects/profile-updates/2026-10-08/`. See [`PUBLICATION_RECORD.md`](PUBLICATION_RECORD.md) for deployment checks and remaining platform state.
