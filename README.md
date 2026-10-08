@@ -6,9 +6,11 @@
 
 [![Deboraj Sarkar's portfolio: Ideas into interfaces, with the Debotaro D/T identity](previews/portfolio-cover.png)](https://debotaro.github.io/)
 
-A personal portfolio for **Deboraj Sarkar**, also known as **Debotaro**, focused on frontend job opportunities. The portfolio itself is featured first, followed by seven independent, working project concepts. The page includes a custom D/T identity, the supplied bio and skills, email and professional profiles, and eight case studies with explicit AI-assisted development and demo scope.
+A personal portfolio for **Deboraj Sarkar**, also known as **Debotaro**, a **Frontend Developer** and Computer Science student based in **Kokrajhar, Assam, India**. He is pursuing a bachelor's degree at the **University of the People** (June 2025–present) and previously worked as a **Graphic Designer at Wecanstore.com** (June 2022–July 2023), creating digital banners, social media graphics and marketing materials.
 
-Public availability is phrased as “Open to remote frontend roles and relocation for the right opportunity.” The résumé uses supplied details and verified projects; unconfirmed education and employment are omitted. Contact: `mail.deborajsarkar@gmail.com`. Profiles: GitHub `Debotaro`, LinkedIn `deborajsarkar`, Dribbble `Debotaro`.
+The portfolio itself is featured first, followed by **seven independent, working project concepts**. Its custom D/T identity, live demos and eight case studies connect the work with his background, selected Coursera credentials and downloadable résumé. Deboraj's contribution across this collection is **visual direction, interface review and iteration; AI-assisted implementation**. He sets the visual direction, reviews generated interfaces, requests revisions and makes the final decisions. Technical descriptions and validation describe the project behaviour rather than independent coding or test authorship.
+
+Seeking **full-time junior frontend/React roles**, available to start **within one week**, with remote opportunities and relocation for the right role. Contact: [mail.deborajsarkar@gmail.com](mailto:mail.deborajsarkar@gmail.com). Profiles: [GitHub](https://github.com/Debotaro), [LinkedIn](https://www.linkedin.com/in/deborajsarkar/) and [Dribbble](https://dribbble.com/Debotaro).
 
 ## Explore the seven demos
 
@@ -165,7 +167,11 @@ When hosting apps separately, change the matching gallery links in the root `ind
 
 ## Job application materials
 
-`downloads/Deboraj-Sarkar-Resume.pdf` is a one-page text-based résumé, linked in the navigation and contact section. `downloads/Deboraj-Sarkar-Resume.html` is an editable printable version. Content is also maintained in `career/resume.json` and `career/RESUME.md`. Regenerate the PDF/HTML with `python career/build_resume.py` after installing `reportlab`; this task used the Codex bundled Python runtime and inspected the rendered PDF page.
+The public résumé is linked in the navigation and contact section: [`downloads/Deboraj-Sarkar-Resume.pdf`](downloads/Deboraj-Sarkar-Resume.pdf) and its [printable HTML companion](downloads/Deboraj-Sarkar-Resume.html). The one-page A4 design uses forest green, warm ivory, lime and the Debotaro D/T identity, with embedded fonts, vector text and clickable links. It includes the ongoing degree, paid graphic design role, selected Coursera certificates, phone number and one-week availability. These Coursera course credentials are not presented as passed vendor certification exams.
+
+Editable facts live in [`career/resume.json`](career/resume.json) and readable copy in [`career/RESUME.md`](career/RESUME.md). Install `career/requirements.txt`, then run `python career/build_resume.py --output-dir output/pdf`. The default output is the **local review folder**, `output/pdf/`; generation does not replace the public files. Review the rendered page and links, then promote the approved PDF and HTML into `downloads/` as part of the portfolio release. [`career/README.md`](career/README.md) documents the layout and print workflow. A PDF can request actual-size printing in compatible readers but cannot force a printer driver to override Draft mode.
+
+[`career/GITHUB_PROFILE.md`](career/GITHUB_PROFILE.md) maintains the GitHub profile README copy; [`career/SOCIAL_PROFILE_COPY.md`](career/SOCIAL_PROFILE_COPY.md) maintains the matching GitHub, LinkedIn and Dribbble field copy. Keep factual updates aligned across those files and the résumé source.
 
 `career/INTERVIEW_PREPARATION.md` contains project pitches, actual source/data flows, frontend Q&As, code exercises, a five-day practice schedule and honest AI-assistance talking points. Use the exercises to build your own understanding and learning log before presenting sample answers as demonstrated skills.
 

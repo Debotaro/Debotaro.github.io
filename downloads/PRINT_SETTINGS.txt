@@ -1,0 +1,22 @@
+DEBOTARO RESUME - PRINT SETTINGS
+
+Print the PDF directly for consistent embedded fonts and layout.
+Paper: A4, portrait, one page per sheet.
+Scale: Actual size / 100%.
+Printer Properties / Preferences: choose High, Best or the printer's highest document quality.
+Turn Draft / Economy / Toner Save mode off.
+Select the paper type that matches the loaded paper; choose color for the branded design.
+Keep normal PDF/vector printing; rasterize only if resolving a printer compatibility problem.
+
+The PDF requests no print scaling in compatible readers. It cannot force driver quality,
+resolution, paper type or ink settings, or override a recipient's Draft mode.
+Do not print the PNG preview or a screenshot instead of the PDF.
+
+For HTML/browser printing: A4, 100%, background graphics on, headers and footers off.
+
+File specifications: exact A4, selectable vector text and line art, embedded TrueType fonts,
+lossless compression and the original 1254px logo (about 2100 PPI at its 43pt PDF size).
+This is a general-purpose color PDF; no PDF/X compliance or press-specific CMYK profile is claimed.
+
+Printer quality guidance: https://support.hp.com/in-en/document/ish_2441805-2331028-16
+PDF sizing guidance: https://helpx.adobe.com/acrobat/desktop/print-documents/set-up-and-print-pdfs/page-size.html

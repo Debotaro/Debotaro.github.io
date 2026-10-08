@@ -5,8 +5,9 @@ test('Personal portfolio presents the supplied identity and contacts, with its o
   await page.goto('/',{waitUntil:'networkidle'});
   await expect(page).toHaveTitle('Deboraj Sarkar (Debotaro) — Frontend Developer');
   await expect(page.locator('.hero .eyebrow')).toHaveText('Deboraj Sarkar / Frontend Developer');
-  await expect(page.locator('.hero-intro')).toContainText('AI-assisted development workflows');
-  await expect(page.locator('.availability')).toHaveText('Open to remote frontend roles and relocation for the right opportunity.');
+  await expect(page.locator('.hero-intro')).toContainText('AI-assisted web projects through visual direction');
+  await expect(page.locator('.hero-location')).toContainText('Kokrajhar, Assam, India');
+  await expect(page.locator('.availability')).toHaveText('Available to start within one week. Open to remote frontend roles and relocation for the right opportunity.');
   expect(await page.locator('.featured-project').evaluate(feature=>Boolean(feature.compareDocumentPosition(document.querySelector('.grid')!)&Node.DOCUMENT_POSITION_FOLLOWING))).toBeTruthy();
   await expect(page.locator('[data-case]')).toHaveCount(8);
   await expect(page.locator('.card')).toHaveCount(7);
@@ -24,13 +25,52 @@ test('Personal portfolio presents the supplied identity and contacts, with its o
   expect(errors).toEqual([]);
 });
 
+test('Background, availability and verifiable credentials match the updated résumé',async({page})=>{
+  await page.goto('/');
+  const history=page.locator('.background-history');
+  const education=history.locator('li').filter({hasText:'Bachelor’s degree in Computer Science'});
+  await expect(education).toContainText('University of the People');
+  await expect(education).toContainText('Jun 2025 — Present');
+  await expect(education).toContainText('In progress');
+  const experience=history.locator('li').filter({hasText:'Graphic Designer'});
+  await expect(experience).toContainText('Wecanstore.com · Bongaigaon, Assam');
+  await expect(experience).toContainText('Jun 2022 — Jul 2023');
+  await expect(experience).toContainText('Full-time');
+  await expect(page.locator('.contact-copy')).toContainText('full-time junior frontend or React role');
+  await expect(page.locator('.contact-copy')).toContainText('Available within one week');
+  await expect(page.locator('.skill-note')).toContainText('Codex handles AI-assisted implementation');
+  await expect(page.locator('.about-notes')).toContainText('reviewing generated interfaces');
+  const credentials=page.locator('.credential-list a');
+  await expect(credentials).toHaveCount(3);
+  for(const [name,id] of [
+    ['Google UX Design Professional Certificate','ZR76Q3CG6VAX'],
+    ['IBM DevOps, Cloud, and Agile Foundations Specialization','ZS82DMJQ6E5H'],
+    ['AWS Cloud Solutions Architect Professional Certificate','XRDNDZE8TZ2P']
+  ]){
+    const link=credentials.filter({hasText:name});
+    await expect(link).toHaveAttribute('href',`https://www.coursera.org/account/accomplishments/specialization/${id}`);
+    await expect(link).toHaveAttribute('target','_blank');
+    await expect(link).toHaveAttribute('rel','noopener noreferrer');
+  }
+  for(const width of [320,390,768,1440]){
+    await page.setViewportSize({width,height:1000});
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+    for(const area of await page.locator('.background-grid>div').all()){
+      const bounds=await area.boundingBox();
+      expect(bounds).not.toBeNull();
+      expect(bounds!.x).toBeGreaterThanOrEqual(0);
+      expect(bounds!.x+bounds!.width).toBeLessThanOrEqual(width);
+    }
+  }
+});
+
 test('Eight case studies expose their working details, demo scope and keyboard focus restoration',async({page})=>{
   await page.goto('/');
   const cases=[['portfolio','Debotaro Portfolio'],['relay','RELAY OS'],['nova','NOVA OS'],['atlas','ATLAS Ops'],['nila','NILA Ledger'],['aura','AURA Reserve'],['vanta','VANTA Atelier'],['rasa','RASA Experience']];
   for(const [id,title] of cases){
     const trigger=page.locator(`[data-case="${id}"]`);await trigger.click();
     const dialog=page.getByRole('dialog',{name:title,exact:true});await expect(dialog).toBeVisible();
-    await expect(dialog.locator('.case-role')).toContainText('Project direction and AI-assisted frontend development');
+    await expect(dialog.locator('.case-role')).toContainText('Visual direction, interface review and iteration; AI-assisted implementation');
     await expect(dialog.locator('.case-highlights li')).toHaveCount(4);
     await expect(dialog.locator('.case-limitations')).toContainText('Personal concept project');
     await expect(dialog.getByRole('link',{name:'View source code'})).toHaveAttribute('href',new RegExp('^https://github.com/Debotaro/Debotaro\\.github\\.io'));

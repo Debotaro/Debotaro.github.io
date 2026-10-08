@@ -1,104 +1,121 @@
-"""Build the résumé PDF, printable HTML and editable Markdown from confirmed facts."""
+"""Build the branded PDF, responsive HTML and editable resume from confirmed facts."""
 from pathlib import Path
+import argparse
 import json
-import html
-from reportlab.lib import colors
-from reportlab.lib.enums import TA_LEFT
-from reportlab.lib.pagesizes import A4
-from reportlab.lib.styles import ParagraphStyle
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, KeepTogether
+import re
+
+from resume_html import build_html
+from resume_layout import build_pdf
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA = json.loads((ROOT / "career/resume.json").read_text(encoding="utf-8-sig"))
-OUT = ROOT / "downloads"
-OUT.mkdir(exist_ok=True)
-FONT_ROOT = Path("C:/Windows/Fonts")
-if (FONT_ROOT / "arial.ttf").exists():
-    pdfmetrics.registerFont(TTFont("ResumeSans", str(FONT_ROOT / "arial.ttf")))
-    pdfmetrics.registerFont(TTFont("ResumeSansBold", str(FONT_ROOT / "arialbd.ttf")))
-    pdfmetrics.registerFontFamily("ResumeSans", normal="ResumeSans", bold="ResumeSansBold")
-    FONT, BOLD = "ResumeSans", "ResumeSansBold"
-else:
-    FONT, BOLD = "Helvetica", "Helvetica-Bold"
 
-def esc(value):
-    return html.escape(str(value), quote=True)
 
-def link(label, url):
-    return f'<link href="{esc(url)}" color="#000000">{esc(label)}</link>'
+def joined(*values):
+    return " | ".join(str(value) for value in values if value)
 
-styles = {
-    "name": ParagraphStyle("Name", fontName=BOLD, fontSize=24, leading=29, textColor=colors.black, spaceAfter=3),
-    "role": ParagraphStyle("Role", fontName=FONT, fontSize=12, leading=17, textColor=colors.black, spaceAfter=8),
-    "contact": ParagraphStyle("Contact", fontName=FONT, fontSize=9, leading=13, textColor=colors.black, spaceAfter=2),
-    "section": ParagraphStyle("Section", fontName=BOLD, fontSize=11, leading=15, textColor=colors.black, spaceBefore=14, spaceAfter=6, keepWithNext=True),
-    "body": ParagraphStyle("Body", fontName=FONT, fontSize=10, leading=14, textColor=colors.black, spaceAfter=4),
-    "project": ParagraphStyle("Project", fontName=BOLD, fontSize=10.7, leading=15, textColor=colors.black, spaceAfter=2, keepWithNext=True),
-    "meta": ParagraphStyle("Meta", fontName=FONT, fontSize=9, leading=13, textColor=colors.HexColor("#303030"), spaceAfter=4, keepWithNext=True),
-    "bullet": ParagraphStyle("Bullet", fontName=FONT, fontSize=10, leading=14, leftIndent=11, firstLineIndent=-9, spaceAfter=3),
-    "note": ParagraphStyle("Note", fontName=FONT, fontSize=9.4, leading=13, textColor=colors.HexColor("#303030"), spaceAfter=5),
-}
 
-story = []
-def p(text, style="body"):
-    return Paragraph(text, styles[style])
-def heading(text):
-    story.append(p(esc(text), "section"))
+def md_link(label, url):
+    label = str(label).replace("[", "\\[").replace("]", "\\]")
+    return f"[{label}]({url})" if url else label
 
-story.extend([
-    p(esc(DATA["name"]), "name"),
-    p(f'{esc(DATA["title"])} | {esc(DATA["alias"])}', "role"),
-    p(link(DATA["email"], "mailto:" + DATA["email"]) + " | " + link("debotaro.github.io", DATA["portfolio"]), "contact"),
-    p(" | ".join(link(item["label"], item["url"]) for item in DATA["profiles"]), "contact"),
-])
-heading("Profile")
-story.append(p(esc(DATA["summary"])))
-heading("Technical skills")
-for item in DATA["skills"]:
-    story.append(p(f'<b>{esc(item["label"])}</b>  {esc(item["text"])}'))
 
-for section, title in [("experience", "Experience"), ("education", "Education"), ("certifications", "Certifications")]:
-    if DATA.get(section):
-        heading(title)
-        for item in DATA[section]:
-            story.append(p(esc(item)))
+def build_markdown(data):
+    """Keep a plain-text, linear reading order alongside the designed document."""
+    lines = [f'# {data["name"]}', joined(data["title"], data.get("alias"))]
+    contact = []
+    if data.get("location"):
+        contact.append(data["location"])
+    if data.get("phone"):
+        contact.append(md_link(data["phone"], "tel:" + re.sub(r"[^+\d]", "", data["phone"])))
+    if data.get("email"):
+        contact.append(md_link(data["email"], "mailto:" + data["email"]))
+    lines.append(" | ".join(contact))
+    profiles = [md_link("Portfolio", data["portfolio"])] if data.get("portfolio") else []
+    profiles.extend(md_link(profile["label"], profile["url"]) for profile in data.get("profiles", []))
+    lines.append(" | ".join(profiles))
+    lines.extend(["## Profile", data.get("summary", "")])
+    if data.get("skills"):
+        lines.append("## " + data.get("skills_heading", "Technologies used in projects"))
+        for skill in data["skills"]:
+            lines.append(f'**{skill["label"]}:** {skill["text"]}' if isinstance(skill, dict) else str(skill))
+    for key, heading in (("experience", "Experience"), ("education", "Education")):
+        if not data.get(key):
+            continue
+        lines.append("## " + heading)
+        for item in data[key]:
+            if not isinstance(item, dict):
+                lines.append(str(item))
+                continue
+            if key == "experience":
+                name = " - ".join(str(item[k]) for k in ("title", "organization") if item.get(k))
+                meta = joined(item.get("dates"), item.get("location"))
+            else:
+                name = item.get("qualification", "")
+                meta = joined(item.get("institution"), item.get("dates"))
+            lines.extend([f"**{name}**", meta])
+            if item.get("detail"):
+                lines.append(item["detail"])
+            lines.extend("- " + str(text) for text in item.get("bullets", []))
+    certificates = [item for item in data.get("certifications", []) if not isinstance(item, dict) or item.get("selected") is not False]
+    if certificates:
+        lines.append("## " + data.get("certifications_heading", "Coursera credentials"))
+        for cert in certificates:
+            if isinstance(cert, dict):
+                lines.append(md_link(cert.get("name", ""), cert.get("url")) + " - " + joined(cert.get("issuer"), cert.get("date")))
+            else:
+                lines.append(str(cert))
+    if data.get("projects"):
+        lines.append("## Selected projects")
+        for project in data["projects"]:
+            lines.extend(["### " + project["name"], joined(project.get("stack"), md_link("View demo", project["url"]) if project.get("url") else "")])
+            lines.extend("- " + str(text) for text in project.get("bullets", []))
+        if data.get("additional"):
+            lines.append(data["additional"])
+    availability = [data[key] for key in ("process", "availability") if data.get(key)]
+    if availability:
+        lines.extend(["## " + data.get("process_heading", "Availability"), *availability])
+    path = ROOT / "career/RESUME.md"
+    path.write_text("\n\n".join(str(line) for line in lines if line) + "\n", encoding="utf-8")
+    return path
 
-heading("Selected projects")
-for project in DATA["projects"]:
-    block = [p(esc(project["name"]), "project"), p(esc(project["stack"]) + " | " + link("View demo", project["url"]), "meta")]
-    block.extend(p("- " + esc(text), "bullet") for text in project["bullets"])
-    block.append(Spacer(1, 7))
-    story.append(KeepTogether(block))
-story.append(p(esc(DATA["additional"]), "body"))
-heading("Development approach and availability")
-story.append(p(esc(DATA["process"]), "note"))
-story.append(p(esc(DATA["availability"]), "note"))
 
-pdf_path = OUT / "Deboraj-Sarkar-Resume.pdf"
-document = SimpleDocTemplate(str(pdf_path), pagesize=A4, leftMargin=43, rightMargin=43, topMargin=38, bottomMargin=38, title="Deboraj Sarkar Frontend Developer Resume", author="Deboraj Sarkar", subject="Frontend developer personal projects and skills")
-document.build(story)
+def build(data, output_dir):
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    pdf_path = build_pdf(data, output_dir)
+    html_path = build_html(data, output_dir)
+    markdown_path = build_markdown(data)
+    settings_path = output_dir / "PRINT_SETTINGS.txt"
+    settings_path.write_text(
+        "DEBOTARO RESUME - PRINT SETTINGS\n\n"
+        "Print the PDF directly for consistent embedded fonts and layout.\n"
+        "Paper: A4, portrait, one page per sheet.\n"
+        "Scale: Actual size / 100%.\n"
+        "Printer Properties / Preferences: choose High, Best or the printer's highest document quality.\n"
+        "Turn Draft / Economy / Toner Save mode off.\n"
+        "Select the paper type that matches the loaded paper; choose color for the branded design.\n"
+        "Keep normal PDF/vector printing; rasterize only if resolving a printer compatibility problem.\n\n"
+        "The PDF requests no print scaling in compatible readers. It cannot force driver quality,\n"
+        "resolution, paper type or ink settings, or override a recipient's Draft mode.\n"
+        "Do not print the PNG preview or a screenshot instead of the PDF.\n\n"
+        "For HTML/browser printing: A4, 100%, background graphics on, headers and footers off.\n\n"
+        "File specifications: exact A4, selectable vector text and line art, embedded TrueType fonts,\n"
+        "lossless compression and the original 1254px logo (about 2100 PPI at its 43pt PDF size).\n"
+        "This is a general-purpose color PDF; no PDF/X compliance or press-specific CMYK profile is claimed.\n\n"
+        "Printer quality guidance: https://support.hp.com/in-en/document/ish_2441805-2331028-16\n"
+        "PDF sizing guidance: https://helpx.adobe.com/acrobat/desktop/print-documents/set-up-and-print-pdfs/page-size.html\n",
+        encoding="utf-8")
+    print(f"Created {pdf_path}, {html_path}, {markdown_path} and {settings_path}")
 
-sections = [f'<section><h2>Profile</h2><p>{esc(DATA["summary"])}</p></section>', '<section><h2>Technical skills</h2>' + ''.join(f'<p><strong>{esc(item["label"])}</strong> {esc(item["text"])}</p>' for item in DATA["skills"]) + '</section>']
-for section, title in [("experience", "Experience"), ("education", "Education"), ("certifications", "Certifications")]:
-    if DATA.get(section):
-        sections.append(f'<section><h2>{title}</h2>' + ''.join(f'<p>{esc(item)}</p>' for item in DATA[section]) + '</section>')
-sections.append('<section><h2>Selected projects</h2>' + ''.join(f'<article><h3>{esc(project["name"])}</h3><p class="meta">{esc(project["stack"])} | <a href="{esc(project["url"])}">View demo</a></p><ul>' + ''.join(f'<li>{esc(text)}</li>' for text in project["bullets"]) + '</ul></article>' for project in DATA["projects"]) + f'<p>{esc(DATA["additional"])}</p></section>')
-sections.append(f'<section><h2>Development approach and availability</h2><p>{esc(DATA["process"])}</p><p>{esc(DATA["availability"])}</p></section>')
-html_path = OUT / "Deboraj-Sarkar-Resume.html"
-html_path.write_text(f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Deboraj Sarkar Frontend Developer Resume</title><style>
-*{{box-sizing:border-box}}body{{background:#ecefed;color:#111;margin:0;font:14px/1.5 Arial,sans-serif}}main{{background:#fff;max-width:800px;margin:35px auto;padding:45px 52px}}h1{{font-size:31px;line-height:1.2;margin:0 0 4px}}.role{{font-size:17px;margin:0 0 14px}}.links{{font-size:12px;margin:3px 0;overflow-wrap:anywhere}}h2{{font-size:15px;margin:23px 0 9px}}h3{{font-size:14px;margin:13px 0 3px}}p{{margin:0 0 7px}}a{{color:inherit}}.meta{{font-size:12px}}ul{{padding-left:18px;margin:7px 0 14px}}li{{margin-bottom:5px}}.toolbar{{max-width:800px;margin:20px auto;text-align:right;display:flex;justify-content:end;gap:18px;align-items:center;font-size:13px}}button{{font:inherit;padding:8px 16px;cursor:pointer;border:1px solid #555;background:white;border-radius:5px}}@page{{size:A4;margin:15mm}}@media(max-width:700px){{main{{margin:0;padding:30px 23px}}.toolbar{{padding:0 23px}}}}@media print{{body{{background:white;font-size:10pt}}main{{padding:0;margin:0;max-width:none}}.toolbar{{display:none}}h1{{font-size:24pt}}h2{{font-size:11pt;margin-top:14pt}}h3{{font-size:10.7pt}}.role{{font-size:12pt}}.links,.meta{{font-size:9pt}}article{{break-inside:avoid}}a{{text-decoration:none}}}}
-</style></head><body><div class="toolbar"><a href="Deboraj-Sarkar-Resume.pdf" download>Download PDF</a><button onclick="window.print()">Print résumé</button></div><main><header><h1>{esc(DATA["name"])}</h1><p class="role">{esc(DATA["title"])} | {esc(DATA["alias"])}</p><p class="links"><a href="mailto:{esc(DATA["email"])}">{esc(DATA["email"])}</a> | <a href="{esc(DATA["portfolio"])}">debotaro.github.io</a></p><p class="links">{' | '.join(f'<a href="{esc(item["url"])}">{esc(item["label"])}</a>' for item in DATA["profiles"])}</p></header>{''.join(sections)}</main></body></html>''', encoding="utf-8")
 
-markdown = [f'# {DATA["name"]}', f'{DATA["title"]} | {DATA["alias"]}', f'{DATA["email"]} | {DATA["portfolio"]}', ' | '.join(item["url"] for item in DATA["profiles"]), '\n## Profile', DATA["summary"], '\n## Technical skills']
-markdown.extend(f'**{item["label"]}:** {item["text"]}' for item in DATA["skills"])
-for section, title in [("experience", "Experience"), ("education", "Education"), ("certifications", "Certifications")]:
-    if DATA.get(section):
-        markdown.extend(['\n## ' + title, *DATA[section]])
-markdown.append('\n## Selected projects')
-for project in DATA["projects"]:
-    markdown.extend([f'\n### {project["name"]}', f'{project["stack"]} | [View demo]({project["url"]})', *['- ' + text for text in project["bullets"]]])
-markdown.extend([DATA["additional"], '\n## Development approach and availability', DATA["process"], DATA["availability"]])
-(ROOT / 'career/RESUME.md').write_text('\n\n'.join(markdown) + '\n', encoding='utf-8')
-print(f'Created {pdf_path.name}, {html_path.name} and career/RESUME.md')
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output-dir", type=Path, default=ROOT / "output/pdf",
+                        help="Directory for the generated PDF and HTML (default: output/pdf)")
+    args = parser.parse_args()
+    data = json.loads((ROOT / "career/resume.json").read_text(encoding="utf-8-sig"))
+    build(data, args.output_dir)
+
+
+if __name__ == "__main__":
+    main()

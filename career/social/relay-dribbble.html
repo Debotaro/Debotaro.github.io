@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RELAY OS — Design reviews, in context.</title>
+  <style>
+    :root {
+      --paper: #eeece5;
+      --forest: #29392f;
+      --muted: #697166;
+      --rose: #d9b8a9;
+      --line: #cacdc0;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 2000px; height: 1500px; overflow: hidden; }
+    body { font-family: Arial, Helvetica, sans-serif; color: var(--forest); background: var(--paper); }
+    .shot { position: relative; width: 2000px; height: 1500px; overflow: hidden; }
+    .color-field { position: absolute; width: 360px; height: 1025px; top: 370px; right: 0; background: var(--rose); }
+    .eyebrow { position: absolute; top: 64px; left: 82px; margin: 0; font-size: 18px; font-weight: 700; letter-spacing: 3.3px; }
+    .byline { position: absolute; top: 61px; right: 82px; font-size: 21px; font-weight: 700; letter-spacing: -.5px; }
+    .byline span { padding-left: 14px; font-weight: 400; font-size: 16px; letter-spacing: .4px; }
+    h1 { position: absolute; top: 128px; left: 77px; margin: 0; font: 108px/1.08 Georgia, 'Times New Roman', serif; font-weight: 400; letter-spacing: -6px; }
+    h1 em { font-weight: 400; }
+    .intro { position: absolute; top: 276px; left: 82px; margin: 0; color: var(--muted); font-size: 24px; line-height: 1.45; letter-spacing: -.2px; }
+    .intro span { padding: 0 13px; color: #aab09e; }
+    .overview { position: absolute; top: 372px; left: 82px; width: 1440px; height: 1000px; margin: 0; border: 1px solid #c3c6ba; background: #f3f1eb; border-radius: 10px; overflow: hidden; box-shadow: 0 28px 55px -28px #29392f4a; }
+    .overview img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .detail-label { position: absolute; top: 515px; left: 1556px; margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 2.5px; }
+    .detail-title { position: absolute; top: 552px; left: 1553px; margin: 0; font: 42px/1.08 Georgia, 'Times New Roman', serif; letter-spacing: -1.7px; }
+    .detail { position: absolute; top: 685px; left: 1455px; width: 462px; height: 527px; margin: 0; border: 1px solid #c7c9bf; border-radius: 8px; overflow: hidden; background: #fffefa; box-shadow: 0 26px 70px -25px #29392f6b; }
+    /* A close-up of the existing review screenshot, without repainting its UI. */
+    .detail img { position: absolute; left: -1156.4px; top: -479.08px; display: block; width: 1699.2px; height: 1180px; max-width: none; }
+    .detail-caption { position: absolute; top: 1239px; left: 1556px; margin: 0; font-size: 17px; line-height: 1.55; }
+    .detail-caption span { display: block; }
+    .footer { position: absolute; bottom: 51px; left: 82px; right: 82px; display: flex; align-items: baseline; justify-content: space-between; color: var(--muted); font-size: 17px; letter-spacing: .2px; }
+    .footer strong { color: var(--forest); font-size: 17px; font-weight: 400; }
+  </style>
+</head>
+<body>
+  <main class="shot" aria-label="RELAY OS creative review studio presentation">
+    <div class="color-field" aria-hidden="true"></div>
+    <p class="eyebrow">RELAY OS / CREATIVE REVIEW STUDIO</p>
+    <div class="byline">Debotaro <span>Deboraj Sarkar</span></div>
+    <h1>Design reviews, <em>in context.</em></h1>
+    <p class="intro">The work at the center.<span>/</span>The conversation right beside it.</p>
+    <figure class="overview">
+      <img src="../../previews/relay.png" alt="Actual RELAY OS overview showing the Forma design and review brief">
+    </figure>
+    <p class="detail-label">IN THE REVIEW ROOM</p>
+    <p class="detail-title">Feedback stays<br>with the work.</p>
+    <figure class="detail">
+      <img src="../../previews/relay-review.png" alt="Detail from the actual design review screen with feedback and Create task actions">
+    </figure>
+    <p class="detail-caption"><span>Pinned feedback.</span><span>Clear next steps.</span></p>
+    <footer class="footer"><span>Personal concept / AI-assisted implementation</span><strong>debotaro.github.io/relay-os/</strong></footer>
+  </main>
+</body>
+</html>

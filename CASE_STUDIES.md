@@ -1,8 +1,8 @@
 # Debotaro — Selected frontend work
 
-Seven independent demos plus the portfolio explore responsive interfaces, useful interactions and distinct visual identities. Each is a **personal concept project with AI-assisted development**. Deboraj Sarkar (Debotaro) provided project direction, requirements and personalisation; Codex assisted with implementation and iteration. Operational and business demonstrations use sample data; NOVA additionally reads live public GitHub repositories/milestones, and ATLAS reads live public GitHub issues. RELAY adds a browser-local creative handoff workflow and optional Supabase backend source requiring separate setup. Project results describe implemented behaviour and documented validation.
+Seven independent demos plus the portfolio explore responsive interfaces, useful interactions and distinct visual identities. Each is a **personal concept project with AI-assisted implementation**. Deboraj Sarkar (Debotaro) directs the visual work, reviews generated interfaces, requests revisions and makes the final decisions. Codex performs the implementation and supports iteration. Operational and business demonstrations use sample data; NOVA additionally reads live public GitHub repositories/milestones, and ATLAS reads live public GitHub issues. RELAY adds a browser-local creative handoff workflow and optional Supabase backend source requiring separate setup. Project results describe implemented behaviour and documented validation; they do not imply independent coding or test authorship.
 
-**Role across the collection:** Project direction and AI-assisted frontend development.
+**Role across the collection:** Visual direction, interface review and iteration; AI-assisted implementation.
 
 ## 01 / Debotaro Portfolio
 
@@ -16,7 +16,7 @@ Seven independent demos plus the portfolio explore responsive interfaces, useful
 
 **Evidence.** Desktop/mobile Chromium checks cover identity, filters, local demo/source links, keyboard dialogs, mobile menu behavior, actual clipboard contents, résumé download and overflow.
 
-**Scope.** A frontend showcase with a project-based résumé. Contact uses an email link; there is no contact backend.
+**Scope.** A frontend showcase with a résumé covering confirmed education, paid design experience and selected projects. Contact uses an email link; there is no contact backend.
 
 ## 02 / RELAY OS
 

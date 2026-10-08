@@ -4,7 +4,7 @@
     "title": "Debotaro Portfolio",
     "category": "Personal portfolio",
     "summary": "A personal showcase that connects professional context, considered visual design and seven working project concepts.",
-    "role": "Project direction and AI-assisted frontend development",
+    "role": "Visual direction, interface review and iteration; AI-assisted implementation",
     "stack": [
       "HTML",
       "CSS",
@@ -26,7 +26,7 @@
     "title": "RELAY OS",
     "category": "Product system / Creative handoff",
     "summary": "An artwork-led review studio connecting visual project covers, design revisions, pinned feedback and approval decisions.",
-    "role": "Project direction and AI-assisted frontend development",
+    "role": "Visual direction, interface review and iteration; AI-assisted implementation",
     "stack": [
       "React",
       "TypeScript",
@@ -49,7 +49,7 @@
     "title": "NOVA OS",
     "category": "Product system / Personal planning",
     "summary": "A calm daily work canvas with an agenda, task-linked focus view, project notebooks and live GitHub milestone imports.",
-    "role": "Project direction and AI-assisted frontend development",
+    "role": "Visual direction, interface review and iteration; AI-assisted implementation",
     "stack": [
       "Next.js",
       "React",
@@ -72,7 +72,7 @@
     "title": "ATLAS Ops",
     "category": "Product system / Operations",
     "summary": "A technical operations console connecting sample financial signals, workload, regional coverage and an intervention queue.",
-    "role": "Project direction and AI-assisted frontend development",
+    "role": "Visual direction, interface review and iteration; AI-assisted implementation",
     "stack": [
       "React",
       "TypeScript",
@@ -95,7 +95,7 @@
     "title": "NILA Ledger",
     "category": "Product system",
     "summary": "A personal finance interface built around consistent transaction data, editable budgets and useful exports.",
-    "role": "Project direction and AI-assisted frontend development",
+    "role": "Visual direction, interface review and iteration; AI-assisted implementation",
     "stack": [
       "React",
       "TypeScript",
@@ -118,7 +118,7 @@
     "title": "AURA Reserve",
     "category": "Brand experience",
     "summary": "An atmospheric hospitality concept with a practical, validated stay enquiry journey.",
-    "role": "Project direction and AI-assisted frontend development",
+    "role": "Visual direction, interface review and iteration; AI-assisted implementation",
     "stack": [
       "HTML",
       "CSS",
@@ -141,7 +141,7 @@
     "title": "VANTA Atelier",
     "category": "Brand experience",
     "summary": "An editorial fashion concept with size selection, a persistent shopping bag and a complete demo checkout.",
-    "role": "Project direction and AI-assisted frontend development",
+    "role": "Visual direction, interface review and iteration; AI-assisted implementation",
     "stack": [
       "HTML",
       "CSS",
@@ -163,7 +163,7 @@
     "title": "RASA Experience",
     "category": "Brand experience",
     "summary": "A travel concept that turns destination discovery into a sample itinerary through a globe, quiz and downloadable journey plan.",
-    "role": "Project direction and AI-assisted frontend development",
+    "role": "Visual direction, interface review and iteration; AI-assisted implementation",
     "stack": [
       "HTML",
       "CSS",
