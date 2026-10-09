@@ -25,6 +25,15 @@ Deboraj, commercial users or production backend availability.
 
 ## Browser results
 
+The published quality release
+[`99699ca`](https://github.com/Debotaro/Debotaro.github.io/commit/99699ca8b9e127e2abd0130f858c0ebb3c6a8595)
+passed **497 checks**, with **eight intentional skips**, zero failures and zero
+flaky results across all five contexts on the Linux runner. The browser stage
+took 9.6 minutes; the build and deployment both succeeded in
+[Actions run 37911045013](https://github.com/Debotaro/Debotaro.github.io/actions/runs/37911045013).
+The permanent [coverage record](reports/BROWSER_COVERAGE.md) links the local and
+CI summaries, including the executed project names and individual outcomes.
+
 The complete local browser run passed **398 checks**, with **six intentional
 skips**, zero failures and zero flaky results in 4.7 minutes on 9 October. It
 covered desktop/mobile Chromium and desktop/mobile WebKit. After static output

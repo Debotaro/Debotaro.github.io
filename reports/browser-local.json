@@ -1,0 +1,1379 @@
+{
+  "schemaVersion": 1,
+  "title": "Local browser verification evidence - 9 October 2026",
+  "environment": {
+    "platform": "Windows",
+    "server": "Local production preview",
+    "baseURL": "http://localhost:4173",
+    "reducedMotion": "reduce"
+  },
+  "provenance": "Both runs tested local builds based on df12cbe254cbdfb40b35adffd9c8822d76d468bb plus working-tree changes. Those source changes were subsequently published as the stated commit; the runs were not clean checkouts of that commit.",
+  "outcomeDefinitions": {
+    "expected": "Attempt matched expectedStatus; these runs contain passed attempts.",
+    "skipped": "Intentionally skipped; not a pass.",
+    "unexpected": "Did not match expectedStatus.",
+    "flaky": "Passed only after a retry."
+  },
+  "coverageLimits": [
+    "The complete suite ran first in desktop/mobile Chromium and desktop/mobile WebKit. A scoped check then verified the final minified artifact.",
+    "Firefox was not executed locally. The separate all-five-project Linux CI run succeeded on 9 October 2026 with 497 passed, 8 intentional skips, 0 failed and 0 flaky; see reports/browser-ci.json and the linked GitHub Actions run.",
+    "Mobile projects use browser emulation. No physical phone or manual screen-reader pass is claimed.",
+    "Live external GitHub smoke checks are opt-in. Deterministic mocked GitHub API and persistence workflows are covered in the full suite.",
+    "Real clipboard permission grants are Chromium-specific; the two WebKit clipboard-write checks are intentionally skipped. Clipboard interaction is separately tested in each engine."
+  ],
+  "projects": [
+    {
+      "name": "desktop",
+      "browser": "Chromium",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "name": "mobile",
+      "browser": "Chromium",
+      "emulation": "iPhone 13"
+    },
+    {
+      "name": "firefox",
+      "browser": "Firefox",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "localStatus": "not executed"
+    },
+    {
+      "name": "webkit",
+      "browser": "WebKit",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "name": "mobile-webkit",
+      "browser": "WebKit",
+      "emulation": "iPhone 13"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "t001",
+      "file": "tests/accessibility.spec.ts",
+      "title": "Portfolio: accessible initial view, skip target and keyboard dialog lifecycle"
+    },
+    {
+      "id": "t002",
+      "file": "tests/accessibility.spec.ts",
+      "title": "NOVA: accessible initial view, skip target and keyboard dialog lifecycle"
+    },
+    {
+      "id": "t003",
+      "file": "tests/accessibility.spec.ts",
+      "title": "ATLAS: accessible initial view, skip target and keyboard dialog lifecycle"
+    },
+    {
+      "id": "t004",
+      "file": "tests/accessibility.spec.ts",
+      "title": "RELAY: accessible initial view, skip target and keyboard dialog lifecycle"
+    },
+    {
+      "id": "t005",
+      "file": "tests/accessibility.spec.ts",
+      "title": "NILA: accessible initial view, skip target and keyboard dialog lifecycle"
+    },
+    {
+      "id": "t006",
+      "file": "tests/accessibility.spec.ts",
+      "title": "AURA: accessible initial view, skip target and keyboard dialog lifecycle"
+    },
+    {
+      "id": "t007",
+      "file": "tests/accessibility.spec.ts",
+      "title": "VANTA: accessible initial view, skip target and keyboard dialog lifecycle"
+    },
+    {
+      "id": "t008",
+      "file": "tests/accessibility.spec.ts",
+      "title": "RASA: accessible initial view, skip target and keyboard dialog lifecycle"
+    },
+    {
+      "id": "t009",
+      "file": "tests/accessibility.spec.ts",
+      "title": "NOVA marketing preview and assistant use consecutive heading levels"
+    },
+    {
+      "id": "t010",
+      "file": "tests/accessibility.spec.ts",
+      "title": "NILA recent transaction table can receive keyboard focus for horizontal scrolling"
+    },
+    {
+      "id": "t011",
+      "file": "tests/accessibility.spec.ts",
+      "title": "NOVA dark workspace retains readable contrast and named controls"
+    },
+    {
+      "id": "t012",
+      "file": "tests/accessibility.spec.ts",
+      "title": "RELAY dark overview retains readable contrast and named priorities"
+    },
+    {
+      "id": "t013",
+      "file": "tests/atlas-api.spec.ts",
+      "title": "GitHub queue reads issues, excludes pull requests, imports once and retains its source"
+    },
+    {
+      "id": "t014",
+      "file": "tests/atlas-api.spec.ts",
+      "title": "GitHub queue announces loading, refreshes and searches the fetched page"
+    },
+    {
+      "id": "t015",
+      "file": "tests/atlas-api.spec.ts",
+      "title": "GitHub queue shows an honest empty page and validates repository input"
+    },
+    {
+      "id": "t016",
+      "file": "tests/atlas-api.spec.ts",
+      "title": "GitHub queue retries a failed request without changing the local workspace"
+    },
+    {
+      "id": "t017",
+      "file": "tests/atlas-api.spec.ts",
+      "title": "GitHub queue explains rate limits and rejects malformed API data"
+    },
+    {
+      "id": "t018",
+      "file": "tests/atlas-api.spec.ts",
+      "title": "GitHub queue handles network failures"
+    },
+    {
+      "id": "t019",
+      "file": "tests/atlas-api.spec.ts",
+      "title": "GitHub queue recognizes a secondary rate limit without a reset header"
+    },
+    {
+      "id": "t020",
+      "file": "tests/atlas-api.spec.ts",
+      "title": "GitHub queue times out a stalled request"
+    },
+    {
+      "id": "t021",
+      "file": "tests/atlas-api.spec.ts",
+      "title": "switching repositories ignores stale responses and keeps the current source"
+    },
+    {
+      "id": "t022",
+      "file": "tests/atlas-api.spec.ts",
+      "title": "live GitHub smoke: public repository and issue response render"
+    },
+    {
+      "id": "t023",
+      "file": "tests/nova-assistant-state.spec.ts",
+      "title": "delayed assistant creation preserves intervening tasks, status changes and messages"
+    },
+    {
+      "id": "t024",
+      "file": "tests/nova-assistant-state.spec.ts",
+      "title": "summary prompts keep the current task array and report current state without mutation"
+    },
+    {
+      "id": "t025",
+      "file": "tests/nova-assistant-state.spec.ts",
+      "title": "completion resolves the current task and does not revive a removed task"
+    },
+    {
+      "id": "t026",
+      "file": "tests/nova-assistant-state.spec.ts",
+      "title": "leaving the assistant cancels its pending command"
+    },
+    {
+      "id": "t027",
+      "file": "tests/nova-assistant-state.spec.ts",
+      "title": "clearing chat cancels a pending reply and allows the next command"
+    },
+    {
+      "id": "t028",
+      "file": "tests/nova-data.spec.ts",
+      "title": "legacy workspace validation preserves supported data and strips unknown fields"
+    },
+    {
+      "id": "t029",
+      "file": "tests/nova-data.spec.ts",
+      "title": "malformed stored records and dangling project references are rejected"
+    },
+    {
+      "id": "t030",
+      "file": "tests/nova-data.spec.ts",
+      "title": "storage parser bounds records and text before accepting untrusted data"
+    },
+    {
+      "id": "t031",
+      "file": "tests/nova-data.spec.ts",
+      "title": "repository and milestone imports preserve provenance and guard functional duplicates"
+    },
+    {
+      "id": "t032",
+      "file": "tests/nova-data.spec.ts",
+      "title": "milestone imports need the matching repository and safe canonical GitHub links"
+    },
+    {
+      "id": "t033",
+      "file": "tests/nova-data.spec.ts",
+      "title": "activity is immutable, bounded and idempotent for preallocated event metadata"
+    },
+    {
+      "id": "t034",
+      "file": "tests/nova-data.spec.ts",
+      "title": "repository reconciliation follows stable IDs and preserves local work across canonical renames"
+    },
+    {
+      "id": "t035",
+      "file": "tests/nova-github-api.spec.ts",
+      "title": "NOVA GitHub boundary starts parallel reads without credentials and constructs canonical links"
+    },
+    {
+      "id": "t036",
+      "file": "tests/nova-github-api.spec.ts",
+      "title": "NOVA GitHub boundary rejects invalid names and pre-cancelled requests before fetching"
+    },
+    {
+      "id": "t037",
+      "file": "tests/nova-github-api.spec.ts",
+      "title": "NOVA GitHub boundary rejects malformed identity, counts, dates and milestone collections"
+    },
+    {
+      "id": "t038",
+      "file": "tests/nova-github-api.spec.ts",
+      "title": "NOVA GitHub boundary accepts null dates, leap days and an empty first page"
+    },
+    {
+      "id": "t039",
+      "file": "tests/nova-github-api.spec.ts",
+      "title": "NOVA GitHub boundary explains primary, secondary and HTTP rate-limit errors"
+    },
+    {
+      "id": "t040",
+      "file": "tests/nova-github-api.spec.ts",
+      "title": "NOVA GitHub boundary reports malformed JSON and connection failures"
+    },
+    {
+      "id": "t041",
+      "file": "tests/nova-github-api.spec.ts",
+      "title": "NOVA GitHub boundary discards JSON bodies arriving after cancellation"
+    },
+    {
+      "id": "t042",
+      "file": "tests/nova-github-api.spec.ts",
+      "title": "NOVA GitHub boundary times out both parallel requests after the shared deadline"
+    },
+    {
+      "id": "t043",
+      "file": "tests/nova-github-api.spec.ts",
+      "title": "NOVA GitHub boundary aborts a remaining request when its companion fails"
+    },
+    {
+      "id": "t044",
+      "file": "tests/nova-github-workspace.spec.ts",
+      "title": "NOVA imports canonical GitHub sources once, survives reload and keeps local completion independent"
+    },
+    {
+      "id": "t045",
+      "file": "tests/nova-github-workspace.spec.ts",
+      "title": "NOVA importing a milestone first creates one linked project and one planning task atomically"
+    },
+    {
+      "id": "t046",
+      "file": "tests/nova-github-workspace.spec.ts",
+      "title": "NOVA announces loading, refreshes remote progress and searches only the fetched milestones"
+    },
+    {
+      "id": "t047",
+      "file": "tests/nova-github-workspace.spec.ts",
+      "title": "NOVA explains an empty milestone page, still imports the repository and validates input"
+    },
+    {
+      "id": "t048",
+      "file": "tests/nova-github-workspace.spec.ts",
+      "title": "NOVA retries a failed repository request without changing local projects or tasks"
+    },
+    {
+      "id": "t049",
+      "file": "tests/nova-github-workspace.spec.ts",
+      "title": "NOVA shows network and secondary rate-limit guidance while the local workspace remains usable"
+    },
+    {
+      "id": "t050",
+      "file": "tests/nova-github-workspace.spec.ts",
+      "title": "NOVA switching repositories discards the obsolete response and imports the current source"
+    },
+    {
+      "id": "t051",
+      "file": "tests/nova-github-workspace.spec.ts",
+      "title": "NOVA follows a canonical repository rename and imports new milestones into the existing local project"
+    },
+    {
+      "id": "t052",
+      "file": "tests/nova-github-workspace.spec.ts",
+      "title": "NOVA reports a rejected milestone import without leaving an orphaned local project"
+    },
+    {
+      "id": "t053",
+      "file": "tests/nova-github-workspace.spec.ts",
+      "title": "NOVA shows the timeout recovery UI when GitHub stalls past the shared deadline"
+    },
+    {
+      "id": "t054",
+      "file": "tests/nova-github-workspace.spec.ts",
+      "title": "NOVA safely recovers malformed saved data and can import into the restored workspace"
+    },
+    {
+      "id": "t055",
+      "file": "tests/nova-github-workspace.spec.ts",
+      "title": "NOVA explains unavailable browser storage and supports imports during the current session"
+    },
+    {
+      "id": "t056",
+      "file": "tests/nova-github-workspace.spec.ts",
+      "title": "NOVA supports a valid empty workspace without invalid metrics, dangling tasks or automation crashes"
+    },
+    {
+      "id": "t057",
+      "file": "tests/performance-delivery.spec.ts",
+      "title": "ATLAS defers chart code until the operational overview is opened"
+    },
+    {
+      "id": "t058",
+      "file": "tests/performance-delivery.spec.ts",
+      "title": "RASA loads its optional globe near the viewport and preserves destination controls when it fails"
+    },
+    {
+      "id": "t059",
+      "file": "tests/performance-delivery.spec.ts",
+      "title": "NOVA keeps its server-rendered headline visible through normal-motion hydration"
+    },
+    {
+      "id": "t060",
+      "file": "tests/personal-portfolio.spec.ts",
+      "title": "Personal portfolio presents the supplied identity and contacts, with its own project first"
+    },
+    {
+      "id": "t061",
+      "file": "tests/personal-portfolio.spec.ts",
+      "title": "Background, availability and verifiable credentials match the updated résumé"
+    },
+    {
+      "id": "t062",
+      "file": "tests/personal-portfolio.spec.ts",
+      "title": "Eight case studies expose their working details, demo scope and keyboard focus restoration"
+    },
+    {
+      "id": "t063",
+      "file": "tests/personal-portfolio.spec.ts",
+      "title": "Résumé download serves a real PDF and the printable résumé retains the supplied contacts"
+    },
+    {
+      "id": "t064",
+      "file": "tests/personal-portfolio.spec.ts",
+      "title": "Narrow-screen navigation, modal layout, reduced motion and copy-email work"
+    },
+    {
+      "id": "t065",
+      "file": "tests/personal-portfolio.spec.ts",
+      "title": "Copy email writes the real browser clipboard in Chromium"
+    },
+    {
+      "id": "t066",
+      "file": "tests/personal-portfolio.spec.ts",
+      "title": "Contact remains usable when clipboard access is denied"
+    },
+    {
+      "id": "t067",
+      "file": "tests/projects.spec.ts",
+      "title": "NOVA creates tasks, searches, updates tasks with the assistant and tests automation"
+    },
+    {
+      "id": "t068",
+      "file": "tests/projects.spec.ts",
+      "title": "ATLAS creates, moves, edits and filters a persisted task"
+    },
+    {
+      "id": "t069",
+      "file": "tests/projects.spec.ts",
+      "title": "NILA adds a transaction, exports the filtered data and edits a budget"
+    },
+    {
+      "id": "t070",
+      "file": "tests/projects.spec.ts",
+      "title": "Portfolio links all seven projects and category filters work"
+    },
+    {
+      "id": "t071",
+      "file": "tests/projects.spec.ts",
+      "title": "relay-os/ has no runtime errors or document overflow"
+    },
+    {
+      "id": "t072",
+      "file": "tests/projects.spec.ts",
+      "title": "nova-os/app/ has no runtime errors or document overflow"
+    },
+    {
+      "id": "t073",
+      "file": "tests/projects.spec.ts",
+      "title": "atlas-ops/#/overview has no runtime errors or document overflow"
+    },
+    {
+      "id": "t074",
+      "file": "tests/projects.spec.ts",
+      "title": "nila-ledger/#/dashboard has no runtime errors or document overflow"
+    },
+    {
+      "id": "t075",
+      "file": "tests/redesign.spec.ts",
+      "title": "NOVA focus planning persists across views and keeps long saved profiles usable"
+    },
+    {
+      "id": "t076",
+      "file": "tests/redesign.spec.ts",
+      "title": "ATLAS console filters, exports, saves chart targets and edits an intervention"
+    },
+    {
+      "id": "t077",
+      "file": "tests/redesign.spec.ts",
+      "title": "RELAY visual project covers open the correct uploaded artwork and approval revision"
+    },
+    {
+      "id": "t078",
+      "file": "tests/relay.spec.ts",
+      "title": "RELAY creates and edits a dated task, persists it and removes it cleanly"
+    },
+    {
+      "id": "t079",
+      "file": "tests/relay.spec.ts",
+      "title": "RELAY removes a project with its dependent task and leaves the other projects usable"
+    },
+    {
+      "id": "t080",
+      "file": "tests/relay.spec.ts",
+      "title": "RELAY converts a pinned comment to one linked task and preserves the link after reload"
+    },
+    {
+      "id": "t081",
+      "file": "tests/relay.spec.ts",
+      "title": "RELAY provides a keyboard path to image feedback and restores modal focus"
+    },
+    {
+      "id": "t082",
+      "file": "tests/relay.spec.ts",
+      "title": "RELAY command search opens with the keyboard, finds local work and closes accessibly"
+    },
+    {
+      "id": "t083",
+      "file": "tests/relay.spec.ts",
+      "title": "RELAY rejects unsafe and oversized design files without creating a revision"
+    },
+    {
+      "id": "t084",
+      "file": "tests/relay.spec.ts",
+      "title": "RELAY keeps image revisions and approval decisions separate through a client handoff"
+    },
+    {
+      "id": "t085",
+      "file": "tests/relay.spec.ts",
+      "title": "RELAY makes four demo roles explicit and restricts editing while allowing client feedback"
+    },
+    {
+      "id": "t086",
+      "file": "tests/relay.spec.ts",
+      "title": "RELAY recovers invalid saved data with a visible explanation and a usable sample workspace"
+    },
+    {
+      "id": "t087",
+      "file": "tests/relay.spec.ts",
+      "title": "RELAY keeps edits usable when persistence is unavailable and clearly labels session-only data"
+    },
+    {
+      "id": "t088",
+      "file": "tests/relay.spec.ts",
+      "title": "RELAY handles a valid empty workspace without invalid metrics or dangling tasks"
+    },
+    {
+      "id": "t089",
+      "file": "tests/relay.spec.ts",
+      "title": "RELAY renders every workspace route and modal at 320 pixels without runtime errors"
+    },
+    {
+      "id": "t090",
+      "file": "tests/static.spec.ts",
+      "title": "AURA enquiry validates a stay and completes a demo reservation"
+    },
+    {
+      "id": "t091",
+      "file": "tests/static.spec.ts",
+      "title": "AURA gallery supports keyboard navigation"
+    },
+    {
+      "id": "t092",
+      "file": "tests/static.spec.ts",
+      "title": "VANTA filters products and persists the bag through checkout"
+    },
+    {
+      "id": "t093",
+      "file": "tests/static.spec.ts",
+      "title": "RASA destination selection, quiz, itinerary and plan download work"
+    },
+    {
+      "id": "t094",
+      "file": "tests/static.spec.ts",
+      "title": "VANTA preserves keyboard focus on size and quantity controls"
+    },
+    {
+      "id": "t095",
+      "file": "tests/static.spec.ts",
+      "title": "Essential experiences work when optional animation and WebGL CDN is unavailable"
+    },
+    {
+      "id": "t096",
+      "file": "tests/static.spec.ts",
+      "title": "aura renders without runtime errors or document overflow"
+    },
+    {
+      "id": "t097",
+      "file": "tests/static.spec.ts",
+      "title": "vanta renders without runtime errors or document overflow"
+    },
+    {
+      "id": "t098",
+      "file": "tests/static.spec.ts",
+      "title": "rasa renders without runtime errors or document overflow"
+    },
+    {
+      "id": "t099",
+      "file": "tests/storage-validation.spec.ts",
+      "title": "ATLAS recovers from malformed nested storage without replacing it until an intentional edit"
+    },
+    {
+      "id": "t100",
+      "file": "tests/storage-validation.spec.ts",
+      "title": "ATLAS retains customised version-1 state and canonical imported source across reload"
+    },
+    {
+      "id": "t101",
+      "file": "tests/storage-validation.spec.ts",
+      "title": "ATLAS editors keep email and date values inside the reloadable storage bounds"
+    }
+  ],
+  "runs": [
+    {
+      "id": "full-first-pass",
+      "scope": "Complete suite in four local browser contexts, before the final minified artifact.",
+      "stats": {
+        "startTime": "2026-10-09T08:50:34.642Z",
+        "duration": 280236.38,
+        "expected": 398,
+        "skipped": 6,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "runnerErrorCount": 0,
+      "artifact": {
+        "baseCommit": "df12cbe254cbdfb40b35adffd9c8822d76d468bb",
+        "sourceDirty": true,
+        "publishedAsCommit": "99699ca8b9e127e2abd0130f858c0ebb3c6a8595",
+        "buildFingerprint": {
+          "algorithm": "SHA-256 of sorted relative path + NUL + file SHA-256 + NUL for every served file",
+          "sha256": "fc7212d1a6212ce07d0eab0db0e9c75e66638b5500e39441ab3f841bf6e17ff6",
+          "files": 164,
+          "bytes": 19918567
+        },
+        "fingerprintEvidence": "reports/performance/after-first-pass.json"
+      },
+      "projectsExecuted": ["desktop", "mobile", "webkit", "mobile-webkit"],
+      "perProject": {
+        "desktop": {
+          "passed": 100,
+          "skipped": 1,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "mobile": {
+          "passed": 100,
+          "skipped": 1,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "webkit": {
+          "passed": 99,
+          "skipped": 2,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "mobile-webkit": {
+          "passed": 99,
+          "skipped": 2,
+          "unexpected": 0,
+          "flaky": 0
+        }
+      },
+      "perFile": {
+        "tests/accessibility.spec.ts": {
+          "passed": 48,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "tests/atlas-api.spec.ts": {
+          "passed": 36,
+          "skipped": 4,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "tests/nova-assistant-state.spec.ts": {
+          "passed": 20,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "tests/nova-data.spec.ts": {
+          "passed": 28,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "tests/nova-github-api.spec.ts": {
+          "passed": 36,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "tests/nova-github-workspace.spec.ts": {
+          "passed": 52,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "tests/performance-delivery.spec.ts": {
+          "passed": 12,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "tests/personal-portfolio.spec.ts": {
+          "passed": 26,
+          "skipped": 2,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "tests/projects.spec.ts": {
+          "passed": 32,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "tests/redesign.spec.ts": {
+          "passed": 12,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "tests/relay.spec.ts": {
+          "passed": 48,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "tests/static.spec.ts": {
+          "passed": 36,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "tests/storage-validation.spec.ts": {
+          "passed": 12,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        }
+      },
+      "intentionalSkips": [
+        {
+          "testCase": "t022",
+          "project": "desktop",
+          "reason": "Opt-in live check: ATLAS_LIVE_SMOKE=1; external API availability is not a deterministic CI assertion."
+        },
+        {
+          "testCase": "t022",
+          "project": "mobile",
+          "reason": "Opt-in live check: ATLAS_LIVE_SMOKE=1; external API availability is not a deterministic CI assertion."
+        },
+        {
+          "testCase": "t022",
+          "project": "webkit",
+          "reason": "Opt-in live check: ATLAS_LIVE_SMOKE=1; external API availability is not a deterministic CI assertion."
+        },
+        {
+          "testCase": "t022",
+          "project": "mobile-webkit",
+          "reason": "Opt-in live check: ATLAS_LIVE_SMOKE=1; external API availability is not a deterministic CI assertion."
+        },
+        {
+          "testCase": "t065",
+          "project": "webkit",
+          "reason": "Clipboard permission grants are Chromium-specific; interaction is covered in every engine."
+        },
+        {
+          "testCase": "t065",
+          "project": "mobile-webkit",
+          "reason": "Clipboard permission grants are Chromium-specific; interaction is covered in every engine."
+        }
+      ],
+      "executions": {
+        "columns": ["testCase", "project", "outcome", "expectedStatus", "attemptStatus", "startTime", "durationMs", "retry"],
+        "rows": [
+          ["t001", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:36.562Z", 2046, 0],
+          ["t002", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:36.561Z", 2254, 0],
+          ["t003", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:36.562Z", 7255, 0],
+          ["t004", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:39.353Z", 4769, 0],
+          ["t005", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:39.559Z", 4801, 0],
+          ["t006", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:44.133Z", 3601, 0],
+          ["t007", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:44.371Z", 2977, 0],
+          ["t008", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:44.561Z", 2936, 0],
+          ["t009", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:47.357Z", 2292, 0],
+          ["t010", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:47.512Z", 2685, 0],
+          ["t011", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:47.744Z", 1488, 0],
+          ["t012", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:49.241Z", 2439, 0],
+          ["t001", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:18.405Z", 1835, 0],
+          ["t002", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:18.938Z", 1823, 0],
+          ["t003", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:20.328Z", 3572, 0],
+          ["t004", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:20.882Z", 2901, 0],
+          ["t005", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:20.856Z", 3580, 0],
+          ["t006", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:23.863Z", 3874, 0],
+          ["t007", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:23.908Z", 3284, 0],
+          ["t008", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:24.442Z", 3340, 0],
+          ["t009", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:27.201Z", 2252, 0],
+          ["t010", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:27.747Z", 2556, 0],
+          ["t011", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:27.791Z", 1478, 0],
+          ["t012", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:29.278Z", 2490, 0],
+          ["t001", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:00.213Z", 6773, 0],
+          ["t002", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:00.449Z", 8740, 0],
+          ["t003", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:02.063Z", 7665, 0],
+          ["t004", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:08.057Z", 8109, 0],
+          ["t005", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:09.782Z", 8774, 0],
+          ["t006", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:10.001Z", 9002, 0],
+          ["t007", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:16.175Z", 7943, 0],
+          ["t008", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:18.576Z", 7664, 0],
+          ["t009", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:19.012Z", 6498, 0],
+          ["t010", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:24.127Z", 5277, 0],
+          ["t011", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:25.519Z", 4010, 0],
+          ["t012", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:26.252Z", 4608, 0],
+          ["t001", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:53:48.176Z", 2620, 0],
+          ["t002", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:53:48.800Z", 2655, 0],
+          ["t003", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:53:50.863Z", 4873, 0],
+          ["t004", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:53:51.526Z", 4420, 0],
+          ["t005", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:53:55.743Z", 4978, 0],
+          ["t006", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:53:55.957Z", 4620, 0],
+          ["t007", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:00.592Z", 4561, 0],
+          ["t008", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:00.734Z", 4610, 0],
+          ["t009", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:02.157Z", 3236, 0],
+          ["t010", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:05.164Z", 3208, 0],
+          ["t011", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:05.366Z", 2183, 0],
+          ["t012", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:05.458Z", 2829, 0],
+          ["t013", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:49.664Z", 1170, 0],
+          ["t014", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:50.219Z", 936, 0],
+          ["t015", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:50.847Z", 1155, 0],
+          ["t016", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:51.163Z", 1150, 0],
+          ["t017", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:51.698Z", 1124, 0],
+          ["t018", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:52.011Z", 1015, 0],
+          ["t019", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:52.322Z", 1063, 0],
+          ["t020", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:52.831Z", 1002, 0],
+          ["t021", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:53.036Z", 968, 0],
+          ["t022", "desktop", "skipped", "skipped", "skipped", "2026-10-09T08:50:53.395Z", 98, 0],
+          ["t013", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:29.478Z", 1236, 0],
+          ["t014", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:30.338Z", 1081, 0],
+          ["t015", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:30.724Z", 1063, 0],
+          ["t016", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:31.428Z", 1006, 0],
+          ["t017", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:31.787Z", 975, 0],
+          ["t018", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:31.796Z", 998, 0],
+          ["t019", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:32.443Z", 1029, 0],
+          ["t020", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:32.772Z", 1027, 0],
+          ["t021", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:32.804Z", 1028, 0],
+          ["t022", "mobile", "skipped", "skipped", "skipped", "2026-10-09T08:51:33.480Z", 131, 0],
+          ["t013", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:29.436Z", 3647, 0],
+          ["t014", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:29.552Z", 1940, 0],
+          ["t015", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:30.891Z", 1290, 0],
+          ["t016", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:31.503Z", 1324, 0],
+          ["t017", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:32.192Z", 1025, 0],
+          ["t018", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:32.836Z", 1443, 0],
+          ["t019", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:33.093Z", 1523, 0],
+          ["t020", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:33.226Z", 1125, 0],
+          ["t021", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:34.293Z", 1503, 0],
+          ["t022", "webkit", "skipped", "skipped", "skipped", "2026-10-09T08:52:34.370Z", 231, 0],
+          ["t013", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:07.566Z", 2300, 0],
+          ["t014", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:08.321Z", 1469, 0],
+          ["t015", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:08.417Z", 1348, 0],
+          ["t016", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:09.774Z", 1099, 0],
+          ["t017", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:09.799Z", 1356, 0],
+          ["t018", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:09.874Z", 1363, 0],
+          ["t019", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:10.887Z", 1263, 0],
+          ["t020", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:11.164Z", 1388, 0],
+          ["t021", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:11.252Z", 1372, 0],
+          ["t022", "mobile-webkit", "skipped", "skipped", "skipped", "2026-10-09T08:54:12.163Z", 204, 0],
+          ["t023", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:53.766Z", 122, 0],
+          ["t024", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:54.105Z", 135, 0],
+          ["t025", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:53.896Z", 127, 0],
+          ["t026", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:54.273Z", 610, 0],
+          ["t027", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:54.031Z", 635, 0],
+          ["t023", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:33.895Z", 174, 0],
+          ["t024", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:34.071Z", 185, 0],
+          ["t025", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:34.119Z", 155, 0],
+          ["t026", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:34.079Z", 717, 0],
+          ["t027", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:34.267Z", 629, 0],
+          ["t023", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:34.855Z", 419, 0],
+          ["t024", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:34.863Z", 364, 0],
+          ["t025", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:35.241Z", 464, 0],
+          ["t026", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:35.286Z", 2314, 0],
+          ["t027", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:35.712Z", 2761, 0],
+          ["t023", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:12.633Z", 242, 0],
+          ["t024", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:12.846Z", 280, 0],
+          ["t025", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:12.913Z", 222, 0],
+          ["t026", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:12.886Z", 2406, 0],
+          ["t027", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:13.144Z", 2249, 0],
+          ["t028", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:54.306Z", 132, 0],
+          ["t029", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:54.446Z", 143, 0],
+          ["t030", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:54.598Z", 122, 0],
+          ["t031", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:54.743Z", 148, 0],
+          ["t032", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:54.729Z", 145, 0],
+          ["t033", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:54.883Z", 157, 0],
+          ["t034", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:54.946Z", 140, 0],
+          ["t028", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:34.333Z", 170, 0],
+          ["t029", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:34.514Z", 180, 0],
+          ["t030", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:34.704Z", 171, 0],
+          ["t031", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:34.872Z", 172, 0],
+          ["t032", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:34.884Z", 159, 0],
+          ["t033", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:34.969Z", 187, 0],
+          ["t034", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:35.057Z", 164, 0],
+          ["t028", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:36.088Z", 357, 0],
+          ["t029", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:36.456Z", 424, 0],
+          ["t030", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:36.890Z", 371, 0],
+          ["t031", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:37.270Z", 463, 0],
+          ["t032", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:37.673Z", 373, 0],
+          ["t033", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:37.743Z", 482, 0],
+          ["t034", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:38.055Z", 470, 0],
+          ["t028", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:13.219Z", 234, 0],
+          ["t029", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:13.464Z", 248, 0],
+          ["t030", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:13.727Z", 264, 0],
+          ["t031", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:13.999Z", 240, 0],
+          ["t032", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:14.254Z", 285, 0],
+          ["t033", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:14.555Z", 253, 0],
+          ["t034", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:14.816Z", 229, 0],
+          ["t035", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:54.933Z", 137, 0],
+          ["t036", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:55.091Z", 132, 0],
+          ["t037", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:55.078Z", 127, 0],
+          ["t038", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:55.139Z", 129, 0],
+          ["t039", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:55.214Z", 142, 0],
+          ["t040", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:55.232Z", 125, 0],
+          ["t041", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:55.280Z", 124, 0],
+          ["t042", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:55.365Z", 142, 0],
+          ["t043", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:55.366Z", 123, 0],
+          ["t035", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:35.107Z", 169, 0],
+          ["t036", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:35.209Z", 183, 0],
+          ["t037", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:35.281Z", 184, 0],
+          ["t038", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:35.290Z", 173, 0],
+          ["t039", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:35.406Z", 174, 0],
+          ["t040", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:35.472Z", 158, 0],
+          ["t041", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:35.474Z", 169, 0],
+          ["t042", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:35.590Z", 185, 0],
+          ["t043", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:35.639Z", 167, 0],
+          ["t035", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:38.277Z", 404, 0],
+          ["t036", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:38.546Z", 439, 0],
+          ["t037", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:38.576Z", 474, 0],
+          ["t038", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:38.692Z", 381, 0],
+          ["t039", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:39.001Z", 513, 0],
+          ["t040", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:39.066Z", 439, 0],
+          ["t041", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:39.085Z", 408, 0],
+          ["t042", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:39.502Z", 619, 0],
+          ["t043", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:39.514Z", 540, 0],
+          ["t035", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:15.110Z", 237, 0],
+          ["t036", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:15.362Z", 319, 0],
+          ["t037", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:15.355Z", 339, 0],
+          ["t038", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:15.460Z", 318, 0],
+          ["t039", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:15.690Z", 257, 0],
+          ["t040", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:15.703Z", 271, 0],
+          ["t041", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:15.788Z", 244, 0],
+          ["t042", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:15.957Z", 324, 0],
+          ["t043", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:15.986Z", 311, 0],
+          ["t044", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:55.428Z", 827, 0],
+          ["t045", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:55.524Z", 443, 0],
+          ["t046", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:55.539Z", 441, 0],
+          ["t047", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:55.976Z", 456, 0],
+          ["t048", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:55.988Z", 366, 0],
+          ["t049", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:56.266Z", 366, 0],
+          ["t050", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:56.362Z", 397, 0],
+          ["t051", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:56.442Z", 679, 0],
+          ["t052", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:56.641Z", 418, 0],
+          ["t053", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:56.768Z", 296, 0],
+          ["t054", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:57.069Z", 345, 0],
+          ["t055", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:57.076Z", 462, 0],
+          ["t056", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:57.131Z", 698, 0],
+          ["t044", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:35.677Z", 810, 0],
+          ["t045", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:35.795Z", 523, 0],
+          ["t046", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:35.834Z", 579, 0],
+          ["t047", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:36.327Z", 481, 0],
+          ["t048", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:36.422Z", 477, 0],
+          ["t049", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:36.497Z", 419, 0],
+          ["t050", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:36.819Z", 458, 0],
+          ["t051", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:36.907Z", 828, 0],
+          ["t052", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:36.925Z", 416, 0],
+          ["t053", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:37.285Z", 322, 0],
+          ["t054", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:37.350Z", 414, 0],
+          ["t055", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:37.615Z", 514, 0],
+          ["t056", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:37.745Z", 770, 0],
+          ["t044", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:39.540Z", 4245, 0],
+          ["t045", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:40.090Z", 1757, 0],
+          ["t046", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:40.154Z", 2021, 0],
+          ["t047", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:41.856Z", 2115, 0],
+          ["t048", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:42.188Z", 1495, 0],
+          ["t049", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:43.697Z", 1685, 0],
+          ["t050", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:43.802Z", 1699, 0],
+          ["t051", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:43.980Z", 2921, 0],
+          ["t052", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:45.394Z", 1423, 0],
+          ["t053", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:45.511Z", 1015, 0],
+          ["t054", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:46.536Z", 1456, 0],
+          ["t055", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:46.827Z", 1978, 0],
+          ["t056", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:46.913Z", 2667, 0],
+          ["t044", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:16.054Z", 2898, 0],
+          ["t045", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:16.322Z", 1386, 0],
+          ["t046", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:16.322Z", 1412, 0],
+          ["t047", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:17.719Z", 1495, 0],
+          ["t048", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:17.745Z", 1105, 0],
+          ["t049", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:18.861Z", 1395, 0],
+          ["t050", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:18.961Z", 1254, 0],
+          ["t051", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:19.225Z", 2377, 0],
+          ["t052", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:20.225Z", 1136, 0],
+          ["t053", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:20.264Z", 646, 0],
+          ["t054", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:20.922Z", 1049, 0],
+          ["t055", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:21.374Z", 1488, 0],
+          ["t056", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:21.614Z", 2353, 0],
+          ["t057", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:57.432Z", 1958, 0],
+          ["t058", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:57.558Z", 1963, 0],
+          ["t059", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:57.851Z", 814, 0],
+          ["t057", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:37.781Z", 1997, 0],
+          ["t058", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:38.147Z", 1890, 0],
+          ["t059", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:38.529Z", 840, 0],
+          ["t057", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:48.022Z", 2665, 0],
+          ["t058", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:48.823Z", 2756, 0],
+          ["t059", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:49.611Z", 1729, 0],
+          ["t057", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:21.994Z", 2507, 0],
+          ["t058", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:22.879Z", 2376, 0],
+          ["t059", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:23.996Z", 1438, 0],
+          ["t060", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:58.689Z", 1358, 0],
+          ["t061", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:59.417Z", 547, 0],
+          ["t062", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:59.538Z", 1518, 0],
+          ["t063", "desktop", "expected", "passed", "passed", "2026-10-09T08:50:59.974Z", 381, 0],
+          ["t064", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:00.056Z", 1094, 0],
+          ["t065", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:00.365Z", 389, 0],
+          ["t066", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:00.763Z", 296, 0],
+          ["t060", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:39.391Z", 1565, 0],
+          ["t061", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:39.802Z", 1271, 0],
+          ["t062", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:40.054Z", 1577, 0],
+          ["t063", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:40.963Z", 454, 0],
+          ["t064", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:41.082Z", 1385, 0],
+          ["t065", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:41.429Z", 538, 0],
+          ["t066", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:41.641Z", 438, 0],
+          ["t060", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:50.717Z", 4554, 0],
+          ["t061", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:51.365Z", 1696, 0],
+          ["t062", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:51.596Z", 7705, 0],
+          ["t063", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:53.071Z", 1642, 0],
+          ["t064", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:54.722Z", 2400, 0],
+          ["t065", "webkit", "skipped", "skipped", "skipped", "2026-10-09T08:52:55.286Z", 253, 0],
+          ["t066", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:55.547Z", 1309, 0],
+          ["t060", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:24.514Z", 4005, 0],
+          ["t061", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:25.273Z", 2354, 0],
+          ["t062", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:25.460Z", 5952, 0],
+          ["t063", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:27.638Z", 1398, 0],
+          ["t064", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:28.528Z", 3814, 0],
+          ["t065", "mobile-webkit", "skipped", "skipped", "skipped", "2026-10-09T08:54:29.046Z", 203, 0],
+          ["t066", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:29.262Z", 1337, 0],
+          ["t067", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:01.071Z", 1648, 0],
+          ["t068", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:01.072Z", 1136, 0],
+          ["t069", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:01.168Z", 1272, 0],
+          ["t070", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:02.217Z", 481, 0],
+          ["t071", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:02.450Z", 1551, 0],
+          ["t072", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:02.706Z", 829, 0],
+          ["t073", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:02.728Z", 1741, 0],
+          ["t074", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:03.544Z", 1487, 0],
+          ["t067", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:41.989Z", 1603, 0],
+          ["t068", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:42.095Z", 1082, 0],
+          ["t069", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:42.496Z", 1254, 0],
+          ["t070", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:43.186Z", 585, 0],
+          ["t071", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:43.604Z", 1643, 0],
+          ["t072", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:43.763Z", 821, 0],
+          ["t073", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:43.780Z", 1555, 0],
+          ["t074", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:44.592Z", 1572, 0],
+          ["t067", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:56.872Z", 4714, 0],
+          ["t068", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:57.152Z", 2956, 0],
+          ["t069", "webkit", "expected", "passed", "passed", "2026-10-09T08:52:59.325Z", 3915, 0],
+          ["t070", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:00.118Z", 2212, 0],
+          ["t071", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:01.599Z", 2032, 0],
+          ["t072", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:02.343Z", 1717, 0],
+          ["t073", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:03.253Z", 1974, 0],
+          ["t074", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:03.642Z", 2314, 0],
+          ["t067", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:30.624Z", 3690, 0],
+          ["t068", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:31.441Z", 2575, 0],
+          ["t069", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:32.366Z", 3474, 0],
+          ["t070", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:34.025Z", 1973, 0],
+          ["t071", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:34.324Z", 1719, 0],
+          ["t072", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:35.849Z", 1389, 0],
+          ["t073", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:36.005Z", 1872, 0],
+          ["t074", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:36.051Z", 2202, 0],
+          ["t075", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:04.018Z", 795, 0],
+          ["t076", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:04.503Z", 1829, 0],
+          ["t077", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:04.821Z", 1159, 0],
+          ["t075", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:45.282Z", 977, 0],
+          ["t076", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:45.364Z", 1864, 0],
+          ["t077", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:46.194Z", 1099, 0],
+          ["t075", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:04.077Z", 3557, 0],
+          ["t076", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:05.258Z", 4370, 0],
+          ["t077", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:05.980Z", 2669, 0],
+          ["t075", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:37.267Z", 3135, 0],
+          ["t076", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:37.909Z", 3801, 0],
+          ["t077", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:38.280Z", 2455, 0],
+          ["t078", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:05.048Z", 2421, 0],
+          ["t079", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:06.004Z", 2759, 0],
+          ["t080", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:06.352Z", 1143, 0],
+          ["t081", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:07.480Z", 1183, 0],
+          ["t082", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:07.505Z", 2745, 0],
+          ["t083", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:08.674Z", 1013, 0],
+          ["t084", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:08.774Z", 1516, 0],
+          ["t085", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:09.697Z", 1571, 0],
+          ["t086", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:10.258Z", 1033, 0],
+          ["t087", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:10.300Z", 1058, 0],
+          ["t088", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:11.277Z", 993, 0],
+          ["t089", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:11.301Z", 1730, 0],
+          ["t078", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:46.288Z", 2218, 0],
+          ["t079", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:47.253Z", 3026, 0],
+          ["t080", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:47.316Z", 1309, 0],
+          ["t081", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:48.515Z", 1070, 0],
+          ["t082", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:48.634Z", 2613, 0],
+          ["t083", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:49.593Z", 1095, 0],
+          ["t084", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:50.290Z", 1977, 0],
+          ["t085", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:50.700Z", 1887, 0],
+          ["t086", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:51.255Z", 1013, 0],
+          ["t087", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:52.277Z", 1148, 0],
+          ["t088", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:52.277Z", 986, 0],
+          ["t089", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:52.595Z", 1871, 0],
+          ["t078", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:07.665Z", 35696, 0],
+          ["t079", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:08.681Z", 10443, 0],
+          ["t080", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:09.665Z", 4128, 0],
+          ["t081", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:13.805Z", 2576, 0],
+          ["t082", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:16.391Z", 10027, 0],
+          ["t083", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:19.132Z", 1458, 0],
+          ["t084", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:20.599Z", 5414, 0],
+          ["t085", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:26.022Z", 4897, 0],
+          ["t086", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:26.427Z", 2023, 0],
+          ["t087", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:28.459Z", 2248, 0],
+          ["t088", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:30.716Z", 1733, 0],
+          ["t089", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:30.929Z", 3670, 0],
+          ["t078", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:40.425Z", 9176, 0],
+          ["t079", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:40.771Z", 11015, 0],
+          ["t080", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:41.745Z", 2799, 0],
+          ["t081", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:44.556Z", 2288, 0],
+          ["t082", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:46.855Z", 8983, 0],
+          ["t083", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:49.609Z", 1172, 0],
+          ["t084", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:50.789Z", 5515, 0],
+          ["t085", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:51.796Z", 5849, 0],
+          ["t086", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:55.847Z", 1859, 0],
+          ["t087", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:56.313Z", 2873, 0],
+          ["t088", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:57.653Z", 1929, 0],
+          ["t089", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:57.715Z", 4394, 0],
+          ["t090", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:11.389Z", 1731, 0],
+          ["t091", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:12.306Z", 1063, 0],
+          ["t092", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:13.051Z", 1620, 0],
+          ["t093", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:13.129Z", 1983, 0],
+          ["t094", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:13.379Z", 1280, 0],
+          ["t095", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:14.667Z", 1665, 0],
+          ["t096", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:14.683Z", 2080, 0],
+          ["t097", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:15.120Z", 1626, 0],
+          ["t098", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:16.342Z", 2134, 0],
+          ["t090", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:53.281Z", 1819, 0],
+          ["t091", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:53.441Z", 1170, 0],
+          ["t092", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:54.486Z", 1486, 0],
+          ["t093", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:54.623Z", 1841, 0],
+          ["t094", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:55.113Z", 1198, 0],
+          ["t095", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:55.984Z", 1681, 0],
+          ["t096", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:56.321Z", 2355, 0],
+          ["t097", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:56.472Z", 1625, 0],
+          ["t098", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:57.674Z", 2254, 0],
+          ["t090", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:32.471Z", 4158, 0],
+          ["t091", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:34.619Z", 2225, 0],
+          ["t092", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:36.638Z", 3986, 0],
+          ["t093", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:36.854Z", 4483, 0],
+          ["t094", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:40.635Z", 2755, 0],
+          ["t095", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:41.348Z", 3610, 0],
+          ["t096", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:43.388Z", 2938, 0],
+          ["t097", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:43.401Z", 2119, 0],
+          ["t098", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:44.968Z", 2735, 0],
+          ["t090", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:59.218Z", 2574, 0],
+          ["t091", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:54:59.612Z", 1792, 0],
+          ["t092", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:55:01.420Z", 3132, 0],
+          ["t093", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:55:01.809Z", 3689, 0],
+          ["t094", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:55:02.138Z", 2126, 0],
+          ["t095", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:55:04.279Z", 2601, 0],
+          ["t096", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:55:04.563Z", 2289, 0],
+          ["t097", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:55:05.508Z", 1798, 0],
+          ["t098", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:55:06.861Z", 2213, 0],
+          ["t099", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:16.767Z", 1051, 0],
+          ["t100", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:16.795Z", 1128, 0],
+          ["t101", "desktop", "expected", "passed", "passed", "2026-10-09T08:51:17.826Z", 2555, 0],
+          ["t099", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:58.118Z", 1064, 0],
+          ["t100", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:58.700Z", 999, 0],
+          ["t101", "mobile", "expected", "passed", "passed", "2026-10-09T08:51:59.190Z", 2354, 0],
+          ["t099", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:45.543Z", 1854, 0],
+          ["t100", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:46.364Z", 2008, 0],
+          ["t101", "webkit", "expected", "passed", "passed", "2026-10-09T08:53:47.409Z", 14298, 0],
+          ["t099", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:55:06.910Z", 1633, 0],
+          ["t100", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:55:07.331Z", 1549, 0],
+          ["t101", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T08:55:08.550Z", 6051, 0]
+        ]
+      }
+    },
+    {
+      "id": "final-minified-scoped",
+      "scope": "Final minified artifact: accessibility, performance delivery, personal portfolio and static checks in the same four contexts. This is a scoped follow-up, not another full-suite run.",
+      "stats": {
+        "startTime": "2026-10-09T09:09:59.822Z",
+        "duration": 113299.934,
+        "expected": 122,
+        "skipped": 2,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "runnerErrorCount": 0,
+      "artifact": {
+        "baseCommit": "df12cbe254cbdfb40b35adffd9c8822d76d468bb",
+        "sourceDirty": true,
+        "publishedAsCommit": "99699ca8b9e127e2abd0130f858c0ebb3c6a8595",
+        "buildFingerprint": {
+          "algorithm": "SHA-256 of sorted relative path + NUL + file SHA-256 + NUL for every served file",
+          "sha256": "d2a4c4ed902f9753ff01ab35f1e4ee1d99871e025eae66a58553cf52cdd2fdb9",
+          "files": 164,
+          "bytes": 19861038
+        },
+        "fingerprintEvidence": "reports/performance/after.json"
+      },
+      "projectsExecuted": ["desktop", "mobile", "webkit", "mobile-webkit"],
+      "perProject": {
+        "desktop": {
+          "passed": 31,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "mobile": {
+          "passed": 31,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "webkit": {
+          "passed": 30,
+          "skipped": 1,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "mobile-webkit": {
+          "passed": 30,
+          "skipped": 1,
+          "unexpected": 0,
+          "flaky": 0
+        }
+      },
+      "perFile": {
+        "tests/accessibility.spec.ts": {
+          "passed": 48,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "tests/performance-delivery.spec.ts": {
+          "passed": 12,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "tests/personal-portfolio.spec.ts": {
+          "passed": 26,
+          "skipped": 2,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "tests/static.spec.ts": {
+          "passed": 36,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        }
+      },
+      "intentionalSkips": [
+        {
+          "testCase": "t065",
+          "project": "webkit",
+          "reason": "Clipboard permission grants are Chromium-specific; interaction is covered in every engine."
+        },
+        {
+          "testCase": "t065",
+          "project": "mobile-webkit",
+          "reason": "Clipboard permission grants are Chromium-specific; interaction is covered in every engine."
+        }
+      ],
+      "executions": {
+        "columns": ["testCase", "project", "outcome", "expectedStatus", "attemptStatus", "startTime", "durationMs", "retry"],
+        "rows": [
+          ["t001", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:00.631Z", 1758, 0],
+          ["t002", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:00.631Z", 1870, 0],
+          ["t003", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:00.631Z", 6072, 0],
+          ["t004", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:02.483Z", 4025, 0],
+          ["t005", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:02.594Z", 4120, 0],
+          ["t006", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:06.513Z", 2969, 0],
+          ["t007", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:06.719Z", 2550, 0],
+          ["t008", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:06.796Z", 2535, 0],
+          ["t009", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:09.274Z", 2019, 0],
+          ["t010", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:09.339Z", 2240, 0],
+          ["t011", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:09.487Z", 1253, 0],
+          ["t012", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:10.744Z", 2176, 0],
+          ["t001", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:19.152Z", 1792, 0],
+          ["t002", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:19.256Z", 1799, 0],
+          ["t003", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:20.086Z", 3166, 0],
+          ["t004", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:21.018Z", 2888, 0],
+          ["t005", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:21.128Z", 2993, 0],
+          ["t006", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:23.331Z", 3142, 0],
+          ["t007", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:23.911Z", 2586, 0],
+          ["t008", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:24.126Z", 2525, 0],
+          ["t009", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:26.478Z", 1976, 0],
+          ["t010", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:26.502Z", 2307, 0],
+          ["t011", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:26.655Z", 1201, 0],
+          ["t012", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:27.860Z", 2187, 0],
+          ["t001", "webkit", "expected", "passed", "passed", "2026-10-09T09:10:36.923Z", 3828, 0],
+          ["t002", "webkit", "expected", "passed", "passed", "2026-10-09T09:10:37.280Z", 5200, 0],
+          ["t003", "webkit", "expected", "passed", "passed", "2026-10-09T09:10:38.346Z", 6531, 0],
+          ["t004", "webkit", "expected", "passed", "passed", "2026-10-09T09:10:40.828Z", 7662, 0],
+          ["t005", "webkit", "expected", "passed", "passed", "2026-10-09T09:10:42.530Z", 8533, 0],
+          ["t006", "webkit", "expected", "passed", "passed", "2026-10-09T09:10:44.942Z", 7782, 0],
+          ["t007", "webkit", "expected", "passed", "passed", "2026-10-09T09:10:48.500Z", 7584, 0],
+          ["t008", "webkit", "expected", "passed", "passed", "2026-10-09T09:10:51.073Z", 7299, 0],
+          ["t009", "webkit", "expected", "passed", "passed", "2026-10-09T09:10:52.735Z", 6537, 0],
+          ["t010", "webkit", "expected", "passed", "passed", "2026-10-09T09:10:56.096Z", 5066, 0],
+          ["t011", "webkit", "expected", "passed", "passed", "2026-10-09T09:10:58.381Z", 3800, 0],
+          ["t012", "webkit", "expected", "passed", "passed", "2026-10-09T09:10:59.284Z", 4139, 0],
+          ["t001", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:21.044Z", 3072, 0],
+          ["t002", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:21.571Z", 3149, 0],
+          ["t003", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:23.524Z", 4337, 0],
+          ["t004", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:24.164Z", 4279, 0],
+          ["t005", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:24.788Z", 4951, 0],
+          ["t006", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:27.946Z", 4598, 0],
+          ["t007", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:28.453Z", 4231, 0],
+          ["t008", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:29.751Z", 3881, 0],
+          ["t009", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:32.554Z", 3579, 0],
+          ["t010", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:32.695Z", 2920, 0],
+          ["t011", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:33.641Z", 2282, 0],
+          ["t012", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:35.624Z", 2493, 0],
+          ["t057", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:11.312Z", 1814, 0],
+          ["t058", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:11.594Z", 1651, 0],
+          ["t059", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:12.937Z", 736, 0],
+          ["t057", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:28.464Z", 1824, 0],
+          ["t058", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:28.822Z", 1700, 0],
+          ["t059", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:30.057Z", 748, 0],
+          ["t057", "webkit", "expected", "passed", "passed", "2026-10-09T09:11:01.178Z", 2675, 0],
+          ["t058", "webkit", "expected", "passed", "passed", "2026-10-09T09:11:02.203Z", 2791, 0],
+          ["t059", "webkit", "expected", "passed", "passed", "2026-10-09T09:11:03.447Z", 1769, 0],
+          ["t057", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:35.953Z", 2332, 0],
+          ["t058", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:36.156Z", 2338, 0],
+          ["t059", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:38.141Z", 1451, 0],
+          ["t060", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:13.139Z", 1132, 0],
+          ["t061", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:13.256Z", 373, 0],
+          ["t062", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:13.634Z", 1056, 0],
+          ["t063", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:13.690Z", 318, 0],
+          ["t064", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:14.013Z", 983, 0],
+          ["t065", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:14.276Z", 274, 0],
+          ["t066", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:14.555Z", 246, 0],
+          ["t060", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:30.296Z", 1210, 0],
+          ["t061", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:30.531Z", 766, 0],
+          ["t062", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:30.820Z", 1076, 0],
+          ["t063", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:31.301Z", 361, 0],
+          ["t064", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:31.511Z", 1310, 0],
+          ["t065", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:31.668Z", 362, 0],
+          ["t066", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:31.901Z", 427, 0],
+          ["t060", "webkit", "expected", "passed", "passed", "2026-10-09T09:11:03.869Z", 4690, 0],
+          ["t061", "webkit", "expected", "passed", "passed", "2026-10-09T09:11:05.016Z", 1799, 0],
+          ["t062", "webkit", "expected", "passed", "passed", "2026-10-09T09:11:05.251Z", 8284, 0],
+          ["t063", "webkit", "expected", "passed", "passed", "2026-10-09T09:11:06.825Z", 1679, 0],
+          ["t064", "webkit", "expected", "passed", "passed", "2026-10-09T09:11:08.513Z", 2474, 0],
+          ["t065", "webkit", "skipped", "skipped", "skipped", "2026-10-09T09:11:08.568Z", 222, 0],
+          ["t066", "webkit", "expected", "passed", "passed", "2026-10-09T09:11:08.799Z", 1357, 0],
+          ["t060", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:38.312Z", 3861, 0],
+          ["t061", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:38.514Z", 1986, 0],
+          ["t062", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:39.624Z", 5350, 0],
+          ["t063", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:40.509Z", 1364, 0],
+          ["t064", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:41.884Z", 3867, 0],
+          ["t065", "mobile-webkit", "skipped", "skipped", "skipped", "2026-10-09T09:11:42.182Z", 180, 0],
+          ["t066", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:42.378Z", 1326, 0],
+          ["t090", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:14.712Z", 1507, 0],
+          ["t091", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:14.824Z", 1112, 0],
+          ["t092", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:15.017Z", 1464, 0],
+          ["t093", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:15.940Z", 1467, 0],
+          ["t094", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:16.224Z", 1091, 0],
+          ["t095", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:16.486Z", 1615, 0],
+          ["t096", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:17.321Z", 1576, 0],
+          ["t097", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:17.415Z", 1371, 0],
+          ["t098", "desktop", "expected", "passed", "passed", "2026-10-09T09:10:18.106Z", 1599, 0],
+          ["t090", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:32.046Z", 1463, 0],
+          ["t091", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:32.339Z", 1107, 0],
+          ["t092", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:32.841Z", 1260, 0],
+          ["t093", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:33.453Z", 1534, 0],
+          ["t094", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:33.516Z", 1137, 0],
+          ["t095", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:34.107Z", 1666, 0],
+          ["t096", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:34.660Z", 2219, 0],
+          ["t097", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:34.994Z", 1494, 0],
+          ["t098", "mobile", "expected", "passed", "passed", "2026-10-09T09:10:35.782Z", 2147, 0],
+          ["t090", "webkit", "expected", "passed", "passed", "2026-10-09T09:11:10.177Z", 4268, 0],
+          ["t091", "webkit", "expected", "passed", "passed", "2026-10-09T09:11:11.015Z", 2325, 0],
+          ["t092", "webkit", "expected", "passed", "passed", "2026-10-09T09:11:13.358Z", 4521, 0],
+          ["t093", "webkit", "expected", "passed", "passed", "2026-10-09T09:11:13.553Z", 4794, 0],
+          ["t094", "webkit", "expected", "passed", "passed", "2026-10-09T09:11:14.458Z", 2848, 0],
+          ["t095", "webkit", "expected", "passed", "passed", "2026-10-09T09:11:17.316Z", 3655, 0],
+          ["t096", "webkit", "expected", "passed", "passed", "2026-10-09T09:11:17.889Z", 2770, 0],
+          ["t097", "webkit", "expected", "passed", "passed", "2026-10-09T09:11:18.358Z", 2050, 0],
+          ["t098", "webkit", "expected", "passed", "passed", "2026-10-09T09:11:20.419Z", 2614, 0],
+          ["t090", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:43.726Z", 2505, 0],
+          ["t091", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:44.999Z", 1849, 0],
+          ["t092", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:45.780Z", 2837, 0],
+          ["t093", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:46.240Z", 3411, 0],
+          ["t094", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:46.858Z", 2012, 0],
+          ["t095", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:48.625Z", 2377, 0],
+          ["t096", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:48.878Z", 2239, 0],
+          ["t097", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:49.660Z", 1765, 0],
+          ["t098", "mobile-webkit", "expected", "passed", "passed", "2026-10-09T09:11:51.014Z", 1924, 0]
+        ]
+      }
+    }
+  ],
+  "ciVerification": {
+    "status": "completed",
+    "conclusion": "success",
+    "runId": "37911045013",
+    "runURL": "https://github.com/Debotaro/Debotaro.github.io/actions/runs/37911045013",
+    "sourceCommit": "99699ca8b9e127e2abd0130f858c0ebb3c6a8595",
+    "stats": {
+      "startTime": "2026-10-09T09:26:47.964Z",
+      "duration": 573813.254,
+      "expected": 497,
+      "skipped": 8,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "projectsExecuted": ["desktop", "mobile", "firefox", "webkit", "mobile-webkit"],
+    "evidence": "reports/browser-ci.json"
+  }
+}

@@ -1,6 +1,19 @@
-# Portfolio and profile publication — 8 October 2026
+# Portfolio and profile publication — 8–9 October 2026
 
 This record separates verified publication results from platform actions awaiting confirmation. Sources are the completed GitHub Actions release, HTTP/PDF checks and signed-in saved-state checks on the user's profiles. Browser evidence is stored outside the public repository in `X:/Six Portfolio Projects/profile-updates/2026-10-08/`.
+
+## Quality release — 9 October 2026
+
+- Source release: [`99699ca8`](https://github.com/Debotaro/Debotaro.github.io/commit/99699ca8b9e127e2abd0130f858c0ebb3c6a8595). [Actions run 37911045013](https://github.com/Debotaro/Debotaro.github.io/actions/runs/37911045013) passed both build and deployment; publishing completed at 09:36:45 UTC.
+- The complete final build passed **497 browser checks**, with **eight intentional skips**, zero failures and zero flaky results across Chromium desktop/mobile, Firefox desktop and WebKit desktop/mobile. The downloaded artifact is summarized in [BROWSER_COVERAGE.md](../reports/BROWSER_COVERAGE.md) and [browser-ci.json](../reports/browser-ci.json). The workflow also passed lint, formatting, all application builds, 38 domain/database/storage checks and three production-minification contract checks.
+- Performance, accessibility and keyboard findings are linked from [VALIDATION.md](../VALIDATION.md). They retain the matched lab conditions, baseline results, uncertain automated findings and physical-device/screen-reader limits. Expanded [NOVA](../reports/case-studies/NOVA.md) and [ATLAS](../reports/case-studies/ATLAS.md) stories include architecture diagrams and implementation tradeoffs.
+- Fresh public HTTP checks confirmed the homepage, seven demos, optimized WebP gallery, local font files, compact static HTML and the new About validation link. The reviewed public résumé remains **585,311 bytes**, with the same SHA-256 recorded below. Live-check evidence is kept in ignored `output/live-quality-check.json`.
+- [GitHub profile README](https://github.com/Debotaro/Debotaro/blob/main/README.md) updated in commit [`3b2bba43`](https://github.com/Debotaro/Debotaro/commit/3b2bba43b0ba78ceef60e2f389be4dd80fdc3dbb). The published contents API matched all **5,648 bytes** of `GITHUB_PROFILE.md`; the public profile visibly showed the new quality evidence links. Existing public identity, location, education and contribution statements were preserved.
+- [LinkedIn About](https://www.linkedin.com/in/deborajsarkar/) saved the reviewed quality paragraph and validation URL. The interface confirmed “Your about section has been updated”; the main profile independently displayed both additions, one-week availability and all five existing top skills. No paid upgrade was accepted. Browser proof for both profiles is saved outside the public repository in `X:/Six Portfolio Projects/profile-updates/2026-10-09/`.
+- Three private application drafts target sourced frontend vacancies. Each has a tailored branded one-page A4 résumé and matching cover letter, with a shortlist and tracker bundled in the ignored application pack. Contacts, ongoing education, verified employment and AI-assisted contribution remain factual. **No employer application or message has been submitted.**
+- [Quality interview practice](QUALITY_INTERVIEW_PRACTICE.md) adds exercises grounded in the verified changes. A live mock interview and the [human device checklist](../reports/REAL_DEVICE_CHECKLIST.md) still require the user's participation. RELAY's separately configured optional backend is not presented as a hosted production service.
+
+The sections below preserve the earlier 8 October publication record.
 
 ## Portfolio and résumé — published
 

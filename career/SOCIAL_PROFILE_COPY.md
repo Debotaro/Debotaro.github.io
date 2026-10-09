@@ -23,6 +23,7 @@ My completed Coursera learning includes the Google UX Design Professional Certif
 I'm seeking full-time junior frontend/React opportunities within a development team. I'm available to start within one week and open to remote roles and relocation for the right opportunity.
 
 Portfolio: https://debotaro.github.io/
+
 Quality reports: https://github.com/Debotaro/Debotaro.github.io/blob/main/VALIDATION.md
 Contact: mail.deborajsarkar@gmail.com
 
