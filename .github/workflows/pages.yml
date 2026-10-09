@@ -17,7 +17,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - name: Check out source
         uses: actions/checkout@v6
@@ -36,19 +36,23 @@ jobs:
         run: npm ci
       - name: Install application dependencies
         run: npm run setup
+      - name: Check source quality
+        run: npm run lint && npm run format:check
       - name: Build all seven projects
         run: npm run build
-      - name: Run RELAY domain and backend contract checks
+      - name: Run domain, database and storage boundary checks
         run: npm run test:unit
-      - name: Install test browser
-        timeout-minutes: 5
+      - name: Check static production minification
+        run: npm run test:production
+      - name: Install test browsers
+        timeout-minutes: 10
         run: |
           # The runner's Azure HTTP mirror can stall before Chromium installs.
           if [ -f /etc/apt/apt-mirrors.txt ]; then
             printf '%s\n' 'https://archive.ubuntu.com/ubuntu' | sudo tee /etc/apt/apt-mirrors.txt >/dev/null
           fi
           printf '%s\n' 'Acquire::Retries "2";' 'Acquire::http::Timeout "20";' 'Acquire::https::Timeout "20";' | sudo tee /etc/apt/apt.conf.d/80-portfolio-network >/dev/null
-          npx playwright install --with-deps chromium
+          npx playwright install --with-deps chromium firefox webkit
       - name: Run frontend regression checks
         run: npm test
       - name: Upload browser report
@@ -56,7 +60,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
-          path: playwright-report/
+          path: |
+            playwright-report/
+            output/quality-playwright.json
           retention-days: 7
       - name: Upload verified website
         if: github.event_name != 'pull_request'

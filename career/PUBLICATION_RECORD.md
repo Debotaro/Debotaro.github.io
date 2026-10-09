@@ -30,11 +30,11 @@ This record separates verified publication results from platform actions awaitin
 - Existing Google UX Design, AWS Cloud Solutions Architect, Google Digital Marketing & E-commerce and Google Project Management titles corrected to the verified **Professional Certificate** titles.
 - Three missing verified Coursera credentials added, bringing the collection to twelve:
 
-| Credential | Provider and completion | Verification |
-|---|---|---|
-| Introduction to Data Science Specialization | IBM / Coursera, June 2025 | [L4HGITCYVHR2](https://www.coursera.org/account/accomplishments/specialization/L4HGITCYVHR2) |
-| AWS Fundamentals Specialization | Amazon Web Services / Coursera, April 2023 | [2PW3KRRUX6NB](https://www.coursera.org/account/accomplishments/specialization/2PW3KRRUX6NB) |
-| Tally Bookkeeper Professional Certificate | Tally Education and Distribution Services Private Limited / Coursera, May 2025 | [HWXH30J8GVNY](https://www.coursera.org/account/accomplishments/specialization/HWXH30J8GVNY) |
+| Credential                                  | Provider and completion                                                        | Verification                                                                                 |
+| ------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
+| Introduction to Data Science Specialization | IBM / Coursera, June 2025                                                      | [L4HGITCYVHR2](https://www.coursera.org/account/accomplishments/specialization/L4HGITCYVHR2) |
+| AWS Fundamentals Specialization             | Amazon Web Services / Coursera, April 2023                                     | [2PW3KRRUX6NB](https://www.coursera.org/account/accomplishments/specialization/2PW3KRRUX6NB) |
+| Tally Bookkeeper Professional Certificate   | Tally Education and Distribution Services Private Limited / Coursera, May 2025 | [HWXH30J8GVNY](https://www.coursera.org/account/accomplishments/specialization/HWXH30J8GVNY) |
 
 The refreshed main profile independently showed **Licenses & certifications (12)** and the University of the People bachelor's degree in Computer Science as **June 2025–Present**.
 

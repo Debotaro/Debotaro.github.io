@@ -1,7 +1,606 @@
 /* Accessible final typography layer: quiet colours without sacrificing legibility. */
-@media(max-width:768px){.sidebar{visibility:hidden}.sidebar.sidebar-open{visibility:visible}}
-.sr-only{left:0;top:0}.table-scroll{position:relative}
-.breadcrumb,.page-heading p,.metric-top,.live-status,.panel-heading p,.metric-foot,.chart-key,.chart-data,.date-cell,.activity-list p,.activity-list small,.filter-caption,.task-summary,.task-card>p,.task-card-foot>span:first-child,.coverage-cards p,.schedule-legend,.coverage-tip p,.notice-copy p,.notice-copy>span,.demo-note,.settings-description p,.field-hint,.switch-row p,.reset-row p,.settings-save,.dialog-description,.help-list p,.app-footer{color:#637582}
-.eyebrow{color:#697c8a}.metric-change{color:#367b61}.metric-warning{color:#947228}.status-legend{color:#637582}.status-legend>div,.status-legend strong small{color:#637582}.workload-note{color:#637582}.text-button{color:#3b6b9f}.task-title-button small{color:#6d7f8c}.badge-high{color:#995f53}.badge-medium{color:#856a26}.badge-low{color:#526f90}.department-label{color:#4f7196}.dep-finance{color:#53775d}.dep-people{color:#79618f}.dep-logistics{color:#8b6e47}.task-card>.input{color:#63798a}.add-column-task{color:#647f93}.column-header>span{color:#4c677b}.column-header b{color:#5b7386}.coverage-cards .metric-top,.coverage-tip strong,.schedule-panel .panel-heading p{color:#5d7486}.coverage-table .person-cell small{color:#6e8393}.shift-active{color:#467b56}.shift-away{color:#7a6b54}.shift-call{color:#7d639d}.coverage-full{color:#4c7c5d}.coverage-gap{color:#8a6c30}.notice-copy strong,.settings-description h2,.settings-fields>label,.form-grid label,.dialog-form label,.switch-row strong,.reset-row strong{color:#506b7e}.profile-preview small,.notice-copy>span,.demo-note{color:#6c7e8c}.unread-label{color:#4675a9}.segmented button{color:#687d8b}.segmented button.selected{color:#3f6381}.segmented button>span{color:#5e788b}.notifications-toolbar .button-ghost{color:#617789}.settings-save>span{color:#6a7d8b}.field-hint{font-size:9px}.input::placeholder,.global-search input::placeholder{color:#708393}.global-search{color:#6a8091}.global-search input{font-size:11px}.global-search kbd{color:#6b8192}.delete-link{color:#a45056}.dialog-description{font-size:11px}.help-list p{font-size:12px}.toast{color:#526f82}.landing-nav>div>a,.landing-hero>p,.landing-proof,.feature-grid p,.landing-footer>span,.landing-footer>a{color:#637b8e}.landing-kicker,.section-heading .eyebrow{color:#517b9f}.landing-hero h1>span{color:#497fae}.feature-grid h3{color:#456a88}.feature-grid button{color:#3b739f}.landing-footer .brand{opacity:1}.landing-approach p{color:#adc4d6}.landing-approach>.eyebrow{color:#aec8dd}.landing-approach h2>span{color:#a6c7e2}.login-form-wrap h2{color:#3e627d}.login-form-wrap p,.local-privacy,.login-form-wrap>small,.back-link{color:#677f92}.login-form-wrap label{color:#55738a}.login-art .eyebrow,.login-art p,.login-art>small,.login-graphic span{color:#afc5d7}.login-graphic strong{color:#d1e4f1}.button-ghost{color:#5c7386}.input{font-size:12px}
-@media(min-width:769px){.nav-item{font-size:12px}.workspace-name strong{font-size:12px}.workspace-name small{font-size:10px}.nav-label{font-size:9px}.profile strong{font-size:11px}.profile small{font-size:9px}.workspace-health{font-size:9px}.collapse-toggle{font-size:9px}.breadcrumb{font-size:11px}.page-heading h1{font-size:28px}.page-heading p{font-size:12px}.eyebrow{font-size:9px}.metric-top{font-size:11px}.metric-value{font-size:28px}.metric-foot{font-size:8px;gap:4px;flex-wrap:wrap;white-space:normal}.metric-foot>span:last-child{font-size:8px}.metric-change{font-size:9px}.overview-toolbar .button,.filter-select .input,.live-status{font-size:11px}.panel-heading h2{font-size:13px}.panel-heading p{font-size:10px}.segmented button{font-size:10px}.chart-key{font-size:9px}.main-chart{height:247px}.chart-data{font-size:9px}.donut-wrap{height:201px}.status-legend{gap:12px}.status-legend>div{font-size:10px}.workload-note{font-size:9px}.text-button{font-size:11px}.task-title-button strong{font-size:11px}.task-title-button small{font-size:9px}.priority-table th{font-size:9px}.priority-table td{padding-top:13px;padding-bottom:13px}.badge{font-size:9px}.date-cell{font-size:10px}.activity-list strong{font-size:10px}.activity-list p{font-size:9px}.activity-list small{font-size:8px}.activity-list>div{padding-top:15px;padding-bottom:15px}.activity-list{padding-bottom:3px}.app-footer{font-size:9px}.task-toolbar>.input,.search-field .input{font-size:11px}.task-summary{font-size:11px}.filter-caption{font-size:9px}.column-header>span{font-size:11px}.department-label{font-size:8px}.card-title{font-size:12px}.task-card>p{font-size:10px}.task-card-foot>span:first-child{font-size:9px}.task-card>.input{font-size:9px}.add-column-task{font-size:10px}.task-card{padding:12px}.settings-description h2{font-size:14px}.settings-description p{font-size:11px}.settings-fields>label,.form-grid label,.dialog-form label{font-size:11px}.switch-row strong,.reset-row strong{font-size:12px}.switch-row p,.reset-row p{font-size:10px}.settings-save{font-size:10px}.notice-copy strong{font-size:13px}.notice-copy p{font-size:11px}.notice-copy>span{font-size:9px}.demo-note{font-size:10px}.notice-copy>.text-button{font-size:10px}.coverage-cards .metric-top{font-size:11px}.coverage-cards p{font-size:10px}.person-cell strong{font-size:11px}.person-cell small{font-size:9px}.shift-select{font-size:10px}.coverage-table th,.coverage-table tfoot td{font-size:9px}.schedule-legend{font-size:9px}.coverage-tip strong{font-size:12px}.coverage-tip p{font-size:10px}.login-form-wrap label{font-size:11px}.login-form-wrap p{font-size:12px}.local-privacy{font-size:10px}.login-art p{font-size:13px}.login-graphic span{font-size:10px}.landing-hero>p{font-size:14px}.landing-proof{font-size:10px}.feature-grid p{font-size:12px}.landing-approach p{font-size:12px}.landing-footer>span,.landing-footer>a{font-size:10px}.landing-nav>div>a{font-size:12px}}
-@media(max-width:640px){.metric-foot>span:last-child{font-size:7px}.metric-change{font-size:8px}.page-heading p{font-size:11px}.task-card>p{font-size:11px}.card-title{font-size:13px}.department-label{font-size:9px}.task-card>.input{font-size:10px}.task-card-foot>span:first-child{font-size:10px}.badge{font-size:9px}.filter-caption{font-size:8px}.switch-row p,.reset-row p{font-size:9px}.settings-description p{font-size:11px}.settings-fields>label,.form-grid label,.dialog-form label{font-size:11px}.notice-copy p{font-size:10px}.notice-copy strong{font-size:12px}.notice-copy>span{font-size:8px}.app-footer{font-size:8px}.chart-key{font-size:9px}.metric-top{font-size:10px}.activity-list p{font-size:10px}.activity-list small{font-size:9px}.task-title-button small{font-size:9px}.coverage-tip p{font-size:9px}.field-hint{font-size:9px}.feature-grid p{font-size:12px}.landing-hero>p{font-size:12px}.landing-proof{font-size:9px}.landing-approach p{font-size:11px}.landing-footer>span,.landing-footer>a{font-size:9px}}
+@media (max-width: 768px) {
+  .sidebar {
+    visibility: hidden;
+  }
+  .sidebar.sidebar-open {
+    visibility: visible;
+  }
+}
+.sr-only {
+  left: 0;
+  top: 0;
+}
+.table-scroll {
+  position: relative;
+}
+.breadcrumb,
+.page-heading p,
+.metric-top,
+.live-status,
+.panel-heading p,
+.metric-foot,
+.chart-key,
+.chart-data,
+.date-cell,
+.activity-list p,
+.activity-list small,
+.filter-caption,
+.task-summary,
+.task-card > p,
+.task-card-foot > span:first-child,
+.coverage-cards p,
+.schedule-legend,
+.coverage-tip p,
+.notice-copy p,
+.notice-copy > span,
+.demo-note,
+.settings-description p,
+.field-hint,
+.switch-row p,
+.reset-row p,
+.settings-save,
+.dialog-description,
+.help-list p,
+.app-footer {
+  color: #637582;
+}
+.eyebrow {
+  color: #697c8a;
+}
+.metric-change {
+  color: #367b61;
+}
+.metric-warning {
+  color: #947228;
+}
+.status-legend {
+  color: #637582;
+}
+.status-legend > div,
+.status-legend strong small {
+  color: #637582;
+}
+.workload-note {
+  color: #637582;
+}
+.text-button {
+  color: #3b6b9f;
+}
+.task-title-button small {
+  color: #6d7f8c;
+}
+.badge-high {
+  color: #995f53;
+}
+.badge-medium {
+  color: #856a26;
+}
+.badge-low {
+  color: #526f90;
+}
+.department-label {
+  color: #4f7196;
+}
+.dep-finance {
+  color: #53775d;
+}
+.dep-people {
+  color: #79618f;
+}
+.dep-logistics {
+  color: #8b6e47;
+}
+.task-card > .input {
+  color: #63798a;
+}
+.add-column-task {
+  color: #647f93;
+}
+.column-header > span {
+  color: #4c677b;
+}
+.column-header b {
+  color: #5b7386;
+}
+.coverage-cards .metric-top,
+.coverage-tip strong,
+.schedule-panel .panel-heading p {
+  color: #5d7486;
+}
+.coverage-table .person-cell small {
+  color: #6e8393;
+}
+.shift-active {
+  color: #467b56;
+}
+.shift-away {
+  color: #7a6b54;
+}
+.shift-call {
+  color: #7d639d;
+}
+.coverage-full {
+  color: #4c7c5d;
+}
+.coverage-gap {
+  color: #8a6c30;
+}
+.notice-copy strong,
+.settings-description h2,
+.settings-fields > label,
+.form-grid label,
+.dialog-form label,
+.switch-row strong,
+.reset-row strong {
+  color: #506b7e;
+}
+.profile-preview small,
+.notice-copy > span,
+.demo-note {
+  color: #6c7e8c;
+}
+.unread-label {
+  color: #4675a9;
+}
+.segmented button {
+  color: #687d8b;
+}
+.segmented button.selected {
+  color: #3f6381;
+}
+.segmented button > span {
+  color: #5e788b;
+}
+.notifications-toolbar .button-ghost {
+  color: #617789;
+}
+.settings-save > span {
+  color: #6a7d8b;
+}
+.field-hint {
+  font-size: 9px;
+}
+.input::placeholder,
+.global-search input::placeholder {
+  color: #708393;
+}
+.global-search {
+  color: #6a8091;
+}
+.global-search input {
+  font-size: 11px;
+}
+.global-search kbd {
+  color: #6b8192;
+}
+.delete-link {
+  color: #a45056;
+}
+.dialog-description {
+  font-size: 11px;
+}
+.help-list p {
+  font-size: 12px;
+}
+.toast {
+  color: #526f82;
+}
+.landing-nav > div > a,
+.landing-hero > p,
+.landing-proof,
+.feature-grid p,
+.landing-footer > span,
+.landing-footer > a {
+  color: #637b8e;
+}
+.landing-kicker,
+.section-heading .eyebrow {
+  color: #517b9f;
+}
+.landing-hero h1 > span {
+  color: #497fae;
+}
+.feature-grid h3 {
+  color: #456a88;
+}
+.feature-grid button {
+  color: #3b739f;
+}
+.landing-footer .brand {
+  opacity: 1;
+}
+.landing-approach p {
+  color: #adc4d6;
+}
+.landing-approach > .eyebrow {
+  color: #aec8dd;
+}
+.landing-approach h2 > span {
+  color: #a6c7e2;
+}
+.login-form-wrap h2 {
+  color: #3e627d;
+}
+.login-form-wrap p,
+.local-privacy,
+.login-form-wrap > small,
+.back-link {
+  color: #677f92;
+}
+.login-form-wrap label {
+  color: #55738a;
+}
+.login-art .eyebrow,
+.login-art p,
+.login-art > small,
+.login-graphic span {
+  color: #afc5d7;
+}
+.login-graphic strong {
+  color: #d1e4f1;
+}
+.button-ghost {
+  color: #5c7386;
+}
+.input {
+  font-size: 12px;
+}
+@media (min-width: 769px) {
+  .nav-item {
+    font-size: 12px;
+  }
+  .workspace-name strong {
+    font-size: 12px;
+  }
+  .workspace-name small {
+    font-size: 10px;
+  }
+  .nav-label {
+    font-size: 9px;
+  }
+  .profile strong {
+    font-size: 11px;
+  }
+  .profile small {
+    font-size: 9px;
+  }
+  .workspace-health {
+    font-size: 9px;
+  }
+  .collapse-toggle {
+    font-size: 9px;
+  }
+  .breadcrumb {
+    font-size: 11px;
+  }
+  .page-heading h1 {
+    font-size: 28px;
+  }
+  .page-heading p {
+    font-size: 12px;
+  }
+  .eyebrow {
+    font-size: 9px;
+  }
+  .metric-top {
+    font-size: 11px;
+  }
+  .metric-value {
+    font-size: 28px;
+  }
+  .metric-foot {
+    font-size: 8px;
+    gap: 4px;
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+  .metric-foot > span:last-child {
+    font-size: 8px;
+  }
+  .metric-change {
+    font-size: 9px;
+  }
+  .overview-toolbar .button,
+  .filter-select .input,
+  .live-status {
+    font-size: 11px;
+  }
+  .panel-heading h2 {
+    font-size: 13px;
+  }
+  .panel-heading p {
+    font-size: 10px;
+  }
+  .segmented button {
+    font-size: 10px;
+  }
+  .chart-key {
+    font-size: 9px;
+  }
+  .main-chart {
+    height: 247px;
+  }
+  .chart-data {
+    font-size: 9px;
+  }
+  .donut-wrap {
+    height: 201px;
+  }
+  .status-legend {
+    gap: 12px;
+  }
+  .status-legend > div {
+    font-size: 10px;
+  }
+  .workload-note {
+    font-size: 9px;
+  }
+  .text-button {
+    font-size: 11px;
+  }
+  .task-title-button strong {
+    font-size: 11px;
+  }
+  .task-title-button small {
+    font-size: 9px;
+  }
+  .priority-table th {
+    font-size: 9px;
+  }
+  .priority-table td {
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
+  .badge {
+    font-size: 9px;
+  }
+  .date-cell {
+    font-size: 10px;
+  }
+  .activity-list strong {
+    font-size: 10px;
+  }
+  .activity-list p {
+    font-size: 9px;
+  }
+  .activity-list small {
+    font-size: 8px;
+  }
+  .activity-list > div {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .activity-list {
+    padding-bottom: 3px;
+  }
+  .app-footer {
+    font-size: 9px;
+  }
+  .task-toolbar > .input,
+  .search-field .input {
+    font-size: 11px;
+  }
+  .task-summary {
+    font-size: 11px;
+  }
+  .filter-caption {
+    font-size: 9px;
+  }
+  .column-header > span {
+    font-size: 11px;
+  }
+  .department-label {
+    font-size: 8px;
+  }
+  .card-title {
+    font-size: 12px;
+  }
+  .task-card > p {
+    font-size: 10px;
+  }
+  .task-card-foot > span:first-child {
+    font-size: 9px;
+  }
+  .task-card > .input {
+    font-size: 9px;
+  }
+  .add-column-task {
+    font-size: 10px;
+  }
+  .task-card {
+    padding: 12px;
+  }
+  .settings-description h2 {
+    font-size: 14px;
+  }
+  .settings-description p {
+    font-size: 11px;
+  }
+  .settings-fields > label,
+  .form-grid label,
+  .dialog-form label {
+    font-size: 11px;
+  }
+  .switch-row strong,
+  .reset-row strong {
+    font-size: 12px;
+  }
+  .switch-row p,
+  .reset-row p {
+    font-size: 10px;
+  }
+  .settings-save {
+    font-size: 10px;
+  }
+  .notice-copy strong {
+    font-size: 13px;
+  }
+  .notice-copy p {
+    font-size: 11px;
+  }
+  .notice-copy > span {
+    font-size: 9px;
+  }
+  .demo-note {
+    font-size: 10px;
+  }
+  .notice-copy > .text-button {
+    font-size: 10px;
+  }
+  .coverage-cards .metric-top {
+    font-size: 11px;
+  }
+  .coverage-cards p {
+    font-size: 10px;
+  }
+  .person-cell strong {
+    font-size: 11px;
+  }
+  .person-cell small {
+    font-size: 9px;
+  }
+  .shift-select {
+    font-size: 10px;
+  }
+  .coverage-table th,
+  .coverage-table tfoot td {
+    font-size: 9px;
+  }
+  .schedule-legend {
+    font-size: 9px;
+  }
+  .coverage-tip strong {
+    font-size: 12px;
+  }
+  .coverage-tip p {
+    font-size: 10px;
+  }
+  .login-form-wrap label {
+    font-size: 11px;
+  }
+  .login-form-wrap p {
+    font-size: 12px;
+  }
+  .local-privacy {
+    font-size: 10px;
+  }
+  .login-art p {
+    font-size: 13px;
+  }
+  .login-graphic span {
+    font-size: 10px;
+  }
+  .landing-hero > p {
+    font-size: 14px;
+  }
+  .landing-proof {
+    font-size: 10px;
+  }
+  .feature-grid p {
+    font-size: 12px;
+  }
+  .landing-approach p {
+    font-size: 12px;
+  }
+  .landing-footer > span,
+  .landing-footer > a {
+    font-size: 10px;
+  }
+  .landing-nav > div > a {
+    font-size: 12px;
+  }
+}
+@media (max-width: 640px) {
+  .metric-foot > span:last-child {
+    font-size: 7px;
+  }
+  .metric-change {
+    font-size: 8px;
+  }
+  .page-heading p {
+    font-size: 11px;
+  }
+  .task-card > p {
+    font-size: 11px;
+  }
+  .card-title {
+    font-size: 13px;
+  }
+  .department-label {
+    font-size: 9px;
+  }
+  .task-card > .input {
+    font-size: 10px;
+  }
+  .task-card-foot > span:first-child {
+    font-size: 10px;
+  }
+  .badge {
+    font-size: 9px;
+  }
+  .filter-caption {
+    font-size: 8px;
+  }
+  .switch-row p,
+  .reset-row p {
+    font-size: 9px;
+  }
+  .settings-description p {
+    font-size: 11px;
+  }
+  .settings-fields > label,
+  .form-grid label,
+  .dialog-form label {
+    font-size: 11px;
+  }
+  .notice-copy p {
+    font-size: 10px;
+  }
+  .notice-copy strong {
+    font-size: 12px;
+  }
+  .notice-copy > span {
+    font-size: 8px;
+  }
+  .app-footer {
+    font-size: 8px;
+  }
+  .chart-key {
+    font-size: 9px;
+  }
+  .metric-top {
+    font-size: 10px;
+  }
+  .activity-list p {
+    font-size: 10px;
+  }
+  .activity-list small {
+    font-size: 9px;
+  }
+  .task-title-button small {
+    font-size: 9px;
+  }
+  .coverage-tip p {
+    font-size: 9px;
+  }
+  .field-hint {
+    font-size: 9px;
+  }
+  .feature-grid p {
+    font-size: 12px;
+  }
+  .landing-hero > p {
+    font-size: 12px;
+  }
+  .landing-proof {
+    font-size: 9px;
+  }
+  .landing-approach p {
+    font-size: 11px;
+  }
+  .landing-footer > span,
+  .landing-footer > a {
+    font-size: 9px;
+  }
+}

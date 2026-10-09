@@ -1,0 +1,152 @@
+{
+  "pillowVersion": "12.3.0",
+  "webpQuality": 90,
+  "records": [
+    {
+      "source": "previews/portfolio-cover.png",
+      "sourceBytes": 215094,
+      "delivery": "previews/web/portfolio-cover-640.webp",
+      "deliveryBytes": 19480,
+      "width": 640,
+      "height": 360
+    },
+    {
+      "source": "previews/portfolio-cover.png",
+      "sourceBytes": 215094,
+      "delivery": "previews/web/portfolio-cover-1280.webp",
+      "deliveryBytes": 49758,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "source": "previews/relay.png",
+      "sourceBytes": 183326,
+      "delivery": "previews/web/relay-640.webp",
+      "deliveryBytes": 23148,
+      "width": 640,
+      "height": 444
+    },
+    {
+      "source": "previews/relay.png",
+      "sourceBytes": 183326,
+      "delivery": "previews/web/relay-1280.webp",
+      "deliveryBytes": 65096,
+      "width": 1280,
+      "height": 889
+    },
+    {
+      "source": "previews/nova.png",
+      "sourceBytes": 91528,
+      "delivery": "previews/web/nova-640.webp",
+      "deliveryBytes": 15992,
+      "width": 640,
+      "height": 444
+    },
+    {
+      "source": "previews/nova.png",
+      "sourceBytes": 91528,
+      "delivery": "previews/web/nova-1280.webp",
+      "deliveryBytes": 48084,
+      "width": 1280,
+      "height": 889
+    },
+    {
+      "source": "previews/atlas.png",
+      "sourceBytes": 110455,
+      "delivery": "previews/web/atlas-640.webp",
+      "deliveryBytes": 22202,
+      "width": 640,
+      "height": 444
+    },
+    {
+      "source": "previews/atlas.png",
+      "sourceBytes": 110455,
+      "delivery": "previews/web/atlas-1280.webp",
+      "deliveryBytes": 65378,
+      "width": 1280,
+      "height": 889
+    },
+    {
+      "source": "previews/nila.png",
+      "sourceBytes": 149332,
+      "delivery": "previews/web/nila-640.webp",
+      "deliveryBytes": 18734,
+      "width": 640,
+      "height": 444
+    },
+    {
+      "source": "previews/nila.png",
+      "sourceBytes": 149332,
+      "delivery": "previews/web/nila-1280.webp",
+      "deliveryBytes": 52858,
+      "width": 1280,
+      "height": 889
+    },
+    {
+      "source": "previews/aura.png",
+      "sourceBytes": 1613990,
+      "delivery": "previews/web/aura-640.webp",
+      "deliveryBytes": 57388,
+      "width": 640,
+      "height": 444
+    },
+    {
+      "source": "previews/aura.png",
+      "sourceBytes": 1613990,
+      "delivery": "previews/web/aura-1280.webp",
+      "deliveryBytes": 141810,
+      "width": 1280,
+      "height": 889
+    },
+    {
+      "source": "previews/vanta.png",
+      "sourceBytes": 478200,
+      "delivery": "previews/web/vanta-640.webp",
+      "deliveryBytes": 38584,
+      "width": 640,
+      "height": 444
+    },
+    {
+      "source": "previews/vanta.png",
+      "sourceBytes": 478200,
+      "delivery": "previews/web/vanta-1280.webp",
+      "deliveryBytes": 91420,
+      "width": 1280,
+      "height": 889
+    },
+    {
+      "source": "previews/rasa.png",
+      "sourceBytes": 1927779,
+      "delivery": "previews/web/rasa-640.webp",
+      "deliveryBytes": 85130,
+      "width": 640,
+      "height": 444
+    },
+    {
+      "source": "previews/rasa.png",
+      "sourceBytes": 1927779,
+      "delivery": "previews/web/rasa-1280.webp",
+      "deliveryBytes": 247178,
+      "width": 1280,
+      "height": 889
+    },
+    {
+      "source": "assets/debotaro-logo-hero.png",
+      "sourceBytes": 130457,
+      "delivery": "assets/debotaro-logo-hero.webp",
+      "deliveryBytes": 86716,
+      "width": 640,
+      "height": 640,
+      "lossless": true
+    },
+    {
+      "source": "assets/debotaro-logo-small.png",
+      "sourceBytes": 10381,
+      "delivery": "assets/debotaro-logo-small.webp",
+      "deliveryBytes": 7808,
+      "width": 160,
+      "height": 160,
+      "lossless": true
+    }
+  ]
+}

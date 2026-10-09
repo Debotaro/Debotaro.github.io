@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import type { CSSProperties, FormEvent, ReactNode } from "react";
-import * as Dialog from "@radix-ui/react-dialog";
+import { useEffect, useRef, useState } from 'react';
+import type { CSSProperties, FormEvent, MouseEvent, ReactNode } from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
 import {
   ArrowDown,
   ArrowRight,
@@ -29,15 +29,9 @@ import {
   Upload,
   WifiOff,
   X,
-} from "lucide-react";
-import { useRelay } from "./useRelay";
-import {
-  canManageProjects,
-  canManageTasks,
-  canReview,
-  canUpload,
-  createId,
-} from "./domain";
+} from 'lucide-react';
+import { useRelay } from './useRelay';
+import { canManageProjects, canManageTasks, canReview, canUpload, createId } from './domain';
 import type {
   RelayAction as Action,
   Actor,
@@ -47,61 +41,56 @@ import type {
   Role,
   Task,
   Workspace,
-} from "./domain";
+} from './domain';
 
-type View =
-  "overview" | "projects" | "tasks" | "review" | "activity" | "settings";
+type View = 'overview' | 'projects' | 'tasks' | 'review' | 'activity' | 'settings';
 type Editor =
-  | { kind: "project"; item?: Project }
-  | { kind: "task"; item?: Task }
-  | { kind: "feedback"; point?: { x: number; y: number } }
+  | { kind: 'project'; item?: Project }
+  | { kind: 'task'; item?: Task }
+  | { kind: 'feedback'; point?: { x: number; y: number } }
   | {
-      kind: "delete";
-      target: "project" | "task" | "asset";
+      kind: 'delete';
+      target: 'project' | 'task' | 'asset';
       id: string;
       name: string;
     }
   | null;
 const roleNames: Record<Role, string> = {
-  admin: "Admin",
-  pm: "Project manager",
-  designer: "Designer",
-  client: "Client",
+  admin: 'Admin',
+  pm: 'Project manager',
+  designer: 'Designer',
+  client: 'Client',
 };
-const statusNames: Record<Task["status"], string> = {
-  todo: "To do",
-  in_progress: "In progress",
-  review: "In review",
-  done: "Done",
+const statusNames: Record<Task['status'], string> = {
+  todo: 'To do',
+  in_progress: 'In progress',
+  review: 'In review',
+  done: 'Done',
 };
-const assetNames: Record<Asset["status"], string> = {
-  draft: "Draft",
-  review: "Needs review",
-  changes: "Changes requested",
-  approved: "Approved",
+const assetNames: Record<Asset['status'], string> = {
+  draft: 'Draft',
+  review: 'Needs review',
+  changes: 'Changes requested',
+  approved: 'Approved',
 };
 const navigation = [
-  { id: "overview", label: "Overview", icon: LayoutDashboard },
-  { id: "projects", label: "Projects", icon: FolderKanban },
-  { id: "tasks", label: "Tasks", icon: ListTodo },
-  { id: "review", label: "Design review", icon: FileImage },
-  { id: "activity", label: "Activity", icon: Clock3 },
-  { id: "settings", label: "Settings", icon: Settings2 },
+  { id: 'overview', label: 'Overview', icon: LayoutDashboard },
+  { id: 'projects', label: 'Projects', icon: FolderKanban },
+  { id: 'tasks', label: 'Tasks', icon: ListTodo },
+  { id: 'review', label: 'Design review', icon: FileImage },
+  { id: 'activity', label: 'Activity', icon: Clock3 },
+  { id: 'settings', label: 'Settings', icon: Settings2 },
 ] as const;
 function currentView(): View {
-  const part = location.hash.replace(/^#\/?/, "").split("?")[0];
-  return navigation.some((item) => item.id === part)
-    ? (part as View)
-    : "overview";
+  const part = location.hash.replace(/^#\/?/, '').split('?')[0];
+  return navigation.some((item) => item.id === part) ? (part as View) : 'overview';
 }
 function dateLabel(value: string | null) {
-  if (!value) return "No due date";
-  return new Date(
-    value.length === 10 ? value + "T12:00:00Z" : value,
-  ).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "short",
-    timeZone: "UTC",
+  if (!value) return 'No due date';
+  return new Date(value.length === 10 ? value + 'T12:00:00Z' : value).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'short',
+    timeZone: 'UTC',
   });
 }
 function initials(name: string) {
@@ -111,24 +100,19 @@ function initials(name: string) {
       .split(/\s+/)
       .slice(0, 2)
       .map((part) => part[0])
-      .join("")
-      .toUpperCase() || "R"
+      .join('')
+      .toUpperCase() || 'R'
   );
 }
 function percent(tasks: Task[]) {
   return tasks.length
-    ? Math.round(
-        (tasks.filter((task) => task.status === "done").length / tasks.length) *
-          100,
-      )
+    ? Math.round((tasks.filter((task) => task.status === 'done').length / tasks.length) * 100)
     : 0;
 }
 function Pill({ status }: { status: string }) {
   return (
     <span className={`pill pill-${status}`}>
-      {assetNames[status as Asset["status"]] ||
-        statusNames[status as Task["status"]] ||
-        status}
+      {assetNames[status as Asset['status']] || statusNames[status as Task['status']] || status}
     </span>
   );
 }
@@ -159,8 +143,7 @@ function Modal({
             event.preventDefault();
             // Radix closes focus scopes asynchronously. A newly opened dialog
             // owns focus even if this older scope finishes closing afterward.
-            if (!document.querySelector('[role="dialog"]'))
-              previous.current?.focus();
+            if (!document.querySelector('[role="dialog"]')) previous.current?.focus();
           }}
         >
           <div className="modal-heading">
@@ -193,38 +176,36 @@ export default function App() {
   const { state, actor, mode, ready, busy, error, storageStatus } = relay;
   const [view, setView] = useState<View>(currentView);
   const [navOpen, setNavOpen] = useState(false);
-  const [projectId, setProjectId] = useState("");
-  const [assetId, setAssetId] = useState("");
+  const [projectId, setProjectId] = useState('');
+  const [assetId, setAssetId] = useState('');
   const [editor, setEditor] = useState<Editor>(null);
   const [palette, setPaletteState] = useState(false);
   const paletteOpen = useRef(false);
   function setPalette(value: boolean | ((current: boolean) => boolean)) {
-    const next =
-      typeof value === "function" ? value(paletteOpen.current) : value;
+    const next = typeof value === 'function' ? value(paletteOpen.current) : value;
     paletteOpen.current = next;
     setPaletteState(next);
   }
   const [imageRatios, setImageRatios] = useState<Record<string, number>>({});
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
-  const [search, setSearch] = useState("");
-  const [taskQuery, setTaskQuery] = useState("");
-  const [taskFilter, setTaskFilter] = useState("all");
+  const [search, setSearch] = useState('');
+  const [taskQuery, setTaskQuery] = useState('');
+  const [taskFilter, setTaskFilter] = useState('all');
   const [pinMode, setPinMode] = useState(false);
-  const [selectedFeedback, setSelectedFeedback] = useState("");
-  const [toast, setToast] = useState("");
+  const [selectedFeedback, setSelectedFeedback] = useState('');
+  const [toast, setToast] = useState('');
   const [online, setOnline] = useState(navigator.onLine);
   const [theme, setTheme] = useState(() => {
     try {
-      return localStorage.getItem("relay-theme") || "light";
+      return localStorage.getItem('relay-theme') || 'light';
     } catch {
-      return "light";
+      return 'light';
     }
   });
   const searchButton = useRef<HTMLButtonElement>(null);
   const menuButton = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    if (navOpen)
-      document.querySelector<HTMLAnchorElement>(".sidebar nav a")?.focus();
+    if (navOpen) document.querySelector<HTMLAnchorElement>('.sidebar nav a')?.focus();
   }, [navOpen]);
   useEffect(() => {
     const changed = () => {
@@ -232,77 +213,69 @@ export default function App() {
       setNavOpen(false);
       setEditor(null);
     };
-    window.addEventListener("hashchange", changed);
-    return () => window.removeEventListener("hashchange", changed);
+    window.addEventListener('hashchange', changed);
+    return () => window.removeEventListener('hashchange', changed);
   }, []);
   useEffect(() => {
     const key = (event: KeyboardEvent) => {
-      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault();
         setPalette((open) => !open);
       }
-      if (event.key === "Escape") {
-        if (document.querySelector(".sidebar.is-open"))
-          menuButton.current?.focus();
+      if (event.key === 'Escape') {
+        if (document.querySelector('.sidebar.is-open')) menuButton.current?.focus();
         setNavOpen(false);
       }
     };
-    window.addEventListener("keydown", key);
-    return () => window.removeEventListener("keydown", key);
+    window.addEventListener('keydown', key);
+    return () => window.removeEventListener('keydown', key);
   }, []);
   useEffect(() => {
     const update = () => setOnline(navigator.onLine);
-    window.addEventListener("online", update);
-    window.addEventListener("offline", update);
+    window.addEventListener('online', update);
+    window.addEventListener('offline', update);
     return () => {
-      window.removeEventListener("online", update);
-      window.removeEventListener("offline", update);
+      window.removeEventListener('online', update);
+      window.removeEventListener('offline', update);
     };
   }, []);
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     try {
-      localStorage.setItem("relay-theme", theme);
-    } catch {}
+      localStorage.setItem('relay-theme', theme);
+    } catch {
+      // Keep the current theme for this tab when browser storage is unavailable.
+    }
   }, [theme]);
   useEffect(() => {
     if (!toast) return;
-    const timer = setTimeout(() => setToast(""), 6000);
+    const timer = setTimeout(() => setToast(''), 6000);
     return () => clearTimeout(timer);
   }, [toast]);
   useEffect(() => {
-    setSelectedFeedback("");
+    setSelectedFeedback('');
     setPinMode(false);
   }, [projectId]);
   function go(next: View) {
-    location.hash = "/" + next;
+    location.hash = '/' + next;
     setView(next);
     setNavOpen(false);
     setPalette(false);
-    setSearch("");
+    setSearch('');
   }
-  const project =
-    state.projects.find((item) => item.id === projectId) || state.projects[0];
+  const project = state.projects.find((item) => item.id === projectId) || state.projects[0];
   const assets = state.assets
     .filter((item) => item.projectId === project?.id)
-    .sort(
-      (a, b) => b.createdAt.localeCompare(a.createdAt) || b.version - a.version,
-    );
+    .sort((a, b) => b.createdAt.localeCompare(a.createdAt) || b.version - a.version);
   const asset = assets.find((item) => item.id === assetId) || assets[0];
-  const comments = state.comments.filter(
-    (comment) => comment.assetId === asset?.id,
-  );
-  const activeProjects = state.projects.filter(
-    (item) => item.status === "active",
-  );
-  const superseded = new Set(
-    state.assets.map((item) => item.previousId).filter(Boolean),
-  );
+  const comments = state.comments.filter((comment) => comment.assetId === asset?.id);
+  const activeProjects = state.projects.filter((item) => item.status === 'active');
+  const superseded = new Set(state.assets.map((item) => item.previousId).filter(Boolean));
   const latestAsset = !!asset && !superseded.has(asset.id);
   const pendingReviews = state.assets.filter(
-    (item) => item.status === "review" && !superseded.has(item.id),
+    (item) => item.status === 'review' && !superseded.has(item.id),
   );
-  const openTasks = state.tasks.filter((task) => task.status !== "done");
+  const openTasks = state.tasks.filter((task) => task.status !== 'done');
   const featuredAsset =
     pendingReviews.find((item) =>
       activeProjects.some((project) => project.id === item.projectId),
@@ -310,16 +283,12 @@ export default function App() {
     state.assets
       .filter((item) => !superseded.has(item.id))
       .sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0];
-  const featuredProject = state.projects.find(
-    (item) => item.id === featuredAsset?.projectId,
-  );
-  const featuredComments = state.comments.filter(
-    (item) => item.assetId === featuredAsset?.id,
-  );
+  const featuredProject = state.projects.find((item) => item.id === featuredAsset?.projectId);
+  const featuredComments = state.comments.filter((item) => item.assetId === featuredAsset?.id);
   function openDesign(item: Asset) {
     setProjectId(item.projectId);
     setAssetId(item.id);
-    go("review");
+    go('review');
   }
   async function act(action: Action, message: string) {
     try {
@@ -327,62 +296,56 @@ export default function App() {
       setToast(message);
       return true;
     } catch (reason) {
-      setToast(
-        reason instanceof Error
-          ? reason.message
-          : "That change could not be saved.",
-      );
+      setToast(reason instanceof Error ? reason.message : 'That change could not be saved.');
       return false;
     }
   }
   async function upload(file: File | undefined, revision = false) {
     if (!file || !project) return;
     try {
-      await relay.uploadFile(
-        file,
-        project.id,
-        revision ? asset?.id : undefined,
-      );
-      setAssetId("");
+      await relay.uploadFile(file, project.id, revision ? asset?.id : undefined);
+      setAssetId('');
       setToast(
         revision
-          ? "New revision uploaded. Earlier feedback stays with its version."
-          : "Design uploaded and ready for feedback.",
+          ? 'New revision uploaded. Earlier feedback stays with its version.'
+          : 'Design uploaded and ready for feedback.',
       );
     } catch (reason) {
-      setToast(
-        reason instanceof Error
-          ? reason.message
-          : "The file could not be uploaded.",
-      );
+      setToast(reason instanceof Error ? reason.message : 'The file could not be uploaded.');
     }
   }
   function selectProject(id: string, next: View) {
-    setAssetId("");
+    setAssetId('');
     setProjectId(id);
     go(next);
   }
-  function newTask() {
+  function openEditor(next: Exclude<Editor, null>, opener?: HTMLElement) {
+    // Safari does not focus pointer-clicked buttons. Record the actual launcher
+    // before mounting the dialog so dismissal has a useful focus destination.
+    opener?.focus();
+    setEditor(next);
+  }
+  function newTask(event: MouseEvent<HTMLButtonElement>) {
     if (!state.projects.length) {
-      setToast("Create a project before adding a task.");
+      setToast('Create a project before adding a task.');
       return;
     }
     if (!activeProjects.length) {
-      setToast("Restore an active project before adding a task.");
+      setToast('Restore an active project before adding a task.');
       return;
     }
-    setEditor({ kind: "task" });
+    openEditor({ kind: 'task' }, event.currentTarget);
   }
-  function pin(x = 0.5, y = 0.5) {
+  function pin(x = 0.5, y = 0.5, opener?: HTMLElement) {
     if (!pinMode) return;
-    setEditor({ kind: "feedback", point: { x, y } });
+    openEditor({ kind: 'feedback', point: { x, y } }, opener);
     setPinMode(false);
   }
   const notice = relay.notice;
   if (!ready)
     return (
       <div className="loading-screen">
-        <img src={import.meta.env.BASE_URL + "relay.svg"} alt="" />
+        <img src={import.meta.env.BASE_URL + 'relay.svg'} alt="" />
         <Loader2 className="spin" />
         <p>Making room for your next move…</p>
       </div>
@@ -394,36 +357,36 @@ export default function App() {
   const filteredTasks = state.tasks.filter(
     (task) =>
       task.title.toLowerCase().includes(taskQuery.toLowerCase()) &&
-      (taskFilter === "all" || task.status === taskFilter),
+      (taskFilter === 'all' || task.status === taskFilter),
   );
   const query = search.trim().toLowerCase();
   const searchResults = [
     ...state.projects.map((item) => ({
       label: item.title,
-      type: "Project",
-      run: () => selectProject(item.id, "projects"),
+      type: 'Project',
+      run: () => selectProject(item.id, 'projects'),
     })),
     ...state.tasks.map((item) => ({
       label: item.title,
-      type: "Task",
+      type: 'Task',
       run: () => {
         setTaskQuery(item.title);
-        setTaskFilter("all");
-        go("tasks");
+        setTaskFilter('all');
+        go('tasks');
       },
     })),
     ...state.assets.map((item) => ({
       label: item.name,
-      type: "Design",
+      type: 'Design',
       run: () => {
         setProjectId(item.projectId);
-        go("review");
+        go('review');
         setAssetId(item.id);
       },
     })),
     ...navigation.map((item) => ({
       label: item.label,
-      type: "Navigate",
+      type: 'Navigate',
       run: () => go(item.id),
     })),
   ]
@@ -436,9 +399,9 @@ export default function App() {
         href="#main-content"
         onClick={(event) => {
           event.preventDefault();
-          const main = document.getElementById("main-content");
+          const main = document.getElementById('main-content');
           main?.focus();
-          main?.scrollIntoView({ block: "start" });
+          main?.scrollIntoView({ block: 'start' });
         }}
       >
         Skip to workspace
@@ -465,7 +428,7 @@ export default function App() {
             <Menu size={21} />
           </button>
           <a className="wordmark" href="#/overview">
-            <img src={import.meta.env.BASE_URL + "relay.svg"} alt="" />
+            <img src={import.meta.env.BASE_URL + 'relay.svg'} alt="" />
             <span>
               RELAY<span className="wordmark-os">OS</span>
             </span>
@@ -476,15 +439,15 @@ export default function App() {
           </span>
         </div>
         <div className="topbar-actions">
-          <span className={`connection ${online ? "" : "offline"}`}>
+          <span className={`connection ${online ? '' : 'offline'}`}>
             {online ? <i /> : <WifiOff size={13} />}
-            {mode === "cloud" ? "Cloud workspace" : "Local demo"}
+            {mode === 'cloud' ? 'Cloud workspace' : 'Local demo'}
           </span>
           <button
             ref={searchButton}
             className="search-trigger"
             onClick={() => {
-              setSearch("");
+              setSearch('');
               setPalette(true);
             }}
             aria-label="Search workspace"
@@ -496,7 +459,7 @@ export default function App() {
           <button
             className="icon-button notification-button"
             aria-label="View workspace activity"
-            onClick={() => go("activity")}
+            onClick={() => go('activity')}
           >
             <Bell size={18} />
             {state.activity.length > 0 && <i />}
@@ -504,30 +467,28 @@ export default function App() {
           <button
             className="studio-profile"
             aria-label="Workspace settings"
-            onClick={() => go("settings")}
+            onClick={() => go('settings')}
           >
             <span className="avatar avatar-orange">{initials(actor.name)}</span>
             <span>
               {roleNames[actor.role]}
-              <small>{mode === "demo" ? "Demo role" : actor.name}</small>
+              <small>{mode === 'demo' ? 'Demo role' : actor.name}</small>
             </span>
           </button>
         </div>
       </header>
-      <aside
-        className={`sidebar studio-navigation ${navOpen ? "is-open" : ""}`}
-      >
+      <aside className={`sidebar studio-navigation ${navOpen ? 'is-open' : ''}`}>
         <nav aria-label="Workspace navigation">
           {navigation.map((item) => (
             <a
               key={item.id}
-              href={"#/" + item.id}
-              aria-current={view === item.id ? "page" : undefined}
+              href={'#/' + item.id}
+              aria-current={view === item.id ? 'page' : undefined}
               onClick={() => setNavOpen(false)}
             >
               <item.icon size={16} />
               {item.label}
-              {item.id === "review" && pendingReviews.length > 0 && (
+              {item.id === 'review' && pendingReviews.length > 0 && (
                 <span className="nav-counter">{pendingReviews.length}</span>
               )}
             </a>
@@ -541,26 +502,26 @@ export default function App() {
         {!online && (
           <div className="notice-bar">
             <WifiOff size={15} />
-            {mode === "demo"
-              ? "You’re offline. Your open demo workspace still saves on this device."
-              : "You’re offline. Reconnect before saving cloud changes, then refresh."}
+            {mode === 'demo'
+              ? 'You’re offline. Your open demo workspace still saves on this device.'
+              : 'You’re offline. Reconnect before saving cloud changes, then refresh.'}
           </div>
         )}
-        {(error || notice || storageStatus === "session") && (
+        {(error || notice || storageStatus === 'session') && (
           <div
-            className={`notice-bar ${error ? "notice-error" : ""}`}
-            role={error ? "alert" : "status"}
+            className={`notice-bar ${error ? 'notice-error' : ''}`}
+            role={error ? 'alert' : 'status'}
           >
             <CircleHelp size={16} />
             {error ||
               notice ||
-              (storageStatus === "session"
-                ? "Browser storage is unavailable. Changes last only for this session."
-                : "")}
+              (storageStatus === 'session'
+                ? 'Browser storage is unavailable. Changes last only for this session.'
+                : '')}
           </div>
         )}
         <main id="main-content" className={`view-${view}`} tabIndex={-1}>
-          {view === "overview" && (
+          {view === 'overview' && (
             <div className="studio-home">
               <div className="studio-introduction">
                 <div>
@@ -576,14 +537,13 @@ export default function App() {
                 </div>
                 <div className="studio-intro-note">
                   <p>
-                    From the first direction to the final yes. Bring your
-                    designs, your feedback and your next version into one
-                    conversation.
+                    From the first direction to the final yes. Bring your designs, your feedback and
+                    your next version into one conversation.
                   </p>
                   {manageProjects && (
                     <button
                       className="button secondary"
-                      onClick={() => setEditor({ kind: "project" })}
+                      onClick={(event) => openEditor({ kind: 'project' }, event.currentTarget)}
                     >
                       <Plus size={16} />
                       New project
@@ -592,19 +552,14 @@ export default function App() {
                 </div>
               </div>
               {featuredAsset && featuredProject ? (
-                <section
-                  className="studio-feature"
-                  aria-label="Featured design review"
-                >
+                <section className="studio-feature" aria-label="Featured design review">
                   <div className="studio-artwork">
                     <div className="studio-artwork-label">
                       <span>
                         <i />
                         ON THE REVIEW TABLE
                       </span>
-                      <span>
-                        V{featuredAsset.version.toString().padStart(2, "0")}
-                      </span>
+                      <span>V{featuredAsset.version.toString().padStart(2, '0')}</span>
                     </div>
                     <button
                       className="studio-feature-canvas"
@@ -633,40 +588,29 @@ export default function App() {
                   <div className="studio-review-brief">
                     <span className="eyebrow">A FRESH PAIR OF EYES</span>
                     <h2>
-                      {featuredAsset.status === "approved"
-                        ? "A direction, agreed."
-                        : "The next version starts here."}
+                      {featuredAsset.status === 'approved'
+                        ? 'A direction, agreed.'
+                        : 'The next version starts here.'}
                     </h2>
                     <p>
-                      {featuredAsset.status === "review"
-                        ? "This design is ready for a decision. Find the details, leave a thought and agree on the way forward."
-                        : featuredAsset.status === "approved"
-                          ? "This version has been approved. Explore its feedback or begin a fresh revision."
-                          : "Keep the conversation beside the work. Every note stays with the version that inspired it."}
+                      {featuredAsset.status === 'review'
+                        ? 'This design is ready for a decision. Find the details, leave a thought and agree on the way forward.'
+                        : featuredAsset.status === 'approved'
+                          ? 'This version has been approved. Explore its feedback or begin a fresh revision.'
+                          : 'Keep the conversation beside the work. Every note stays with the version that inspired it.'}
                     </p>
-                    <div
-                      className="review-journey"
-                      aria-label="Design approval journey"
-                    >
+                    <div className="review-journey" aria-label="Design approval journey">
                       <span className="complete">
                         <Check size={12} />
                         Design
                       </span>
                       <i />
-                      <span
-                        className={
-                          featuredAsset.status !== "draft" ? "complete" : ""
-                        }
-                      >
+                      <span className={featuredAsset.status !== 'draft' ? 'complete' : ''}>
                         <MessageCircle size={12} />
                         Review
                       </span>
                       <i />
-                      <span
-                        className={
-                          featuredAsset.status === "approved" ? "complete" : ""
-                        }
-                      >
+                      <span className={featuredAsset.status === 'approved' ? 'complete' : ''}>
                         <ShieldCheck size={12} />
                         Approval
                       </span>
@@ -678,9 +622,7 @@ export default function App() {
                       </div>
                       {featuredComments.slice(0, 2).map((comment) => (
                         <div key={comment.id} className="peek-comment">
-                          <span className="avatar tiny">
-                            {initials(comment.author)}
-                          </span>
+                          <span className="avatar tiny">{initials(comment.author)}</span>
                           <div>
                             <b>{comment.author}</b>
                             <p>{comment.body}</p>
@@ -688,9 +630,7 @@ export default function App() {
                         </div>
                       ))}
                       {!featuredComments.length && (
-                        <p className="no-comments">
-                          A clean canvas. Leave the first thought.
-                        </p>
+                        <p className="no-comments">A clean canvas. Leave the first thought.</p>
                       )}
                     </div>
                     <button
@@ -701,12 +641,9 @@ export default function App() {
                       Open design review <ArrowUpRight size={17} />
                     </button>
                     <small>
-                      {featuredComments.filter((item) => !item.resolved).length}{" "}
-                      open notes · {pendingReviews.length}{" "}
-                      {pendingReviews.length === 1
-                        ? "design awaits"
-                        : "designs await"}{" "}
-                      review
+                      {featuredComments.filter((item) => !item.resolved).length} open notes ·{' '}
+                      {pendingReviews.length}{' '}
+                      {pendingReviews.length === 1 ? 'design awaits' : 'designs await'} review
                     </small>
                   </div>
                 </section>
@@ -716,63 +653,40 @@ export default function App() {
                     ✳
                   </span>
                   <Empty title="Your next direction starts here">
-                    Create a project, upload a design and make space for the
-                    conversation.
+                    Create a project, upload a design and make space for the conversation.
                   </Empty>
-                  <button
-                    className="button primary"
-                    onClick={() => go("projects")}
-                  >
+                  <button className="button primary" onClick={() => go('projects')}>
                     Open projects <ArrowRight size={16} />
                   </button>
                 </div>
               )}
-              <section
-                className="studio-project-wall"
-                aria-label="Active creative projects"
-              >
+              <section className="studio-project-wall" aria-label="Active creative projects">
                 <div className="section-header">
                   <div>
                     <span className="eyebrow">THE WORK IN MOTION</span>
                     <h2>On the studio wall.</h2>
                   </div>
-                  <button
-                    className="text-button"
-                    onClick={() => go("projects")}
-                  >
+                  <button className="text-button" onClick={() => go('projects')}>
                     All projects <ArrowUpRight size={16} />
                   </button>
                 </div>
                 <div className="studio-cover-grid">
                   {activeProjects.slice(0, 3).map((item, index) => {
                     const cover = state.assets
-                      .filter(
-                        (image) =>
-                          image.projectId === item.id &&
-                          !superseded.has(image.id),
-                      )
-                      .sort((a, b) =>
-                        b.createdAt.localeCompare(a.createdAt),
-                      )[0];
+                      .filter((image) => image.projectId === item.id && !superseded.has(image.id))
+                      .sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0];
                     const notes = state.comments.filter(
-                      (comment) =>
-                        comment.projectId === item.id && !comment.resolved,
+                      (comment) => comment.projectId === item.id && !comment.resolved,
                     ).length;
                     return (
                       <button
                         className="studio-cover-card"
                         key={item.id}
                         onClick={() =>
-                          cover
-                            ? openDesign(cover)
-                            : selectProject(item.id, "review")
+                          cover ? openDesign(cover) : selectProject(item.id, 'review')
                         }
                       >
-                        <ProjectCover
-                          project={item}
-                          asset={cover}
-                          index={index}
-                        />
+                        <ProjectCover project={item} asset={cover} index={index} />
                         <div className="cover-card-caption">
                           <div>
                             <h3>{item.title}</h3>
@@ -783,7 +697,7 @@ export default function App() {
                         <span className="cover-card-detail">
                           {cover
                             ? `${state.assets.filter((image) => image.projectId === item.id).length} design versions · ${notes} open notes`
-                            : "A new direction, ready to begin"}
+                            : 'A new direction, ready to begin'}
                         </span>
                       </button>
                     );
@@ -795,10 +709,7 @@ export default function App() {
                   )}
                 </div>
               </section>
-              <section
-                className="studio-next-actions"
-                aria-label="Next creative steps"
-              >
+              <section className="studio-next-actions" aria-label="Next creative steps">
                 <div>
                   <span className="eyebrow">FROM FEEDBACK TO FORWARD</span>
                   <h2>
@@ -806,7 +717,7 @@ export default function App() {
                     <br />
                     <em>a next step.</em>
                   </h2>
-                  <button className="text-button" onClick={() => go("tasks")}>
+                  <button className="text-button" onClick={() => go('tasks')}>
                     All next steps <ArrowRight size={16} />
                   </button>
                 </div>
@@ -818,19 +729,18 @@ export default function App() {
                         disabled={
                           !editable ||
                           busy ||
-                          state.projects.find(
-                            (item) => item.id === task.projectId,
-                          )?.status !== "active"
+                          state.projects.find((item) => item.id === task.projectId)?.status !==
+                            'active'
                         }
                         aria-label={`Complete ${task.title}`}
                         onClick={() =>
                           act(
                             {
-                              type: "update_task",
+                              type: 'update_task',
                               id: task.id,
-                              patch: { status: "done" },
+                              patch: { status: 'done' },
                             },
-                            "One less thing. Task completed.",
+                            'One less thing. Task completed.',
                           )
                         }
                       >
@@ -841,36 +751,31 @@ export default function App() {
                           className="task-title"
                           onClick={() => {
                             setTaskQuery(task.title);
-                            go("tasks");
+                            go('tasks');
                           }}
                         >
                           {task.title}
                         </button>
                         <p>
-                          {
-                            state.projects.find(
-                              (item) => item.id === task.projectId,
-                            )?.title
-                          }{" "}
-                          · {dateLabel(task.dueDate)}
+                          {state.projects.find((item) => item.id === task.projectId)?.title} ·{' '}
+                          {dateLabel(task.dueDate)}
                         </p>
                       </div>
                       <span
+                        role="img"
                         className={`priority-dot priority-${task.priority}`}
                         aria-label={`${task.priority} priority`}
                       />
                     </div>
                   ))}
                   {!openTasks.length && (
-                    <Empty title="A little breathing room">
-                      Your next steps are complete.
-                    </Empty>
+                    <Empty title="A little breathing room">Your next steps are complete.</Empty>
                   )}
                 </div>
               </section>
             </div>
           )}
-          {view === "projects" && (
+          {view === 'projects' && (
             <>
               <PageHeading
                 eyebrow="KEEP THE BIG PICTURE CLOSE"
@@ -884,7 +789,7 @@ export default function App() {
                 {manageProjects && (
                   <button
                     className="button primary"
-                    onClick={() => setEditor({ kind: "project" })}
+                    onClick={(event) => openEditor({ kind: 'project' }, event.currentTarget)}
                   >
                     <Plus size={16} />
                     New project
@@ -893,15 +798,9 @@ export default function App() {
               </PageHeading>
               <div className="project-grid">
                 {state.projects.map((item, index) => {
-                  const tasks = state.tasks.filter(
-                    (task) => task.projectId === item.id,
-                  );
+                  const tasks = state.tasks.filter((task) => task.projectId === item.id);
                   const cover = state.assets
-                    .filter(
-                      (image) =>
-                        image.projectId === item.id &&
-                        !superseded.has(image.id),
-                    )
+                    .filter((image) => image.projectId === item.id && !superseded.has(image.id))
                     .sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0];
                   return (
                     <article className="panel project-card" key={item.id}>
@@ -909,16 +808,10 @@ export default function App() {
                         className="project-cover-button"
                         aria-label={`Open ${item.title} designs`}
                         onClick={() =>
-                          cover
-                            ? openDesign(cover)
-                            : selectProject(item.id, "review")
+                          cover ? openDesign(cover) : selectProject(item.id, 'review')
                         }
                       >
-                        <ProjectCover
-                          project={item}
-                          asset={cover}
-                          index={index}
-                        />
+                        <ProjectCover project={item} asset={cover} index={index} />
                         <span className="project-cover-tag">
                           <Pill status={item.status} />
                         </span>
@@ -927,7 +820,7 @@ export default function App() {
                         <span
                           className="project-monogram"
                           style={{
-                            background: item.color + "22",
+                            background: item.color + '22',
                             color: item.color,
                           }}
                         >
@@ -937,7 +830,7 @@ export default function App() {
                       </div>
                       <button
                         className="project-title"
-                        onClick={() => selectProject(item.id, "review")}
+                        onClick={() => selectProject(item.id, 'review')}
                       >
                         <h2>{item.title}</h2>
                         <ArrowUpRight size={19} />
@@ -946,11 +839,8 @@ export default function App() {
                       <p>{item.description}</p>
                       <div className="project-progress-label">
                         <span>
-                          {
-                            tasks.filter((task) => task.status === "done")
-                              .length
-                          }{" "}
-                          of {tasks.length} steps complete
+                          {tasks.filter((task) => task.status === 'done').length} of {tasks.length}{' '}
+                          steps complete
                         </span>
                         <b>{percent(tasks)}%</b>
                       </div>
@@ -958,14 +848,10 @@ export default function App() {
                       <div className="project-card-footer">
                         <span
                           className="avatar-stack"
-                          aria-label={
-                            mode === "demo"
-                              ? "Sample collaborators"
-                              : actor.name
-                          }
+                          aria-label={mode === 'demo' ? 'Sample collaborators' : actor.name}
                         >
                           <span className="avatar">{initials(actor.name)}</span>
-                          {mode === "demo" && (
+                          {mode === 'demo' && (
                             <>
                               <span className="avatar sage">SK</span>
                               <span className="avatar lilac">AT</span>
@@ -978,8 +864,8 @@ export default function App() {
                               <button
                                 className="icon-button"
                                 aria-label={`Edit ${item.title}`}
-                                onClick={() =>
-                                  setEditor({ kind: "project", item })
+                                onClick={(event) =>
+                                  openEditor({ kind: 'project', item }, event.currentTarget)
                                 }
                               >
                                 <Pencil size={15} />
@@ -987,13 +873,16 @@ export default function App() {
                               <button
                                 className="icon-button"
                                 aria-label={`Delete ${item.title}`}
-                                onClick={() =>
-                                  setEditor({
-                                    kind: "delete",
-                                    target: "project",
-                                    id: item.id,
-                                    name: item.title,
-                                  })
+                                onClick={(event) =>
+                                  openEditor(
+                                    {
+                                      kind: 'delete',
+                                      target: 'project',
+                                      id: item.id,
+                                      name: item.title,
+                                    },
+                                    event.currentTarget,
+                                  )
                                 }
                               >
                                 <Trash2 size={15} />
@@ -1002,7 +891,7 @@ export default function App() {
                           )}
                           <button
                             className="text-button"
-                            onClick={() => selectProject(item.id, "review")}
+                            onClick={() => selectProject(item.id, 'review')}
                           >
                             Review <ArrowRight size={14} />
                           </button>
@@ -1019,7 +908,7 @@ export default function App() {
               )}
             </>
           )}
-          {view === "tasks" && (
+          {view === 'tasks' && (
             <>
               <PageHeading
                 eyebrow="MAKE THE NEXT STEP CLEAR"
@@ -1063,8 +952,7 @@ export default function App() {
                   </select>
                 </label>
                 <span>
-                  {filteredTasks.length}{" "}
-                  {filteredTasks.length === 1 ? "step" : "steps"}
+                  {filteredTasks.length} {filteredTasks.length === 1 ? 'step' : 'steps'}
                 </span>
               </div>
               <section className="panel task-table" aria-label="Project tasks">
@@ -1079,20 +967,14 @@ export default function App() {
                 {filteredTasks.map((task) => (
                   <article className="task-row" key={task.id}>
                     <div className="task-name-cell">
-                      <span
-                        className={`priority-line priority-${task.priority}`}
-                      />
+                      <span className={`priority-line priority-${task.priority}`} />
                       <div>
-                        <h3>{task.title}</h3>
+                        <h2>{task.title}</h2>
                         <small>{task.priority} priority</small>
                       </div>
                     </div>
                     <span className="task-project-name">
-                      {
-                        state.projects.find(
-                          (item) => item.id === task.projectId,
-                        )?.title
-                      }
+                      {state.projects.find((item) => item.id === task.projectId)?.title}
                     </span>
                     <select
                       className={`status-select status-${task.status}`}
@@ -1100,21 +982,20 @@ export default function App() {
                       disabled={
                         !editable ||
                         busy ||
-                        state.projects.find(
-                          (item) => item.id === task.projectId,
-                        )?.status !== "active"
+                        state.projects.find((item) => item.id === task.projectId)?.status !==
+                          'active'
                       }
                       value={task.status}
                       onChange={(event) =>
                         act(
                           {
-                            type: "update_task",
+                            type: 'update_task',
                             id: task.id,
                             patch: {
-                              status: event.target.value as Task["status"],
+                              status: event.target.value as Task['status'],
                             },
                           },
-                          "Task status updated.",
+                          'Task status updated.',
                         )
                       }
                     >
@@ -1125,23 +1006,20 @@ export default function App() {
                       ))}
                     </select>
                     <span className="assignee">
-                      <span className="avatar tiny">
-                        {initials(task.assignee)}
-                      </span>
+                      <span className="avatar tiny">{initials(task.assignee)}</span>
                       {task.assignee}
                     </span>
                     <span className="task-due">{dateLabel(task.dueDate)}</span>
                     <div className="task-actions">
                       {editable &&
-                        state.projects.find(
-                          (item) => item.id === task.projectId,
-                        )?.status === "active" && (
+                        state.projects.find((item) => item.id === task.projectId)?.status ===
+                          'active' && (
                           <>
                             <button
                               className="icon-button"
                               aria-label={`Edit ${task.title}`}
-                              onClick={() =>
-                                setEditor({ kind: "task", item: task })
+                              onClick={(event) =>
+                                openEditor({ kind: 'task', item: task }, event.currentTarget)
                               }
                             >
                               <Pencil size={15} />
@@ -1149,13 +1027,16 @@ export default function App() {
                             <button
                               className="icon-button"
                               aria-label={`Delete ${task.title}`}
-                              onClick={() =>
-                                setEditor({
-                                  kind: "delete",
-                                  target: "task",
-                                  id: task.id,
-                                  name: task.title,
-                                })
+                              onClick={(event) =>
+                                openEditor(
+                                  {
+                                    kind: 'delete',
+                                    target: 'task',
+                                    id: task.id,
+                                    name: task.title,
+                                  },
+                                  event.currentTarget,
+                                )
                               }
                             >
                               <Trash2 size={15} />
@@ -1167,15 +1048,15 @@ export default function App() {
                 ))}
                 {!filteredTasks.length && (
                   <Empty title="A clear page, a clear head">
-                    {taskQuery || taskFilter !== "all"
-                      ? "Try another search or status."
-                      : "Add a next step, or create one directly from design feedback."}
+                    {taskQuery || taskFilter !== 'all'
+                      ? 'Try another search or status.'
+                      : 'Add a next step, or create one directly from design feedback.'}
                   </Empty>
                 )}
               </section>
             </>
           )}
-          {view === "review" && (
+          {view === 'review' && (
             <>
               <PageHeading
                 eyebrow="GOOD FEEDBACK GOES SOMEWHERE"
@@ -1187,28 +1068,25 @@ export default function App() {
                 description="The work at the center. The conversation right beside it."
               >
                 {uploadAllowed && project && (
-                  <label
-                    className={`button primary file-button ${busy ? "disabled" : ""}`}
-                  >
+                  <label className={`button primary file-button ${busy ? 'disabled' : ''}`}>
                     <Upload size={16} />
                     Upload design
                     <input
                       aria-label="Upload design"
                       type="file"
                       accept="image/png,image/jpeg,image/webp"
-                      disabled={busy || project?.status !== "active"}
+                      disabled={busy || project?.status !== 'active'}
                       onChange={(event) => {
                         upload(event.target.files?.[0]);
-                        event.target.value = "";
+                        event.target.value = '';
                       }}
                     />
                   </label>
                 )}
               </PageHeading>
-              {project?.status === "archived" && (
+              {project?.status === 'archived' && (
                 <p className="archived-note" role="status">
-                  This project is archived. Restore it in Projects before
-                  changing tasks or designs.
+                  This project is archived. Restore it in Projects before changing tasks or designs.
                 </p>
               )}
               <div className="review-toolbar">
@@ -1216,9 +1094,9 @@ export default function App() {
                   Project
                   <select
                     aria-label="Review project"
-                    value={project?.id || ""}
+                    value={project?.id || ''}
                     onChange={(event) => {
-                      setAssetId("");
+                      setAssetId('');
                       setProjectId(event.target.value);
                     }}
                   >
@@ -1229,9 +1107,7 @@ export default function App() {
                     ))}
                   </select>
                 </label>
-                <span>
-                  Images only · {mode === "demo" ? "1" : "3"} MB maximum
-                </span>
+                <span>Images only · {mode === 'demo' ? '1' : '3'} MB maximum</span>
                 {asset && (
                   <label>
                     Version
@@ -1240,7 +1116,7 @@ export default function App() {
                       value={asset.id}
                       onChange={(event) => {
                         setAssetId(event.target.value);
-                        setSelectedFeedback("");
+                        setSelectedFeedback('');
                       }}
                     >
                       {assets.map((item) => (
@@ -1262,17 +1138,17 @@ export default function App() {
                         <Pill status={asset.status} />
                       </div>
                       <button
-                        className={`button small ${pinMode ? "primary" : "secondary"}`}
-                        disabled={busy || project?.status !== "active"}
+                        className={`button small ${pinMode ? 'primary' : 'secondary'}`}
+                        disabled={busy || project?.status !== 'active'}
                         aria-pressed={pinMode}
                         onClick={() => setPinMode((value) => !value)}
                       >
                         <Plus size={15} />
-                        {pinMode ? "Cancel pin" : "Add a pin"}
+                        {pinMode ? 'Cancel pin' : 'Add a pin'}
                       </button>
                     </div>
                     <div
-                      className={`design-stage ${pinMode ? "pin-mode" : ""}`}
+                      className={`design-stage ${pinMode ? 'pin-mode' : ''}`}
                       style={{ aspectRatio: imageRatios[asset.id] || 4 / 3 }}
                     >
                       <img
@@ -1284,8 +1160,7 @@ export default function App() {
                           if (image.naturalWidth && image.naturalHeight) {
                             setImageRatios((current) => ({
                               ...current,
-                              [asset.id]:
-                                image.naturalWidth / image.naturalHeight,
+                              [asset.id]: image.naturalWidth / image.naturalHeight,
                             }));
                             setFailedImages((current) => ({
                               ...current,
@@ -1302,34 +1177,19 @@ export default function App() {
                       />
                       <button
                         className="canvas-target"
-                        disabled={
-                          !!failedImages[asset.id] ||
-                          project?.status !== "active"
-                        }
+                        disabled={!!failedImages[asset.id] || project?.status !== 'active'}
                         aria-label="Design canvas"
                         aria-describedby="canvas-hint"
                         onClick={(event) => {
-                          const rect =
-                            event.currentTarget.getBoundingClientRect();
+                          const rect = event.currentTarget.getBoundingClientRect();
                           pin(
                             event.detail
-                              ? Math.max(
-                                  0,
-                                  Math.min(
-                                    1,
-                                    (event.clientX - rect.left) / rect.width,
-                                  ),
-                                )
+                              ? Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width))
                               : 0.5,
                             event.detail
-                              ? Math.max(
-                                  0,
-                                  Math.min(
-                                    1,
-                                    (event.clientY - rect.top) / rect.height,
-                                  ),
-                                )
+                              ? Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height))
                               : 0.5,
+                            event.currentTarget,
                           );
                         }}
                       />
@@ -1338,7 +1198,7 @@ export default function App() {
                         .map((comment, index) => (
                           <button
                             key={comment.id}
-                            className={`feedback-pin ${comment.resolved ? "resolved" : ""} ${selectedFeedback === comment.id ? "selected" : ""}`}
+                            className={`feedback-pin ${comment.resolved ? 'resolved' : ''} ${selectedFeedback === comment.id ? 'selected' : ''}`}
                             style={{
                               left: `${comment.x! * 100}%`,
                               top: `${comment.y! * 100}%`,
@@ -1347,12 +1207,10 @@ export default function App() {
                             aria-pressed={selectedFeedback === comment.id}
                             onClick={() => {
                               setSelectedFeedback(comment.id);
-                              document
-                                .getElementById("feedback-" + comment.id)
-                                ?.scrollIntoView({
-                                  behavior: "instant",
-                                  block: "nearest",
-                                });
+                              document.getElementById('feedback-' + comment.id)?.scrollIntoView({
+                                behavior: 'instant',
+                                block: 'nearest',
+                              });
                             }}
                           >
                             {index + 1}
@@ -1361,19 +1219,17 @@ export default function App() {
                     </div>
                     {failedImages[asset.id] && (
                       <p className="archived-note" role="alert">
-                        This image preview is unavailable. Upload a valid
-                        revision to continue image feedback.
+                        This image preview is unavailable. Upload a valid revision to continue image
+                        feedback.
                       </p>
                     )}
                     <div className="design-footer">
                       <p id="canvas-hint">
                         {pinMode
-                          ? "Click the design to place feedback. Press Enter on the canvas to place a centered pin."
-                          : "Every thought has its place. Select a pin to find its conversation."}
+                          ? 'Click the design to place feedback. Press Enter on the canvas to place a centered pin.'
+                          : 'Every thought has its place. Select a pin to find its conversation.'}
                       </p>
-                      <span>
-                        VERSION {asset.version.toString().padStart(2, "0")}
-                      </span>
+                      <span>VERSION {asset.version.toString().padStart(2, '0')}</span>
                     </div>
                     <div className="approval-bar">
                       <div
@@ -1384,20 +1240,12 @@ export default function App() {
                           <Check size={13} /> Design ready
                         </span>
                         <i />
-                        <span
-                          className={asset.status !== "draft" ? "complete" : ""}
-                        >
-                          <MessageCircle size={13} />{" "}
-                          {asset.status === "changes"
-                            ? "Changes requested"
-                            : "In review"}
+                        <span className={asset.status !== 'draft' ? 'complete' : ''}>
+                          <MessageCircle size={13} />{' '}
+                          {asset.status === 'changes' ? 'Changes requested' : 'In review'}
                         </span>
                         <i />
-                        <span
-                          className={
-                            asset.status === "approved" ? "complete" : ""
-                          }
-                        >
+                        <span className={asset.status === 'approved' ? 'complete' : ''}>
                           <ShieldCheck size={13} /> Approved
                         </span>
                       </div>
@@ -1405,80 +1253,78 @@ export default function App() {
                         <ShieldCheck size={18} />
                         <p>
                           {!latestAsset
-                            ? "A newer revision exists. This version keeps its original feedback and decision."
-                            : asset.status === "approved"
-                              ? "This version is approved. New work starts with a new revision."
-                              : asset.status === "review"
-                                ? "A fresh eye makes good work better. Ready for a decision."
-                                : asset.status === "changes"
-                                  ? "Feedback received. Upload a revision when the next version is ready."
-                                  : "The details are taking shape. Send this version for a fresh eye."}
+                            ? 'A newer revision exists. This version keeps its original feedback and decision.'
+                            : asset.status === 'approved'
+                              ? 'This version is approved. New work starts with a new revision.'
+                              : asset.status === 'review'
+                                ? 'A fresh eye makes good work better. Ready for a decision.'
+                                : asset.status === 'changes'
+                                  ? 'Feedback received. Upload a revision when the next version is ready.'
+                                  : 'The details are taking shape. Send this version for a fresh eye.'}
                         </p>
                       </div>
                       <div className="approval-actions">
                         {latestAsset &&
                           uploadAllowed &&
-                          asset.status !== "approved" &&
-                          asset.status !== "review" && (
+                          asset.status !== 'approved' &&
+                          asset.status !== 'review' && (
                             <button
                               className="button small secondary"
-                              disabled={busy || project?.status !== "active"}
+                              disabled={busy || project?.status !== 'active'}
                               onClick={() =>
                                 act(
                                   {
-                                    type: "set_approval",
+                                    type: 'set_approval',
                                     id: asset.id,
-                                    status: "review",
+                                    status: 'review',
                                   },
-                                  "Version submitted for review.",
+                                  'Version submitted for review.',
                                 )
                               }
                             >
                               Request review <ArrowUpRight size={13} />
                             </button>
                           )}
-                        {latestAsset &&
-                          canReview(actor.role) &&
-                          asset.status === "review" && (
-                            <>
-                              <button
-                                className="button small secondary"
-                                disabled={busy || project?.status !== "active"}
-                                onClick={() =>
-                                  act(
-                                    {
-                                      type: "set_approval",
-                                      id: asset.id,
-                                      status: "changes",
-                                    },
-                                    "Changes requested. Feedback stays attached to this version.",
-                                  )
-                                }
-                              >
-                                Request changes
-                              </button>
-                              <button
-                                className="button small primary"
-                                disabled={busy || project?.status !== "active"}
-                                onClick={() =>
-                                  act(
-                                    {
-                                      type: "set_approval",
-                                      id: asset.id,
-                                      status: "approved",
-                                    },
-                                    "Version approved. Decision recorded in activity.",
-                                  )
-                                }
-                              >
-                                <Check size={14} />
-                                Approve version
-                              </button>
-                            </>
-                          )}
+                        {latestAsset && canReview(actor.role) && asset.status === 'review' && (
+                          <>
+                            <button
+                              className="button small secondary"
+                              disabled={busy || project?.status !== 'active'}
+                              onClick={() =>
+                                act(
+                                  {
+                                    type: 'set_approval',
+                                    id: asset.id,
+                                    status: 'changes',
+                                  },
+                                  'Changes requested. Feedback stays attached to this version.',
+                                )
+                              }
+                            >
+                              Request changes
+                            </button>
+                            <button
+                              className="button small primary"
+                              disabled={busy || project?.status !== 'active'}
+                              onClick={() =>
+                                act(
+                                  {
+                                    type: 'set_approval',
+                                    id: asset.id,
+                                    status: 'approved',
+                                  },
+                                  'Version approved. Decision recorded in activity.',
+                                )
+                              }
+                            >
+                              <Check size={14} />
+                              Approve version
+                            </button>
+                          </>
+                        )}
                         {latestAsset && uploadAllowed && (
                           <label
-                            className={`button small secondary file-button ${busy ? "disabled" : ""}`}
+                            className={`button small secondary file-button ${busy ? 'disabled' : ''}`}
                           >
                             <Upload size={14} />
                             Upload revision
@@ -1486,10 +1332,10 @@ export default function App() {
                               aria-label="Upload revision"
                               type="file"
                               accept="image/png,image/jpeg,image/webp"
-                              disabled={busy || project?.status !== "active"}
+                              disabled={busy || project?.status !== 'active'}
                               onChange={(event) => {
                                 upload(event.target.files?.[0], true);
-                                event.target.value = "";
+                                event.target.value = '';
                               }}
                             />
                           </label>
@@ -1497,10 +1343,7 @@ export default function App() {
                       </div>
                     </div>
                   </section>
-                  <aside
-                    className="panel feedback-panel"
-                    aria-label="Design feedback"
-                  >
+                  <aside className="panel feedback-panel" aria-label="Design feedback">
                     <div className="feedback-heading">
                       <div>
                         <span className="eyebrow">THE CONVERSATION</span>
@@ -1511,8 +1354,8 @@ export default function App() {
                       <button
                         className="icon-button"
                         aria-label="Add general feedback"
-                        disabled={busy || project?.status !== "active"}
-                        onClick={() => setEditor({ kind: "feedback" })}
+                        disabled={busy || project?.status !== 'active'}
+                        onClick={(event) => openEditor({ kind: 'feedback' }, event.currentTarget)}
                       >
                         <Plus size={19} />
                       </button>
@@ -1520,20 +1363,18 @@ export default function App() {
                     <div className="feedback-list">
                       {comments.map((comment, index) => (
                         <article
-                          id={"feedback-" + comment.id}
+                          id={'feedback-' + comment.id}
                           key={comment.id}
-                          className={`feedback-card ${selectedFeedback === comment.id ? "is-selected" : ""} ${comment.resolved ? "is-resolved" : ""}`}
+                          className={`feedback-card ${selectedFeedback === comment.id ? 'is-selected' : ''} ${comment.resolved ? 'is-resolved' : ''}`}
                         >
                           <div className="feedback-author">
-                            <span className="avatar tiny">
-                              {initials(comment.author)}
-                            </span>
+                            <span className="avatar tiny">{initials(comment.author)}</span>
                             <div>
                               <b>{comment.author}</b>
                               <small>{dateLabel(comment.createdAt)}</small>
                             </div>
                             <span className="feedback-number">
-                              {comment.x !== null ? "#" + (index + 1) : "NOTE"}
+                              {comment.x !== null ? '#' + (index + 1) : 'NOTE'}
                             </span>
                           </div>
                           <p>{comment.body}</p>
@@ -1547,57 +1388,50 @@ export default function App() {
                             {editable && (
                               <button
                                 className="text-button"
-                                disabled={
-                                  !!comment.taskId ||
-                                  busy ||
-                                  project?.status !== "active"
-                                }
+                                disabled={!!comment.taskId || busy || project?.status !== 'active'}
                                 aria-label={`Create task from feedback ${comment.id}`}
                                 onClick={() =>
                                   act(
                                     {
-                                      type: "convert_comment",
+                                      type: 'convert_comment',
                                       id: comment.id,
                                       task: {
                                         id: createId(),
                                         projectId: comment.projectId,
                                         title: comment.body.slice(0, 120),
-                                        status: "todo",
-                                        priority: "medium",
+                                        status: 'todo',
+                                        priority: 'medium',
                                         assignee: actor.name,
                                         dueDate: null,
                                         createdAt: new Date().toISOString(),
                                       },
                                     },
-                                    "Feedback became a next step. One task, linked to this conversation.",
+                                    'Feedback became a next step. One task, linked to this conversation.',
                                   )
                                 }
                               >
                                 <ListTodo size={13} />
-                                {comment.taskId ? "Task linked" : "Create task"}
+                                {comment.taskId ? 'Task linked' : 'Create task'}
                               </button>
                             )}
-                            {(canManageTasks(actor.role) ||
-                              comment.author === actor.name) && (
+                            {(canManageTasks(actor.role) || comment.author === actor.name) && (
                               <button
                                 className="text-button"
-                                aria-label={`${comment.resolved ? "Reopen" : "Resolve"} feedback ${comment.id}`}
-                                disabled={busy || project?.status !== "active"}
+                                aria-label={`${comment.resolved ? 'Reopen' : 'Resolve'} feedback ${comment.id}`}
+                                disabled={busy || project?.status !== 'active'}
                                 onClick={() =>
                                   act(
                                     {
-                                      type: "resolve_comment",
+                                      type: 'resolve_comment',
                                       id: comment.id,
                                       resolved: !comment.resolved,
                                     },
-                                    comment.resolved
-                                      ? "Feedback reopened."
-                                      : "Feedback resolved.",
+                                    comment.resolved ? 'Feedback reopened.' : 'Feedback resolved.',
                                   )
                                 }
                               >
                                 <Check size={13} />
-                                {comment.resolved ? "Reopen" : "Resolve"}
+                                {comment.resolved ? 'Reopen' : 'Resolve'}
                               </button>
                             )}
                           </div>
@@ -1611,7 +1445,7 @@ export default function App() {
                     </div>
                     <button
                       className="feedback-bottom"
-                      onClick={() => setEditor({ kind: "feedback" })}
+                      onClick={(event) => openEditor({ kind: 'feedback' }, event.currentTarget)}
                     >
                       <MessageCircle size={15} />
                       Leave a thought <Plus size={16} />
@@ -1621,8 +1455,8 @@ export default function App() {
               ) : (
                 <Empty title="Make room for a fresh eye">
                   {project
-                    ? "Upload a PNG, JPEG or WebP design to start a review."
-                    : "Create a project first, then add the design you want to share."}
+                    ? 'Upload a PNG, JPEG or WebP design to start a review.'
+                    : 'Create a project first, then add the design you want to share.'}
                 </Empty>
               )}
               {!!assets.length && (
@@ -1633,33 +1467,25 @@ export default function App() {
                       <h2>The revision trail.</h2>
                     </div>
                     <span className="muted">
-                      {assets.length}{" "}
-                      {assets.length === 1 ? "version" : "versions"}
+                      {assets.length} {assets.length === 1 ? 'version' : 'versions'}
                     </span>
                   </div>
                   <div className="version-list">
                     {assets.map((item) => (
-                      <div
-                        key={item.id}
-                        className={item.id === asset?.id ? "current" : ""}
-                      >
-                        <button
-                          className="version-button"
-                          onClick={() => setAssetId(item.id)}
-                        >
+                      <div key={item.id} className={item.id === asset?.id ? 'current' : ''}>
+                        <button className="version-button" onClick={() => setAssetId(item.id)}>
                           <span className="version-id">
-                            V{item.version.toString().padStart(2, "0")}
+                            V{item.version.toString().padStart(2, '0')}
                           </span>
                           <img src={item.url} alt="" />
                           <span>
                             <b>{item.name}</b>
                             <small>
-                              {dateLabel(item.createdAt)} ·{" "}
+                              {dateLabel(item.createdAt)} ·{' '}
                               {
-                                state.comments.filter(
-                                  (comment) => comment.assetId === item.id,
-                                ).length
-                              }{" "}
+                                state.comments.filter((comment) => comment.assetId === item.id)
+                                  .length
+                              }{' '}
                               feedback notes
                             </small>
                           </span>
@@ -1669,14 +1495,17 @@ export default function App() {
                           <button
                             className="icon-button"
                             aria-label={`Delete design ${item.name} version ${item.version}`}
-                            disabled={busy || project?.status !== "active"}
-                            onClick={() =>
-                              setEditor({
-                                kind: "delete",
-                                target: "asset",
-                                id: item.id,
-                                name: item.name + " version " + item.version,
-                              })
+                            disabled={busy || project?.status !== 'active'}
+                            onClick={(event) =>
+                              openEditor(
+                                {
+                                  kind: 'delete',
+                                  target: 'asset',
+                                  id: item.id,
+                                  name: item.name + ' version ' + item.version,
+                                },
+                                event.currentTarget,
+                              )
                             }
                           >
                             <Trash2 size={15} />
@@ -1689,7 +1518,7 @@ export default function App() {
               )}
             </>
           )}
-          {view === "activity" && (
+          {view === 'activity' && (
             <>
               <PageHeading
                 eyebrow="THE THREAD THAT CONNECTS IT ALL"
@@ -1703,17 +1532,16 @@ export default function App() {
                 <button
                   className="button secondary"
                   onClick={() => {
-                    const blob = new Blob(
-                      [JSON.stringify(state.activity, null, 2)],
-                      { type: "application/json" },
-                    );
+                    const blob = new Blob([JSON.stringify(state.activity, null, 2)], {
+                      type: 'application/json',
+                    });
                     const url = URL.createObjectURL(blob);
-                    const link = document.createElement("a");
+                    const link = document.createElement('a');
                     link.href = url;
-                    link.download = "relay-workspace-activity.json";
+                    link.download = 'relay-workspace-activity.json';
                     link.click();
                     URL.revokeObjectURL(url);
-                    setToast("Activity exported.");
+                    setToast('Activity exported.');
                   }}
                 >
                   <Download size={15} />
@@ -1725,7 +1553,7 @@ export default function App() {
                   <div className="section-header">
                     <h2>The latest moves.</h2>
                     <span className="muted">
-                      {mode === "demo" ? "On this device" : "In this workspace"}
+                      {mode === 'demo' ? 'On this device' : 'In this workspace'}
                     </span>
                   </div>
                   {state.activity.length ? (
@@ -1739,15 +1567,14 @@ export default function App() {
                             <p>{entry.body}</p>
                             <small>
                               {entry.projectId
-                                ? state.projects.find(
-                                    (item) => item.id === entry.projectId,
-                                  )?.title + " · "
-                                : ""}
-                              {new Date(entry.at).toLocaleString("en-GB", {
-                                day: "numeric",
-                                month: "short",
-                                hour: "2-digit",
-                                minute: "2-digit",
+                                ? state.projects.find((item) => item.id === entry.projectId)
+                                    ?.title + ' · '
+                                : ''}
+                              {new Date(entry.at).toLocaleString('en-GB', {
+                                day: 'numeric',
+                                month: 'short',
+                                hour: '2-digit',
+                                minute: '2-digit',
                               })}
                             </small>
                           </div>
@@ -1781,22 +1608,17 @@ export default function App() {
                   {Object.entries(statusNames).map(([status, label]) => (
                     <div className="progress-legend" key={status}>
                       <span>
-                        <i className={"legend-" + status} />
+                        <i className={'legend-' + status} />
                         {label}
                       </span>
-                      <b>
-                        {
-                          state.tasks.filter((task) => task.status === status)
-                            .length
-                        }
-                      </b>
+                      <b>{state.tasks.filter((task) => task.status === status).length}</b>
                     </div>
                   ))}
                 </section>
               </div>
             </>
           )}
-          {view === "settings" && (
+          {view === 'settings' && (
             <>
               <PageHeading
                 eyebrow="A WORKSPACE THAT FEELS LIKE YOURS"
@@ -1811,25 +1633,23 @@ export default function App() {
                 <section className="panel settings-panel">
                   <span className="eyebrow">YOUR PERSPECTIVE</span>
                   <h2>
-                    {mode === "demo"
-                      ? "Four roles. One shared direction."
-                      : "Your workspace account."}
+                    {mode === 'demo'
+                      ? 'Four roles. One shared direction.'
+                      : 'Your workspace account.'}
                   </h2>
                   <p>
-                    {mode === "demo"
-                      ? "Explore how a project manager, designer, client and admin move the work forward. These role previews are local simulations."
-                      : "Your permissions come from your verified workspace membership, enforced by database policies."}
+                    {mode === 'demo'
+                      ? 'Explore how a project manager, designer, client and admin move the work forward. These role previews are local simulations.'
+                      : 'Your permissions come from your verified workspace membership, enforced by database policies.'}
                   </p>
                   <div className="account-details">
-                    <span className="avatar avatar-orange">
-                      {initials(actor.name)}
-                    </span>
+                    <span className="avatar avatar-orange">{initials(actor.name)}</span>
                     <div>
                       <h3>{actor.name}</h3>
                       <p>{roleNames[actor.role]}</p>
                     </div>
                   </div>
-                  {mode === "demo" ? (
+                  {mode === 'demo' ? (
                     <label className="field">
                       Demo role
                       <select
@@ -1838,7 +1658,7 @@ export default function App() {
                         onChange={(event) => {
                           relay.setDemoRole(event.target.value as Role);
                           setToast(
-                            "Demo perspective changed. This does not authenticate an account.",
+                            'Demo perspective changed. This does not authenticate an account.',
                           );
                         }}
                       >
@@ -1852,11 +1672,7 @@ export default function App() {
                   ) : (
                     <button
                       className="button secondary"
-                      onClick={() =>
-                        relay
-                          .signOut()
-                          .catch((reason) => setToast(String(reason)))
-                      }
+                      onClick={() => relay.signOut().catch((reason) => setToast(String(reason)))}
                     >
                       Sign out
                     </button>
@@ -1867,12 +1683,10 @@ export default function App() {
                       <b>Admin / PM</b> Manage projects, tasks and reviews.
                     </p>
                     <p>
-                      <b>Designer</b> Add designs, create tasks and request
-                      reviews.
+                      <b>Designer</b> Add designs, create tasks and request reviews.
                     </p>
                     <p>
-                      <b>Client</b> Leave feedback and approve or request
-                      changes.
+                      <b>Client</b> Leave feedback and approve or request changes.
                     </p>
                   </div>
                 </section>
@@ -1897,16 +1711,14 @@ export default function App() {
                     <span>
                       <b>Workspace data</b>
                       <small>
-                        {mode === "demo"
-                          ? storageStatus === "saved"
-                            ? "Saved in this browser."
-                            : "Session only; saving unavailable."
-                          : "Shared through your Supabase workspace."}
+                        {mode === 'demo'
+                          ? storageStatus === 'saved'
+                            ? 'Saved in this browser.'
+                            : 'Session only; saving unavailable.'
+                          : 'Shared through your Supabase workspace.'}
                       </small>
                     </span>
-                    <span className="pill pill-active">
-                      {mode === "demo" ? "Local" : "Cloud"}
-                    </span>
+                    <span className="pill pill-active">{mode === 'demo' ? 'Local' : 'Cloud'}</span>
                   </div>
                   <button
                     className="button secondary"
@@ -1916,9 +1728,7 @@ export default function App() {
                         .refresh()
                         .then(() =>
                           setToast(
-                            mode === "demo"
-                              ? "Local workspace restored."
-                              : "Workspace refreshed.",
+                            mode === 'demo' ? 'Local workspace restored.' : 'Workspace refreshed.',
                           ),
                         )
                         .catch((reason) => setToast(String(reason)))
@@ -1932,21 +1742,20 @@ export default function App() {
                     <div>
                       <h3>A clear view of the scope.</h3>
                       <p>
-                        {mode === "demo"
-                          ? "This public demo saves only on your device. People, roles and team activity are demonstration content. No emails are sent and no cloud accounts are connected."
-                          : "This configured workspace uses Supabase Auth, database policies and private image storage. Refresh reads the latest workspace data."}
+                        {mode === 'demo'
+                          ? 'This public demo saves only on your device. People, roles and team activity are demonstration content. No emails are sent and no cloud accounts are connected.'
+                          : 'This configured workspace uses Supabase Auth, database policies and private image storage. Refresh reads the latest workspace data.'}
                       </p>
                       <p>
-                        Built by Deboraj Sarkar (Debotaro) through an
-                        AI-assisted development workflow.
+                        Built by Deboraj Sarkar (Debotaro) through an AI-assisted development
+                        workflow.
                       </p>
                       <a
                         href="https://github.com/Debotaro/Debotaro.github.io/tree/main/relay-os"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        Read the source and backend setup{" "}
-                        <ArrowUpRight size={13} />
+                        Read the source and backend setup <ArrowUpRight size={13} />
                       </a>
                     </div>
                   </div>
@@ -1958,11 +1767,11 @@ export default function App() {
         <footer className="workspace-footer">
           <span>
             <i />
-            {mode === "demo"
-              ? storageStatus === "saved"
-                ? "Your demo, saved on this device."
-                : "Session only · Browser saving unavailable."
-              : "A shared workspace. A clearer direction."}
+            {mode === 'demo'
+              ? storageStatus === 'saved'
+                ? 'Your demo, saved on this device.'
+                : 'Session only · Browser saving unavailable.'
+              : 'A shared workspace. A clearer direction.'}
           </span>
           <span>
             RELAY OS <b>↗</b> BY DEBOTARO
@@ -1973,10 +1782,7 @@ export default function App() {
         <div className="toast" role="status">
           <CheckCheck size={17} />
           {toast}
-          <button
-            aria-label="Dismiss notification"
-            onClick={() => setToast("")}
-          >
+          <button aria-label="Dismiss notification" onClick={() => setToast('')}>
             <X size={15} />
           </button>
         </div>
@@ -2004,16 +1810,11 @@ export default function App() {
               className="command-palette"
               onCloseAutoFocus={(event) => {
                 event.preventDefault();
-                if (
-                  !paletteOpen.current &&
-                  !document.querySelector('[role="dialog"]')
-                )
+                if (!paletteOpen.current && !document.querySelector('[role="dialog"]'))
                   searchButton.current?.focus();
               }}
             >
-              <Dialog.Title className="sr-only">
-                Find your next move
-              </Dialog.Title>
+              <Dialog.Title className="sr-only">Find your next move</Dialog.Title>
               <Dialog.Description className="sr-only">
                 Search projects, tasks, designs and workspace pages.
               </Dialog.Description>
@@ -2032,9 +1833,9 @@ export default function App() {
                 {searchResults.map((item, index) => (
                   <button key={item.type + index} onClick={item.run}>
                     <span>
-                      {item.type === "Project" ? (
+                      {item.type === 'Project' ? (
                         <FolderKanban size={17} />
-                      ) : item.type === "Task" ? (
+                      ) : item.type === 'Task' ? (
                         <ListTodo size={17} />
                       ) : (
                         <ArrowUpRight size={17} />
@@ -2075,7 +1876,7 @@ function ProjectCover({
   return (
     <span
       className={`project-cover cover-treatment-${index % 3}`}
-      style={{ "--project-color": project.color } as CSSProperties}
+      style={{ '--project-color': project.color } as CSSProperties}
     >
       {asset ? (
         <img src={asset.url} alt={`Creative direction for ${project.title}`} />
@@ -2085,7 +1886,7 @@ function ProjectCover({
           <span className="cover-shape cover-shape-two" aria-hidden="true" />
           <span className="cover-placeholder-kicker">PROJECT DIRECTION</span>
           <span className="cover-placeholder-title">
-            {project.client || project.title.split("—")[0]}
+            {project.client || project.title.split('—')[0]}
           </span>
           <span className="cover-placeholder-footer">
             A blank canvas.
@@ -2129,7 +1930,7 @@ function Progress({ value }: { value: number }) {
       aria-valuemin={0}
       aria-valuemax={100}
     >
-      <span style={{ width: value + "%" }} />
+      <span style={{ width: value + '%' }} />
     </div>
   );
 }
@@ -2155,74 +1956,72 @@ function EditorModal({
   onClose: () => void;
   submit: (action: Action, message: string) => Promise<void>;
 }) {
-  const [validation, setValidation] = useState("");
+  const [validation, setValidation] = useState('');
   const [attempted, setAttempted] = useState(false);
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const value = (key: string) => String(data.get(key) || "").trim();
+    const value = (key: string) => String(data.get(key) || '').trim();
     const at = new Date().toISOString();
-    setValidation("");
+    setValidation('');
     setAttempted(true);
-    if (editor.kind === "project") {
-      const title = value("title");
+    if (editor.kind === 'project') {
+      const title = value('title');
       if (!title) {
-        setValidation("Give your project a name.");
+        setValidation('Give your project a name.');
         return;
       }
       const fields = {
         title,
-        client: value("client") || "Independent project",
-        description: value("description"),
-        color: value("color") || "#71836c",
-        status: (value("status") as Project["status"]) || "active",
+        client: value('client') || 'Independent project',
+        description: value('description'),
+        color: value('color') || '#71836c',
+        status: (value('status') as Project['status']) || 'active',
       };
       submit(
         editor.item
-          ? { type: "update_project", id: editor.item.id, patch: fields }
+          ? { type: 'update_project', id: editor.item.id, patch: fields }
           : {
-              type: "create_project",
+              type: 'create_project',
               project: { id: createId(), ...fields, createdAt: at },
             },
-        editor.item
-          ? "Project details updated."
-          : "A new project. A clear place to start.",
+        editor.item ? 'Project details updated.' : 'A new project. A clear place to start.',
       );
     }
-    if (editor.kind === "task") {
-      const title = value("title");
-      const destination = editor.item?.projectId || value("projectId");
+    if (editor.kind === 'task') {
+      const title = value('title');
+      const destination = editor.item?.projectId || value('projectId');
       if (!title || !state.projects.some((item) => item.id === destination)) {
-        setValidation("Add a task name and choose an existing project.");
+        setValidation('Add a task name and choose an existing project.');
         return;
       }
       const fields = {
         title,
-        assignee: value("assignee") || actor.name,
-        priority: value("priority") as Task["priority"],
-        dueDate: value("dueDate") || null,
+        assignee: value('assignee') || actor.name,
+        priority: value('priority') as Task['priority'],
+        dueDate: value('dueDate') || null,
       };
       submit(
         editor.item
-          ? { type: "update_task", id: editor.item.id, patch: fields }
+          ? { type: 'update_task', id: editor.item.id, patch: fields }
           : {
-              type: "create_task",
+              type: 'create_task',
               task: {
                 id: createId(),
                 projectId: destination,
                 ...fields,
-                status: "todo",
+                status: 'todo',
                 createdAt: at,
               },
             },
-        editor.item ? "Next step updated." : "A new next step, ready to move.",
+        editor.item ? 'Next step updated.' : 'A new next step, ready to move.',
       );
     }
-    if (editor.kind === "feedback") {
+    if (editor.kind === 'feedback') {
       if (!asset || !project) return;
-      const body = value("body");
+      const body = value('body');
       if (!body) {
-        setValidation("Add a thought before posting feedback.");
+        setValidation('Add a thought before posting feedback.');
         return;
       }
       const comment: Comment = {
@@ -2238,26 +2037,24 @@ function EditorModal({
         createdAt: at,
       };
       submit(
-        { type: "add_comment", comment },
-        editor.point
-          ? "Feedback pinned to this version."
-          : "Feedback added to the conversation.",
+        { type: 'add_comment', comment },
+        editor.point ? 'Feedback pinned to this version.' : 'Feedback added to the conversation.',
       );
     }
   }
-  if (editor.kind === "delete")
+  if (editor.kind === 'delete')
     return (
       <Modal
-        title={"Delete " + editor.target + "?"}
+        title={'Delete ' + editor.target + '?'}
         description={`“${editor.name}” will be removed from this workspace.`}
         onClose={onClose}
       >
         <p className="delete-explanation">
-          {editor.target === "project"
-            ? "Its tasks, design versions and feedback will also be removed."
-            : editor.target === "asset"
-              ? "This version, any later revisions based on it, and all their feedback will be removed."
-              : "Any linked feedback remains, and can become a new task later."}
+          {editor.target === 'project'
+            ? 'Its tasks, design versions and feedback will also be removed.'
+            : editor.target === 'asset'
+              ? 'This version, any later revisions based on it, and all their feedback will be removed.'
+              : 'Any linked feedback remains, and can become a new task later.'}
         </p>
         {attempted && error && (
           <p role="alert" className="form-error">
@@ -2276,11 +2073,11 @@ function EditorModal({
               submit(
                 {
                   type:
-                    editor.target === "project"
-                      ? "delete_project"
-                      : editor.target === "task"
-                        ? "delete_task"
-                        : "delete_asset",
+                    editor.target === 'project'
+                      ? 'delete_project'
+                      : editor.target === 'task'
+                        ? 'delete_task'
+                        : 'delete_asset',
                   id: editor.id,
                 },
                 `${editor.target[0].toUpperCase() + editor.target.slice(1)} deleted.`,
@@ -2294,29 +2091,29 @@ function EditorModal({
       </Modal>
     );
   const title =
-    editor.kind === "project"
+    editor.kind === 'project'
       ? editor.item
-        ? "Edit project"
-        : "Make room for a good idea"
-      : editor.kind === "task"
+        ? 'Edit project'
+        : 'Make room for a good idea'
+      : editor.kind === 'task'
         ? editor.item
-          ? "Edit next step"
-          : "One clear next step"
+          ? 'Edit next step'
+          : 'One clear next step'
         : editor.point
-          ? "Pin a little direction"
-          : "Leave a thought";
+          ? 'Pin a little direction'
+          : 'Leave a thought';
   return (
     <Modal
       title={title}
       description={
-        editor.kind === "feedback"
-          ? "Be specific. A useful thought makes the next version better."
-          : "A few details now make the handoff easier later."
+        editor.kind === 'feedback'
+          ? 'Be specific. A useful thought makes the next version better.'
+          : 'A few details now make the handoff easier later.'
       }
       onClose={onClose}
     >
       <form onSubmit={onSubmit}>
-        {editor.kind === "project" && (
+        {editor.kind === 'project' && (
           <>
             <label className="field">
               Project name
@@ -2351,10 +2148,7 @@ function EditorModal({
             <div className="form-grid">
               <label className="field">
                 Project colour
-                <select
-                  name="color"
-                  defaultValue={editor.item?.color || "#71836c"}
-                >
+                <select name="color" defaultValue={editor.item?.color || '#71836c'}>
                   <option value="#71836c">Sage</option>
                   <option value="#b47563">Terracotta</option>
                   <option value="#8980a1">Lilac</option>
@@ -2363,10 +2157,7 @@ function EditorModal({
               </label>
               <label className="field">
                 Project status
-                <select
-                  name="status"
-                  defaultValue={editor.item?.status || "active"}
-                >
+                <select name="status" defaultValue={editor.item?.status || 'active'}>
                   <option value="active">Active</option>
                   <option value="archived">Archived</option>
                 </select>
@@ -2374,7 +2165,7 @@ function EditorModal({
             </div>
           </>
         )}
-        {editor.kind === "task" && (
+        {editor.kind === 'task' && (
           <>
             <label className="field">
               Task name
@@ -2393,12 +2184,12 @@ function EditorModal({
                 <select
                   name="projectId"
                   defaultValue={
-                    (project?.status === "active" ? project.id : undefined) ||
-                    state.projects.find((item) => item.status === "active")?.id
+                    (project?.status === 'active' ? project.id : undefined) ||
+                    state.projects.find((item) => item.status === 'active')?.id
                   }
                 >
                   {state.projects
-                    .filter((item) => item.status === "active")
+                    .filter((item) => item.status === 'active')
                     .map((item) => (
                       <option key={item.id} value={item.id}>
                         {item.title}
@@ -2418,10 +2209,7 @@ function EditorModal({
             <div className="form-grid">
               <label className="field">
                 Priority
-                <select
-                  name="priority"
-                  defaultValue={editor.item?.priority || "medium"}
-                >
+                <select name="priority" defaultValue={editor.item?.priority || 'medium'}>
                   <option value="low">Low</option>
                   <option value="medium">Medium</option>
                   <option value="high">High</option>
@@ -2429,16 +2217,12 @@ function EditorModal({
               </label>
               <label className="field">
                 Due date
-                <input
-                  name="dueDate"
-                  type="date"
-                  defaultValue={editor.item?.dueDate || ""}
-                />
+                <input name="dueDate" type="date" defaultValue={editor.item?.dueDate || ''} />
               </label>
             </div>
           </>
         )}
-        {editor.kind === "feedback" && (
+        {editor.kind === 'feedback' && (
           <>
             <span className="feedback-context">
               <FileImage size={15} />
@@ -2468,20 +2252,16 @@ function EditorModal({
             Cancel
           </button>
           <button className="button primary" type="submit" disabled={busy}>
-            {busy ? (
-              <Loader2 size={16} className="spin" />
-            ) : (
-              <ArrowRight size={16} />
-            )}{" "}
-            {editor.kind === "project"
+            {busy ? <Loader2 size={16} className="spin" /> : <ArrowRight size={16} />}{' '}
+            {editor.kind === 'project'
               ? editor.item
-                ? "Save project"
-                : "Create project"
-              : editor.kind === "task"
+                ? 'Save project'
+                : 'Create project'
+              : editor.kind === 'task'
                 ? editor.item
-                  ? "Save task"
-                  : "Create task"
-                : "Post feedback"}
+                  ? 'Save task'
+                  : 'Create task'
+                : 'Post feedback'}
           </button>
         </div>
       </form>
@@ -2492,23 +2272,19 @@ function EditorModal({
 function AccountScreen({ relay }: { relay: ReturnType<typeof useRelay> }) {
   const [signup, setSignup] = useState(false);
   const [pending, setPending] = useState(false);
-  const [localError, setLocalError] = useState("");
+  const [localError, setLocalError] = useState('');
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     setPending(true);
-    setLocalError("");
+    setLocalError('');
     try {
-      const email = String(form.get("email"));
-      const password = String(form.get("password"));
-      if (signup) await relay.signUp(email, password, String(form.get("name")));
+      const email = String(form.get('email'));
+      const password = String(form.get('password'));
+      if (signup) await relay.signUp(email, password, String(form.get('name')));
       else await relay.signIn(email, password);
     } catch (error) {
-      setLocalError(
-        error instanceof Error
-          ? error.message
-          : "Unable to connect. Try again.",
-      );
+      setLocalError(error instanceof Error ? error.message : 'Unable to connect. Try again.');
     } finally {
       setPending(false);
     }
@@ -2516,7 +2292,7 @@ function AccountScreen({ relay }: { relay: ReturnType<typeof useRelay> }) {
   return (
     <main className="account-screen">
       <a className="wordmark" href="../">
-        <img src={import.meta.env.BASE_URL + "relay.svg"} alt="" />
+        <img src={import.meta.env.BASE_URL + 'relay.svg'} alt="" />
         <span>
           RELAY<span className="wordmark-os">OS</span>
         </span>
@@ -2557,7 +2333,7 @@ function AccountScreen({ relay }: { relay: ReturnType<typeof useRelay> }) {
               type="password"
               minLength={8}
               required
-              autoComplete={signup ? "new-password" : "current-password"}
+              autoComplete={signup ? 'new-password' : 'current-password'}
             />
           </label>
           {(localError || relay.error) && (
@@ -2567,21 +2343,12 @@ function AccountScreen({ relay }: { relay: ReturnType<typeof useRelay> }) {
           )}
           {relay.notice && <p role="status">{relay.notice}</p>}
           <button className="button primary" disabled={pending}>
-            {pending ? (
-              <Loader2 className="spin" size={16} />
-            ) : (
-              <ArrowRight size={16} />
-            )}{" "}
-            {signup ? "Create account" : "Sign in"}
+            {pending ? <Loader2 className="spin" size={16} /> : <ArrowRight size={16} />}{' '}
+            {signup ? 'Create account' : 'Sign in'}
           </button>
         </form>
-        <button
-          className="text-button login-switch"
-          onClick={() => setSignup((value) => !value)}
-        >
-          {signup
-            ? "Already have an account? Sign in"
-            : "New here? Create a workspace"}
+        <button className="text-button login-switch" onClick={() => setSignup((value) => !value)}>
+          {signup ? 'Already have an account? Sign in' : 'New here? Create a workspace'}
         </button>
         <p className="login-scope">
           <ShieldCheck size={14} />

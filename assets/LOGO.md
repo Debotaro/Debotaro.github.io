@@ -5,10 +5,13 @@ An ivory D monogram with an embedded T for Deboraj Sarkar / Debotaro. The mark p
 - `debotaro-logo.png`: original 1254 × 1254 transparent PNG master.
 - `debotaro-logo-hero.png`: 640 × 640 transparent web delivery.
 - `debotaro-logo-small.png`: 160 × 160 transparent navigation delivery.
+- `debotaro-logo-hero.webp` and `debotaro-logo-small.webp`: lossless WebP deliveries at the same dimensions, used by the portfolio to reduce image transfer without changing the mark.
 - `favicon.png`: 64 × 64 icon on the portfolio background.
 - `debotaro-icon.png`: 180 × 180 touch icon on the portfolio background.
 
 Created with the built-in imagegen tool, then refined once with the same tool. Web deliveries only resize the generated mark; the icons place it on the site background. An editable vector source is not included.
+
+The WebP files are regenerated from their PNG deliveries by `scripts/performance-images.py`. The master and PNG deliveries remain available for print, documentation and applications that require PNG.
 
 Generation prompt: “Create one original geometric D monogram with a thoughtful embedded T, strong weight, precise silhouette, restrained boutique technology identity, recognisable at 32px. One centred ivory #edece5 mark filling 75% of a square transparent canvas. Clean vector-like edges, no words, gradients, texture, 3D, shadows, border or generic developer brackets.”
 

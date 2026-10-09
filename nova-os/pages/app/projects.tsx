@@ -1,2 +1,4 @@
 import { Workspace } from '../../components/workspace';
-export default function Projects(){return <Workspace view="projects"/>;}
+export default function Projects() {
+  return <Workspace view="projects" />;
+}

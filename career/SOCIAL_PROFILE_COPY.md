@@ -1,6 +1,6 @@
 # Deboraj Sarkar (Debotaro) — profile copy
 
-Updated on 8 October 2026 from the confirmed résumé facts, LinkedIn employment record, Coursera certificates and seven-project collection. The field text is ready to use; editorial notes and headings are not part of the public copy. Publication status is recorded separately after the platform saves are verified.
+Updated on 9 October 2026 from the confirmed résumé facts, LinkedIn employment record, Coursera certificates and seven-project collection. The field text is ready to use; editorial notes and headings are not part of the public copy. Publication status is recorded separately after the platform saves are verified.
 
 ## LinkedIn headline
 
@@ -16,11 +16,14 @@ I bring that attention to visual hierarchy and brand consistency to a portfolio 
 
 My contribution is visual direction, interface review and iteration. I use AI-assisted implementation with Codex: I review generated interfaces, request changes and make the final decisions. The project stacks include HTML, CSS, JavaScript, React, Next.js, TypeScript and Tailwind CSS, with Git, GitHub and Figma in the workflow. The live demos and case studies explain the implemented behaviour, validation and scope.
 
+The project documentation includes mobile lab performance comparisons, keyboard and automated accessibility checks, and Chromium, Firefox and WebKit regression results. Reports distinguish verified behaviour from demo limits and checks still requiring real devices.
+
 My completed Coursera learning includes the Google UX Design Professional Certificate and IBM DevOps, Cloud, and Agile Foundations Specialization.
 
 I'm seeking full-time junior frontend/React opportunities within a development team. I'm available to start within one week and open to remote roles and relocation for the right opportunity.
 
 Portfolio: https://debotaro.github.io/
+Quality reports: https://github.com/Debotaro/Debotaro.github.io/blob/main/VALIDATION.md
 Contact: mail.deborajsarkar@gmail.com
 
 ## LinkedIn location and education

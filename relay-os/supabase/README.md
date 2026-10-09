@@ -15,17 +15,17 @@ For GitHub Actions, set the two browser-safe values as repository variables and 
 
 ## Four roles and membership
 
-| Capability | Admin | Project manager | Designer | Client |
-|---|---|---|---|---|
-| Read work in their workspace | Yes | Yes | Yes | Yes |
-| Create/edit/archive/delete projects | Yes | Yes | No | No |
-| Create/edit/delete tasks and convert feedback into tasks | Yes | Yes | Yes | No |
-| Upload/delete designs and create revisions | Yes | Yes | Yes | No |
-| Add image pins and comments | Yes | Yes | Yes | Yes |
-| Resolve feedback | Any | Any | Any | Own comments |
-| Request review from draft/changes | Yes | Yes | Yes | No |
-| Approve or request changes | Yes | Yes | No | Yes |
-| Assign membership roles | Yes | No | No | No |
+| Capability                                               | Admin | Project manager | Designer | Client       |
+| -------------------------------------------------------- | ----- | --------------- | -------- | ------------ |
+| Read work in their workspace                             | Yes   | Yes             | Yes      | Yes          |
+| Create/edit/archive/delete projects                      | Yes   | Yes             | No       | No           |
+| Create/edit/delete tasks and convert feedback into tasks | Yes   | Yes             | Yes      | No           |
+| Upload/delete designs and create revisions               | Yes   | Yes             | Yes      | No           |
+| Add image pins and comments                              | Yes   | Yes             | Yes      | Yes          |
+| Resolve feedback                                         | Any   | Any             | Any      | Own comments |
+| Request review from draft/changes                        | Yes   | Yes             | Yes      | No           |
+| Approve or request changes                               | Yes   | Yes             | No       | Yes          |
+| Assign membership roles                                  | Yes   | No              | No       | No           |
 
 Drafts and requested changes move into review before a reviewer can approve or request changes. Clients cannot submit drafts for review; designers cannot issue approval decisions. Approval stages cannot be reset to draft. An approved asset version is final; propose further changes with a new revision. A previous version cannot receive an approval after a successor exists. Repeating the same approval state is a no-op and adds no activity. Archived projects remain readable and must be restored before changing child work. Project deletion cascades tasks, asset versions and comments. Deleting a linked task clears its comment's link. A comment-to-task conversion locks the comment and creates/links the task in one database transaction, so concurrent or repeated requests cannot create two tasks.
 

@@ -5,6 +5,7 @@ This folder contains Deboraj Sarkar's résumé source and interview preparation.
 - `resume.json`: editable résumé content used by the PDF and HTML builder.
 - `RESUME.md`: readable editable résumé.
 - `INTERVIEW_PREPARATION.md`: explanations, exercises and a practice schedule grounded in the project source.
+- `QUALITY_INTERVIEW_PRACTICE.md`: follow-up questions and hands-on exercises for the 9 October accessibility, storage and performance changes.
 
 The public résumé deliveries live in `downloads/`. Source and QA helpers remain separate from those downloads.
 
@@ -28,5 +29,7 @@ The builder defaults to the local review folder `output/pdf/` and produces a tex
 Review the rendered PDF after any content change; it should stay legible and fit one page with the current content. A longer education or employment history may need a second page rather than smaller text. Updating the public copy is a separate publication step; the existing `downloads/` files remain unchanged by the default command.
 
 The interview guide includes sample explanations to learn and adapt. Keep a record of changes you personally practise; the kit does not create employment history or substitute for your own code understanding.
+
+Job-specific drafts are kept privately in the ignored `output/applications/` folder. The 9 October pack contains three tailored one-page résumés, matching cover letters, a sourced vacancy shortlist and a tracking sheet. These are review drafts; no application has been submitted. Each draft preserves the ongoing degree, paid graphic design background and stated AI-assisted contribution.
 
 The print master preserves vector text/line art, embeds every used font, and embeds the full-resolution 1254px logo with lossless compression. Its A4 CropBox/TrimBox match the page. Compatible readers are asked to print at actual size. `output/pdf/PRINT_SETTINGS.txt` explains the remaining printer settings; driver quality cannot be forced by a PDF. The HTML companion also shows a screen-only print note. No operating-system printer defaults are changed.

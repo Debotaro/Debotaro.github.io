@@ -1,78 +1,152 @@
-# Validation
+# Validation — 9 October 2026
 
-Verified on 8 October 2026, using Node.js 24 and Chromium through Playwright.
+This record describes the personal portfolio and seven interactive concepts. The
+quality pass started from source revision `df12cbe254cbdfb40b35adffd9c8822d76d468bb`.
+Project behaviour and test evidence do not imply independent manual authorship by
+Deboraj, commercial users or production backend availability.
 
-## Build and dependencies
+## Build and source checks
 
-- Root `npm run build` completes successfully and assembles all seven projects in `dist/`.
-- RELAY OS: strict TypeScript check and Vite production build pass.
-- NOVA OS: TypeScript check and Next.js static export pass; 20 generated routes including the new GitHub workspace and the 404 page.
-- ATLAS Ops: TypeScript check and Vite production build pass.
-- NILA Ledger: TypeScript check and Vite production build pass.
-- The 7 October production dependency audits for all four compiled apps reported zero vulnerabilities. Dependencies and lockfiles are unchanged in the 8 October redesign. Dependency status can change later.
-- Every app works from its own subdirectory in the combined static bundle. Hash routes preserve navigation in RELAY, ATLAS and NILA; NOVA has an explicit `/nova-os` build prefix.
+- Node.js 24; locked application dependencies; all four TypeScript checks and
+  production builds pass. NOVA exports 20 routes, including its 404 page.
+- The combined static build assembles all seven projects with their intended
+  subdirectory paths. Rebuilds clear only the checked workspace `dist` directory,
+  preventing stale hashed chunks from accumulating.
+- ESLint checks maintained JavaScript/TypeScript modules; Prettier checks source
+  formatting. Embedded scripts in single-file HTML demos are formatted and
+  browser-tested rather than processed by ESLint's module rules.
+- Static production minification keeps the four editable entry documents readable
+  in source while compacting their delivery. Three contract checks cover inline
+  text spacing, accessibility attributes, dynamic CSS and script execution.
+- On 9 October, the root dependency audit and production audits for RELAY, NOVA,
+  ATLAS and NILA reported zero known vulnerabilities. This is a dated dependency
+  result, not a security certification. Root Lighthouse 13.5.0 is used for future
+  audits; the matched historical performance comparison used isolated 12.8.2.
 
-## Automated browser checks
+## Browser results
 
-The browser suite verifies **158 checks**: 79 deterministic scenarios each in desktop and mobile Chromium contexts. Two optional ATLAS live API checks are skipped in this suite; a separate unmocked ATLAS desktop check previously passed against GitHub. NOVA's live repository/milestone import, completion and reload journey passed again on 8 October at 1440, 390 and 320px widths. The browser contexts use reduced motion and clean per-test storage.
+The complete local browser run passed **398 checks**, with **six intentional
+skips**, zero failures and zero flaky results in 4.7 minutes on 9 October. It
+covered desktop/mobile Chromium and desktop/mobile WebKit. After static output
+minification, the affected portfolio, brand experiences, accessibility and
+delivery tests passed **122 checks** with two intentional clipboard skips in
+1.9 minutes across the same four contexts. The release workflow additionally
+runs Firefox on Linux and retests the complete final build. The configured matrix
+uses reduced motion and fresh per-test browser storage:
 
-| Area | Verified behaviour |
-|---|---|
-| Portfolio | Supplied identity/contact URLs, own portfolio featured first, seven local demo links, all preview images, category filters and announced count |
-| Personal interactions | Eight case-study dialogs with demo scope and public source links, Escape/close focus restoration, 320px menu keyboard behavior, resize reset, clipboard copy, reduced motion, real PDF download and printable résumé contacts/layout |
-| RELAY | Project/task CRUD and cascade deletion, archive/restore guards, cross-tab changes and stale-form errors, normalized keyboard/pointer feedback pins, duplicate-safe comment-to-task conversion, revision history, review-first approval transitions and demo role restrictions |
-| RELAY recovery and navigation | Upload type/size guards, command-search results and rapid reopen focus, studio navigation keyboard focus, themes, activity export, malformed/blocked storage, empty workspaces and 320px layout |
-| NOVA | Task creation, command search, assistant task creation, automation execution and persisted task data; current-state delayed commands, summary immutability, cancellation on departure/clear chat and recovery |
-| NOVA live API and imports | Parallel credential-free reads, runtime response validation, canonical links, loading/empty/search/error/retry, rate limits, shared timeout, obsolete request cancellation, duplicate-safe imports, source attribution, reload, independent local completion, verified repository renames and atomic rejected-import recovery |
-| NOVA storage and empty state | Legacy data compatibility, strict type/relationship/size limits, malformed-data recovery, session-only storage warnings, capped immutable activity, and empty-workspace metrics/task/automation guards |
-| ATLAS | Task creation, status changes, editing, search and persistence after reload |
-| Redesigned product workflows | NOVA focus selection/completion across agenda and project views, saved theme and long-profile layout; ATLAS scoped chart filters, target persistence, seven-point CSV export, intervention editing and coverage navigation; RELAY project-cover selection, image upload and revision approval after reload |
-| ATLAS live API | Validated repository/issues, pull-request exclusion, search, refresh, loading/empty/error/retry, network failure, malformed responses, primary/secondary rate limits, timeout, obsolete response cancellation and duplicate-safe persisted imports with source attribution |
-| NILA | Transaction creation, penny-based amounts, filters, CSV download, persistence and budget editing |
-| AURA | Stay dates, capacity-aware residence selection, quote total, form completion and keyboard gallery navigation |
-| VANTA | Product filters, size selection, cart persistence, quantities, totals, demo checkout and keyboard focus preservation |
-| RASA | Destination selection, itinerary details, quiz recommendation, sample plan creation and itinerary download |
-| Fallbacks | Resort and travel core controls work when the optional animation/Three.js CDN is blocked |
-| Rendering | Main screens have no JavaScript page errors or document overflow at tested sizes |
+| Project         | Engine   | Viewport            |
+| --------------- | -------- | ------------------- |
+| `desktop`       | Chromium | 1440 × 1000         |
+| `mobile`        | Chromium | iPhone 13 emulation |
+| `firefox`       | Firefox  | 1440 × 1000         |
+| `webkit`        | WebKit   | 1440 × 1000         |
+| `mobile-webkit` | WebKit   | iPhone 13 emulation |
 
-Additional project-level Chromium checks cover NOVA task completion, flow edits, themes, simulated integrations and analytics exports; ATLAS drag/drop, chart targets/ranges, coverage, notification actions, settings and reset; and NILA transaction edit/delete, mobile export and printable report layout.
+The Windows Firefox installation cannot launch because its runtime reports a
+missing `mozglue` assembly. Firefox verification belongs to the Linux
+GitHub runner rather than a claimed local Windows pass. WebKit emulation is
+separate from Safari on a physical iPhone.
 
-The API checks use controlled responses so CI does not depend on GitHub availability or shared runner rate limits. The optional ATLAS live smoke can be run with `ATLAS_LIVE_SMOKE=1` (set it as a PowerShell environment variable on Windows). ATLAS revalidates each fetch rather than maintaining an application cache, reads one page of up to 30 raw issue entries and excludes pull requests. NOVA reads one page of up to 30 open milestones; search is page-local, with no application cache or polling. A milestone becomes one local task, without importing its associated issues or pull requests. Both features read public data without writing GitHub. GitHub rate limits still apply.
+Two intentional test categories are documented: ATLAS's unmocked live API smoke
+is opt-in, and real clipboard permission grants run only in Chromium. Clipboard
+interaction and denied-permission recovery are tested in every engine. API
+regressions otherwise use controlled responses to avoid relying on shared GitHub
+rate limits or availability.
 
-The NOVA regression helper is the production pure updater exercised with intervening task/message changes and frozen inputs. Browser clock checks additionally verify real UI cancellation and a fresh command after clearing chat. A delayed command now consumes React's current state instead of replacing tasks from the send-time snapshot.
+WebKit on this Windows setup skips anchors during ordinary Tab traversal. Its
+skip-link test explicitly focuses the link before keyboard activation; Chromium
+and Firefox retain the first-Tab assertion. Subsequent dialog checks exercise
+Enter, Tab, Escape and focus return. This distinction is recorded in the test and
+the [accessibility review](reports/ACCESSIBILITY.md).
 
-## RELAY domain and database checks
+## Behaviour covered
 
-`npm run test:unit` passes **25 checks**: 13 domain tests and 12 embedded PostgreSQL tests using PGlite 0.5.8. These execute the actual migration with explicit test-only authentication and storage schema stubs. They exercise workspace isolation, role and column permissions, archived-project guards, server-owned timestamps, approval transitions, atomic comment conversion, revision relationships and storage cleanup permissions after cascade deletion.
+| Area        | Regression scope                                                                                                                                                                                                       |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Portfolio   | Confirmed identity/background, seven demo links, eight case studies, filters, menu, keyboard dialogs, clipboard success/failure, PDF download and responsive layout                                                    |
+| NOVA        | Shared tasks/projects, focus completion, deterministic assistant timing/cancellation, automations, themes, validated storage, empty states and normal-motion hero visibility                                           |
+| NOVA GitHub | Public repositories/milestones, loading/search/error/retry, timeout/rate limits, cancellation, duplicate-safe imports, canonical renames, provenance and reload                                                        |
+| ATLAS       | Task CRUD/status/search, charts/targets/CSV, coverage, GitHub issue recovery/imports, deferred chart loading, malformed storage, editor bounds and reload                                                              |
+| RELAY       | Linked project/task editing, archival/cascade guards, versioned assets, pinned feedback, duplicate-safe conversion, review-first approvals, demo roles, stale/cross-tab edits, persistence failures and keyboard focus |
+| NILA        | Penny-based transaction amounts, editing/deletion, filters, budgets, CSV downloads, print layout and focusable transaction table                                                                                       |
+| AURA        | Dates, capacity, sample quote, enquiry validation and keyboard gallery                                                                                                                                                 |
+| VANTA       | Filters, sizes, validated cart persistence, quantities/totals, keyboard focus and demo checkout                                                                                                                        |
+| RASA        | Destination selection, quiz, itinerary/download, deferred optional globe and usable controls during CDN failure                                                                                                        |
 
-The configured Supabase adapter implements authentication, database writes, private uploads, signed previews and realtime subscriptions. No hosted Supabase project was configured for this release. Auth/JWT verification, email delivery, private file transfer, signed-URL HTTP requests and WebSocket delivery have not been tested against that service. The supplied pgTAP checks are separate from the executed embedded tests. See [the setup guide](relay-os/supabase/README.md) before enabling shared cloud use.
+Earlier unmocked GitHub checks are separate from deterministic regression tests.
+NOVA's import/completion/reload journey was verified on 8 October at 1440, 390 and
+320px widths. ATLAS's public-read smoke was also previously verified. Public API
+conditions can change; neither app writes GitHub. Both read one page of up to 30
+raw records in their respective queues, with page-local search; ATLAS excludes
+pull requests. There is no shared cloud planning state.
 
-## Résumé and publishing
+## Domain, database and storage boundaries
 
-The one-page résumé PDF was rendered and visually inspected. Text extraction confirmed the supplied identity, contact details and project content; its eight URI annotations use the intended profile, portfolio, email and demo destinations. The editable HTML version passed desktop/mobile contact and overflow checks. Education, employment and certifications remain omitted until confirmed by Deboraj.
+`npm run test:unit` passes **38 checks**: RELAY's 13 domain checks and 12 embedded
+PostgreSQL checks, plus ATLAS's 13 storage checks.
 
-The résumé, printable HTML, editable sources, case study and interview guide now describe NOVA's live GitHub feature and retain the distinction between public reads, browser-local planning and simulated authentication.
+RELAY executes the actual migration in PGlite with explicit test-only Auth and
+Storage schema stubs. It checks workspace isolation, role/column permissions,
+archival, timestamps, approval transitions, atomic feedback conversion, revision
+relationships and cleanup permissions. No hosted Supabase project is configured.
+JWT verification, email delivery, private file transfer, signed-URL requests and
+WebSocket delivery have not been verified against a hosted service. See the
+[backend setup guide](relay-os/supabase/README.md).
 
-The public repository is [Debotaro/Debotaro.github.io](https://github.com/Debotaro/Debotaro.github.io), with [debotaro.github.io](https://debotaro.github.io/) as the domain-root Pages destination. The committed workflow installs locked dependencies, builds all seven demos, runs RELAY's 25 domain/database checks and the browser suite, and deploys `dist/` only after validation succeeds. Live deployment status is available in the repository's Actions tab.
+ATLAS validates nested records, dates, enums, settings, unique IDs and canonical
+GitHub provenance before restoration. It rejects an invalid snapshot atomically
+and preserves its raw value until an intentional edit/reset. Before saving, it
+validates the new snapshot; invalid or oversized edits leave the last stored
+snapshot intact and reach the existing save-error boundary. Limits are 2,000
+tasks, 5,000 notices, 100 coverage people and 2,000,000 serialized characters. These
+are explicit bounds for a browser-local demonstration, not backend-scale claims.
+The task editor uses the same date parser for years 0001–9999 and clears its
+custom validity when the value is corrected. This covers WebKit accepting an
+out-of-range year despite the native `max` attribute, with a regression checking
+that an invalid date cannot replace the saved task.
 
-## Visual review and corrections
+## Accessibility and performance evidence
 
-Actual screenshots of all seven projects were captured at 1440×1000 and 390×844. The gallery thumbnails use those screenshots. NOVA, ATLAS, RELAY and the portfolio previews were refreshed on 8 October after the three product redesigns. Desktop and mobile layouts were inspected, including hero imagery and application charts.
+The [accessibility review](reports/ACCESSIBILITY.md) records **46 before and 46
+after axe scans** of 23 desktop/mobile states. Reported node occurrences declined
+from **127 to zero**, with zero after scan errors. The baseline had 31 rule
+occurrences; those totals include repeated components across states. All **16
+keyboard reviews** pass. Uncertain axe results remain in the raw reports.
 
-The three interfaces now use different hierarchies: NOVA's daily agenda, selected focus task and project notebooks; ATLAS's telemetry, signals, intervention queue and coverage matrix; and RELAY's artwork, feedback brief, project covers and review canvas. Existing shared task state, source attribution, local persistence and review rules remain covered by the regression suite. QA darkened low-contrast metadata and primary controls, checked both NOVA and RELAY themes, and corrected supported long NOVA profile/workspace names at 320px and 390px. The new NOVA regression includes those saved-name bounds.
+Corrections include contrast, heading order, semantic priority labels, table
+scroll focus, skip targets and dialog focus return. The expanded WebKit review
+also exposed a reduced-motion theme-rendering issue in NOVA and pointer-opener
+focus restoration in RELAY; both have regression coverage.
 
-A separate route audit passed **87 layout checks**: NOVA's 15 marketing/auth/workspace routes, ATLAS's eight routes and RELAY's six routes at 320, 768 and 1440px. Each fresh document returned HTTP 200 with no page errors or document overflow; workspace routes exposed their main content. Public GitHub responses were controlled for this layout audit. It is separate from the unmocked NOVA API journey and does not establish live backend availability.
+The [performance comparison](reports/performance/README.md) measures eight entry
+pages with three cold mobile lab navigations per phase. It records medians,
+ranges, exact versions, network diagnostics and build fingerprints. The local
+server is uncompressed; third-party responses use the real network. Lighthouse
+scores and Total Blocking Time are not field INP or field Core Web Vitals.
 
-RELAY's overview and design review were captured at both sizes (`previews/relay.png`, `previews/relay-mobile.png`, `previews/relay-review.png` and `previews/relay-review-mobile.png`). Review images preserve their original aspect ratio and pins use normalized coordinates. QA corrected rapid command-palette and cross-dialog focus restoration, stale-form error announcements inside modal dialogs, closed mobile navigation visibility and review-first approval rules. The final focus regression passed 80 immediate task-save-to-search transitions and 80 rapid palette navigation cycles across desktop and mobile contexts.
+## Résumé, publishing and practical limits
 
-NOVA's updated navigation and live GitHub screen were captured and inspected at both sizes (`previews/nova-github.png` and `previews/nova-github-mobile.png`). The unmocked journey reported no page errors or document overflow at 1440, 390 or 320px. The production bundle passed after the final copy and scope changes.
+The reviewed one-page A4 résumé remains available as a vector PDF with embedded
+fonts, selectable text and clickable contacts. It includes confirmed education,
+paid graphic design employment, selected Coursera credentials, the supplied phone
+and one-week availability. The current quality pass adds no invented job history,
+independent coding proficiency or personal test authorship.
 
-Corrections made during QA include editorial-section gutters, the RASA canvas resizing on narrow viewports, globe pin orientation, cart keyboard focus after re-render, the NILA mobile export overlap, screen-reader budget value text and trailing-slash redirects preserving query strings.
+The [GitHub workflow](.github/workflows/pages.yml) installs locked dependencies,
+checks source quality, builds the site, executes boundary and browser tests, and
+deploys only after validation succeeds. [Actions](https://github.com/Debotaro/Debotaro.github.io/actions/workflows/pages.yml)
+is the authoritative release status. The published destination is
+[debotaro.github.io](https://debotaro.github.io/).
 
-The personal portfolio was redesigned with the supplied professional content and generated D/T monogram. Its final desktop/mobile screenshots are `previews/portfolio.png` and `previews/portfolio-mobile.png`; the featured preview uses `previews/portfolio-cover.png`. Additional checks found no document overflow at 320, 390, 640, 768, 1024 and 1440px, verified the actual clipboard value, and confirmed contact reveal with normal motion. QA corrected image height distortion and reduced the decorative orbits on the narrowest layout. The logo was inspected on the real dark interface at hero and navigation sizes.
+These are frontend concept demonstrations using sample business data. Public
+GitHub reads are real; accounts, payments, bookings and most integrations remain
+explicit simulations. RELAY's optional backend requires separate configuration.
+No full WCAG conformance, backend security certification, real payments/bookings,
+physical-phone compatibility or real screen-reader session is claimed. The
+[human review checklist](reports/REAL_DEVICE_CHECKLIST.md) remains unchecked for
+those unperformed activities.
 
-## Practical limits
-
-This is frontend validation of demonstration projects. It is not a formal accessibility conformance audit, browser compatibility certification, Lighthouse benchmark, backend security audit or test of live payments/authentication/bookings. Firefox, Safari and real devices were not tested. External fonts, photographs and CDNs may vary in availability. The essential static controls have fallback behaviour, and no success state claims to complete a real-world service action.
-
-Reproduce the checks with the commands in [README.md](README.md). Playwright's latest detailed report is generated in `playwright-report/` and failure traces, if any, in `test-results/`.
+Reproduce checks using [README.md](README.md). Browser reports are generated in
+`playwright-report/`; failure traces and private application drafts are ignored by
+Git. [Quality interview practice](career/QUALITY_INTERVIEW_PRACTICE.md) connects the
+verified changes with explanations and exercises rather than invented experience.

@@ -1,0 +1,642 @@
+{
+  "lighthouseVersion": "12.8.2",
+  "aggregation": "Median of three cold mobile lab navigations per page; each metric aggregated independently.",
+  "beforeFingerprint": {
+    "algorithm": "SHA-256 of sorted relative path + NUL + file SHA-256 + NUL for every served file",
+    "sha256": "1d63f939aeb575e5e18201c2d6111a22a44a00a5fc3cbfe3de66d41b8178e53c",
+    "files": 311,
+    "bytes": 23213361
+  },
+  "afterFingerprint": {
+    "algorithm": "SHA-256 of sorted relative path + NUL + file SHA-256 + NUL for every served file",
+    "sha256": "fc7212d1a6212ce07d0eab0db0e9c75e66638b5500e39441ab3f841bf6e17ff6",
+    "files": 164,
+    "bytes": 19918567
+  },
+  "results": [
+    {
+      "page": "portfolio",
+      "before": {
+        "performance": {
+          "median": 88,
+          "min": 81,
+          "max": 88
+        },
+        "fcpMs": {
+          "median": 1641.7731999999999,
+          "min": 1619.7909,
+          "max": 3226.4635000000003
+        },
+        "lcpMs": {
+          "median": 3755.0443999999998,
+          "min": 3753.3941000000004,
+          "max": 3983.8179999999998
+        },
+        "tbtMs": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "cls": {
+          "median": 0.002723162065037101,
+          "min": 0,
+          "max": 0.002723162065037101
+        },
+        "speedIndexMs": {
+          "median": 1641.7731999999999,
+          "min": 1619.7909,
+          "max": 3226.4635000000003
+        },
+        "transferBytes": {
+          "median": 2647129,
+          "min": 2647129,
+          "max": 2648045
+        }
+      },
+      "after": {
+        "performance": {
+          "median": 94,
+          "min": 94,
+          "max": 95
+        },
+        "fcpMs": {
+          "median": 1353.8673,
+          "min": 1353.8296500000001,
+          "max": 1354.098
+        },
+        "lcpMs": {
+          "median": 3002.5531,
+          "min": 2927.5782,
+          "max": 3002.732
+        },
+        "tbtMs": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "cls": {
+          "median": 0.001111463045156226,
+          "min": 0,
+          "max": 0.001111463045156226
+        },
+        "speedIndexMs": {
+          "median": 1353.8673,
+          "min": 1353.8296500000001,
+          "max": 1354.098
+        },
+        "transferBytes": {
+          "median": 423063,
+          "min": 423063,
+          "max": 423063
+        }
+      },
+      "transferReductionPercent": 84.01804369941925
+    },
+    {
+      "page": "nova",
+      "before": {
+        "performance": {
+          "median": 79,
+          "min": 79,
+          "max": 96
+        },
+        "fcpMs": {
+          "median": 1652.2865,
+          "min": 1652.1264,
+          "max": 1665.9903
+        },
+        "lcpMs": {
+          "median": 5402.126399999999,
+          "min": 2715.9903,
+          "max": 5402.2865
+        },
+        "tbtMs": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "speedIndexMs": {
+          "median": 1652.2865,
+          "min": 1652.1264,
+          "max": 1665.9903
+        },
+        "transferBytes": {
+          "median": 777015,
+          "min": 777015,
+          "max": 777015
+        }
+      },
+      "after": {
+        "performance": {
+          "median": 79,
+          "min": 77,
+          "max": 79
+        },
+        "fcpMs": {
+          "median": 1652.2146,
+          "min": 1651.9087,
+          "max": 2342.9135
+        },
+        "lcpMs": {
+          "median": 5401.913500000001,
+          "min": 5401.9087,
+          "max": 5402.214600000001
+        },
+        "tbtMs": {
+          "median": 0,
+          "min": 0,
+          "max": 41
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "speedIndexMs": {
+          "median": 1652.2146,
+          "min": 1651.9087,
+          "max": 2342.9135
+        },
+        "transferBytes": {
+          "median": 777254,
+          "min": 777254,
+          "max": 777254
+        }
+      },
+      "transferReductionPercent": -0.030758736961322697
+    },
+    {
+      "page": "atlas",
+      "before": {
+        "performance": {
+          "median": 66,
+          "min": 66,
+          "max": 66
+        },
+        "fcpMs": {
+          "median": 5410.0251,
+          "min": 5405.6197,
+          "max": 5478.9852
+        },
+        "lcpMs": {
+          "median": 5410.0251,
+          "min": 5405.6197,
+          "max": 5478.9852
+        },
+        "tbtMs": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "cls": {
+          "median": 0.0017341594418407076,
+          "min": 0.0017341594418407076,
+          "max": 0.002141317164320785
+        },
+        "speedIndexMs": {
+          "median": 5410.0251,
+          "min": 5405.6197,
+          "max": 5478.9852
+        },
+        "transferBytes": {
+          "median": 901361,
+          "min": 901361,
+          "max": 901514
+        }
+      },
+      "after": {
+        "performance": {
+          "median": 84,
+          "min": 77,
+          "max": 84
+        },
+        "fcpMs": {
+          "median": 3459.9162,
+          "min": 3452.1979,
+          "max": 4052.137300000001
+        },
+        "lcpMs": {
+          "median": 3459.9162,
+          "min": 3452.1979,
+          "max": 4052.137300000001
+        },
+        "tbtMs": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "cls": {
+          "median": 0.0017341594418407076,
+          "min": 0,
+          "max": 0.0017341594418407076
+        },
+        "speedIndexMs": {
+          "median": 3459.9162,
+          "min": 3452.1979,
+          "max": 4052.137300000001
+        },
+        "transferBytes": {
+          "median": 527352,
+          "min": 527352,
+          "max": 528268
+        }
+      },
+      "transferReductionPercent": 41.49380769747082
+    },
+    {
+      "page": "relay",
+      "before": {
+        "performance": {
+          "median": 84,
+          "min": 84,
+          "max": 84
+        },
+        "fcpMs": {
+          "median": 3157.7572999999998,
+          "min": 3156.1616,
+          "max": 3167.417
+        },
+        "lcpMs": {
+          "median": 3461.63595,
+          "min": 3459.2424,
+          "max": 3476.1255
+        },
+        "tbtMs": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "cls": {
+          "median": 0.06551875268640825,
+          "min": 0.06078627986574231,
+          "max": 0.0661013621071712
+        },
+        "speedIndexMs": {
+          "median": 3157.7572999999998,
+          "min": 3156.1616,
+          "max": 3167.417
+        },
+        "transferBytes": {
+          "median": 474507,
+          "min": 474507,
+          "max": 474558
+        }
+      },
+      "after": {
+        "performance": {
+          "median": 84,
+          "min": 84,
+          "max": 84
+        },
+        "fcpMs": {
+          "median": 3151.8869,
+          "min": 3151.7535,
+          "max": 3153.2569000000003
+        },
+        "lcpMs": {
+          "median": 3452.83035,
+          "min": 3452.6302499999997,
+          "max": 3454.5276000000003
+        },
+        "tbtMs": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "cls": {
+          "median": 0.06551875268640825,
+          "min": 0.06464938994292971,
+          "max": 0.0661013621071712
+        },
+        "speedIndexMs": {
+          "median": 3151.8869,
+          "min": 3151.7535,
+          "max": 3153.2569000000003
+        },
+        "transferBytes": {
+          "median": 474855,
+          "min": 474855,
+          "max": 475008
+        }
+      },
+      "transferReductionPercent": -0.07333927634365356
+    },
+    {
+      "page": "nila",
+      "before": {
+        "performance": {
+          "median": 67,
+          "min": 67,
+          "max": 67
+        },
+        "fcpMs": {
+          "median": 5252.6615,
+          "min": 5251.9046,
+          "max": 5352.4961
+        },
+        "lcpMs": {
+          "median": 5252.6615,
+          "min": 5251.9046,
+          "max": 5352.4961
+        },
+        "tbtMs": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "cls": {
+          "median": 0.0002587040137192415,
+          "min": 0.0002587040137192415,
+          "max": 0.0002587040137192415
+        },
+        "speedIndexMs": {
+          "median": 5252.6615,
+          "min": 5251.9046,
+          "max": 5352.4961
+        },
+        "transferBytes": {
+          "median": 867668,
+          "min": 867664,
+          "max": 867712
+        }
+      },
+      "after": {
+        "performance": {
+          "median": 67,
+          "min": 67,
+          "max": 67
+        },
+        "fcpMs": {
+          "median": 5254.0558,
+          "min": 5253.342849999999,
+          "max": 5369.1831
+        },
+        "lcpMs": {
+          "median": 5254.0558,
+          "min": 5253.342849999999,
+          "max": 5369.1831
+        },
+        "tbtMs": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "cls": {
+          "median": 0.0002587040137192415,
+          "min": 0.0002587040137192415,
+          "max": 0.0002587040137192415
+        },
+        "speedIndexMs": {
+          "median": 5254.0558,
+          "min": 5253.342849999999,
+          "max": 5369.1831
+        },
+        "transferBytes": {
+          "median": 867814,
+          "min": 867814,
+          "max": 867865
+        }
+      },
+      "transferReductionPercent": -0.016826712521389453
+    },
+    {
+      "page": "aura",
+      "before": {
+        "performance": {
+          "median": 92,
+          "min": 86,
+          "max": 92
+        },
+        "fcpMs": {
+          "median": 1640.6652,
+          "min": 1625.4214000000002,
+          "max": 1644.6557999999998
+        },
+        "lcpMs": {
+          "median": 3283.27085,
+          "min": 3279.0816999999997,
+          "max": 4160.19845
+        },
+        "tbtMs": {
+          "median": 53,
+          "min": 0,
+          "max": 68
+        },
+        "cls": {
+          "median": 0.0017714899039218681,
+          "min": 0.001289248744411354,
+          "max": 0.002738335181869498
+        },
+        "speedIndexMs": {
+          "median": 1640.6652,
+          "min": 1625.4214000000002,
+          "max": 1644.6557999999998
+        },
+        "transferBytes": {
+          "median": 631847,
+          "min": 631742,
+          "max": 632232
+        }
+      },
+      "after": {
+        "performance": {
+          "median": 84,
+          "min": 77,
+          "max": 90
+        },
+        "fcpMs": {
+          "median": 1842.9058,
+          "min": 1813.4630394086735,
+          "max": 3152.7511999999997
+        },
+        "lcpMs": {
+          "median": 4280.5503,
+          "min": 3444.2076500000003,
+          "max": 4318.761957634693
+        },
+        "tbtMs": {
+          "median": 12,
+          "min": 0,
+          "max": 34
+        },
+        "cls": {
+          "median": 0.001289248744411354,
+          "min": 0,
+          "max": 0.001289248744411354
+        },
+        "speedIndexMs": {
+          "median": 1842.9058,
+          "min": 1813.4630394086735,
+          "max": 4407.552796000202
+        },
+        "transferBytes": {
+          "median": 647466,
+          "min": 647368,
+          "max": 647969
+        }
+      },
+      "transferReductionPercent": -2.471959192652662
+    },
+    {
+      "page": "vanta",
+      "before": {
+        "performance": {
+          "median": 96,
+          "min": 96,
+          "max": 96
+        },
+        "fcpMs": {
+          "median": 1618.2894,
+          "min": 1617.4592,
+          "max": 1621.0538
+        },
+        "lcpMs": {
+          "median": 2618.9519855740045,
+          "min": 2616.4414,
+          "max": 2620.3769999999995
+        },
+        "tbtMs": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "cls": {
+          "median": 0.011519754557905324,
+          "min": 0.011519754557905324,
+          "max": 0.01346336391973228
+        },
+        "speedIndexMs": {
+          "median": 1618.2894,
+          "min": 1617.4592,
+          "max": 1621.0538
+        },
+        "transferBytes": {
+          "median": 586398,
+          "min": 586398,
+          "max": 586507
+        }
+      },
+      "after": {
+        "performance": {
+          "median": 94,
+          "min": 83,
+          "max": 95
+        },
+        "fcpMs": {
+          "median": 1842.2063,
+          "min": 1804.535,
+          "max": 3011.8729000000003
+        },
+        "lcpMs": {
+          "median": 2831.3331,
+          "min": 2762.809,
+          "max": 3513.691
+        },
+        "tbtMs": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "cls": {
+          "median": 0.011519754557905324,
+          "min": 0,
+          "max": 0.011519754557905324
+        },
+        "speedIndexMs": {
+          "median": 1842.2063,
+          "min": 1804.535,
+          "max": 4260.838980000246
+        },
+        "transferBytes": {
+          "median": 602306,
+          "min": 602304,
+          "max": 602460
+        }
+      },
+      "transferReductionPercent": -2.71283326341496
+    },
+    {
+      "page": "rasa",
+      "before": {
+        "performance": {
+          "median": 81,
+          "min": 80,
+          "max": 81
+        },
+        "fcpMs": {
+          "median": 1621.8139999999999,
+          "min": 1616.9442000000001,
+          "max": 1638.906
+        },
+        "lcpMs": {
+          "median": 4727.3852,
+          "min": 4718.857899999999,
+          "max": 4741.060850000001
+        },
+        "tbtMs": {
+          "median": 149,
+          "min": 148,
+          "max": 176
+        },
+        "cls": {
+          "median": 0.001641886125322614,
+          "min": 0.001306495343423978,
+          "max": 0.0024677958698621563
+        },
+        "speedIndexMs": {
+          "median": 1621.8139999999999,
+          "min": 1616.9442000000001,
+          "max": 1638.906
+        },
+        "transferBytes": {
+          "median": 1926790,
+          "min": 1926640,
+          "max": 1927471
+        }
+      },
+      "after": {
+        "performance": {
+          "median": 95,
+          "min": 83,
+          "max": 95
+        },
+        "fcpMs": {
+          "median": 1832.0684999999999,
+          "min": 1813.7940999999998,
+          "max": 2975.8356
+        },
+        "lcpMs": {
+          "median": 2769.6632,
+          "min": 2754.7003999999997,
+          "max": 3600.4615
+        },
+        "tbtMs": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "cls": {
+          "median": 0.001306495343423978,
+          "min": 0,
+          "max": 0.0021124684828916873
+        },
+        "speedIndexMs": {
+          "median": 1832.0684999999999,
+          "min": 1813.7940999999998,
+          "max": 4298.231773999952
+        },
+        "transferBytes": {
+          "median": 615994,
+          "min": 615817,
+          "max": 616099
+        }
+      },
+      "transferReductionPercent": 68.0300395995412
+    }
+  ]
+}

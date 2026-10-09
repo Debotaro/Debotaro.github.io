@@ -26,17 +26,23 @@ My portfolio contains **seven working personal project concepts**, plus the port
 
 ## Three different ways of working
 
-| Project | Experience | Explore |
-|---|---|---|
-| **NOVA OS** | A calm daily planning canvas with task-linked focus and public GitHub milestone imports | [Live demo](https://debotaro.github.io/nova-os/app/) · [Source](https://github.com/Debotaro/Debotaro.github.io/tree/main/nova-os) |
+| Project       | Experience                                                                               | Explore                                                                                                                           |
+| ------------- | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| **NOVA OS**   | A calm daily planning canvas with task-linked focus and public GitHub milestone imports  | [Live demo](https://debotaro.github.io/nova-os/app/) · [Source](https://github.com/Debotaro/Debotaro.github.io/tree/main/nova-os) |
 | **ATLAS Ops** | A technical operations console with charts, Kanban tasks and public GitHub issue imports | [Live demo](https://debotaro.github.io/atlas-ops/) · [Source](https://github.com/Debotaro/Debotaro.github.io/tree/main/atlas-ops) |
-| **RELAY OS** | A creative review studio connecting artwork revisions, pinned feedback and approvals | [Live demo](https://debotaro.github.io/relay-os/) · [Source](https://github.com/Debotaro/Debotaro.github.io/tree/main/relay-os) |
+| **RELAY OS**  | A creative review studio connecting artwork revisions, pinned feedback and approvals     | [Live demo](https://debotaro.github.io/relay-os/) · [Source](https://github.com/Debotaro/Debotaro.github.io/tree/main/relay-os)   |
 
 Complete the collection: [NILA Ledger](https://debotaro.github.io/nila-ledger/) · [AURA Reserve](https://debotaro.github.io/aura/) · [VANTA Atelier](https://debotaro.github.io/vanta/) · [RASA Experience](https://debotaro.github.io/rasa/).
 
 [Read all eight case studies](https://github.com/Debotaro/Debotaro.github.io/blob/main/CASE_STUDIES.md) · [Review validation](https://github.com/Debotaro/Debotaro.github.io/blob/main/VALIDATION.md) · [Browse the portfolio source](https://github.com/Debotaro/Debotaro.github.io)
 
 These concepts use sample business data and browser-local state. NOVA and ATLAS also read live public GitHub data; imports remain local. RELAY's optional backend requires separate setup. The demos do not represent live client services or shared cloud accounts.
+
+## Quality evidence
+
+The collection includes [matched mobile lab performance measurements](https://github.com/Debotaro/Debotaro.github.io/blob/main/reports/performance/README.md), an [automated accessibility and keyboard review](https://github.com/Debotaro/Debotaro.github.io/blob/main/reports/ACCESSIBILITY.md), and [browser regression results](https://github.com/Debotaro/Debotaro.github.io/blob/main/VALIDATION.md) for Chromium, Firefox and WebKit. Reports preserve demo limits and uncertain findings. Physical-phone and real screen-reader checks remain separately documented; lab scores are not field Core Web Vitals.
+
+[Study the implementation and quality tradeoffs](https://github.com/Debotaro/Debotaro.github.io/blob/main/career/QUALITY_INTERVIEW_PRACTICE.md).
 
 ## Technologies used in the portfolio
 

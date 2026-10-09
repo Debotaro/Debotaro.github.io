@@ -7,16 +7,25 @@
   "location": "Kokrajhar, Assam, India",
   "portfolio": "https://debotaro.github.io/",
   "profiles": [
-    {"label": "github.com/Debotaro", "url": "https://github.com/Debotaro"},
-    {"label": "linkedin.com/in/deborajsarkar", "url": "https://www.linkedin.com/in/deborajsarkar/"},
-    {"label": "dribbble.com/Debotaro", "url": "https://dribbble.com/Debotaro"}
+    { "label": "github.com/Debotaro", "url": "https://github.com/Debotaro" },
+    {
+      "label": "linkedin.com/in/deborajsarkar",
+      "url": "https://www.linkedin.com/in/deborajsarkar/"
+    },
+    { "label": "dribbble.com/Debotaro", "url": "https://dribbble.com/Debotaro" }
   ],
   "summary": "Computer Science student and Frontend Developer with paid graphic design experience. Directs AI-assisted frontend projects through visual direction, iterative feedback and final review. Seeking full-time junior frontend/React opportunities.",
   "skills_heading": "Technologies used in portfolio projects",
   "certifications_heading": "Selected Coursera certificates",
   "skills": [
-    {"label": "Frontend", "text": "HTML, CSS, JavaScript, React, Next.js, TypeScript, Tailwind CSS"},
-    {"label": "Tools and workflow", "text": "Git, GitHub, Figma, Codex, AI-assisted development, visual review and design iteration"}
+    {
+      "label": "Frontend",
+      "text": "HTML, CSS, JavaScript, React, Next.js, TypeScript, Tailwind CSS"
+    },
+    {
+      "label": "Tools and workflow",
+      "text": "Git, GitHub, Figma, Codex, AI-assisted development, visual review and design iteration"
+    }
   ],
   "projects": [
     {
@@ -49,7 +58,11 @@
   "process": "Available to start within one week. Open to remote frontend roles and relocation for the right opportunity.",
   "availability": "",
   "education": [
-    {"qualification": "Bachelor's degree in Computer Science (in progress)", "institution": "University of the People", "dates": "Jun 2025 - Present"}
+    {
+      "qualification": "Bachelor's degree in Computer Science (in progress)",
+      "institution": "University of the People",
+      "dates": "Jun 2025 - Present"
+    }
   ],
   "experience": [
     {
@@ -64,17 +77,89 @@
     }
   ],
   "certifications": [
-    {"name": "Google UX Design Professional Certificate", "issuer": "Google / Coursera", "date": "Nov 2023", "url": "https://www.coursera.org/account/accomplishments/specialization/ZR76Q3CG6VAX", "selected": true},
-    {"name": "IBM DevOps, Cloud, and Agile Foundations Specialization", "issuer": "IBM / Coursera", "date": "Apr 2023", "url": "https://www.coursera.org/account/accomplishments/specialization/ZS82DMJQ6E5H", "selected": true},
-    {"name": "AWS Cloud Solutions Architect Professional Certificate", "issuer": "Amazon Web Services / Coursera", "date": "Apr 2023", "url": "https://www.coursera.org/account/accomplishments/specialization/XRDNDZE8TZ2P", "selected": true},
-    {"name": "Introduction to Data Science Specialization", "issuer": "IBM / Coursera", "date": "Jun 2025", "url": "https://www.coursera.org/account/accomplishments/specialization/L4HGITCYVHR2", "selected": false},
-    {"name": "Tally Bookkeeper Professional Certificate", "issuer": "Tally Education and Distribution Services Private Limited / Coursera", "date": "May 2025", "url": "https://www.coursera.org/account/accomplishments/specialization/HWXH30J8GVNY", "selected": false},
-    {"name": "AWS Fundamentals Specialization", "issuer": "Amazon Web Services / Coursera", "date": "Apr 2023", "url": "https://www.coursera.org/account/accomplishments/specialization/2PW3KRRUX6NB", "selected": false},
-    {"name": "Business Foundations Specialization", "issuer": "University of Pennsylvania / Coursera", "date": "Jun 2023", "url": "https://www.coursera.org/account/accomplishments/specialization/RUS2CNTHNK57", "selected": false},
-    {"name": "Google Digital Marketing & E-commerce Professional Certificate", "issuer": "Google / Coursera", "date": "Nov 2022", "url": "https://www.coursera.org/account/accomplishments/specialization/WSLL9R7Z4CRF", "selected": false},
-    {"name": "Management Consulting Specialization", "issuer": "Emory University / Coursera", "date": "May 2023", "url": "https://www.coursera.org/account/accomplishments/specialization/C294SY9J34AD", "selected": false},
-    {"name": "Microsoft 365 Fundamentals Specialization", "issuer": "Microsoft / Coursera", "date": "May 2023", "url": "https://www.coursera.org/account/accomplishments/specialization/9X4QU24V5XXQ", "selected": false},
-    {"name": "Business and Marketing Strategies Specialization", "issuer": "University of London / Coursera", "date": "Dec 2022", "url": "https://www.coursera.org/account/accomplishments/specialization/6DBGML95DNH3", "selected": false},
-    {"name": "Google Project Management Professional Certificate", "issuer": "Google / Coursera", "date": "Dec 2022", "url": "https://www.coursera.org/account/accomplishments/specialization/8FYWD2NVQA94", "selected": false}
+    {
+      "name": "Google UX Design Professional Certificate",
+      "issuer": "Google / Coursera",
+      "date": "Nov 2023",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/ZR76Q3CG6VAX",
+      "selected": true
+    },
+    {
+      "name": "IBM DevOps, Cloud, and Agile Foundations Specialization",
+      "issuer": "IBM / Coursera",
+      "date": "Apr 2023",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/ZS82DMJQ6E5H",
+      "selected": true
+    },
+    {
+      "name": "AWS Cloud Solutions Architect Professional Certificate",
+      "issuer": "Amazon Web Services / Coursera",
+      "date": "Apr 2023",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/XRDNDZE8TZ2P",
+      "selected": true
+    },
+    {
+      "name": "Introduction to Data Science Specialization",
+      "issuer": "IBM / Coursera",
+      "date": "Jun 2025",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/L4HGITCYVHR2",
+      "selected": false
+    },
+    {
+      "name": "Tally Bookkeeper Professional Certificate",
+      "issuer": "Tally Education and Distribution Services Private Limited / Coursera",
+      "date": "May 2025",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/HWXH30J8GVNY",
+      "selected": false
+    },
+    {
+      "name": "AWS Fundamentals Specialization",
+      "issuer": "Amazon Web Services / Coursera",
+      "date": "Apr 2023",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/2PW3KRRUX6NB",
+      "selected": false
+    },
+    {
+      "name": "Business Foundations Specialization",
+      "issuer": "University of Pennsylvania / Coursera",
+      "date": "Jun 2023",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/RUS2CNTHNK57",
+      "selected": false
+    },
+    {
+      "name": "Google Digital Marketing & E-commerce Professional Certificate",
+      "issuer": "Google / Coursera",
+      "date": "Nov 2022",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/WSLL9R7Z4CRF",
+      "selected": false
+    },
+    {
+      "name": "Management Consulting Specialization",
+      "issuer": "Emory University / Coursera",
+      "date": "May 2023",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/C294SY9J34AD",
+      "selected": false
+    },
+    {
+      "name": "Microsoft 365 Fundamentals Specialization",
+      "issuer": "Microsoft / Coursera",
+      "date": "May 2023",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/9X4QU24V5XXQ",
+      "selected": false
+    },
+    {
+      "name": "Business and Marketing Strategies Specialization",
+      "issuer": "University of London / Coursera",
+      "date": "Dec 2022",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/6DBGML95DNH3",
+      "selected": false
+    },
+    {
+      "name": "Google Project Management Professional Certificate",
+      "issuer": "Google / Coursera",
+      "date": "Dec 2022",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/8FYWD2NVQA94",
+      "selected": false
+    }
   ]
 }

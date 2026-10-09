@@ -45,14 +45,14 @@ These are sample team members and clients. The demonstration is not evidence of 
 
 `src/domain.ts` owns record validation, the pure action reducer, role helpers and sample seed. Projects link tasks and assets. Each asset revision references its predecessor; comments link to their exact asset and may reference one converted task. Activity entries record local changes. Overview and analytics derive their values from these records rather than maintaining separate totals.
 
-| Action | Admin | Project Manager | Designer | Client |
-|---|---|---|---|---|
-| Create, edit, archive or delete a project | Yes | Yes | No | No |
-| Manage tasks and upload design revisions | Yes | Yes | Yes | No |
-| Add feedback | Yes | Yes | Yes | Yes |
-| Convert feedback to a task | Yes | Yes | Yes | No |
-| Request review from draft or changes requested | Yes | Yes | Yes | No |
-| Make an approval decision | Yes | Yes | No | Yes |
+| Action                                         | Admin | Project Manager | Designer | Client |
+| ---------------------------------------------- | ----- | --------------- | -------- | ------ |
+| Create, edit, archive or delete a project      | Yes   | Yes             | No       | No     |
+| Manage tasks and upload design revisions       | Yes   | Yes             | Yes      | No     |
+| Add feedback                                   | Yes   | Yes             | Yes      | Yes    |
+| Convert feedback to a task                     | Yes   | Yes             | Yes      | No     |
+| Request review from draft or changes requested | Yes   | Yes             | Yes      | No     |
+| Make an approval decision                      | Yes   | Yes             | No       | Yes    |
 
 Designers and managers can resolve feedback; a client can resolve their own feedback. An archived project must be restored before editing its work. Deleting a project removes its linked local records. Removing an asset removes its later revisions and comments; deleting a converted task clears the comment's task link. These rules are enforced by the demo domain reducer as well as exposed through the interface.
 

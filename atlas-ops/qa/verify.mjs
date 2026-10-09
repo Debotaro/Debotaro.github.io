@@ -3,87 +3,115 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 const folder = path.dirname(fileURLToPath(import.meta.url));
 const base = process.env.ATLAS_TEST_URL || 'http://127.0.0.1:5174/';
-const browser = await chromium.launch({headless:true});
-const page = await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
-const errors=[];
-page.on('pageerror',error=>errors.push(error.message));
+const browser = await chromium.launch({ headless: true });
+const page = await browser.newPage({
+  viewport: { width: 1440, height: 1000 },
+  reducedMotion: 'reduce',
+});
+const errors = [];
+page.on('pageerror', (error) => errors.push(error.message));
 await page.goto(base);
-await expect(page.getByRole('heading',{name:'The calm behind your next big move.'})).toBeVisible();
-await page.screenshot({path:path.join(folder,'landing-desktop.png'),fullPage:true});
-await page.getByRole('button',{name:'Explore the demo',exact:true}).click();
-await expect(page.getByRole('heading',{name:'Good morning, Olivia.'})).toBeVisible();
-await page.screenshot({path:path.join(folder,'overview-desktop.png'),fullPage:true});
-await page.getByRole('combobox',{name:'Chart date range'}).selectOption('7');
-await page.getByRole('combobox',{name:'Filter dashboard location'}).selectOption('London');
+await expect(
+  page.getByRole('heading', { name: 'The calm behind your next big move.' }),
+).toBeVisible();
+await page.screenshot({ path: path.join(folder, 'landing-desktop.png'), fullPage: true });
+await page.getByRole('button', { name: 'Explore the demo', exact: true }).click();
+await expect(page.getByRole('heading', { name: 'Good morning, Olivia.' })).toBeVisible();
+await page.screenshot({ path: path.join(folder, 'overview-desktop.png'), fullPage: true });
+await page.getByRole('combobox', { name: 'Chart date range' }).selectOption('7');
+await page.getByRole('combobox', { name: 'Filter dashboard location' }).selectOption('London');
 await expect(page.getByText('scheduled shifts this week')).toBeVisible();
-await page.getByRole('button',{name:'Edit chart targets'}).click();
+await page.getByRole('button', { name: 'Edit chart targets' }).click();
 await page.getByLabel('Revenue target (£ per point)').fill('7000');
-await page.getByRole('button',{name:'Save targets',exact:true}).click();
+await page.getByRole('button', { name: 'Save targets', exact: true }).click();
 const download = page.waitForEvent('download');
-await page.getByRole('button',{name:'Export',exact:true}).click();
+await page.getByRole('button', { name: 'Export', exact: true }).click();
 expect((await download).suggestedFilename()).toBe('atlas-performance.csv');
-await page.getByRole('link',{name:'Task management',exact:true}).click();
-await page.locator('.task-card').filter({has:page.getByRole('button',{name:'Review supplier contracts',exact:true})}).dragTo(page.getByRole('region',{name:'Complete tasks',exact:true}));
-await expect(page.getByRole('combobox',{name:'Status for Review supplier contracts',exact:true})).toHaveValue('Complete');
-await page.getByRole('combobox',{name:'Status for Review supplier contracts',exact:true}).selectOption('In progress');
-await page.getByRole('button',{name:'Create task',exact:true}).click();
-const dialog=page.getByRole('dialog');
+await page.getByRole('link', { name: 'Task management', exact: true }).click();
+await page
+  .locator('.task-card')
+  .filter({ has: page.getByRole('button', { name: 'Review supplier contracts', exact: true }) })
+  .dragTo(page.getByRole('region', { name: 'Complete tasks', exact: true }));
+await expect(
+  page.getByRole('combobox', { name: 'Status for Review supplier contracts', exact: true }),
+).toHaveValue('Complete');
+await page
+  .getByRole('combobox', { name: 'Status for Review supplier contracts', exact: true })
+  .selectOption('In progress');
+await page.getByRole('button', { name: 'Create task', exact: true }).click();
+const dialog = page.getByRole('dialog');
 await dialog.getByLabel('Task name').fill('Verify supplier QA');
 await dialog.getByLabel('Description').fill('A temporary browser workflow check.');
-await dialog.getByLabel('Priority',{exact:true}).selectOption('High');
-await dialog.getByRole('button',{name:'Create task',exact:true}).click();
-await expect(page.getByRole('button',{name:'Verify supplier QA',exact:true})).toBeVisible();
-await page.getByRole('combobox',{name:'Status for Verify supplier QA',exact:true}).selectOption('In progress');
+await dialog.getByLabel('Priority', { exact: true }).selectOption('High');
+await dialog.getByRole('button', { name: 'Create task', exact: true }).click();
+await expect(page.getByRole('button', { name: 'Verify supplier QA', exact: true })).toBeVisible();
+await page
+  .getByRole('combobox', { name: 'Status for Verify supplier QA', exact: true })
+  .selectOption('In progress');
 await page.reload();
-await expect(page.getByRole('combobox',{name:'Status for Verify supplier QA',exact:true})).toHaveValue('In progress');
-await page.getByRole('textbox',{name:'Search tasks',exact:true}).fill('Verify supplier QA');
+await expect(
+  page.getByRole('combobox', { name: 'Status for Verify supplier QA', exact: true }),
+).toHaveValue('In progress');
+await page.getByRole('textbox', { name: 'Search tasks', exact: true }).fill('Verify supplier QA');
 await expect(page.getByText('Showing 1 of 11 tasks')).toBeVisible();
-await page.getByRole('button',{name:'List view',exact:true}).click();
+await page.getByRole('button', { name: 'List view', exact: true }).click();
 await expect(page.getByRole('table')).toBeVisible();
-await page.getByRole('button',{name:/Verify supplier QA/}).click();
+await page.getByRole('button', { name: /Verify supplier QA/ }).click();
 await dialog.getByLabel('Task name').fill('Verified supplier QA');
-await dialog.getByRole('button',{name:'Save changes',exact:true}).click();
-await page.getByRole('textbox',{name:'Search tasks',exact:true}).fill('Verified supplier QA');
-await page.getByRole('button',{name:/Verified supplier QA/}).click();
-await dialog.getByRole('button',{name:'Delete task',exact:true}).click();
-await dialog.getByRole('button',{name:'Confirm delete',exact:true}).click();
+await dialog.getByRole('button', { name: 'Save changes', exact: true }).click();
+await page.getByRole('textbox', { name: 'Search tasks', exact: true }).fill('Verified supplier QA');
+await page.getByRole('button', { name: /Verified supplier QA/ }).click();
+await dialog.getByRole('button', { name: 'Delete task', exact: true }).click();
+await dialog.getByRole('button', { name: 'Confirm delete', exact: true }).click();
 await expect(page.getByText('No tasks match your filters.')).toBeVisible();
-await page.getByRole('button',{name:'Clear filters',exact:true}).click();
-await page.getByRole('button',{name:'Board view',exact:true}).click();
-await page.getByRole('button',{name:'Add task to In review',exact:true}).click();
+await page.getByRole('button', { name: 'Clear filters', exact: true }).click();
+await page.getByRole('button', { name: 'Board view', exact: true }).click();
+await page.getByRole('button', { name: 'Add task to In review', exact: true }).click();
 await dialog.getByLabel('Task name').fill('Review column task');
-await dialog.getByRole('button',{name:'Create task',exact:true}).click();
-await expect(page.getByRole('combobox',{name:'Status for Review column task'})).toHaveValue('In review');
-await page.getByRole('link',{name:'Team coverage',exact:true}).click();
-await page.getByRole('combobox',{name:'Marcus Wright Thursday shift'}).selectOption('09:00–17:00');
+await dialog.getByRole('button', { name: 'Create task', exact: true }).click();
+await expect(page.getByRole('combobox', { name: 'Status for Review column task' })).toHaveValue(
+  'In review',
+);
+await page.getByRole('link', { name: 'Team coverage', exact: true }).click();
+await page
+  .getByRole('combobox', { name: 'Marcus Wright Thursday shift' })
+  .selectOption('09:00–17:00');
 await page.reload();
-await expect(page.getByRole('combobox',{name:'Marcus Wright Thursday shift'})).toHaveValue('09:00–17:00');
-await page.getByRole('link',{name:'Notifications',exact:true}).click();
-await page.getByRole('button',{name:'Mark all as read',exact:true}).click();
-await expect(page.getByRole('button',{name:'Mark all as read',exact:true})).toBeDisabled();
-await page.getByRole('link',{name:'Settings',exact:true}).click();
+await expect(page.getByRole('combobox', { name: 'Marcus Wright Thursday shift' })).toHaveValue(
+  '09:00–17:00',
+);
+await page.getByRole('link', { name: 'Notifications', exact: true }).click();
+await page.getByRole('button', { name: 'Mark all as read', exact: true }).click();
+await expect(page.getByRole('button', { name: 'Mark all as read', exact: true })).toBeDisabled();
+await page.getByRole('link', { name: 'Settings', exact: true }).click();
 await page.getByLabel('Workspace name').fill('QA Studio');
-await page.getByRole('switch',{name:'Compact workspace'}).click();
-await page.getByRole('button',{name:'Save settings',exact:true}).click();
+await page.getByRole('switch', { name: 'Compact workspace' }).click();
+await page.getByRole('button', { name: 'Save settings', exact: true }).click();
 await page.reload();
 await expect(page.getByLabel('Workspace name')).toHaveValue('QA Studio');
-await expect(page.getByRole('switch',{name:'Compact workspace'})).toBeChecked();
-await page.getByRole('button',{name:'Reset demo',exact:true}).click();
-await page.getByRole('button',{name:'Reset demo data',exact:true}).click();
+await expect(page.getByRole('switch', { name: 'Compact workspace' })).toBeChecked();
+await page.getByRole('button', { name: 'Reset demo', exact: true }).click();
+await page.getByRole('button', { name: 'Reset demo data', exact: true }).click();
 await expect(page.getByLabel('Workspace name')).toHaveValue('Acme Studio');
-await page.getByRole('button',{name:'Dismiss notification',exact:true}).click();
-await page.getByRole('link',{name:'Overview',exact:true}).click();
-await page.setViewportSize({width:390,height:844});
-await page.screenshot({path:path.join(folder,'overview-mobile.png'),fullPage:true});
-expect(await page.evaluate(()=>document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-await page.getByRole('button',{name:'Open navigation',exact:true}).click();
-await page.getByRole('link',{name:'Task management',exact:true}).click();
-await page.screenshot({path:path.join(folder,'tasks-mobile.png'),fullPage:true});
-expect(await page.evaluate(()=>document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-await page.getByRole('button',{name:'Create task',exact:true}).click();
+await page.getByRole('button', { name: 'Dismiss notification', exact: true }).click();
+await page.getByRole('link', { name: 'Overview', exact: true }).click();
+await page.setViewportSize({ width: 390, height: 844 });
+await page.screenshot({ path: path.join(folder, 'overview-mobile.png'), fullPage: true });
+expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
+  true,
+);
+await page.getByRole('button', { name: 'Open navigation', exact: true }).click();
+await page.getByRole('link', { name: 'Task management', exact: true }).click();
+await page.screenshot({ path: path.join(folder, 'tasks-mobile.png'), fullPage: true });
+expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
+  true,
+);
+await page.getByRole('button', { name: 'Create task', exact: true }).click();
 await expect(page.getByRole('dialog')).toBeVisible();
 await page.keyboard.press('Escape');
 await expect(page.getByRole('dialog')).not.toBeVisible();
 expect(errors).toEqual([]);
-console.log('PASS: landing, chart filters/targets/export, task CRUD, native drag/drop, column creation, status persistence, coverage, notifications, settings/reset, mobile layout and keyboard dialog dismissal.');
+console.log(
+  'PASS: landing, chart filters/targets/export, task CRUD, native drag/drop, column creation, status persistence, coverage, notifications, settings/reset, mobile layout and keyboard dialog dismissal.',
+);
 await browser.close();

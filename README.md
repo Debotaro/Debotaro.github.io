@@ -16,15 +16,15 @@ Seeking **full-time junior frontend/React roles**, available to start **within o
 
 Project names open their source folders. Demo links open the published applications.
 
-| Project source | Live demo | Stack | Main interactions |
-|---|---|---|---|
-| [RELAY OS](relay-os/) | [Open creative workspace](https://debotaro.github.io/relay-os/) | React, TypeScript, Vite; optional Supabase adapter | Project/task planning, versioned design assets, image-pin feedback, comment-to-task conversion, approvals, activity, analytics, role previews, command search |
-| [NOVA OS](nova-os/) | [Open workspace](https://debotaro.github.io/nova-os/app/) | Next.js, TypeScript, Tailwind, Radix, GSAP | Editable projects/tasks, live GitHub repository/milestone reads and local imports, assistant actions, command search, automation flows, analytics, persistent theme |
-| [ATLAS Ops](atlas-ops/) | [Open operations](https://debotaro.github.io/atlas-ops/#/overview) | React, TypeScript, Vite, Tailwind, Radix, Recharts | Task CRUD and Kanban, live GitHub issue queue, safe local issue imports, chart filters/targets, coverage scheduling, notifications, CSV export |
-| [NILA Ledger](nila-ledger/) | [Open ledger](https://debotaro.github.io/nila-ledger/#/dashboard) | React, TypeScript, Vite, Tailwind, Recharts, GSAP | Transaction CRUD and filters, accurate penny-based totals, adjustable budgets, CSV exports, printable reports |
-| [AURA Reserve](aura/) | [Explore AURA](https://debotaro.github.io/aura/) | One HTML file with embedded CSS/JS, optional GSAP | Property gallery, availability calendar, stay dates, validated enquiry, sample price calculation |
-| [VANTA Atelier](vanta/) | [Explore VANTA](https://debotaro.github.io/vanta/) | One HTML file with embedded CSS/JS | Collection filters, lookbook, product sizes, persistent cart, quantities, demo checkout |
-| [RASA Experience](rasa/) | [Explore RASA](https://debotaro.github.io/rasa/) | One HTML file with embedded CSS/JS, optional Three.js | Destination globe, itineraries, travel quiz, journey enquiry, downloadable sample plan |
+| Project source              | Live demo                                                          | Stack                                                 | Main interactions                                                                                                                                                   |
+| --------------------------- | ------------------------------------------------------------------ | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [RELAY OS](relay-os/)       | [Open creative workspace](https://debotaro.github.io/relay-os/)    | React, TypeScript, Vite; optional Supabase adapter    | Project/task planning, versioned design assets, image-pin feedback, comment-to-task conversion, approvals, activity, analytics, role previews, command search       |
+| [NOVA OS](nova-os/)         | [Open workspace](https://debotaro.github.io/nova-os/app/)          | Next.js, TypeScript, Tailwind, Radix, GSAP            | Editable projects/tasks, live GitHub repository/milestone reads and local imports, assistant actions, command search, automation flows, analytics, persistent theme |
+| [ATLAS Ops](atlas-ops/)     | [Open operations](https://debotaro.github.io/atlas-ops/#/overview) | React, TypeScript, Vite, Tailwind, Radix, Recharts    | Task CRUD and Kanban, live GitHub issue queue, safe local issue imports, chart filters/targets, coverage scheduling, notifications, CSV export                      |
+| [NILA Ledger](nila-ledger/) | [Open ledger](https://debotaro.github.io/nila-ledger/#/dashboard)  | React, TypeScript, Vite, Tailwind, Recharts, GSAP     | Transaction CRUD and filters, accurate penny-based totals, adjustable budgets, CSV exports, printable reports                                                       |
+| [AURA Reserve](aura/)       | [Explore AURA](https://debotaro.github.io/aura/)                   | One HTML file with embedded CSS/JS, optional GSAP     | Property gallery, availability calendar, stay dates, validated enquiry, sample price calculation                                                                    |
+| [VANTA Atelier](vanta/)     | [Explore VANTA](https://debotaro.github.io/vanta/)                 | One HTML file with embedded CSS/JS                    | Collection filters, lookbook, product sizes, persistent cart, quantities, demo checkout                                                                             |
+| [RASA Experience](rasa/)    | [Explore RASA](https://debotaro.github.io/rasa/)                   | One HTML file with embedded CSS/JS, optional Three.js | Destination globe, itineraries, travel quiz, journey enquiry, downloadable sample plan                                                                              |
 
 **New capstone:** [Explore RELAY OS](https://debotaro.github.io/relay-os/) for a complete design-feedback-to-delivery journey. The public demo runs locally in your browser; optional Supabase setup is documented separately.
 
@@ -71,7 +71,7 @@ NOVA, ATLAS and RELAY use different information hierarchies as well as different
 
 ## Open the complete portfolio
 
-Requirements: Node.js 22.12+ or 24 LTS and npm. The delivered installation was built with Node.js 24.
+Requirements: Node.js 24 and npm, matching the verified local and CI environment.
 
 In PowerShell:
 
@@ -122,11 +122,20 @@ The three HTML experiences can also be opened independently through a local stat
 ```powershell
 # From portfolio-website, with the production build present:
 npm run test:unit
+npm run test:production
 npm run test:install
+npm run lint
+npm run format:check
 npm test
 ```
 
-`npm run test:unit` runs RELAY's domain and backend contract checks from its own package. Embedded Postgres checks use test-only authentication/storage stubs; they do not connect to a live Supabase service. Playwright checks the main user journeys at desktop and mobile sizes, data persistence, downloads, keyboard dismissal, CDN fallbacks, runtime errors and document overflow. It starts a preview server if one is not already running. The HTML report appears in `playwright-report/`.
+`npm run test:unit` runs RELAY's domain/backend contracts and ATLAS's storage-boundary checks. Embedded Postgres checks use test-only authentication/storage stubs; they do not connect to a live Supabase service. Playwright covers desktop/mobile Chromium, desktop Firefox and desktop/mobile WebKit. It checks user journeys, persistence, downloads, keyboard dialogs, automated accessibility, deferred delivery, fallbacks and layout. It starts a preview server if needed; reports appear in `playwright-report/` and ignored `output/quality-playwright.json`. WebKit emulation is separate from testing Safari on a physical iPhone.
+
+`npm run lint` checks maintained JavaScript/TypeScript modules; `npm run format:check` checks source formatting. Use `npm run format` after editing. Embedded scripts in the single-file HTML demos are formatted and browser-tested; they are outside ESLint's module checks. The targeted cleanup extracts ATLAS's untrusted-storage parsing into a pure module rather than scattering type assertions through its UI.
+
+The production build compacts only the portfolio and AURA/VANTA/RASA entry HTML, including embedded CSS and script whitespace. Editable source remains formatted. `npm run test:production` checks text separation, accessibility attributes, dynamic CSS and script execution. React and Next.js output keeps its existing compiler pipeline.
+
+The [performance report](reports/performance/README.md) records matched mobile lab measurements, while the [accessibility review](reports/ACCESSIBILITY.md) retains both violations and uncertain checks. With a preview running, `npm run audit:accessibility` regenerates after results. The performance guide provides the browser executable and version requirements for `npm run audit:performance`. The [physical-device checklist](reports/REAL_DEVICE_CHECKLIST.md) records checks still requiring real phones and screen readers.
 
 `node scripts/capture.mjs` refreshes the real project screenshots in `previews/`. These images also serve as the portfolio gallery thumbnails. After refreshing them, build again to update `dist/`.
 

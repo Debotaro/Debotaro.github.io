@@ -1,0 +1,344 @@
+{
+  "generatedAt": "2026-10-09T03:46:18.418Z",
+  "baseURL": "http://localhost:4173",
+  "engine": "Chromium",
+  "scope": "Keyboard-driven local browser review; no physical device or screen reader used.",
+  "results": [
+    {
+      "scenario": "Portfolio",
+      "route": "/",
+      "viewport": "desktop",
+      "firstFocus": {
+        "text": "Skip to projects",
+        "href": "#work",
+        "outline": "2px solid rgb(255, 157, 119)",
+        "visible": true
+      },
+      "skipTarget": {
+        "tag": "SECTION",
+        "id": "work",
+        "hash": "#work"
+      },
+      "focusInsideOnOpen": true,
+      "backgroundControlsStayedInert": true,
+      "browserChromeStops": 1,
+      "closedByEscape": true,
+      "focusRestored": true
+    },
+    {
+      "scenario": "NOVA",
+      "route": "/nova-os/app/",
+      "viewport": "desktop",
+      "firstFocus": {
+        "text": "Skip to content",
+        "href": "#workspace-content",
+        "outline": "2px solid rgb(113, 89, 178)",
+        "visible": true
+      },
+      "skipTarget": {
+        "tag": "MAIN",
+        "id": "workspace-content",
+        "hash": "#workspace-content"
+      },
+      "focusInsideOnOpen": true,
+      "backgroundControlsStayedInert": true,
+      "browserChromeStops": 0,
+      "closedByEscape": true,
+      "focusRestored": true
+    },
+    {
+      "scenario": "ATLAS",
+      "route": "/atlas-ops/#/tasks",
+      "viewport": "desktop",
+      "firstFocus": {
+        "text": "Skip to main content",
+        "href": "#main-content",
+        "outline": "3px solid rgb(255, 168, 105)",
+        "visible": true
+      },
+      "skipTarget": {
+        "tag": "MAIN",
+        "id": "main-content",
+        "hash": "#/tasks"
+      },
+      "focusInsideOnOpen": true,
+      "backgroundControlsStayedInert": true,
+      "browserChromeStops": 0,
+      "closedByEscape": true,
+      "focusRestored": true
+    },
+    {
+      "scenario": "RELAY",
+      "route": "/relay-os/#/tasks",
+      "viewport": "desktop",
+      "firstFocus": {
+        "text": "Skip to workspace",
+        "href": "#main-content",
+        "outline": "3px solid rgb(181, 69, 44)",
+        "visible": true
+      },
+      "skipTarget": {
+        "tag": "MAIN",
+        "id": "main-content",
+        "hash": "#/tasks"
+      },
+      "focusInsideOnOpen": true,
+      "backgroundControlsStayedInert": true,
+      "browserChromeStops": 0,
+      "closedByEscape": true,
+      "focusRestored": true
+    },
+    {
+      "scenario": "NILA",
+      "route": "/nila-ledger/#/transactions",
+      "viewport": "desktop",
+      "firstFocus": {
+        "text": "Skip to content",
+        "href": "#main-content",
+        "outline": "3px solid rgb(147, 171, 87)",
+        "visible": true
+      },
+      "skipTarget": {
+        "tag": "MAIN",
+        "id": "main-content",
+        "hash": "#/transactions"
+      },
+      "focusInsideOnOpen": true,
+      "backgroundControlsStayedInert": true,
+      "browserChromeStops": 1,
+      "closedByEscape": true,
+      "focusRestored": true
+    },
+    {
+      "scenario": "AURA",
+      "route": "/aura/",
+      "viewport": "desktop",
+      "firstFocus": {
+        "text": "Skip to content",
+        "href": "#main",
+        "outline": "3px solid rgb(181, 148, 81)",
+        "visible": true
+      },
+      "skipTarget": {
+        "tag": "MAIN",
+        "id": "main",
+        "hash": "#main"
+      },
+      "focusInsideOnOpen": true,
+      "backgroundControlsStayedInert": true,
+      "browserChromeStops": 0,
+      "closedByEscape": true,
+      "focusRestored": true
+    },
+    {
+      "scenario": "VANTA",
+      "route": "/vanta/",
+      "viewport": "desktop",
+      "firstFocus": {
+        "text": "Skip to content",
+        "href": "#main",
+        "outline": "3px solid rgb(130, 146, 28)",
+        "visible": true
+      },
+      "skipTarget": {
+        "tag": "MAIN",
+        "id": "main",
+        "hash": "#main"
+      },
+      "focusInsideOnOpen": true,
+      "backgroundControlsStayedInert": true,
+      "browserChromeStops": 1,
+      "closedByEscape": true,
+      "focusRestored": true
+    },
+    {
+      "scenario": "RASA",
+      "route": "/rasa/",
+      "viewport": "desktop",
+      "firstFocus": {
+        "text": "Skip to content",
+        "href": "#main",
+        "outline": "3px solid rgb(186, 61, 40)",
+        "visible": true
+      },
+      "skipTarget": {
+        "tag": "MAIN",
+        "id": "main",
+        "hash": "#main"
+      },
+      "focusInsideOnOpen": true,
+      "backgroundControlsStayedInert": true,
+      "browserChromeStops": 1,
+      "closedByEscape": true,
+      "focusRestored": true
+    },
+    {
+      "scenario": "Portfolio",
+      "route": "/",
+      "viewport": "mobile",
+      "firstFocus": {
+        "text": "Skip to projects",
+        "href": "#work",
+        "outline": "2px solid rgb(255, 157, 119)",
+        "visible": true
+      },
+      "skipTarget": {
+        "tag": "SECTION",
+        "id": "work",
+        "hash": "#work"
+      },
+      "focusInsideOnOpen": true,
+      "backgroundControlsStayedInert": true,
+      "browserChromeStops": 1,
+      "closedByEscape": true,
+      "focusRestored": true
+    },
+    {
+      "scenario": "NOVA",
+      "route": "/nova-os/app/",
+      "viewport": "mobile",
+      "firstFocus": {
+        "text": "Skip to content",
+        "href": "#workspace-content",
+        "outline": "2px solid rgb(113, 89, 178)",
+        "visible": true
+      },
+      "skipTarget": {
+        "tag": "MAIN",
+        "id": "workspace-content",
+        "hash": "#workspace-content"
+      },
+      "focusInsideOnOpen": true,
+      "backgroundControlsStayedInert": true,
+      "browserChromeStops": 0,
+      "closedByEscape": true,
+      "focusRestored": true
+    },
+    {
+      "scenario": "ATLAS",
+      "route": "/atlas-ops/#/tasks",
+      "viewport": "mobile",
+      "firstFocus": {
+        "text": "Skip to main content",
+        "href": "#main-content",
+        "outline": "3px solid rgb(255, 168, 105)",
+        "visible": true
+      },
+      "skipTarget": {
+        "tag": "MAIN",
+        "id": "main-content",
+        "hash": "#/tasks"
+      },
+      "focusInsideOnOpen": true,
+      "backgroundControlsStayedInert": true,
+      "browserChromeStops": 0,
+      "closedByEscape": true,
+      "focusRestored": true
+    },
+    {
+      "scenario": "RELAY",
+      "route": "/relay-os/#/tasks",
+      "viewport": "mobile",
+      "firstFocus": {
+        "text": "Skip to workspace",
+        "href": "#main-content",
+        "outline": "3px solid rgb(181, 69, 44)",
+        "visible": true
+      },
+      "skipTarget": {
+        "tag": "MAIN",
+        "id": "main-content",
+        "hash": "#/tasks"
+      },
+      "focusInsideOnOpen": true,
+      "backgroundControlsStayedInert": true,
+      "browserChromeStops": 0,
+      "closedByEscape": true,
+      "focusRestored": true
+    },
+    {
+      "scenario": "NILA",
+      "route": "/nila-ledger/#/transactions",
+      "viewport": "mobile",
+      "firstFocus": {
+        "text": "Skip to content",
+        "href": "#main-content",
+        "outline": "3px solid rgb(147, 171, 87)",
+        "visible": true
+      },
+      "skipTarget": {
+        "tag": "MAIN",
+        "id": "main-content",
+        "hash": "#/transactions"
+      },
+      "focusInsideOnOpen": true,
+      "backgroundControlsStayedInert": true,
+      "browserChromeStops": 1,
+      "closedByEscape": true,
+      "focusRestored": true
+    },
+    {
+      "scenario": "AURA",
+      "route": "/aura/",
+      "viewport": "mobile",
+      "firstFocus": {
+        "text": "Skip to content",
+        "href": "#main",
+        "outline": "3px solid rgb(181, 148, 81)",
+        "visible": true
+      },
+      "skipTarget": {
+        "tag": "MAIN",
+        "id": "main",
+        "hash": "#main"
+      },
+      "focusInsideOnOpen": true,
+      "backgroundControlsStayedInert": true,
+      "browserChromeStops": 0,
+      "closedByEscape": true,
+      "focusRestored": true
+    },
+    {
+      "scenario": "VANTA",
+      "route": "/vanta/",
+      "viewport": "mobile",
+      "firstFocus": {
+        "text": "Skip to content",
+        "href": "#main",
+        "outline": "3px solid rgb(130, 146, 28)",
+        "visible": true
+      },
+      "skipTarget": {
+        "tag": "MAIN",
+        "id": "main",
+        "hash": "#main"
+      },
+      "focusInsideOnOpen": true,
+      "backgroundControlsStayedInert": true,
+      "browserChromeStops": 1,
+      "closedByEscape": true,
+      "focusRestored": true
+    },
+    {
+      "scenario": "RASA",
+      "route": "/rasa/",
+      "viewport": "mobile",
+      "firstFocus": {
+        "text": "Skip to content",
+        "href": "#main",
+        "outline": "3px solid rgb(186, 61, 40)",
+        "visible": true
+      },
+      "skipTarget": {
+        "tag": "MAIN",
+        "id": "main",
+        "hash": "#main"
+      },
+      "focusInsideOnOpen": true,
+      "backgroundControlsStayedInert": true,
+      "browserChromeStops": 1,
+      "closedByEscape": true,
+      "focusRestored": true
+    }
+  ]
+}

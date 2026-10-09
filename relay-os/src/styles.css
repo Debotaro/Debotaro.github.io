@@ -1,5 +1,5 @@
 :root {
-  font-family: "DM Sans", Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
   color: #292c28;
   background: #f4f2ec;
   font-synthesis: none;
@@ -17,7 +17,7 @@
   --shadow: 0 14px 55px #302d2610;
   color-scheme: light;
 }
-:root[data-theme="dark"] {
+:root[data-theme='dark'] {
   --bg: #1e211e;
   --surface: #272a26;
   --sidebar: #242721;
@@ -238,12 +238,12 @@ a {
 .studio-navigation nav a:hover {
   color: var(--text);
 }
-.studio-navigation nav a[aria-current="page"] {
+.studio-navigation nav a[aria-current='page'] {
   color: var(--accent);
   font-weight: 500;
 }
-.studio-navigation nav a[aria-current="page"]::after {
-  content: "";
+.studio-navigation nav a[aria-current='page']::after {
+  content: '';
   height: 2px;
   background: var(--accent);
   position: absolute;
@@ -304,11 +304,11 @@ a {
 }
 .avatar.sage {
   background: #d9e0d2;
-  color: #56704b;
+  color: #49623f;
 }
 .avatar.lilac {
   background: #e0dbed;
-  color: #796899;
+  color: #695887;
 }
 .avatar.tiny {
   width: 25px;
@@ -438,7 +438,7 @@ main#main-content {
   letter-spacing: -1.75px;
   line-height: 1.14;
   margin: 17px 0 15px;
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: 'Instrument Serif', Georgia, serif;
 }
 .page-heading h1 em {
   font-weight: 400;
@@ -552,7 +552,7 @@ main#main-content {
 }
 .section-header h2 {
   font-size: 25px;
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: 'Instrument Serif', Georgia, serif;
   letter-spacing: -0.5px;
   margin-top: 8px;
 }
@@ -567,7 +567,7 @@ main#main-content {
   margin-bottom: 36px;
 }
 .studio-introduction h1 {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: 'Instrument Serif', Georgia, serif;
   font-size: 68px;
   letter-spacing: -2.5px;
   line-height: 0.97;
@@ -616,7 +616,7 @@ main#main-content {
   padding: 17px 25px;
   font-size: 8px;
   letter-spacing: 1.6px;
-  color: #727268;
+  color: #626257;
 }
 .studio-artwork-label > span:first-child {
   display: flex;
@@ -672,7 +672,7 @@ main#main-content {
 }
 .studio-artwork-caption > div > span {
   display: block;
-  color: #797c70;
+  color: #606456;
   font-size: 10px;
   margin-top: 6px;
 }
@@ -683,7 +683,7 @@ main#main-content {
   min-width: 0;
 }
 .studio-review-brief h2 {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: 'Instrument Serif', Georgia, serif;
   font-size: 38px;
   line-height: 1.04;
   letter-spacing: -1.1px;
@@ -821,7 +821,7 @@ main#main-content {
   top: 50%;
   transform: translateY(-50%);
   color: #fffaf1;
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: 'Instrument Serif', Georgia, serif;
   font-size: 43px;
   line-height: 0.95;
   letter-spacing: -1px;
@@ -888,7 +888,7 @@ main#main-content {
 }
 .cover-treatment-2 .cover-placeholder-kicker,
 .cover-treatment-2 .cover-placeholder-footer {
-  color: #75654ccc;
+  color: #615039;
 }
 .cover-treatment-2 .cover-shape-one {
   background: #8e806640;
@@ -942,7 +942,7 @@ main#main-content {
   margin-top: 40px;
 }
 .studio-next-actions h2 {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: 'Instrument Serif', Georgia, serif;
   font-size: 33px;
   line-height: 1.06;
   letter-spacing: -0.6px;
@@ -1050,11 +1050,11 @@ main#main-content {
 .pill-approved,
 .pill-done {
   background: #edf1e6;
-  color: #708361;
+  color: #526640;
 }
 .pill-review {
   background: #eee9f2;
-  color: #867296;
+  color: #6e587e;
 }
 .pill-changes {
   background: #f7e7dc;
@@ -1067,7 +1067,7 @@ main#main-content {
 }
 .pill-in_progress {
   background: #e6eef0;
-  color: #617b82;
+  color: #4e6870;
 }
 .pill-archived {
   background: var(--soft);
@@ -1094,7 +1094,7 @@ main#main-content {
   width: 43px;
   height: 43px;
   border-radius: 11px;
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: 'Instrument Serif', Georgia, serif;
   font-size: 29px;
 }
 .project-title {
@@ -1107,7 +1107,7 @@ main#main-content {
   padding: 0;
 }
 .project-title h2 {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: 'Instrument Serif', Georgia, serif;
   font-size: 25px;
   letter-spacing: -0.5px;
   line-height: 1.1;
@@ -1251,7 +1251,7 @@ main#main-content {
   border-radius: 5px;
   flex-shrink: 0;
 }
-.task-name-cell h3 {
+.task-name-cell h2 {
   font-size: 11px;
   line-height: 1.5;
   overflow-wrap: anywhere;
@@ -1280,17 +1280,17 @@ main#main-content {
   width: 100%;
 }
 .status-done {
-  color: #708361;
+  color: #526640;
   background: #edf1e6;
   border-color: #dde4d5;
 }
 .status-review {
-  color: #867296;
+  color: #6e587e;
   background: #eee9f2;
   border-color: #e7dcee;
 }
 .status-in_progress {
-  color: #617b82;
+  color: #4e6870;
   background: #e6eef0;
   border-color: #dce6e8;
 }
@@ -1501,7 +1501,7 @@ main#main-content {
 }
 .feedback-heading h2 {
   font-size: 25px;
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: 'Instrument Serif', Georgia, serif;
   margin-top: 8px;
 }
 .feedback-heading h2 span {
@@ -1514,7 +1514,7 @@ main#main-content {
   background: var(--soft);
   vertical-align: middle;
   margin-left: 8px;
-  font-family: "DM Sans", Arial;
+  font-family: 'DM Sans', Arial;
 }
 .feedback-list {
   padding: 6px 19px;
@@ -1691,7 +1691,7 @@ main#main-content {
   margin-bottom: 17px;
 }
 .empty-state h3 {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: 'Instrument Serif', Georgia, serif;
   color: var(--text);
   font-size: 25px;
   line-height: 1.2;
@@ -1750,7 +1750,7 @@ main#main-content {
   padding: 25px;
 }
 .activity-progress h2 {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: 'Instrument Serif', Georgia, serif;
   font-size: 37px;
   line-height: 1.05;
   margin-top: 15px;
@@ -1778,7 +1778,7 @@ main#main-content {
   background: var(--surface);
 }
 .progress-ring b {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: 'Instrument Serif', Georgia, serif;
   font-size: 43px;
   font-weight: 400;
   letter-spacing: -1px;
@@ -1829,7 +1829,7 @@ main#main-content {
   padding: 28px;
 }
 .settings-panel > h2 {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: 'Instrument Serif', Georgia, serif;
   font-size: 30px;
   letter-spacing: -0.6px;
   line-height: 1.15;
@@ -1991,7 +1991,7 @@ main#main-content {
 }
 .modal-heading h2 {
   font-size: 32px;
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: 'Instrument Serif', Georgia, serif;
   letter-spacing: -0.7px;
   line-height: 1.1;
 }
@@ -2202,7 +2202,7 @@ main#main-content {
   box-shadow: var(--shadow);
 }
 .login-panel h1 {
-  font-family: "Instrument Serif", Georgia, serif;
+  font-family: 'Instrument Serif', Georgia, serif;
   font-size: 48px;
   line-height: 1.03;
   letter-spacing: -1.5px;
@@ -2367,7 +2367,7 @@ main#main-content {
   padding-top: 23px;
   padding-bottom: 23px;
 }
-.task-name-cell h3 {
+.task-name-cell h2 {
   font-size: 13px;
 }
 .task-name-cell small {
@@ -2633,17 +2633,17 @@ main#main-content {
   font-size: 12px;
   line-height: 1.7;
 }
-:root[data-theme="dark"] .studio-artwork,
-:root[data-theme="dark"] .design-panel {
+:root[data-theme='dark'] .studio-artwork,
+:root[data-theme='dark'] .design-panel {
   background: #363c32;
 }
-:root[data-theme="dark"] .studio-artwork-caption h2 {
+:root[data-theme='dark'] .studio-artwork-caption h2 {
   color: var(--text);
 }
-:root[data-theme="dark"] .studio-artwork-label,
-:root[data-theme="dark"] .studio-artwork-caption > div > span,
-:root[data-theme="dark"] .design-footer p,
-:root[data-theme="dark"] .design-footer > span {
+:root[data-theme='dark'] .studio-artwork-label,
+:root[data-theme='dark'] .studio-artwork-caption > div > span,
+:root[data-theme='dark'] .design-footer p,
+:root[data-theme='dark'] .design-footer > span {
   color: var(--muted);
 }
 @media (min-width: 1700px) {
@@ -2754,10 +2754,9 @@ main#main-content {
   }
   .task-table-head,
   .task-row {
-    grid-template-columns: minmax(135px, 1.6fr) minmax(
-        90px,
-        1.2fr
-      ) 105px minmax(80px, 1fr) 58px 52px;
+    grid-template-columns:
+      minmax(135px, 1.6fr) minmax(90px, 1.2fr)
+      105px minmax(80px, 1fr) 58px 52px;
     gap: 12px;
     padding-left: 16px;
     padding-right: 16px;
@@ -2832,10 +2831,10 @@ main#main-content {
     border-bottom: 1px solid var(--line);
     font-size: 12px;
   }
-  .studio-navigation nav a[aria-current="page"] {
+  .studio-navigation nav a[aria-current='page'] {
     background: var(--accent-pale);
   }
-  .studio-navigation nav a[aria-current="page"]::after {
+  .studio-navigation nav a[aria-current='page']::after {
     display: none;
   }
   .studio-portfolio {
@@ -3267,7 +3266,7 @@ main#main-content {
   .task-name-cell {
     gap: 9px;
   }
-  .task-name-cell h3 {
+  .task-name-cell h2 {
     font-size: 13px;
   }
   .task-name-cell small {

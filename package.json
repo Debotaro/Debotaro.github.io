@@ -10,7 +10,23 @@
     "preview": "node scripts/serve.mjs",
     "test": "playwright test",
     "test:unit": "node scripts/test-unit.mjs",
-    "test:install": "playwright install chromium"
+    "test:production": "node --test scripts/production-minify.test.mjs",
+    "test:install": "playwright install chromium firefox webkit",
+    "lint": "eslint .",
+    "format:check": "prettier --check \"**/*.{js,ts,tsx,mjs,css,html,json,md,yml}\"",
+    "format": "prettier --write \"**/*.{js,ts,tsx,mjs,css,html,json,md,yml}\"",
+    "audit:accessibility": "node scripts/accessibility-audit.mjs after && node scripts/accessibility-keyboard.mjs after",
+    "audit:performance": "node scripts/performance-audit.mjs"
   },
-  "devDependencies": { "@playwright/test": "1.63.0" }
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.63.0",
+    "eslint": "10.12.0",
+    "globals": "17.13.0",
+    "html-minifier-next": "8.10.7",
+    "lighthouse": "13.5.0",
+    "prettier": "3.9.9",
+    "typescript-eslint": "8.71.1"
+  }
 }

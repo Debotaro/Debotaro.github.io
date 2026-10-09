@@ -4,6 +4,8 @@ Seven independent demos plus the portfolio explore responsive interfaces, useful
 
 **Role across the collection:** Visual direction, interface review and iteration; AI-assisted implementation.
 
+The [current validation report](VALIDATION.md), [accessibility review](reports/ACCESSIBILITY.md) and [matched performance comparison](reports/performance/README.md) record the quality evidence and its limits. The 9 October pass adds browser coverage, bounded ATLAS storage parsing, responsive image delivery, local portfolio fonts, deferred charts/globe code and keyboard/contrast corrections. Real screen-reader and physical-phone checks remain separately listed rather than presented as completed.
+
 ## 01 / Debotaro Portfolio
 
 **Personal portfolio · HTML, CSS, JavaScript**
@@ -42,9 +44,11 @@ Seven independent demos plus the portfolio explore responsive interfaces, useful
 
 **Implementation highlights.** Live repository/milestone reads; repository-to-project and milestone-to-task imports with persisted provenance; stable-ID reconciliation after verified repository renames; strict storage validation and session-only warnings; capped local import activity. Task progress, command search, the deterministic assistant and automation share the local workspace state.
 
-**Evidence.** See the latest [validation report](VALIDATION.md) for completed build and browser checks, including the GitHub request/import lifecycle. Existing delayed-command regressions cover preservation of intervening state changes, summary immutability and cancellation on departure or clearing chat. Source inspection explains the implementation; it does not establish individual manual authorship or measured performance.
+**Evidence.** See the latest [validation report](VALIDATION.md) for completed build and browser checks, including the GitHub request/import lifecycle. Existing delayed-command regressions cover preservation of intervening state changes, summary immutability and cancellation on departure or clearing chat. A normal-motion regression checks that hydration keeps server-rendered hero text visible. The marketing entry page is included in the matched local mobile performance measurements; these do not establish field Core Web Vitals or personal manual authorship.
 
 **Scope.** GitHub reads public data without credentials: one page of at most 30 open milestones, with page-local search, no application cache or polling, and public rate limits. Each milestone becomes one local task; its issues are not imported. Local completion never writes GitHub. Imports, source metadata and up to 100 local activity entries persist only when browser storage is available. Authentication, team collaboration and other service integrations remain simulated; the assistant uses deterministic rules. There is no shared backend, private-repository access or production AI service.
+
+**Detailed story.** [NOVA architecture, workflow and implementation tradeoffs](reports/case-studies/NOVA.md).
 
 ## 04 / ATLAS Ops
 
@@ -54,11 +58,13 @@ Seven independent demos plus the portfolio explore responsive interfaces, useful
 
 **Approach.** Build a dense technical monitoring console with an indexed navigation rail, a continuous telemetry strip, financial signals, workload bars, regional coverage and a priority intervention queue. Keep operations charts and staffing local, then add a public GitHub queue through a typed API boundary. Validate responses, cancel obsolete requests, handle timeout/rate limits and import selected issues into local planning. Board actions support drag-and-drop and explicit status controls.
 
-**Implementation highlights.** Editable task board; live GitHub repository/issue reads; clear loading, error and empty states; runtime validation, cancellation and retry; duplicate-safe local imports with source traceability.
+**Implementation highlights.** Editable task board; live GitHub repository/issue reads; clear loading, error and empty states; runtime validation, cancellation and retry; duplicate-safe local imports with source traceability. A pure bounded storage validator checks nested records and canonical provenance before rendering. Invalid snapshots fall back atomically while preserving raw data until an intentional edit; valid customised state survives reload. The chart console loads on opening the overview, keeping chart dependencies off the landing page.
 
 **Evidence.** TypeScript/Vite builds and desktop/mobile tests pass. Mocked API checks verify success/import persistence, search, loading/empty/retry, malformed data, network failure, primary/secondary rate limits, timeout and obsolete responses. A separate unmocked browser smoke check verified real GitHub data.
 
 **Scope.** GitHub reads live public data; the latest page contains up to 30 raw entries with pull requests excluded. Rate limits apply. Imported tasks and operational data remain local; no GitHub writes, ERP connection, live staffing system or shared backend is provided.
+
+**Detailed story.** [ATLAS architecture, workflow and implementation tradeoffs](reports/case-studies/ATLAS.md).
 
 ## 05 / NILA Ledger
 

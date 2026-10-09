@@ -5,11 +5,7 @@
     "category": "Personal portfolio",
     "summary": "A personal showcase that connects professional context, considered visual design and seven working project concepts.",
     "role": "Visual direction, interface review and iteration; AI-assisted implementation",
-    "stack": [
-      "HTML",
-      "CSS",
-      "JavaScript"
-    ],
+    "stack": ["HTML", "CSS", "JavaScript"],
     "challenge": "Give recruiters a quick way to understand Deboraj’s frontend focus, explore working examples and start a conversation.",
     "approach": "Lead with a clear professional introduction, place the portfolio itself first, and connect seven distinct demos through a consistent gallery. Concise case studies explain the implementation choices behind the visuals.",
     "highlights": [
@@ -18,7 +14,7 @@
       "Seven working demos and public source code",
       "Contact profiles and a downloadable résumé"
     ],
-    "validation": "Desktop and mobile Chromium checks cover identity, filters, demo and source links, keyboard dialogs, menu behavior, clipboard contents, résumé download and document overflow.",
+    "validation": "Browser regressions cover identity, filters, demo/source links, keyboard dialogs, menu behaviour, clipboard success/failure, résumé download and layout. The quality review includes axe scans, keyboard checks and matched mobile lab measurements. See the repository validation report for browser coverage, results and limits.",
     "limitations": "Personal concept project • AI-assisted development. Contact uses an email link; a downloadable résumé and public source are included. There is no contact backend."
   },
   {
@@ -27,12 +23,7 @@
     "category": "Product system / Creative handoff",
     "summary": "An artwork-led review studio connecting visual project covers, design revisions, pinned feedback and approval decisions.",
     "role": "Visual direction, interface review and iteration; AI-assisted implementation",
-    "stack": [
-      "React",
-      "TypeScript",
-      "Vite",
-      "Optional Supabase backend"
-    ],
+    "stack": ["React", "TypeScript", "Vite", "Optional Supabase backend"],
     "challenge": "Keep project planning, design feedback and approval decisions connected so a handoff stays understandable from first revision to delivery.",
     "approach": "Lead with artwork, visual project covers and a revision-specific review canvas. Compact studio navigation keeps feedback and approvals close to the design. Link projects, tasks, revisions, comments and decisions through typed records; use browser-local state for the public demo and a separate optional Supabase adapter for authenticated persistence. Relative assets and hash navigation preserve the static deployment.",
     "highlights": [
@@ -41,7 +32,7 @@
       "Approval decisions, activity history and four demo role previews",
       "Command search, responsive views and optional backend architecture"
     ],
-    "validation": "Strict TypeScript and Vite production build pass. 26 desktop/mobile browser checks cover project-cover selection, the handoff workflow and recovery states; 25 domain and embedded PostgreSQL checks exercise record validation and database policies. Hosted Supabase services remain unconfigured. See VALIDATION.md for results and limits.",
+    "validation": "TypeScript/Vite builds, domain and embedded PostgreSQL checks exercise linked records and policies. Browser regressions cover covers, feedback pins, revisions, approvals, keyboard dialogs, recovery and persistence. Automated accessibility includes light/dark states. Hosted Supabase services remain unconfigured; see VALIDATION.md for verified scope.",
     "limitations": "Personal concept project • AI-assisted development. The public demo uses sample work saved in the current browser; role switching is a workflow preview, not real authentication. Optional Supabase Auth, database, RLS and private storage require an external project and configuration. No cloud deployment, live teamwork, audited backend security or formal accessibility conformance is claimed."
   },
   {
@@ -50,12 +41,7 @@
     "category": "Product system / Personal planning",
     "summary": "A calm daily work canvas with an agenda, task-linked focus view, project notebooks and live GitHub milestone imports.",
     "role": "Visual direction, interface review and iteration; AI-assisted implementation",
-    "stack": [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Tailwind CSS"
-    ],
+    "stack": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     "challenge": "Connect real repository context to a coherent local workspace for projects, tasks, automation and assistant interactions without implying remote synchronisation.",
     "approach": "Use a compact workspace ribbon, a daily agenda and a task-linked focus pane to support personal planning. Project notebooks, command search, the assistant and automation share typed local state. Read public GitHub repositories/milestones through a validated API boundary with recovery, cancellation and duplicate guards; preserve provenance and stable-ID rename reconciliation.",
     "highlights": [
@@ -64,7 +50,7 @@
       "Validated milestone imports with canonical source attribution",
       "Shared planning state and resilient browser storage"
     ],
-    "validation": "TypeScript and static export pass. Desktop/mobile Chromium checks cover focus completion across views, saved themes and long profile names, request recovery, imports, reload, duplicates, canonical renames, storage failures and empty workspaces. A separate unmocked GitHub import/completion/reload journey passed at 1440, 390 and 320px. See VALIDATION.md for the complete checks and limits.",
+    "validation": "TypeScript/static export and browser regressions cover shared task state, imports, request recovery, canonical renames, persistence and empty states. Quality checks include light/dark accessibility, dialog focus return and visible server-rendered hero content during normal-motion hydration. The separate unmocked GitHub journey was verified at 1440, 390 and 320px. See VALIDATION.md for results and limits.",
     "limitations": "Personal concept project • AI-assisted development. Public GitHub reads return one page of up to 30 open milestones; search is page-local, rate limits apply, and there is no application cache or polling. A milestone becomes one local task, not its issues. Local completion never writes GitHub. Imports and up to 100 activity entries persist when browser storage is available. Authentication, team collaboration and other service integrations are simulated; the assistant uses deterministic rules. No private-repository access or shared backend."
   },
   {
@@ -73,12 +59,7 @@
     "category": "Product system / Operations",
     "summary": "A technical operations console connecting sample financial signals, workload, regional coverage and an intervention queue.",
     "role": "Visual direction, interface review and iteration; AI-assisted implementation",
-    "stack": [
-      "React",
-      "TypeScript",
-      "Vite",
-      "Recharts"
-    ],
+    "stack": ["React", "TypeScript", "Vite", "Recharts"],
     "challenge": "Connect a practical operations dashboard to real external data while keeping remote issues and local planning clearly separate.",
     "approach": "Use an indexed operations rail, compact command header and a continuous telemetry strip. Group financial signals, workload, regional coverage and priority interventions into a monitoring console. Keep sample operations data local, and read public GitHub issues through a separate validated API boundary with cancellation, recovery and duplicate-safe task imports.",
     "highlights": [
@@ -87,7 +68,7 @@
       "Live GitHub issues with validated recovery states",
       "Duplicate-safe imports and task-board status controls"
     ],
-    "validation": "TypeScript checks and the Vite production build pass. Desktop/mobile Chromium checks cover scoped chart filters, saved targets, CSV contents, intervention editing, coverage navigation, task persistence and mocked GitHub success, loading, empty, malformed, network, rate-limit, timeout and stale-response behavior. A separate unmocked browser smoke check verified the actual public API.",
+    "validation": "Browser regressions cover tasks, chart filters, coverage and GitHub import/recovery. A pure runtime validator and boundary tests reject malformed nested storage while retaining valid settings and canonical provenance; malformed raw data is preserved until an intentional edit. Chart delivery is deferred until the overview opens. See VALIDATION.md for measured quality and browser coverage.",
     "limitations": "Personal concept project • AI-assisted development. GitHub reads live public repository data; the latest page contains at most 30 raw entries and excludes pull requests. API rate limits apply. Imported tasks, operations charts and staffing remain local; there are no GitHub writes, ERP connection or shared backend."
   },
   {
@@ -96,12 +77,7 @@
     "category": "Product system",
     "summary": "A personal finance interface built around consistent transaction data, editable budgets and useful exports.",
     "role": "Visual direction, interface review and iteration; AI-assisted implementation",
-    "stack": [
-      "React",
-      "TypeScript",
-      "Vite",
-      "Recharts"
-    ],
+    "stack": ["React", "TypeScript", "Vite", "Recharts"],
     "challenge": "Make income, spending and budgets understandable without overwhelming the transaction view.",
     "approach": "Use one financial model for the ledger, charts, budgets and reports. Store amounts as integer pennies, then format them for display; pair a quiet visual hierarchy with practical filters and exports.",
     "highlights": [
@@ -119,12 +95,7 @@
     "category": "Brand experience",
     "summary": "An atmospheric hospitality concept with a practical, validated stay enquiry journey.",
     "role": "Visual direction, interface review and iteration; AI-assisted implementation",
-    "stack": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "GSAP"
-    ],
+    "stack": ["HTML", "CSS", "JavaScript", "GSAP"],
     "challenge": "Preserve the atmosphere of a hospitality brand while making stay planning clear and usable.",
     "approach": "Pair generous editorial spacing and cinematic imagery with a visible booking entry point. Validate the stay before displaying a residence and illustrative quote, and keep essential controls independent of optional animation.",
     "highlights": [
@@ -142,11 +113,7 @@
     "category": "Brand experience",
     "summary": "An editorial fashion concept with size selection, a persistent shopping bag and a complete demo checkout.",
     "role": "Visual direction, interface review and iteration; AI-assisted implementation",
-    "stack": [
-      "HTML",
-      "CSS",
-      "JavaScript"
-    ],
+    "stack": ["HTML", "CSS", "JavaScript"],
     "challenge": "Combine a confident editorial identity with a shopping flow that remains easy to follow.",
     "approach": "Use oversized typography and a restrained palette around a compact catalogue. Keep product size, quantities and totals consistent through selection, a persistent bag and a clearly labelled demo checkout.",
     "highlights": [
@@ -164,12 +131,7 @@
     "category": "Brand experience",
     "summary": "A travel concept that turns destination discovery into a sample itinerary through a globe, quiz and downloadable journey plan.",
     "role": "Visual direction, interface review and iteration; AI-assisted implementation",
-    "stack": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Three.js"
-    ],
+    "stack": ["HTML", "CSS", "JavaScript", "Three.js"],
     "challenge": "Give an inspirational travel page a clear path from destination discovery to a sample itinerary.",
     "approach": "Connect destination buttons, an optional interactive globe and itinerary details. A three-step quiz offers a sample recommendation; a journey form turns selected preferences into an on-screen summary and downloadable plan.",
     "highlights": [
@@ -178,7 +140,7 @@
       "Three-step quiz with sample recommendations",
       "Itinerary selection and downloadable text plans"
     ],
-    "validation": "Desktop and mobile Chromium scenarios cover destination selection, itinerary details, quiz output and a sample plan download. Essential controls also work when the Three.js CDN is blocked.",
+    "validation": "Desktop and mobile Chromium scenarios cover destination selection, itinerary details, quiz output and a sample plan download. Essential controls also work when the Three.js CDN is blocked. Delivery regressions also check deferred globe loading and destination controls while the optional CDN is pending or unavailable. Matched mobile lab results are documented in the repository quality report.",
     "limitations": "Personal concept project • AI-assisted development. Recommendations, prices and itineraries are illustrative. No travel operator is contacted and no transport or accommodation is booked."
   }
 ]
