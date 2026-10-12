@@ -8,11 +8,11 @@
 
 A personal portfolio for **Deboraj Sarkar**, also known as **Debotaro**, a **Frontend Developer** and Computer Science student based in **Kokrajhar, Assam, India**. He is pursuing a bachelor's degree at the **University of the People** (June 2025–present) and previously worked as a **Graphic Designer at Wecanstore.com** (June 2022–July 2023), creating digital banners, social media graphics and marketing materials.
 
-The portfolio itself is featured first, followed by **seven independent, working project concepts**. Its custom D/T identity, live demos and eight case studies connect the work with his background, selected Coursera credentials and downloadable résumé. Deboraj's contribution across this collection is **visual direction, interface review and iteration; AI-assisted implementation**. He sets the visual direction, reviews generated interfaces, requests revisions and makes the final decisions. Technical descriptions and validation describe the project behaviour rather than independent coding or test authorship.
+The portfolio itself is featured first, followed by **eight independent, working project concepts**. Its custom D/T identity, live demos and nine case studies connect the work with his background, selected Coursera credentials and downloadable résumé. Deboraj's contribution across this collection is **visual direction, interface review and iteration; AI-assisted implementation**. He sets the visual direction, reviews generated interfaces, requests revisions and makes the final decisions. Debotaro CHSL also includes AI-assisted content preparation. Technical descriptions and validation describe the project behaviour rather than independent coding or test authorship.
 
 Seeking **full-time junior frontend/React roles**, available to start **within one week**, with remote opportunities and relocation for the right role. Contact: [mail.deborajsarkar@gmail.com](mailto:mail.deborajsarkar@gmail.com). Profiles: [GitHub](https://github.com/Debotaro), [LinkedIn](https://www.linkedin.com/in/deborajsarkar/) and [Dribbble](https://dribbble.com/Debotaro).
 
-## Explore the seven demos
+## Explore the eight demos
 
 Project names open their source folders. Demo links open the published applications.
 
@@ -25,15 +25,18 @@ Project names open their source folders. Demo links open the published applicati
 | [AURA Reserve](aura/)       | [Explore AURA](https://debotaro.github.io/aura/)                   | One HTML file with embedded CSS/JS, optional GSAP     | Property gallery, availability calendar, stay dates, validated enquiry, sample price calculation                                                                    |
 | [VANTA Atelier](vanta/)     | [Explore VANTA](https://debotaro.github.io/vanta/)                 | One HTML file with embedded CSS/JS                    | Collection filters, lookbook, product sizes, persistent cart, quantities, demo checkout                                                                             |
 | [RASA Experience](rasa/)    | [Explore RASA](https://debotaro.github.io/rasa/)                   | One HTML file with embedded CSS/JS, optional Three.js | Destination globe, itineraries, travel quiz, journey enquiry, downloadable sample plan                                                                              |
+| [Debotaro CHSL](ssc-chsl/)  | [Open study app](https://debotaro.github.io/ssc-chsl/)             | Self-contained HTML, CSS, JavaScript                  | Topic/stage practice, explanations, diagrams, bookmarks, local progress, timed Tier I/Tier II practice, English typing and data-entry drills                        |
 
-**New capstone:** [Explore RELAY OS](https://debotaro.github.io/relay-os/) for a complete design-feedback-to-delivery journey. The public demo runs locally in your browser; optional Supabase setup is documented separately.
+**New project — Debotaro CHSL:** [Open the learning app](https://debotaro.github.io/ssc-chsl/) or [download its complete offline HTML](https://debotaro.github.io/ssc-chsl/Debotaro-CHSL-Offline.html). It contains 4,000 original practice MCQs across five subjects and 111 topics, organised into six pedagogical stages. Open the downloaded file in a browser; fonts, diagrams and the question bank are embedded. Progress is saved locally when browser storage is available. The material is AI-assisted practice content, not official SSC questions or an SSC-endorsed product.
+
+**Creative capstone:** [Explore RELAY OS](https://debotaro.github.io/relay-os/) for a complete design-feedback-to-delivery journey. The public demo runs locally in your browser; optional Supabase setup is documented separately.
 
 **New in NOVA:** [Explore the live GitHub workspace](https://debotaro.github.io/nova-os/app/github/) and turn public repository milestones into local planning tasks.
 
 NOVA, ATLAS and RELAY use different information hierarchies as well as different visual identities. NOVA is a paper-and-lavender daily planning canvas with an agenda and task focus. ATLAS is a technical operations console with a monitoring rail, financial signals and priority interventions. RELAY is a warm creative review studio led by artwork, project covers, revisions and feedback. Their existing state, imports and review workflows remain connected to the redesigned views.
 
 <details>
-<summary>View screenshots of all seven demos</summary>
+<summary>View screenshots of all eight demos</summary>
 
 ### RELAY OS — creative project handoffs
 
@@ -67,6 +70,10 @@ NOVA, ATLAS and RELAY use different information hierarchies as well as different
 
 [![RASA Experience travel landing page with destination discovery](previews/rasa.png)](https://debotaro.github.io/rasa/)
 
+### Debotaro CHSL — offline learning & exam practice
+
+[![Debotaro CHSL learning dashboard with subject practice and exam preparation](previews/ssc-chsl.png)](https://debotaro.github.io/ssc-chsl/)
+
 </details>
 
 ## Open the complete portfolio
@@ -89,7 +96,7 @@ Open **http://localhost:4173**. The dependencies and builds are already present 
 
 ## Develop individual projects
 
-Each app is independently installable and has its own package manifest and lockfile.
+The four compiled apps are independently installable and have their own package manifests and lockfiles.
 
 ```powershell
 # RELAY OS — Vite prints its selected port
@@ -115,7 +122,7 @@ npm run dev
 
 For standalone NOVA builds, remove `PORTFOLIO_BASE_PATH` from the environment before running `npm run build`. Its default output is `nova-os/out/`, suitable for a domain root. The combined build sets the path only for its child process, so it does not alter your terminal environment.
 
-The three HTML experiences can also be opened independently through a local static server. The complete HTML/CSS/JavaScript for each lives in its respective `index.html`.
+The four HTML apps can also be opened independently through a local static server. The complete HTML/CSS/JavaScript for each lives in its respective `index.html`. Debotaro CHSL additionally supports opening its complete downloaded HTML directly in a browser, without a server or network connection.
 
 ## Tests and screenshots
 
@@ -133,9 +140,9 @@ npm test
 
 `npm run lint` checks maintained JavaScript/TypeScript modules; `npm run format:check` checks source formatting. Use `npm run format` after editing. Embedded scripts in the single-file HTML demos are formatted and browser-tested; they are outside ESLint's module checks. The targeted cleanup extracts ATLAS's untrusted-storage parsing into a pure module rather than scattering type assertions through its UI.
 
-The production build compacts only the portfolio and AURA/VANTA/RASA entry HTML, including embedded CSS and script whitespace. Editable source remains formatted. `npm run test:production` checks text separation, accessibility attributes, dynamic CSS and script execution. React and Next.js output keeps its existing compiler pipeline.
+The production build compacts only the portfolio and AURA/VANTA/RASA entry HTML, including embedded CSS and script whitespace. Editable source remains formatted. Debotaro CHSL's self-contained HTML and companion download are copied unchanged. `npm run test:production` checks text separation, accessibility attributes, dynamic CSS and script execution. React and Next.js output keeps its existing compiler pipeline.
 
-The [performance report](reports/performance/README.md) records matched mobile lab measurements, while the [accessibility review](reports/ACCESSIBILITY.md) retains both violations and uncertain checks. With a preview running, `npm run audit:accessibility` regenerates after results. The performance guide provides the browser executable and version requirements for `npm run audit:performance`. The [physical-device checklist](reports/REAL_DEVICE_CHECKLIST.md) records checks still requiring real phones and screen readers.
+The [performance report](reports/performance/README.md) records matched mobile lab measurements, while the [accessibility review](reports/ACCESSIBILITY.md) retains both violations and uncertain checks. These 9 October reports cover the earlier seven demos, not the new Debotaro CHSL app. Its addition checks are recorded separately in [VALIDATION.md](VALIDATION.md). With a preview running, `npm run audit:accessibility` regenerates after results. The performance guide provides the browser executable and version requirements for `npm run audit:performance`. The [physical-device checklist](reports/REAL_DEVICE_CHECKLIST.md) records checks still requiring real phones and screen readers.
 
 `node scripts/capture.mjs` refreshes the real project screenshots in `previews/`. These images also serve as the portfolio gallery thumbnails. After refreshing them, build again to update `dist/`.
 
@@ -144,6 +151,7 @@ See [VALIDATION.md](VALIDATION.md) for the verified checks and [CASE_STUDIES.md]
 ## Demo behaviour
 
 - RELAY is the seventh independent demo and the first app in the gallery. It connects local projects/tasks, design revisions, image-pin feedback, review decisions and an activity trail. Demo role switching previews Admin, Project Manager, Designer and Client permissions; it is not authentication. Its optional Supabase adapter and SQL/storage policies require a separately configured backend. The public browser demo does not provide live teamwork or cloud accounts. See [RELAY setup and scope](relay-os/README.md).
+- Debotaro CHSL is the eighth standalone app. It uses original practice material, six learning stages, local progress/bookmarks, timed Tier I/Tier II practice and English typing/data-entry drills. It has no accounts, backend or cloud sync. The stages are pedagogical rather than official exam levels; the app does not award a certification or guarantee exam results. Personal branding and visual direction are by Deboraj; content preparation and implementation are AI-assisted.
 - Local business demonstrations use sample data. NOVA and ATLAS additionally read live public GitHub data. No backend or server account is required.
 - NOVA's GitHub workspace reads public repositories and one page of up to 30 open milestones without credentials. Loading, empty, errors, retry, rate limits, a 12-second timeout and obsolete-request cancellation are handled. Importing a repository creates a local project; a milestone becomes one local planning task, not its individual issues. Duplicate guards, source links and import history persist when browser storage is available. Verified repository renames update source identities by stable ID. There is no application cache, automatic polling or GitHub write; local completion is independent of GitHub.
 - ATLAS's GitHub queue additionally reads real public repository and issue data using credential-free GitHub REST requests. Loading, empty, errors, timeout, rate limits and stale requests are handled. Imports become browser-local tasks; they do not change GitHub. The queue shows one page of up to 30 raw entries with pull requests excluded.
@@ -152,17 +160,19 @@ See [VALIDATION.md](VALIDATION.md) for the verified checks and [CASE_STUDIES.md]
 - RELAY, NOVA, ATLAS, NILA and VANTA store demo state in browser local storage. NOVA validates supported records, relationships and storage size before restoration/saving, reports invalid saved data, and warns when saving is session-only. Its import activity is capped at 100 entries. ATLAS and NILA include confirmed reset controls. Local state belongs to the current browser and origin. Changing the host/port starts a separate storage context.
 - Resort and travel enquiry details are used for the on-screen confirmation and are not saved. VANTA does not retain checkout identity or address.
 - CSV files and the RASA text itinerary are real downloads. NILA's PDF action opens browser printing; choose **Save as PDF** to create a file. It is not a server PDF generator.
-- Fonts, illustrative photographs and optional visual libraries need an internet connection. Native system fonts and accessible controls remain usable if external resources fail. RASA's destination buttons work without WebGL. Photography has replacement comments in the source.
+- The earlier brand experiences use internet-delivered photographs or optional visual libraries. Native system fonts and accessible controls remain usable if external resources fail. RASA's destination buttons work without WebGL. Photography has replacement comments in the source. Debotaro CHSL embeds its fonts, diagrams and study material for offline use.
 
 ## Source and publishing
 
-Public source: [Debotaro/Debotaro.github.io](https://github.com/Debotaro/Debotaro.github.io). The domain-root GitHub Pages target is [debotaro.github.io](https://debotaro.github.io/). `.github/workflows/pages.yml` installs the locked dependencies, builds all seven projects, runs RELAY's domain/backend contracts and desktop/mobile browser checks, and deploys the verified `dist/` artifact on `main`. Pull requests run the same checks without deploying. The Pages source is configured as GitHub Actions.
+Public source: [Debotaro/Debotaro.github.io](https://github.com/Debotaro/Debotaro.github.io). The domain-root GitHub Pages target is [debotaro.github.io](https://debotaro.github.io/). `.github/workflows/pages.yml` installs the locked dependencies, builds the eight-project collection, runs RELAY's domain/backend contracts and browser checks, and deploys the verified `dist/` artifact on `main`. Pull requests run the same checks without deploying. The Pages source is configured as GitHub Actions.
 
 **Three single-file experiences:** publish the contents of `aura/`, `vanta/` or `rasa/` as a GitHub Pages source, with `index.html` at its root. Their footer portfolio link is relative to their parent; update it to your portfolio URL if you host them separately. GitHub's [Pages setup documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site) explains publishing sources and disabling Jekyll.
 
+**Offline study app:** publish `ssc-chsl/` with `index.html` at its root. Retain `Debotaro-CHSL-Offline.html` for the downloadable companion. The combined build copies both self-contained files unchanged.
+
 **Individual apps on Vercel:** import your repository and set the project root directory to `relay-os`, `nova-os`, `atlas-ops` or `nila-ledger`. Use the matching Next.js or Vite framework preset. Leave `PORTFOLIO_BASE_PATH` unset for standalone NOVA. RELAY/ATLAS/NILA use hash routes, so they do not require a route rewrite. Their project READMEs contain further details. See [Vercel Git deployment](https://vercel.com/docs/git) and [Vite on Vercel](https://vercel.com/docs/frameworks/frontend/vite).
 
-**One combined static deployment:** publish the contents of the built `dist/` directory. It includes all seven projects, the gallery and `.nojekyll`. For a domain root, use the default build. For a GitHub project URL such as `https://yourname.github.io/my-portfolio/`, set the base before building:
+**One combined static deployment:** publish the contents of the built `dist/` directory. It includes all eight projects, the gallery and `.nojekyll`. For a domain root, use the default build. For a GitHub project URL such as `https://yourname.github.io/my-portfolio/`, set the base before building:
 
 ```powershell
 $env:PORTFOLIO_SITE_BASE = '/my-portfolio'
@@ -190,7 +200,7 @@ Editable facts live in [`career/resume.json`](career/resume.json) and readable c
 portfolio-website/
   index.html           Personal portfolio page
   assets/              Portfolio CSS/JS and generated Debotaro identity
-  data/                Eight editable case studies
+  data/                Nine editable case studies
   career/              Résumé content and interview preparation
   downloads/           Public résumé PDF and printable HTML
   .github/workflows/   Validated GitHub Pages deployment
@@ -201,6 +211,7 @@ portfolio-website/
   aura/index.html      Single-file resort
   vanta/index.html     Single-file shop
   rasa/index.html      Single-file travel experience
+  ssc-chsl/            Offline study app, complete HTML download and source
   previews/            Real desktop/mobile project screenshots
   scripts/             Install, build, serve and capture helpers
   tests/               Playwright user-journey checks

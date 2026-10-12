@@ -11,3 +11,5 @@ reports/
 **/package-lock.json
 **/next-env.d.ts
 downloads/
+# Generated self-contained app with embedded fonts and question data.
+ssc-chsl/*.html

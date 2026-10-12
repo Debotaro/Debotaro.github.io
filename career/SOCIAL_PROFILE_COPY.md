@@ -1,6 +1,6 @@
 # Deboraj Sarkar (Debotaro) — profile copy
 
-Updated on 9 October 2026 from the confirmed résumé facts, LinkedIn employment record, Coursera certificates and seven-project collection. The field text is ready to use; editorial notes and headings are not part of the public copy. Publication status is recorded separately after the platform saves are verified.
+Updated on 12 October 2026 from the confirmed résumé facts, LinkedIn employment record, Coursera certificates and eight-project collection. The field text is ready to use; editorial notes and headings are not part of the public copy. Publication status is recorded separately after the platform saves are verified. The 8 October record below preserves earlier saved copy and does not confirm these new edits.
 
 ## LinkedIn headline
 
@@ -12,11 +12,11 @@ I'm Deboraj Sarkar, also known as Debotaro, a Frontend Developer and Computer Sc
 
 My background includes paid work as a Graphic Designer at Wecanstore.com from June 2022 to July 2023. I created digital banners, social media graphics and marketing materials, collaborated with marketing and sales teams, and incorporated feedback across design projects.
 
-I bring that attention to visual hierarchy and brand consistency to a portfolio of seven working frontend concepts. NOVA OS explores calm daily planning; ATLAS Ops presents a technical operations console; RELAY OS connects artwork, revision feedback and approvals. The collection also covers personal finance, hospitality, fashion and travel.
+I bring that attention to visual hierarchy and brand consistency to a portfolio of eight working frontend concepts. My newest project, Debotaro CHSL, brings offline learning and exam practice into one HTML file, with original practice questions, explanations, local progress and timed exercises. NOVA OS explores calm daily planning; ATLAS Ops presents a technical operations console; RELAY OS connects artwork, revision feedback and approvals. The collection also covers personal finance, hospitality, fashion and travel.
 
 My contribution is visual direction, interface review and iteration. I use AI-assisted implementation with Codex: I review generated interfaces, request changes and make the final decisions. The project stacks include HTML, CSS, JavaScript, React, Next.js, TypeScript and Tailwind CSS, with Git, GitHub and Figma in the workflow. The live demos and case studies explain the implemented behaviour, validation and scope.
 
-The project documentation includes mobile lab performance comparisons, keyboard and automated accessibility checks, and Chromium, Firefox and WebKit regression results. Reports distinguish verified behaviour from demo limits and checks still requiring real devices.
+The earlier seven-project collection has mobile lab performance comparisons, keyboard and automated accessibility checks, and Chromium, Firefox and WebKit regression results. Debotaro CHSL's checks are documented separately. Its content preparation is AI-assisted; the material is original practice content rather than official SSC questions. Reports distinguish verified behaviour from demo limits and checks still requiring real devices.
 
 My completed Coursera learning includes the Google UX Design Professional Certificate and IBM DevOps, Cloud, and Agile Foundations Specialization.
 
@@ -56,9 +56,23 @@ Deboraj Sarkar — Frontend Portfolio
 
 Description:
 
-Seven working frontend concepts with live demos, case studies and public source. Explore NOVA's daily planning canvas, ATLAS's operations console and RELAY's creative review studio. Visual direction and review by Deboraj; AI-assisted implementation.
+Eight working frontend concepts with live demos, nine case studies and public source. Explore Debotaro CHSL's offline learning and exam practice, NOVA's daily planning canvas, ATLAS's operations console and RELAY's creative review studio. Visual direction and review by Deboraj; AI-assisted implementation.
 
 URL: https://debotaro.github.io/
+
+## LinkedIn Debotaro CHSL project / Featured
+
+Title:
+
+Debotaro CHSL — Offline learning & exam practice
+
+Description:
+
+A self-contained HTML/CSS/JavaScript study app with 4,000 original practice MCQs across five subjects and 111 topics. Six pedagogical stages, explanations and diagrams connect guided learning with timed Tier I/Tier II practice, English typing and data-entry drills. Progress and bookmarks stay in the current browser. My role is personal branding and visual direction, with AI-assisted implementation and content preparation. No accounts or cloud backend. This is original practice material, not official SSC questions or an SSC-endorsed product.
+
+URL: https://debotaro.github.io/ssc-chsl/
+
+Offline download: https://debotaro.github.io/ssc-chsl/Debotaro-CHSL-Offline.html
 
 ## LinkedIn featured résumé
 
@@ -93,13 +107,13 @@ These are technologies used in the AI-assisted portfolio and reported by the use
 
 Frontend Developer with a graphic design background, based in Kokrajhar, Assam, India.
 
-Computer Science student at the University of the People since June 2025. I direct the visual identity, review interfaces and request iterations across seven personal frontend concepts, with AI-assisted implementation.
+Computer Science student at the University of the People since June 2025. I direct the visual identity, review interfaces and request iterations across eight personal frontend concepts, with AI-assisted implementation. My newest project is Debotaro CHSL, an offline learning and exam-practice app.
 
 Seeking full-time junior frontend/React roles. Available within one week; open to remote roles and relocation for the right opportunity.
 
 Explore the live demos and case studies: https://debotaro.github.io/
 
-This is the saved biography, including paragraph breaks. The ongoing degree is included here because the separate education editor requires a graduation year that has not been provided.
+This is the updated biography copy, including paragraph breaks; verify the platform save before marking it applied. The ongoing degree is included here because the separate education editor requires a graduation year that has not been provided.
 
 ## Dribbble display name, location and links
 
@@ -123,6 +137,24 @@ Shot URL: https://dribbble.com/shots/27794867-RELAY-OS-Design-reviews-in-context
 
 Saved tags: dashboard, design feedback, portfolio, product design, react, ui design, web design.
 
+## Dribbble Debotaro CHSL shot
+
+Title:
+
+Debotaro CHSL — Offline learning & exam practice
+
+Description:
+
+An offline learning interface that connects topic practice, explained answers, bookmarks and timed exercises in one browser app. Debotaro CHSL contains 4,000 original practice MCQs, five subjects and 111 topics, with six pedagogical stages, diagrams, English typing and data-entry drills. My role: personal branding and visual direction; AI-assisted implementation and content preparation. Progress stays in the current browser. Original practice material, not official SSC questions or an SSC-endorsed product.
+
+Live app: https://debotaro.github.io/ssc-chsl/
+
+Offline download: https://debotaro.github.io/ssc-chsl/Debotaro-CHSL-Offline.html
+
+Suggested tags: education, learning platform, offline app, product design, ui design, web design, javascript.
+
+Publication status: draft copy; add the verified shot URL after saving on Dribbble.
+
 ## GitHub biography
 
 Frontend Developer with a graphic design background. CS student at University of the People. Visual direction & AI-assisted projects. Open to junior roles.
@@ -134,7 +166,7 @@ Frontend Developer with a graphic design background. CS student at University of
 - Website: https://debotaro.github.io/
 - Contact email in the profile README: mail.deborajsarkar@gmail.com
 - Profile README source: `career/GITHUB_PROFILE.md`
-- Portfolio repository description: Deboraj Sarkar (Debotaro) — frontend portfolio with seven interactive projects, case studies and browser tests. AI-assisted implementation.
+- Portfolio repository description: Deboraj Sarkar (Debotaro) — frontend portfolio with eight interactive projects, including Debotaro CHSL offline learning. AI-assisted implementation.
 - Portfolio repository website: https://debotaro.github.io/
 
 ## Selected verified Coursera certificates
@@ -150,7 +182,7 @@ These are completed Coursera course credentials, not claims of passed vendor cer
 - Lead with Frontend Developer and the search for a junior role. A course credential does not establish a professional UX job title.
 - Preserve the confirmed dates and responsibilities of the paid Graphic Designer role. Do not invent frontend employment, clients, commercial results or independent coding/test authorship.
 - Describe the user's contribution consistently: visual direction, interface review and iteration; AI-assisted implementation.
-- Present seven working personal concept projects, each with explicit demo limits. NOVA and ATLAS read public GitHub data; other business records are samples, and RELAY's backend requires separate configuration.
+- Present eight working personal concept projects, each with explicit demo limits. NOVA and ATLAS read public GitHub data; business records are samples, and RELAY's backend requires separate configuration. Debotaro CHSL has original AI-assisted practice material and browser-local progress; do not present it as official SSC content or apply the earlier audits to it.
 - Describe remote opportunities and relocation for the right role without publishing salary thresholds or guessing visa status.
 - Public biographies use email. The résumé includes the explicitly supplied phone number.
 - Use the live portfolio as the main destination and verify saves on each platform before reporting them as applied.

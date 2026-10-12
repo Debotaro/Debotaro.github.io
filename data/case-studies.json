@@ -3,15 +3,15 @@
     "id": "portfolio",
     "title": "Debotaro Portfolio",
     "category": "Personal portfolio",
-    "summary": "A personal showcase that connects professional context, considered visual design and seven working project concepts.",
+    "summary": "A personal showcase that connects professional context, considered visual design and eight working project concepts.",
     "role": "Visual direction, interface review and iteration; AI-assisted implementation",
     "stack": ["HTML", "CSS", "JavaScript"],
     "challenge": "Give recruiters a quick way to understand Deboraj’s frontend focus, explore working examples and start a conversation.",
-    "approach": "Lead with a clear professional introduction, place the portfolio itself first, and connect seven distinct demos through a consistent gallery. Concise case studies explain the implementation choices behind the visuals.",
+    "approach": "Lead with a clear professional introduction, place the portfolio itself first, and connect eight distinct demos through a consistent gallery. Concise case studies explain the implementation choices behind the visuals.",
     "highlights": [
       "Responsive layouts with clear project navigation",
       "Category filtering with an announced result count",
-      "Seven working demos and public source code",
+      "Eight working demos and public source code",
       "Contact profiles and a downloadable résumé"
     ],
     "validation": "Browser regressions cover identity, filters, demo/source links, keyboard dialogs, menu behaviour, clipboard success/failure, résumé download and layout. The quality review includes axe scans, keyboard checks and matched mobile lab measurements. See the repository validation report for browser coverage, results and limits.",
@@ -142,5 +142,24 @@
     ],
     "validation": "Desktop and mobile Chromium scenarios cover destination selection, itinerary details, quiz output and a sample plan download. Essential controls also work when the Three.js CDN is blocked. Delivery regressions also check deferred globe loading and destination controls while the optional CDN is pending or unavailable. Matched mobile lab results are documented in the repository quality report.",
     "limitations": "Personal concept project • AI-assisted development. Recommendations, prices and itineraries are illustrative. No travel operator is contacted and no transport or accommodation is booked."
+  },
+  {
+    "id": "ssc-chsl",
+    "title": "Debotaro CHSL",
+    "category": "Product system / Offline learning",
+    "summary": "Offline learning & exam practice: a self-contained study app with 4,000 original practice questions, guided revision and timed exercises.",
+    "role": "Visual direction, interface review and iteration; AI-assisted implementation and content preparation",
+    "stack": ["HTML", "CSS", "JavaScript", "Browser-local storage"],
+    "challenge": "Connect topic-by-topic learning, answer review and timed practice in an interface that remains usable without an internet connection.",
+    "approach": "Embed the question bank, explanations, diagrams, fonts and interface in one HTML file. Organise five subjects and 111 topics into six pedagogical stages, keep progress and bookmarks in the current browser, and connect guided practice with timed Tier I/Tier II exercises, English typing and data-entry drills. Personal branding and visual direction are by Deboraj; implementation and content preparation are AI-assisted.",
+    "highlights": [
+      "4,000 original practice MCQs across five subjects and 111 topics",
+      "Six pedagogical stages, explained answers and diagrams",
+      "Browser-local progress, bookmarks and answer review",
+      "Timed Tier I/Tier II practice, English typing and data-entry drills"
+    ],
+    "validation": "Branding and delivery checks for this addition are recorded in VALIDATION.md. The supplied study data and runtime behaviour were preserved, with desktop/mobile previews and updated portfolio integration checks. The 9 October performance and accessibility reports cover the earlier seven demos; their results are not attributed to this new app.",
+    "limitations": "Personal concept project • AI-assisted implementation and content preparation. Original practice material, not official SSC questions or an SSC-endorsed product. The six stages organise learning, not official exam levels. There are no accounts, backend or cloud sync; progress stays in the current browser when storage is available. This app does not award a certification or guarantee exam results.",
+    "download": "ssc-chsl/Debotaro-CHSL-Offline.html"
   }
 ]

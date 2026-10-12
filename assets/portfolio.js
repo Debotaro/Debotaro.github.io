@@ -104,6 +104,7 @@ const routes = {
   aura: 'aura/',
   vanta: 'vanta/',
   rasa: 'rasa/',
+  'ssc-chsl': 'ssc-chsl/',
 };
 const sourceDirectories = {
   portfolio: '',
@@ -114,6 +115,7 @@ const sourceDirectories = {
   aura: 'aura',
   vanta: 'vanta',
   rasa: 'rasa',
+  'ssc-chsl': 'ssc-chsl',
 };
 const sourceUrl = (id) =>
   'https://github.com/Debotaro/Debotaro.github.io' +
@@ -141,6 +143,14 @@ document.querySelectorAll('[data-case]').forEach((button) =>
     }
     document.getElementById('case-category').textContent = item.category + ' / Case study';
     caseBody.innerHTML = `<h2 id="case-title">${escapeHtml(item.title)}</h2><p class="case-summary">${escapeHtml(item.summary)}</p><div class="tags">${item.stack.map((skill) => `<span>${escapeHtml(skill)}</span>`).join('')}</div><p class="case-role"><strong>Role & process</strong>${escapeHtml(item.role)}</p><div class="case-columns"><div><h3>The challenge</h3><p>${escapeHtml(item.challenge)}</p></div><div><h3>The approach</h3><p>${escapeHtml(item.approach)}</p></div></div><div class="case-highlights"><h3>What works</h3><ul>${item.highlights.map((highlight) => `<li>${escapeHtml(highlight)}</li>`).join('')}</ul></div><div class="verification"><h3>How it was checked</h3><p>${escapeHtml(item.validation)}</p></div><p class="case-limitations">${escapeHtml(item.limitations)}</p><div class="actions"><a class="button" href="${routes[item.id]}" ${item.id === 'portfolio' ? 'data-back-to-portfolio' : ''}>${item.id === 'portfolio' ? 'Back to portfolio' : 'Explore the demo'} <span class="arrow" aria-hidden="true">↗</span></a><a class="text-link" href="${sourceUrl(item.id)}" target="_blank" rel="noopener noreferrer">View source code ↗</a></div>`;
+    if (item.download) {
+      const download = document.createElement('a');
+      download.className = 'text-link';
+      download.href = item.download;
+      download.download = '';
+      download.textContent = 'Download offline HTML ↓';
+      caseBody.querySelector('.actions').append(download);
+    }
     dialog.showModal();
     dialog.scrollTop = 0;
     caseBody

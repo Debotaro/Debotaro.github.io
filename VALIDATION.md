@@ -1,5 +1,25 @@
 # Validation — 9 October 2026
 
+## Debotaro CHSL publication — 12 October 2026
+
+Added the supplied offline tool as the eighth standalone project, with its ninth
+case study including the portfolio. Personalisation adds the existing D/T logo,
+favicon, Debotaro CHSL labels and Deboraj Sarkar (Debotaro) creator credit.
+Study data, embedded fonts/licenses and the storage key remain unchanged; runtime
+JavaScript changes are limited to two branding labels. The original supplied file,
+hosted entry and offline download share SHA-256
+`dcebeb4599fa4c515f4a875a037f0271fadf23042c5eca68b5d9d1b413e9da12`.
+
+The combined build, lint and formatting checks passed. Desktop and 320px mobile
+offline branding previews showed no page errors or external requests. Updated
+portfolio checks passed 26 scenarios across desktop/mobile Chromium and
+desktop/mobile WebKit, with two intentional Chromium-only clipboard skips.
+These checks verify branding and integration; the question content was not
+re-audited. The dated performance/accessibility results below cover the earlier
+seven demos.
+
+## Earlier quality release
+
 This record describes the personal portfolio and seven interactive concepts. The
 quality pass started from source revision `df12cbe254cbdfb40b35adffd9c8822d76d468bb`.
 Project behaviour and test evidence do not imply independent manual authorship by

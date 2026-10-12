@@ -25,8 +25,8 @@ test('Personal portfolio presents the supplied identity and contacts, with its o
         ),
       ),
   ).toBeTruthy();
-  await expect(page.locator('[data-case]')).toHaveCount(8);
-  await expect(page.locator('.card')).toHaveCount(7);
+  await expect(page.locator('[data-case]')).toHaveCount(9);
+  await expect(page.locator('.card')).toHaveCount(8);
   await expect(page.locator('.card').first()).toHaveAttribute('href', 'relay-os/');
   for (const [name, href] of [
     ['GitHub', 'https://github.com/Debotaro'],
@@ -111,7 +111,7 @@ test('Background, availability and verifiable credentials match the updated rés
   }
 });
 
-test('Eight case studies expose their working details, demo scope and keyboard focus restoration', async ({
+test('Nine case studies expose their working details, demo scope and keyboard focus restoration', async ({
   page,
 }) => {
   await page.goto('/');
@@ -124,6 +124,7 @@ test('Eight case studies expose their working details, demo scope and keyboard f
     ['aura', 'AURA Reserve'],
     ['vanta', 'VANTA Atelier'],
     ['rasa', 'RASA Experience'],
+    ['ssc-chsl', 'Debotaro CHSL'],
   ];
   for (const [id, title] of cases) {
     const trigger = page.locator(`[data-case="${id}"]`);
@@ -141,6 +142,17 @@ test('Eight case studies expose their working details, demo scope and keyboard f
     );
     if (id === 'nova')
       await expect(dialog.locator('.case-limitations')).toContainText('deterministic rules');
+    if (id === 'ssc-chsl') {
+      await expect(dialog.getByRole('link', { name: 'Explore the demo' })).toHaveAttribute(
+        'href',
+        'ssc-chsl/',
+      );
+      await expect(dialog.getByRole('link', { name: 'Download offline HTML' })).toHaveAttribute(
+        'href',
+        'ssc-chsl/Debotaro-CHSL-Offline.html',
+      );
+      await expect(dialog.locator('.case-limitations')).toContainText('not official SSC');
+    }
     if (id === 'relay') {
       await expect(dialog.getByRole('link', { name: 'Explore the demo' })).toHaveAttribute(
         'href',

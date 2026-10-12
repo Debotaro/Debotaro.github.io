@@ -42,9 +42,9 @@ for (const name of ['relay-os', 'nova-os', 'atlas-ops', 'nila-ledger']) {
     recursive: true,
   });
 }
-for (const name of ['aura', 'vanta', 'rasa', 'previews', 'assets', 'data', 'downloads'])
+for (const name of ['aura', 'vanta', 'rasa', 'ssc-chsl', 'previews', 'assets', 'data', 'downloads'])
   cpSync(path.join(root, name), path.join(target, name), { recursive: true });
 cpSync(path.join(root, 'index.html'), path.join(target, 'index.html'));
 await minifyStaticEntries(target);
 writeFileSync(path.join(target, '.nojekyll'), '');
-console.log('All seven projects built. Run npm run preview, then open http://localhost:4173.');
+console.log('All eight projects built. Run npm run preview, then open http://localhost:4173.');

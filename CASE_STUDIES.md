@@ -1,10 +1,10 @@
 # Debotaro — Selected frontend work
 
-Seven independent demos plus the portfolio explore responsive interfaces, useful interactions and distinct visual identities. Each is a **personal concept project with AI-assisted implementation**. Deboraj Sarkar (Debotaro) directs the visual work, reviews generated interfaces, requests revisions and makes the final decisions. Codex performs the implementation and supports iteration. Operational and business demonstrations use sample data; NOVA additionally reads live public GitHub repositories/milestones, and ATLAS reads live public GitHub issues. RELAY adds a browser-local creative handoff workflow and optional Supabase backend source requiring separate setup. Project results describe implemented behaviour and documented validation; they do not imply independent coding or test authorship.
+Eight independent demos plus the portfolio explore responsive interfaces, useful interactions and distinct visual identities. Each is a **personal concept project with AI-assisted implementation**. Deboraj Sarkar (Debotaro) directs the visual work, reviews generated interfaces, requests revisions and makes the final decisions. Codex performs the implementation and supports iteration. Operational and business demonstrations use sample data; NOVA additionally reads live public GitHub repositories/milestones, and ATLAS reads live public GitHub issues. RELAY adds a browser-local creative handoff workflow and optional Supabase backend source requiring separate setup. Debotaro CHSL adds offline learning with original AI-assisted practice material. Project results describe implemented behaviour and documented validation; they do not imply independent coding or test authorship.
 
 **Role across the collection:** Visual direction, interface review and iteration; AI-assisted implementation.
 
-The [current validation report](VALIDATION.md), [accessibility review](reports/ACCESSIBILITY.md) and [matched performance comparison](reports/performance/README.md) record the quality evidence and its limits. The 9 October pass adds browser coverage, bounded ATLAS storage parsing, responsive image delivery, local portfolio fonts, deferred charts/globe code and keyboard/contrast corrections. Real screen-reader and physical-phone checks remain separately listed rather than presented as completed.
+The [current validation report](VALIDATION.md), [accessibility review](reports/ACCESSIBILITY.md) and [matched performance comparison](reports/performance/README.md) record the quality evidence and its limits. The 9 October pass covers the earlier seven demos: browser coverage, bounded ATLAS storage parsing, responsive image delivery, local portfolio fonts, deferred charts/globe code and keyboard/contrast corrections. Debotaro CHSL has separate validation; the earlier audit results are not claimed for it. Real screen-reader and physical-phone checks remain separately listed rather than presented as completed.
 
 ## 01 / Debotaro Portfolio
 
@@ -12,7 +12,7 @@ The [current validation report](VALIDATION.md), [accessibility review](reports/A
 
 **Challenge.** Give recruiters a quick way to understand Deboraj’s frontend focus, explore working examples and start a conversation.
 
-**Approach.** Lead with a clear professional introduction, place the portfolio itself first, and connect seven distinct demos through a consistent project gallery. Concise case studies explain the implementation choices behind the visuals.
+**Approach.** Lead with a clear professional introduction, place the portfolio itself first, and connect eight distinct demos through a consistent project gallery. Concise case studies explain the implementation choices behind the visuals.
 
 **Implementation highlights.** Responsive layouts; category filtering with an announced result count; working demos and public source links; email, professional profiles and a downloadable résumé.
 
@@ -121,6 +121,22 @@ The [current validation report](VALIDATION.md), [accessibility review](reports/A
 **Evidence.** Desktop and mobile Chromium scenarios cover destination selection, itinerary details, quiz output and a sample plan download. Essential controls also work when the Three.js CDN is blocked.
 
 **Scope.** Recommendations, prices and itineraries are illustrative. No travel operator is contacted and no transport or accommodation is booked.
+
+## 09 / Debotaro CHSL
+
+**Product system · HTML, CSS, JavaScript · Offline learning & exam practice**
+
+**Challenge.** Connect topic-by-topic learning, answer review and timed practice without requiring an internet connection.
+
+**Approach.** Bundle the interface, fonts, question bank, explanations and diagrams in one HTML file. Five subjects and 111 topics use six pedagogical stages. Practice, bookmarks, timed exams, review and typing/data-entry drills share a clear learning flow and browser-local progress. Personal branding and visual direction are by Deboraj; implementation and content preparation are AI-assisted.
+
+**Implementation highlights.** 4,000 original practice MCQs; explained answers and diagrams; persistent progress and bookmarks; timed Tier I/Tier II practice, English typing and data-entry drills.
+
+**Evidence.** See the branding, offline delivery and portfolio integration checks in [VALIDATION.md](VALIDATION.md). The supplied study content and runtime behaviour were preserved. The earlier seven-project performance and accessibility measurements do not establish results for this app.
+
+**Scope.** Original practice material, not official SSC questions or an SSC-endorsed product. The six stages organise learning rather than official exam levels. No accounts, backend, cloud sync or certification. Local progress depends on browser storage; using another browser or origin creates a separate context.
+
+[Open Debotaro CHSL](https://debotaro.github.io/ssc-chsl/) · [Download the complete offline HTML](https://debotaro.github.io/ssc-chsl/Debotaro-CHSL-Offline.html) · [Browse source](ssc-chsl/)
 
 ## Validation context
 
