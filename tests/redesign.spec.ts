@@ -146,6 +146,14 @@ test('RELAY visual project covers open the correct uploaded artwork and approval
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/relay-os/#/projects');
+  await expect
+    .poll(
+      async () =>
+        (await saved(page, 'relay-os-workspace-v1')).projects?.some((item: any) =>
+          item.title.startsWith('Luma'),
+        ) ?? false,
+    )
+    .toBe(true);
   const state = await saved(page, 'relay-os-workspace-v1');
   const project = state.projects.find((item: any) => item.title.startsWith('Luma'));
   await page.getByRole('button', { name: `Open ${project.title} designs`, exact: true }).click();
