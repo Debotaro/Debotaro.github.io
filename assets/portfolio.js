@@ -105,6 +105,7 @@ const routes = {
   vanta: 'vanta/',
   rasa: 'rasa/',
   'ssc-chsl': 'ssc-chsl/',
+  'rrb-ntpc': 'rrb-ntpc/',
 };
 const sourceDirectories = {
   portfolio: '',
@@ -116,6 +117,7 @@ const sourceDirectories = {
   vanta: 'vanta',
   rasa: 'rasa',
   'ssc-chsl': 'ssc-chsl',
+  'rrb-ntpc': 'rrb-ntpc',
 };
 const sourceUrl = (id) =>
   'https://github.com/Debotaro/Debotaro.github.io' +

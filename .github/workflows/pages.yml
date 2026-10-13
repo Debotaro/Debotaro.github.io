@@ -38,7 +38,7 @@ jobs:
         run: npm run setup
       - name: Check source quality
         run: npm run lint && npm run format:check
-      - name: Build all eight projects
+      - name: Build all nine projects
         run: npm run build
       - name: Run domain, database and storage boundary checks
         run: npm run test:unit

@@ -3,15 +3,15 @@
     "id": "portfolio",
     "title": "Debotaro Portfolio",
     "category": "Personal portfolio",
-    "summary": "A personal showcase that connects professional context, considered visual design and eight working project concepts.",
+    "summary": "A personal showcase that connects professional context, considered visual design and nine working project concepts.",
     "role": "Visual direction, interface review and iteration; AI-assisted implementation",
     "stack": ["HTML", "CSS", "JavaScript"],
     "challenge": "Give recruiters a quick way to understand Deboraj’s frontend focus, explore working examples and start a conversation.",
-    "approach": "Lead with a clear professional introduction, place the portfolio itself first, and connect eight distinct demos through a consistent gallery. Concise case studies explain the implementation choices behind the visuals.",
+    "approach": "Lead with a clear professional introduction, place the portfolio itself first, and connect nine distinct demos through a consistent gallery. Concise case studies explain the implementation choices behind the visuals.",
     "highlights": [
       "Responsive layouts with clear project navigation",
       "Category filtering with an announced result count",
-      "Eight working demos and public source code",
+      "Nine working demos and public source code",
       "Contact profiles and a downloadable résumé"
     ],
     "validation": "Browser regressions cover identity, filters, demo/source links, keyboard dialogs, menu behaviour, clipboard success/failure, résumé download and layout. The quality review includes axe scans, keyboard checks and matched mobile lab measurements. See the repository validation report for browser coverage, results and limits.",
@@ -161,5 +161,24 @@
     "validation": "Branding and delivery checks for this addition are recorded in VALIDATION.md. The supplied study data and runtime behaviour were preserved, with desktop/mobile previews and updated portfolio integration checks. The 9 October performance and accessibility reports cover the earlier seven demos; their results are not attributed to this new app.",
     "limitations": "Personal concept project • AI-assisted implementation and content preparation. Original practice material, not official SSC questions or an SSC-endorsed product. The six stages organise learning, not official exam levels. There are no accounts, backend or cloud sync; progress stays in the current browser when storage is available. This app does not award a certification or guarantee exam results.",
     "download": "ssc-chsl/Debotaro-CHSL-Offline.html"
+  },
+  {
+    "id": "rrb-ntpc",
+    "title": "Debotaro Rail",
+    "category": "Product system / Offline learning",
+    "summary": "A self-contained RRB NTPC Undergraduate practice tool with 4,000 original practice MCQs, guided learning and timed CBT exercises.",
+    "role": "Visual direction, interface review and iteration; AI-assisted implementation and content preparation",
+    "stack": ["HTML", "CSS", "JavaScript", "Browser-local storage"],
+    "challenge": "Bring topic practice, answer review, CBT preparation and typing practice together in an offline learning interface.",
+    "approach": "Keep the supplied interface, fonts and study material together in one HTML file. Six learning stages connect guided practice with CBT 1/CBT 2 and typing exercises, while progress remains in the current browser. The provided Debotaro Rail identity and Deboraj Sarkar creator credit are retained; implementation and content preparation are AI-assisted.",
+    "highlights": [
+      "4,000 original practice MCQs in one offline HTML file",
+      "Six learning stages for topic-by-topic practice",
+      "CBT 1/CBT 2 practice and answer review",
+      "Typing skill practice and browser-local progress"
+    ],
+    "validation": "This addition uses branding, offline delivery and portfolio integration checks recorded in VALIDATION.md. The supplied file is published unchanged; its question content was not re-audited. The dated performance and accessibility reports cover the earlier seven demos and do not establish results for this app.",
+    "limitations": "Personal concept project • AI-assisted implementation and content preparation. Original practice material, not official RRB questions or an RRB-endorsed product. The six stages organise learning rather than official exam levels. Local progress depends on the current browser and available storage. This app does not award a certification or guarantee exam results.",
+    "download": "rrb-ntpc/Debotaro-Rail-Offline.html"
   }
 ]

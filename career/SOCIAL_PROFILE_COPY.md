@@ -1,6 +1,6 @@
 # Deboraj Sarkar (Debotaro) — profile copy
 
-Updated on 12 October 2026 from the confirmed résumé facts, LinkedIn employment record, Coursera certificates and eight-project collection. The field text is ready to use; editorial notes and headings are not part of the public copy. Publication status is recorded separately after the platform saves are verified. The 8 October record below preserves earlier saved copy and does not confirm these new edits.
+Updated on 13 October 2026 from the confirmed résumé facts, LinkedIn employment record, Coursera certificates and nine-project collection. The field text is ready to use; editorial notes and headings are not part of the public copy. Publication status is recorded separately after the platform saves are verified. The 8 October record below preserves earlier saved copy and does not confirm these new edits.
 
 ## LinkedIn headline
 
@@ -12,11 +12,11 @@ I'm Deboraj Sarkar, also known as Debotaro, a Frontend Developer and Computer Sc
 
 My background includes paid work as a Graphic Designer at Wecanstore.com from June 2022 to July 2023. I created digital banners, social media graphics and marketing materials, collaborated with marketing and sales teams, and incorporated feedback across design projects.
 
-I bring that attention to visual hierarchy and brand consistency to a portfolio of eight working frontend concepts. My newest project, Debotaro CHSL, brings offline learning and exam practice into one HTML file, with original practice questions, explanations, local progress and timed exercises. NOVA OS explores calm daily planning; ATLAS Ops presents a technical operations console; RELAY OS connects artwork, revision feedback and approvals. The collection also covers personal finance, hospitality, fashion and travel.
+I bring that attention to visual hierarchy and brand consistency to nine working frontend concepts. Debotaro Rail, my newest addition, brings RRB NTPC Undergraduate practice into one offline HTML file, with 4,000 original practice MCQs, six learning stages, CBT practice and typing exercises. Debotaro CHSL connects offline learning and exam practice. NOVA OS explores daily planning; ATLAS Ops presents an operations console; RELAY OS connects artwork, feedback and approvals. The collection also covers personal finance, hospitality, fashion and travel.
 
 My contribution is visual direction, interface review and iteration. I use AI-assisted implementation with Codex: I review generated interfaces, request changes and make the final decisions. The project stacks include HTML, CSS, JavaScript, React, Next.js, TypeScript and Tailwind CSS, with Git, GitHub and Figma in the workflow. The live demos and case studies explain the implemented behaviour, validation and scope.
 
-The earlier seven-project collection has mobile lab performance comparisons, keyboard and automated accessibility checks, and Chromium, Firefox and WebKit regression results. Debotaro CHSL's checks are documented separately. Its content preparation is AI-assisted; the material is original practice content rather than official SSC questions. Reports distinguish verified behaviour from demo limits and checks still requiring real devices.
+The earlier seven-project collection has mobile lab performance comparisons, keyboard and automated accessibility checks, and Chromium, Firefox and WebKit regression results. Rail and CHSL have separate addition checks. Their implementation and content preparation are AI-assisted; the practice material is not official RRB or SSC content. Reports distinguish verified behaviour from demo limits and checks requiring real devices.
 
 My completed Coursera learning includes the Google UX Design Professional Certificate and IBM DevOps, Cloud, and Agile Foundations Specialization.
 
@@ -56,9 +56,23 @@ Deboraj Sarkar — Frontend Portfolio
 
 Description:
 
-Eight working frontend concepts with live demos, nine case studies and public source. Explore Debotaro CHSL's offline learning and exam practice, NOVA's daily planning canvas, ATLAS's operations console and RELAY's creative review studio. Visual direction and review by Deboraj; AI-assisted implementation.
+Nine working frontend concepts with live demos, ten case studies and public source. Explore Debotaro Rail and CHSL's offline practice, NOVA's daily planning canvas, ATLAS's operations console and RELAY's creative review studio. Visual direction and review by Deboraj; AI-assisted implementation.
 
 URL: https://debotaro.github.io/
+
+## LinkedIn Debotaro Rail project / Featured
+
+Title:
+
+Debotaro Rail — RRB NTPC offline practice
+
+Description:
+
+RRB NTPC Undergraduate practice in one offline HTML file: 4,000 original practice MCQs, six learning stages, CBT 1/CBT 2 and typing practice. Personal branding and visual direction by Deboraj; AI-assisted implementation and content preparation. Original practice material, not official RRB content.
+
+Live app: https://debotaro.github.io/rrb-ntpc/
+
+Offline download: https://debotaro.github.io/rrb-ntpc/Debotaro-Rail-Offline.html
 
 ## LinkedIn Debotaro CHSL project / Featured
 
@@ -107,7 +121,7 @@ These are technologies used in the AI-assisted portfolio and reported by the use
 
 Frontend Developer with a graphic design background, based in Kokrajhar, Assam, India.
 
-Computer Science student at the University of the People since June 2025. I direct the visual identity, review interfaces and request iterations across eight personal frontend concepts, with AI-assisted implementation. My newest project is Debotaro CHSL, an offline learning and exam-practice app.
+Computer Science student at the University of the People since June 2025. I direct the visual identity, review interfaces and request iterations across nine personal frontend concepts, with AI-assisted implementation. My latest additions are Debotaro Rail and Debotaro CHSL, offline exam-practice apps.
 
 Seeking full-time junior frontend/React roles. Available within one week; open to remote roles and relocation for the right opportunity.
 
@@ -136,6 +150,24 @@ RELAY OS connects artwork, pinned feedback, versions and approvals. My role: vis
 Shot URL: https://dribbble.com/shots/27794867-RELAY-OS-Design-reviews-in-context
 
 Saved tags: dashboard, design feedback, portfolio, product design, react, ui design, web design.
+
+## Dribbble Debotaro Rail shot
+
+Title:
+
+Debotaro Rail — RRB NTPC offline practice
+
+Description:
+
+An offline practice interface for RRB NTPC Undergraduate preparation. Debotaro Rail brings 4,000 original practice MCQs, six learning stages, CBT 1/CBT 2 practice and typing exercises into one HTML file. My role: personal branding and visual direction; AI-assisted implementation and content preparation. Original practice material, not official RRB questions or an RRB-endorsed product.
+
+Live app: https://debotaro.github.io/rrb-ntpc/
+
+Offline download: https://debotaro.github.io/rrb-ntpc/Debotaro-Rail-Offline.html
+
+Suggested tags: education, web design, ui design, javascript, portfolio.
+
+Publication status: ready-to-publish copy; verify the saved shot URL and its public visibility separately.
 
 ## Dribbble Debotaro CHSL shot
 
@@ -166,7 +198,7 @@ Frontend Developer with a graphic design background. CS student at University of
 - Website: https://debotaro.github.io/
 - Contact email in the profile README: mail.deborajsarkar@gmail.com
 - Profile README source: `career/GITHUB_PROFILE.md`
-- Portfolio repository description: Deboraj Sarkar (Debotaro) — frontend portfolio with eight interactive projects, including Debotaro CHSL offline learning. AI-assisted implementation.
+- Portfolio repository description: Deboraj Sarkar (Debotaro) — frontend portfolio with nine interactive projects, including Debotaro Rail and CHSL offline practice. AI-assisted implementation.
 - Portfolio repository website: https://debotaro.github.io/
 
 ## Selected verified Coursera certificates
@@ -182,7 +214,7 @@ These are completed Coursera course credentials, not claims of passed vendor cer
 - Lead with Frontend Developer and the search for a junior role. A course credential does not establish a professional UX job title.
 - Preserve the confirmed dates and responsibilities of the paid Graphic Designer role. Do not invent frontend employment, clients, commercial results or independent coding/test authorship.
 - Describe the user's contribution consistently: visual direction, interface review and iteration; AI-assisted implementation.
-- Present eight working personal concept projects, each with explicit demo limits. NOVA and ATLAS read public GitHub data; business records are samples, and RELAY's backend requires separate configuration. Debotaro CHSL has original AI-assisted practice material and browser-local progress; do not present it as official SSC content or apply the earlier audits to it.
+- Present nine working personal concept projects, each with explicit demo limits. NOVA and ATLAS read public GitHub data; business records are samples, and RELAY's backend requires separate configuration. Debotaro Rail and CHSL contain original AI-assisted practice material; do not present them as official RRB or SSC content or apply the earlier audits to them.
 - Describe remote opportunities and relocation for the right role without publishing salary thresholds or guessing visa status.
 - Public biographies use email. The résumé includes the explicitly supplied phone number.
 - Use the live portfolio as the main destination and verify saves on each platform before reporting them as applied.

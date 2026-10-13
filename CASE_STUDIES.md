@@ -1,6 +1,6 @@
 # Debotaro — Selected frontend work
 
-Eight independent demos plus the portfolio explore responsive interfaces, useful interactions and distinct visual identities. Each is a **personal concept project with AI-assisted implementation**. Deboraj Sarkar (Debotaro) directs the visual work, reviews generated interfaces, requests revisions and makes the final decisions. Codex performs the implementation and supports iteration. Operational and business demonstrations use sample data; NOVA additionally reads live public GitHub repositories/milestones, and ATLAS reads live public GitHub issues. RELAY adds a browser-local creative handoff workflow and optional Supabase backend source requiring separate setup. Debotaro CHSL adds offline learning with original AI-assisted practice material. Project results describe implemented behaviour and documented validation; they do not imply independent coding or test authorship.
+Nine independent demos plus the portfolio explore responsive interfaces, useful interactions and distinct visual identities. Each is a **personal concept project with AI-assisted implementation**. Deboraj Sarkar (Debotaro) directs the visual work, reviews generated interfaces, requests revisions and makes the final decisions. Codex performs the implementation and supports iteration. Operational and business demonstrations use sample data; NOVA additionally reads live public GitHub repositories/milestones, and ATLAS reads live public GitHub issues. RELAY adds a browser-local creative handoff workflow and optional Supabase backend source requiring separate setup. Debotaro CHSL and Debotaro Rail add offline learning with original AI-assisted practice material. Project results describe implemented behaviour and documented validation; they do not imply independent coding or test authorship.
 
 **Role across the collection:** Visual direction, interface review and iteration; AI-assisted implementation.
 
@@ -12,7 +12,7 @@ The [current validation report](VALIDATION.md), [accessibility review](reports/A
 
 **Challenge.** Give recruiters a quick way to understand Deboraj’s frontend focus, explore working examples and start a conversation.
 
-**Approach.** Lead with a clear professional introduction, place the portfolio itself first, and connect eight distinct demos through a consistent project gallery. Concise case studies explain the implementation choices behind the visuals.
+**Approach.** Lead with a clear professional introduction, place the portfolio itself first, and connect nine distinct demos through a consistent project gallery. Concise case studies explain the implementation choices behind the visuals.
 
 **Implementation highlights.** Responsive layouts; category filtering with an announced result count; working demos and public source links; email, professional profiles and a downloadable résumé.
 
@@ -137,6 +137,22 @@ The [current validation report](VALIDATION.md), [accessibility review](reports/A
 **Scope.** Original practice material, not official SSC questions or an SSC-endorsed product. The six stages organise learning rather than official exam levels. No accounts, backend, cloud sync or certification. Local progress depends on browser storage; using another browser or origin creates a separate context.
 
 [Open Debotaro CHSL](https://debotaro.github.io/ssc-chsl/) · [Download the complete offline HTML](https://debotaro.github.io/ssc-chsl/Debotaro-CHSL-Offline.html) · [Browse source](ssc-chsl/)
+
+## 10 / Debotaro Rail
+
+**Product system · HTML, CSS, JavaScript · RRB NTPC Undergraduate offline practice**
+
+**Challenge.** Connect topic practice, answer review, CBT preparation and typing practice without requiring an internet connection.
+
+**Approach.** Publish the supplied single-file tool with its existing Debotaro Rail logo, name and Deboraj Sarkar creator credit. Embedded study material and fonts support offline use. Six learning stages connect guided practice with CBT 1/CBT 2 exercises and typing skill practice. Personal branding and visual direction are by Deboraj; implementation and content preparation are AI-assisted.
+
+**Implementation highlights.** 4,000 original practice MCQs; six learning stages; CBT 1/CBT 2 practice and answer review; typing skill practice and browser-local progress.
+
+**Evidence.** See the branding, offline delivery and portfolio integration record in [VALIDATION.md](VALIDATION.md). The provided HTML is published unchanged. This addition does not re-audit the question content or extend the earlier seven-project performance and accessibility measurements.
+
+**Scope.** Personal concept project with original practice material, not official RRB questions or an RRB-endorsed product. Learning stages are not official exam levels. Progress depends on the current browser and available local storage; the app does not award a certification or guarantee exam results.
+
+[Open Debotaro Rail](https://debotaro.github.io/rrb-ntpc/) · [Download the complete offline HTML](https://debotaro.github.io/rrb-ntpc/Debotaro-Rail-Offline.html) · [Browse source](rrb-ntpc/)
 
 ## Validation context
 

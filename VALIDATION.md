@@ -179,3 +179,27 @@ Reproduce checks using [README.md](README.md). Browser reports are generated in
 `playwright-report/`; failure traces and private application drafts are ignored by
 Git. [Quality interview practice](career/QUALITY_INTERVIEW_PRACTICE.md) connects the
 verified changes with explanations and exercises rather than invented experience.
+
+## Debotaro Rail delivery — 13 October 2026
+
+The supplied RRB NTPC Undergraduate offline file already contained the Debotaro
+logo, Debotaro Rail name and Deboraj Sarkar creator credit. Its study content and
+runtime were preserved without modification. Both published HTML copies are
+4,287,085 bytes and match the supplied file's SHA-256:
+`aa8ad6d04afdc53285c481879443d52003261a109e6a3a0a419d6b5c70e58435`.
+The production build retains that same hash for the live entry and downloadable
+offline companion.
+
+ESLint and the production build passed. Twelve targeted portfolio integration
+checks passed on desktop/mobile Chromium and desktop/mobile WebKit, covering
+nine demo links, ten case studies, six product systems, three brand experiences,
+preview loading, download links and case-dialog focus restoration. The three
+Firefox checks could not launch locally: Windows reported an incorrect
+side-by-side configuration for the installed Playwright Firefox. The GitHub
+workflow runs Firefox in its separate CI environment.
+
+A Chromium check of the built file opened directly from disk at 1440, 390 and
+320px found the supplied title, loaded logo and creator credit, with no page
+errors or document overflow. These are branding and delivery checks; the earlier
+performance and accessibility audit results do not cover Debotaro Rail. No
+question-by-question review or new exam-content accuracy claim is made.
