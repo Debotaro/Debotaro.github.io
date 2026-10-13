@@ -227,3 +227,26 @@ layout hides its logo while keeping the Debotaro Assam name visible; that
 behaviour is retained. These are branding and delivery checks; the earlier
 performance and accessibility audit results do not cover Debotaro Assam. No
 question-by-question review or new exam-content accuracy claim is made.
+
+## Updated offline study files — 13 October 2026
+
+The user's updated ADRE, RRB and SSC HTML files replace their earlier live entries
+and offline download companions. Each published copy preserves the supplied file
+byte for byte. These hashes supersede the earlier delivery hashes for the same
+routes:
+
+| Tool           |     Bytes | SHA-256                                                            |
+| -------------- | --------: | ------------------------------------------------------------------ |
+| Debotaro Assam | 3,976,908 | `aff4c5304f794eeace72347cedd66e9f1964e437c6c5035a46659ce1eecc41f1` |
+| Debotaro Rail  | 4,271,600 | `e800e1ad674ebd81fa9a8a38e61ac95636d9f2ee3ac45d05e6efc477d00ac8c5` |
+| Debotaro CHSL  | 4,279,172 | `669378dad83e2ac1b6ea4dc32c6ac8a81c41e6462980e8a40685b4018eca068c` |
+
+Chromium offline loading checks at desktop 1440px and mobile 390px found the
+existing logo, name and creator credit, with no page errors or horizontal
+overflow. The updated homepages match the existing preview pixels, so those
+preview assets are retained. These checks cover replacement and delivery; they
+are not a question-content accuracy audit. The existing routes and project count
+remain unchanged.
+
+The production build, lint and formatting checks passed. All six built HTML
+copies match the corresponding updated source files exactly.
