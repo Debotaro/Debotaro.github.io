@@ -34,11 +34,19 @@ def build_markdown(data):
     profiles.extend(md_link(profile["label"], profile["url"]) for profile in data.get("profiles", []))
     lines.append(" | ".join(profiles))
     lines.extend(["## Profile", data.get("summary", "")])
+    if data.get("projects"):
+        lines.append("## Selected personal projects")
+        for project in data["projects"]:
+            title = joined(project["name"], project.get("descriptor"))
+            lines.extend(["### " + title, joined(project.get("stack"), md_link("View demo", project["url"]) if project.get("url") else "")])
+            lines.extend("- " + str(text) for text in project.get("bullets", []))
+        if data.get("additional"):
+            lines.append(data["additional"])
     if data.get("skills"):
         lines.append("## " + data.get("skills_heading", "Technologies used in projects"))
         for skill in data["skills"]:
             lines.append(f'**{skill["label"]}:** {skill["text"]}' if isinstance(skill, dict) else str(skill))
-    for key, heading in (("experience", "Experience"), ("education", "Education")):
+    for key, heading in (("experience", "Professional experience"), ("education", "Education")):
         if not data.get(key):
             continue
         lines.append("## " + heading)
@@ -64,13 +72,6 @@ def build_markdown(data):
                 lines.append(md_link(cert.get("name", ""), cert.get("url")) + " - " + joined(cert.get("issuer"), cert.get("date")))
             else:
                 lines.append(str(cert))
-    if data.get("projects"):
-        lines.append("## Selected projects")
-        for project in data["projects"]:
-            lines.extend(["### " + project["name"], joined(project.get("stack"), md_link("View demo", project["url"]) if project.get("url") else "")])
-            lines.extend("- " + str(text) for text in project.get("bullets", []))
-        if data.get("additional"):
-            lines.append(data["additional"])
     availability = [data[key] for key in ("process", "availability") if data.get(key)]
     if availability:
         lines.extend(["## " + data.get("process_heading", "Availability"), *availability])
@@ -93,14 +94,15 @@ def build(data, output_dir):
         "Scale: Actual size / 100%.\n"
         "Printer Properties / Preferences: choose High, Best or the printer's highest document quality.\n"
         "Turn Draft / Economy / Toner Save mode off.\n"
-        "Select the paper type that matches the loaded paper; choose color for the branded design.\n"
+        "Select the paper type that matches the loaded paper. Color preserves the restrained accents;\n"
+        "the predominantly white page and dark text also remain readable in monochrome.\n"
         "Keep normal PDF/vector printing; rasterize only if resolving a printer compatibility problem.\n\n"
         "The PDF requests no print scaling in compatible readers. It cannot force driver quality,\n"
         "resolution, paper type or ink settings, or override a recipient's Draft mode.\n"
         "Do not print the PNG preview or a screenshot instead of the PDF.\n\n"
-        "For HTML/browser printing: A4, 100%, background graphics on, headers and footers off.\n\n"
+        "For HTML/browser printing: A4, 100%, headers and footers off.\n\n"
         "File specifications: exact A4, selectable vector text and line art, embedded TrueType fonts,\n"
-        "lossless compression and the original 1254px logo (about 2100 PPI at its 43pt PDF size).\n"
+        "lossless compression and the original 1254px logo (about 2500 PPI at its 36pt PDF size).\n"
         "This is a general-purpose color PDF; no PDF/X compliance or press-specific CMYK profile is claimed.\n\n"
         "Printer quality guidance: https://support.hp.com/in-en/document/ish_2441805-2331028-16\n"
         "PDF sizing guidance: https://helpx.adobe.com/acrobat/desktop/print-documents/set-up-and-print-pdfs/page-size.html\n",

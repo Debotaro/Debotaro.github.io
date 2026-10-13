@@ -1,50 +1,25 @@
-# Deboraj Sarkar (Debotaro) — profile copy
+# Deboraj Sarkar (Debotaro) — hiring profile copy
 
-Updated on 13 October 2026 from the confirmed résumé facts, LinkedIn employment record, Coursera certificates and ten-project collection. The field text is ready to use; editorial notes and headings are not part of the public copy. Publication status is recorded separately after the platform saves are verified. The 8 October record below preserves earlier saved copy and does not confirm these new edits.
+Updated on 13 October 2026 for full-time junior frontend/React opportunities. This copy uses the confirmed employment, education and certificate records. Platform saves and visibility are verified separately; the historical publication record at the end is unchanged.
 
 ## LinkedIn headline
 
-Frontend Developer | Graphic Design Background | Computer Science Student | React & TypeScript
+Frontend Developer | React & TypeScript Projects | Graphic Design Background | Seeking Junior Frontend Roles
 
 ## LinkedIn About
 
-I'm Deboraj Sarkar, also known as Debotaro, a Frontend Developer and Computer Science student based in Kokrajhar, Assam, India. I'm pursuing a bachelor's degree at the University of the People, where I began studying in June 2025.
+I'm Deboraj Sarkar (Debotaro), a Frontend Developer and Computer Science student seeking a full-time junior frontend/React role. I bring paid graphic design experience and a focus on clear visual hierarchy, consistent interfaces and thoughtful product experiences.
 
-My background includes paid work as a Graphic Designer at Wecanstore.com from June 2022 to July 2023. I created digital banners, social media graphics and marketing materials, collaborated with marketing and sales teams, and incorporated feedback across design projects.
+My featured personal projects explore three different workflows: RELAY OS connects design revisions, pinned feedback and approvals; NOVA OS supports daily planning, task-linked focus and public GitHub milestone imports; ATLAS Ops combines operations charts, task boards and public GitHub issue imports. Live demos, source code and case studies explain the implemented features and their limits.
 
-I bring that attention to visual hierarchy and brand consistency to ten working frontend concepts. My newest addition, Debotaro Assam, offers ADRE Grade III Higher Secondary practice in one offline HTML file: 4,000 original practice MCQs, six learning stages, timed papers and Office concept practice. Debotaro Rail and CHSL also explore offline exam preparation. NOVA OS is a daily planning canvas; ATLAS Ops is an operations console; RELAY OS connects artwork, feedback and approvals. Other concepts cover personal finance, hospitality, fashion and travel.
+My projects use AI-assisted implementation with Codex. I set the visual direction, review generated interfaces, request iterations and make the final decisions. Technologies used in the portfolio include React, Next.js, TypeScript, JavaScript, HTML, CSS and Tailwind CSS, with Git, GitHub and Figma in the workflow.
 
-My contribution is visual direction, interface review and iteration. I use AI-assisted implementation with Codex: I review generated interfaces, request changes and make the final decisions. The project stacks include HTML, CSS, JavaScript, React, Next.js, TypeScript and Tailwind CSS, with Git, GitHub and Figma in the workflow. Live demos and case studies explain implemented behaviour, validation and scope.
+Previously, I worked as a Graphic Designer at Wecanstore.com (June 2022–July 2023), creating banners, social graphics and marketing materials and incorporating team feedback. I'm studying for a bachelor's degree in Computer Science at the University of the People (June 2025–present). My selected Coursera learning includes Google UX Design and IBM DevOps, Cloud, and Agile Foundations.
 
-The earlier seven-project collection has mobile lab performance comparisons, keyboard and automated accessibility checks, and Chromium, Firefox and WebKit regression results. Assam, Rail and CHSL have separate addition checks. Their implementation and content preparation are AI-assisted; the material is original practice content, not official exam questions. Reports distinguish verified behaviour from demo limits and checks requiring real devices.
-
-My completed Coursera learning includes the Google UX Design Professional Certificate and IBM DevOps, Cloud, and Agile Foundations Specialization.
-
-I'm seeking full-time junior frontend/React opportunities within a development team. Available within one week; open to remote roles and relocation for the right opportunity.
+Based in Kokrajhar, Assam, India. Available to start within one week; open to remote roles and relocation for the right opportunity.
 
 Portfolio: https://debotaro.github.io/
-Contact: mail.deborajsarkar@gmail.com
-
-## LinkedIn location and education
-
-- Location: Kokrajhar, Assam, India. Select the closest matching platform location if that exact entry is unavailable; do not substitute the previous workplace city as the current location.
-- Institution: University of the People
-- Degree: Bachelor's degree
-- Field of study: Computer Science
-- Start: June 2025
-- Status: In progress. Leave the end date, grade and unconfirmed activities blank.
-
-## LinkedIn experience
-
-- Title: Graphic Designer
-- Organisation: Wecanstore.com
-- Employment type: Full-time
-- Dates: June 2022–July 2023
-- Location: Bongaigaon, Assam, India
-
-Description:
-
-Created digital banners, social media graphics and marketing materials aligned with brand guidelines. Collaborated with marketing and sales teams and incorporated feedback across design projects.
+Email: mail.deborajsarkar@gmail.com
 
 ## LinkedIn featured portfolio
 
@@ -54,200 +29,128 @@ Deboraj Sarkar — Frontend Portfolio
 
 Description:
 
-Ten working frontend concepts with live demos, eleven case studies and public source. Explore Debotaro Assam, Rail and CHSL offline practice, NOVA daily planning, ATLAS operations and RELAY creative reviews. Visual direction and review by Deboraj; AI-assisted implementation.
+Explore RELAY OS, NOVA OS and ATLAS Ops: three distinct product interfaces with working demos, case studies and public source. Ten personal concepts across frontend workflows, brand experiences and offline learning. Visual direction and interface review by Deboraj; AI-assisted implementation. https://debotaro.github.io/
 
 URL: https://debotaro.github.io/
-
-## LinkedIn Debotaro Assam project / Featured
-
-Title:
-
-Debotaro Assam — ADRE offline practice
-
-Description:
-
-ADRE Grade III Higher Secondary practice in one offline HTML file: 4,000 original practice MCQs, six learning stages, timed papers and Office concept practice. Personal branding and visual direction by Deboraj; AI-assisted implementation and content preparation. Original practice material, not official ADRE questions.
-
-Live app: https://debotaro.github.io/adre-hs/
-
-Offline download: https://debotaro.github.io/adre-hs/Debotaro-Assam-Offline.html
-
-## LinkedIn Debotaro Rail project / Featured
-
-Title:
-
-Debotaro Rail — RRB NTPC offline practice
-
-Description:
-
-RRB NTPC Undergraduate practice in one offline HTML file: 4,000 original practice MCQs, six learning stages, CBT 1/CBT 2 and typing practice. Personal branding and visual direction by Deboraj; AI-assisted implementation and content preparation. Original practice material, not official RRB content.
-
-Live app: https://debotaro.github.io/rrb-ntpc/
-
-Offline download: https://debotaro.github.io/rrb-ntpc/Debotaro-Rail-Offline.html
-
-## LinkedIn Debotaro CHSL project / Featured
-
-Title:
-
-Debotaro CHSL — Offline learning & exam practice
-
-Description:
-
-A self-contained HTML/CSS/JavaScript study app with 4,000 original practice MCQs across five subjects and 111 topics. Six pedagogical stages, explanations and diagrams connect guided learning with timed Tier I/Tier II practice, English typing and data-entry drills. Progress and bookmarks stay in the current browser. My role is personal branding and visual direction, with AI-assisted implementation and content preparation. No accounts or cloud backend. This is original practice material, not official SSC questions or an SSC-endorsed product.
-
-URL: https://debotaro.github.io/ssc-chsl/
-
-Offline download: https://debotaro.github.io/ssc-chsl/Debotaro-CHSL-Offline.html
 
 ## LinkedIn featured résumé
 
 Title:
 
-Deboraj Sarkar — Frontend Developer Résumé
+Deboraj Sarkar — Junior Frontend / React Résumé
 
 Description:
 
-Computer Science student with paid graphic design experience. Seeking junior frontend/React roles; available within one week. Includes selected projects, Coursera certificates and contact details. Latest download: https://debotaro.github.io/downloads/Deboraj-Sarkar-Resume.pdf
+Computer Science student with paid graphic design experience, seeking full-time junior frontend/React roles. Selected projects, relevant Coursera learning and contact details. Available within one week; open to remote roles and relocation for the right opportunity. Latest PDF: https://debotaro.github.io/downloads/Deboraj-Sarkar-Resume.pdf
 
 URL: https://debotaro.github.io/downloads/Deboraj-Sarkar-Resume.pdf
 
-The reviewed résumé is available at this public URL following the successful release of `903c78c`. LinkedIn's direct-link preview failed, so the PDF was uploaded as Featured Media and its saved state was verified. Featured order is portfolio first, résumé second. The résumé intentionally includes the supplied phone number; ordinary profile bios below use email only.
+## LinkedIn profile facts
 
-## LinkedIn skills, in priority order
+- Location: Kokrajhar, Assam, India; use the closest platform match if necessary.
+- Education: Bachelor's degree in Computer Science, University of the People, June 2025–present. In progress; leave the end date, grade and unconfirmed activities blank.
+- Experience: Graphic Designer, Wecanstore.com, full-time, June 2022–July 2023, Bongaigaon, Assam, India.
+- Experience description: Created digital banners, social media graphics and marketing materials aligned with brand guidelines. Collaborated with marketing and sales teams and incorporated feedback across design projects.
+- Selected learning: Google UX Design Professional Certificate (Google / Coursera, November 2023) and IBM DevOps, Cloud, and Agile Foundations Specialization (IBM / Coursera, April 2023).
 
-1. React.js
-2. JavaScript
-3. TypeScript
-4. HTML
-5. CSS
-6. Next.js
-7. Tailwind CSS
-8. Git
-9. GitHub
-10. Figma
+## LinkedIn skills and Featured priority
 
-These are technologies used in the AI-assisted portfolio and reported by the user. Do not imply independent proficiency, skill assessment scores or endorsements. Keep existing verified design skills and credentials; do not replace evidence of paid design work with an unconfirmed software role.
+Put React.js, JavaScript, TypeScript, HTML, CSS, Figma and Git first. Next.js, Tailwind CSS and GitHub can follow. These are technologies used in the AI-assisted projects and reported by the user; this does not assert independent proficiency, assessment scores or endorsements. Preserve verified graphic design skills that support the paid role.
 
-## Dribbble biography
+Keep the portfolio first and current résumé second in Featured. RELAY, NOVA and ATLAS are the most relevant individual product examples for frontend applications. The three exam tools remain accessible through the portfolio; they do not need to dominate Featured or the opening biography.
 
-Frontend Developer with a graphic design background, based in Kokrajhar, Assam, India.
+## GitHub profile fields
 
-Computer Science student at the University of the People since June 2025. I direct the visual identity, review interfaces and request iterations across ten personal frontend concepts, with AI-assisted implementation. My newest addition, Debotaro Assam, joins Rail and CHSL as an offline practice app.
+- Name: Deboraj Sarkar
+- Biography: Frontend Developer | CS student | Graphic design background | AI-assisted React & TypeScript projects | Seeking junior frontend roles
+- Location: Kokrajhar, Assam, India
+- Website: https://debotaro.github.io/
+- Repository description: Deboraj Sarkar's frontend portfolio: RELAY, NOVA and ATLAS product interfaces, ten personal concepts, live demos and case studies. AI-assisted implementation.
+- Profile README source: career/GITHUB_PROFILE.md
 
-Seeking full-time junior frontend/React roles. Available within one week; open to remote roles and relocation for the right opportunity.
+## Dribbble profile fields
 
-Explore the live demos and case studies: https://debotaro.github.io/
-
-This is the updated biography copy, including paragraph breaks; verify the platform save before marking it applied. The ongoing degree is included here because the separate education editor requires a graduation year that has not been provided.
-
-## Dribbble display name, location and links
-
-- Display name: Deboraj Sarkar (Debotaro)
-- Location form: Kokrajhar, Assam, India. The public profile displays India; the biography explicitly names Kokrajhar.
+- Display name: Deboraj Sarkar
+- Handle: Debotaro
+- Location: Kokrajhar, Assam, India; the public location may display India.
 - Portfolio: https://debotaro.github.io/
 - GitHub username: Debotaro
 - LinkedIn username: deborajsarkar
+
+## Dribbble biography
+
+Frontend Developer with paid graphic design experience, based in Kokrajhar, Assam, India.
+
+My personal projects explore creative reviews with RELAY OS, daily planning with NOVA OS and operations with ATLAS Ops. I direct the visuals, review interfaces and request iterations; implementation is AI-assisted.
+
+Computer Science student at the University of the People. Seeking full-time junior frontend/React roles; available within one week. Open to remote roles and relocation for the right opportunity.
+
+Live demos and case studies: https://debotaro.github.io/
 
 ## Dribbble RELAY shot
 
 Title:
 
-RELAY OS — Design reviews, in context.
+RELAY OS — Creative review studio
 
 Description:
 
-RELAY OS connects artwork, pinned feedback, versions and approvals. My role: visual direction, interface review and iteration; AI-assisted implementation. Explore the browser-local demo: https://debotaro.github.io/relay-os/
+An artwork-led review studio that keeps design revisions, pinned feedback and approval decisions together. Visual project covers and a focused review canvas give the interface a distinct creative identity.
 
-Shot URL: https://dribbble.com/shots/27794867-RELAY-OS-Design-reviews-in-context
+My contribution: visual direction, interface review and iteration; AI-assisted implementation with React and TypeScript. The public demo uses sample work and browser-local state.
 
-Saved tags: dashboard, design feedback, portfolio, product design, react, ui design, web design.
+Live demo: https://debotaro.github.io/relay-os/
+Case study: https://github.com/Debotaro/Debotaro.github.io/blob/main/CASE_STUDIES.md
 
-## Dribbble Debotaro Assam shot
+Suggested tags: react, product design, design feedback, ui design, web design.
+
+Existing shot: https://dribbble.com/shots/27794867-RELAY-OS-Design-reviews-in-context
+
+## Dribbble NOVA shot
 
 Title:
 
-Debotaro Assam — ADRE offline practice
+NOVA OS — Daily planning workspace
 
 Description:
 
-An offline practice interface for ADRE Grade III Higher Secondary preparation. Debotaro Assam brings 4,000 original practice MCQs, six learning stages, timed papers and Office concept practice into one HTML file. My role: personal branding and visual direction; AI-assisted implementation and content preparation. Original practice material, not official ADRE questions or an officially endorsed product.
+A calm daily planning interface built around an agenda, task-linked focus and project notebooks. A compact workspace ribbon and generous spacing keep attention on the next useful action. Public GitHub milestones can be imported into local tasks.
 
-Live app: https://debotaro.github.io/adre-hs/
+My contribution: visual direction, interface review and iteration; AI-assisted implementation with Next.js, React and TypeScript. Planning stays in the current browser; the demo does not provide shared accounts or cloud sync.
 
-Offline download: https://debotaro.github.io/adre-hs/Debotaro-Assam-Offline.html
+Live demo: https://debotaro.github.io/nova-os/app/
+Case study: https://github.com/Debotaro/Debotaro.github.io/blob/main/reports/case-studies/NOVA.md
 
-Suggested tags: education, web design, ui design, javascript, portfolio.
+Suggested tags: react, productivity, dashboard, ui design, web design.
 
-Publication status: ready-to-publish copy; verify the saved shot URL and its public visibility separately.
-
-## Dribbble Debotaro Rail shot
+## Dribbble ATLAS shot
 
 Title:
 
-Debotaro Rail — RRB NTPC offline practice
+ATLAS Ops — Operations console
 
 Description:
 
-An offline practice interface for RRB NTPC Undergraduate preparation. Debotaro Rail brings 4,000 original practice MCQs, six learning stages, CBT 1/CBT 2 practice and typing exercises into one HTML file. My role: personal branding and visual direction; AI-assisted implementation and content preparation. Original practice material, not official RRB questions or an RRB-endorsed product.
+A technical operations interface combining charts, workload, regional coverage and an intervention queue. Compact navigation and a continuous telemetry strip support scanning and prioritisation. Public GitHub issues can be imported into local tasks.
 
-Live app: https://debotaro.github.io/rrb-ntpc/
+My contribution: visual direction, interface review and iteration; AI-assisted implementation with React and TypeScript. Operations data is illustrative, and imported tasks stay local.
 
-Offline download: https://debotaro.github.io/rrb-ntpc/Debotaro-Rail-Offline.html
+Live demo: https://debotaro.github.io/atlas-ops/
+Case study: https://github.com/Debotaro/Debotaro.github.io/blob/main/reports/case-studies/ATLAS.md
 
-Suggested tags: education, web design, ui design, javascript, portfolio.
-
-Publication status: ready-to-publish copy; verify the saved shot URL and its public visibility separately.
-
-## Dribbble Debotaro CHSL shot
-
-Title:
-
-Debotaro CHSL — Offline learning & exam practice
-
-Description:
-
-An offline learning interface that connects topic practice, explained answers, bookmarks and timed exercises in one browser app. Debotaro CHSL contains 4,000 original practice MCQs, five subjects and 111 topics, with six pedagogical stages, diagrams, English typing and data-entry drills. My role: personal branding and visual direction; AI-assisted implementation and content preparation. Progress stays in the current browser. Original practice material, not official SSC questions or an SSC-endorsed product.
-
-Live app: https://debotaro.github.io/ssc-chsl/
-
-Offline download: https://debotaro.github.io/ssc-chsl/Debotaro-CHSL-Offline.html
-
-Suggested tags: education, learning platform, offline app, product design, ui design, web design, javascript.
-
-Publication status: draft copy; add the verified shot URL after saving on Dribbble.
-
-## GitHub biography
-
-Frontend Developer with a graphic design background. CS student at University of the People. Visual direction & AI-assisted projects. Open to junior roles.
-
-## GitHub fields
-
-- Name: Deboraj Sarkar (Debotaro)
-- Location: Kokrajhar, Assam, India
-- Website: https://debotaro.github.io/
-- Contact email in the profile README: mail.deborajsarkar@gmail.com
-- Profile README source: `career/GITHUB_PROFILE.md`
-- Portfolio repository description: Deboraj Sarkar (Debotaro) — frontend portfolio with ten interactive projects, including Debotaro Assam, Rail and CHSL offline practice. AI-assisted implementation.
-- Portfolio repository website: https://debotaro.github.io/
-
-## Selected verified Coursera certificates
-
-- [Google UX Design Professional Certificate](https://www.coursera.org/account/accomplishments/specialization/ZR76Q3CG6VAX) — Google / Coursera, November 2023
-- [IBM DevOps, Cloud, and Agile Foundations Specialization](https://www.coursera.org/account/accomplishments/specialization/ZS82DMJQ6E5H) — IBM / Coursera, April 2023
-- [AWS Cloud Solutions Architect Professional Certificate](https://www.coursera.org/account/accomplishments/specialization/XRDNDZE8TZ2P) — Amazon Web Services / Coursera, April 2023
-
-These are completed Coursera course credentials, not claims of passed vendor certification exams. All twelve verified specialization/professional certificate records are preserved in `career/resume.json`.
+Suggested tags: react, dashboard, data visualization, ui design, web design.
 
 ## Editorial decisions
 
-- Lead with Frontend Developer and the search for a junior role. A course credential does not establish a professional UX job title.
-- Preserve the confirmed dates and responsibilities of the paid Graphic Designer role. Do not invent frontend employment, clients, commercial results or independent coding/test authorship.
-- Describe the user's contribution consistently: visual direction, interface review and iteration; AI-assisted implementation.
-- Present ten working personal concept projects, each with explicit demo limits. NOVA and ATLAS read public GitHub data; business records are samples, and RELAY's backend requires separate configuration. Debotaro Assam, Rail and CHSL contain original AI-assisted practice material; do not present them as official ADRE, RRB or SSC content or apply the earlier audits to them.
-- Describe remote opportunities and relocation for the right role without publishing salary thresholds or guessing visa status.
-- Public biographies use email. The résumé includes the explicitly supplied phone number.
-- Use the live portfolio as the main destination and verify saves on each platform before reporting them as applied.
+- Use one professional identity: Deboraj Sarkar, Frontend Developer. Debotaro remains the established handle and project brand.
+- Lead with the junior frontend/React job target, relevant product interfaces, paid design background and ongoing Computer Science degree.
+- Describe the actual contribution once in each main biography: visual direction, interface review, iterations and final decisions; implementation is AI-assisted.
+- Use “technologies used in projects” instead of claiming expert or independent coding proficiency. Do not invent frontend employment, clients, business results or coding/test authorship.
+- Keep all ten personal concepts accessible through the portfolio, with RELAY, NOVA and ATLAS prominent. Remove repeated question counts and full-size exam screenshots from the profile README.
+- Keep the two most relevant Coursera credentials prominent. Completed course credentials do not establish a professional role or a passed vendor certification exam; unrelated learning remains in the verified source record.
+- Keep email in ordinary biographies. The résumé includes the explicitly supplied phone number. State one-week availability and remote/right-role relocation without salary thresholds or unconfirmed work-authorisation answers.
+- Preserve project provenance, validation findings and limitations in the linked case studies. Personal concept demos do not establish live client services, official exam content or shared cloud accounts.
+- Verify platform saves before recording copy as applied. Dribbble Designer approval and public visibility are separate from saving an upload.
 
 ## Applied profile update record — 8 October 2026
 
