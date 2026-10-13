@@ -28,6 +28,15 @@
   ],
   "projects": [
     {
+      "name": "RELAY OS",
+      "descriptor": "Creative review studio",
+      "stack": "React, TypeScript, Vite",
+      "url": "https://debotaro.github.io/relay-os/",
+      "bullets": [
+        "Directed the review studio's identity and interface revisions for versioned artwork, pinned feedback, approvals and comment-to-task conversion."
+      ]
+    },
+    {
       "name": "NOVA OS",
       "descriptor": "Daily planning workspace",
       "stack": "Next.js, React, TypeScript, Tailwind CSS",
@@ -37,21 +46,12 @@
       ]
     },
     {
-      "name": "ATLAS Ops",
-      "descriptor": "Technical operations console",
+      "name": "NILA Ledger",
+      "descriptor": "Personal finance interface",
       "stack": "React, TypeScript, Vite, Recharts",
-      "url": "https://debotaro.github.io/atlas-ops/",
+      "url": "https://debotaro.github.io/nila-ledger/",
       "bullets": [
-        "Directed a distinct operations console with Kanban tasks, charts and public GitHub issue imports that become locally editable tasks."
-      ]
-    },
-    {
-      "name": "RELAY OS",
-      "descriptor": "Creative review studio",
-      "stack": "React, TypeScript, Vite",
-      "url": "https://debotaro.github.io/relay-os/",
-      "bullets": [
-        "Directed the review studio's identity and interface revisions for versioned artwork, pinned feedback, approvals and comment-to-task conversion."
+        "Reviewed a finance interface combining transaction editing, budget tracking, filtered CSV exports and printable monthly reports."
       ]
     }
   ],

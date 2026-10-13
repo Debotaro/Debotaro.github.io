@@ -102,7 +102,7 @@ def build(data, output_dir):
         "Do not print the PNG preview or a screenshot instead of the PDF.\n\n"
         "For HTML/browser printing: A4, 100%, headers and footers off.\n\n"
         "File specifications: exact A4, selectable vector text and line art, embedded TrueType fonts,\n"
-        "lossless compression and the original 1254px logo (about 2500 PPI at its 36pt PDF size).\n"
+        "lossless compression and a clean vector D/T brand mark with no raster resolution limit.\n"
         "This is a general-purpose color PDF; no PDF/X compliance or press-specific CMYK profile is claimed.\n\n"
         "Printer quality guidance: https://support.hp.com/in-en/document/ish_2441805-2331028-16\n"
         "PDF sizing guidance: https://helpx.adobe.com/acrobat/desktop/print-documents/set-up-and-print-pdfs/page-size.html\n",

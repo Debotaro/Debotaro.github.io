@@ -12,23 +12,23 @@ Frontend Developer and Computer Science student with paid graphic design experie
 
 ## Selected personal projects
 
+### RELAY OS | Creative review studio
+
+React, TypeScript, Vite | [View demo](https://debotaro.github.io/relay-os/)
+
+- Directed the review studio's identity and interface revisions for versioned artwork, pinned feedback, approvals and comment-to-task conversion.
+
 ### NOVA OS | Daily planning workspace
 
 Next.js, React, TypeScript, Tailwind CSS | [View demo](https://debotaro.github.io/nova-os/app/)
 
 - Guided the calm workspace design and review iterations for tasks, task-linked focus sessions, browser-local persistence and public GitHub milestone imports.
 
-### ATLAS Ops | Technical operations console
+### NILA Ledger | Personal finance interface
 
-React, TypeScript, Vite, Recharts | [View demo](https://debotaro.github.io/atlas-ops/)
+React, TypeScript, Vite, Recharts | [View demo](https://debotaro.github.io/nila-ledger/)
 
-- Directed a distinct operations console with Kanban tasks, charts and public GitHub issue imports that become locally editable tasks.
-
-### RELAY OS | Creative review studio
-
-React, TypeScript, Vite | [View demo](https://debotaro.github.io/relay-os/)
-
-- Directed the review studio's identity and interface revisions for versioned artwork, pinned feedback, approvals and comment-to-task conversion.
+- Reviewed a finance interface combining transaction editing, budget tracking, filtered CSV exports and printable monthly reports.
 
 ## Technologies used in portfolio projects
 

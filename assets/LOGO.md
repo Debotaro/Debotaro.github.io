@@ -3,13 +3,14 @@
 An ivory D monogram with an embedded T for Deboraj Sarkar / Debotaro. The mark pairs a clear silhouette with the portfolio's dark green palette, restrained lime and warm orange accents.
 
 - `debotaro-logo.png`: original 1254 × 1254 transparent PNG master.
+- `debotaro-logo.svg`: clean editable vector reconstruction of the established D/T silhouette, used by the redesigned LinkedIn cover and résumé.
 - `debotaro-logo-hero.png`: 640 × 640 transparent web delivery.
 - `debotaro-logo-small.png`: 160 × 160 transparent navigation delivery.
 - `debotaro-logo-hero.webp` and `debotaro-logo-small.webp`: lossless WebP deliveries at the same dimensions, used by the portfolio to reduce image transfer without changing the mark.
 - `favicon.png`: 64 × 64 icon on the portfolio background.
 - `debotaro-icon.png`: 180 × 180 touch icon on the portfolio background.
 
-Created with the built-in imagegen tool, then refined once with the same tool. Web deliveries only resize the generated mark; the icons place it on the site background. An editable vector source is not included.
+The original raster mark was created with the built-in imagegen tool, then refined once with the same tool. Web PNG/WebP deliveries resize that generated mark; the icons place it on the site background. The 13 October 2026 SVG edition rebuilds the silhouette as smooth paths, removing raster transparency noise and retaining sharp edges at any display or print size.
 
 The WebP files are regenerated from their PNG deliveries by `scripts/performance-images.py`. The master and PNG deliveries remain available for print, documentation and applications that require PNG.
 
