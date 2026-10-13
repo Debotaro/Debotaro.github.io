@@ -1,6 +1,6 @@
 # Debotaro — Selected frontend work
 
-Nine independent demos plus the portfolio explore responsive interfaces, useful interactions and distinct visual identities. Each is a **personal concept project with AI-assisted implementation**. Deboraj Sarkar (Debotaro) directs the visual work, reviews generated interfaces, requests revisions and makes the final decisions. Codex performs the implementation and supports iteration. Operational and business demonstrations use sample data; NOVA additionally reads live public GitHub repositories/milestones, and ATLAS reads live public GitHub issues. RELAY adds a browser-local creative handoff workflow and optional Supabase backend source requiring separate setup. Debotaro CHSL and Debotaro Rail add offline learning with original AI-assisted practice material. Project results describe implemented behaviour and documented validation; they do not imply independent coding or test authorship.
+Ten independent demos plus the portfolio explore responsive interfaces, useful interactions and distinct visual identities. Each is a **personal concept project with AI-assisted implementation**. Deboraj Sarkar (Debotaro) directs the visual work, reviews generated interfaces, requests revisions and makes the final decisions. Codex performs the implementation and supports iteration. Operational and business demonstrations use sample data; NOVA additionally reads live public GitHub repositories/milestones, and ATLAS reads live public GitHub issues. RELAY adds a browser-local creative handoff workflow and optional Supabase backend source requiring separate setup. Debotaro CHSL, Debotaro Rail and Debotaro Assam add offline learning with original AI-assisted practice material. Project results describe implemented behaviour and documented validation; they do not imply independent coding or test authorship.
 
 **Role across the collection:** Visual direction, interface review and iteration; AI-assisted implementation.
 
@@ -12,7 +12,7 @@ The [current validation report](VALIDATION.md), [accessibility review](reports/A
 
 **Challenge.** Give recruiters a quick way to understand Deboraj’s frontend focus, explore working examples and start a conversation.
 
-**Approach.** Lead with a clear professional introduction, place the portfolio itself first, and connect nine distinct demos through a consistent project gallery. Concise case studies explain the implementation choices behind the visuals.
+**Approach.** Lead with a clear professional introduction, place the portfolio itself first, and connect ten distinct demos through a consistent project gallery. Concise case studies explain the implementation choices behind the visuals.
 
 **Implementation highlights.** Responsive layouts; category filtering with an announced result count; working demos and public source links; email, professional profiles and a downloadable résumé.
 
@@ -153,6 +153,22 @@ The [current validation report](VALIDATION.md), [accessibility review](reports/A
 **Scope.** Personal concept project with original practice material, not official RRB questions or an RRB-endorsed product. Learning stages are not official exam levels. Progress depends on the current browser and available local storage; the app does not award a certification or guarantee exam results.
 
 [Open Debotaro Rail](https://debotaro.github.io/rrb-ntpc/) · [Download the complete offline HTML](https://debotaro.github.io/rrb-ntpc/Debotaro-Rail-Offline.html) · [Browse source](rrb-ntpc/)
+
+## 11 / Debotaro Assam
+
+**Product system · HTML, CSS, JavaScript · ADRE Grade III HS offline practice**
+
+**Challenge.** Connect guided question practice, answer review, timed papers and Office concept practice without requiring an internet connection.
+
+**Approach.** Publish the supplied single-file tool with its existing Debotaro Assam logo, name and Deboraj Sarkar creator credit. Embedded study material and fonts support offline use. Six learning stages connect guided practice with timed papers and Office concept practice. Personal branding and visual direction are by Deboraj; implementation and content preparation are AI-assisted.
+
+**Implementation highlights.** 4,000 original practice MCQs; six learning stages; timed papers and answer review; Office concept practice and browser-local progress.
+
+**Evidence.** See the branding, offline delivery and portfolio integration record in [VALIDATION.md](VALIDATION.md). The provided HTML is published unchanged. This addition does not re-audit the question content or extend the earlier seven-project performance and accessibility measurements.
+
+**Scope.** Personal concept project with original practice material, not official ADRE questions or an ADRE-endorsed product. Learning stages are not official exam levels. Progress depends on the current browser and available local storage; the app does not award a certification or guarantee exam results.
+
+[Open Debotaro Assam](https://debotaro.github.io/adre-hs/) · [Download the complete offline HTML](https://debotaro.github.io/adre-hs/Debotaro-Assam-Offline.html) · [Browse source](adre-hs/)
 
 ## Validation context
 

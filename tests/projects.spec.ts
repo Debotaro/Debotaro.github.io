@@ -71,15 +71,15 @@ test('NILA adds a transaction, exports the filtered data and edits a budget', as
     page.getByRole('slider', { name: 'Food & dining monthly budget', exact: true }),
   ).toHaveValue('75000');
 });
-test('Portfolio links all nine projects and category filters work', async ({ page }) => {
+test('Portfolio links all ten projects and category filters work', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.card:visible')).toHaveCount(9);
+  await expect(page.locator('.card:visible')).toHaveCount(10);
   await page.getByRole('button', { name: 'Brand experiences', exact: true }).click();
   await expect(page.locator('.card:visible')).toHaveCount(3);
   await expect(page.locator('#project-count')).toContainText('3 brand experiences');
   await page.getByRole('button', { name: 'Product systems', exact: true }).click();
-  await expect(page.locator('.card:visible')).toHaveCount(6);
-  await expect(page.locator('#project-count')).toContainText('6 product systems');
+  await expect(page.locator('.card:visible')).toHaveCount(7);
+  await expect(page.locator('#project-count')).toContainText('7 product systems');
   await page.getByRole('button', { name: 'All projects', exact: true }).click();
   for (const href of [
     'relay-os/',
@@ -91,6 +91,7 @@ test('Portfolio links all nine projects and category filters work', async ({ pag
     'rasa/',
     'ssc-chsl/',
     'rrb-ntpc/',
+    'adre-hs/',
   ])
     await expect(page.locator(`a.card[href="${href}"]`)).toBeVisible();
   expect(

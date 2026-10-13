@@ -203,3 +203,27 @@ A Chromium check of the built file opened directly from disk at 1440, 390 and
 errors or document overflow. These are branding and delivery checks; the earlier
 performance and accessibility audit results do not cover Debotaro Rail. No
 question-by-question review or new exam-content accuracy claim is made.
+
+## Debotaro Assam delivery — 13 October 2026
+
+The supplied ADRE Grade III HS offline file already contained the Debotaro
+logo, Debotaro Assam name and Deboraj Sarkar creator credit. Its study content
+and runtime were preserved without modification. Both published HTML copies are
+4,120,224 bytes and match the supplied file's SHA-256:
+`5e6ccc927764dac4ccbfb883844405b6ea62626ef14c1d6523108bcff6456795`.
+The production build retains that same hash for the live entry and downloadable
+offline companion.
+
+ESLint, formatting checks and the production build passed. Twelve targeted
+portfolio integration checks passed on desktop/mobile Chromium and
+desktop/mobile WebKit, covering ten demo links, eleven case studies, seven
+product systems, three brand experiences, preview loading, download links and
+case-dialog focus restoration. Local testing used those four browser contexts;
+the GitHub workflow also runs Firefox in its separate CI environment.
+
+A Chromium delivery check at 1440, 390 and 320px found the supplied branding and
+creator credit, with no page errors or document overflow. The supplied 320px
+layout hides its logo while keeping the Debotaro Assam name visible; that
+behaviour is retained. These are branding and delivery checks; the earlier
+performance and accessibility audit results do not cover Debotaro Assam. No
+question-by-question review or new exam-content accuracy claim is made.

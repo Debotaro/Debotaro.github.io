@@ -106,6 +106,7 @@ const routes = {
   rasa: 'rasa/',
   'ssc-chsl': 'ssc-chsl/',
   'rrb-ntpc': 'rrb-ntpc/',
+  'adre-hs': 'adre-hs/',
 };
 const sourceDirectories = {
   portfolio: '',
@@ -118,6 +119,7 @@ const sourceDirectories = {
   rasa: 'rasa',
   'ssc-chsl': 'ssc-chsl',
   'rrb-ntpc': 'rrb-ntpc',
+  'adre-hs': 'adre-hs',
 };
 const sourceUrl = (id) =>
   'https://github.com/Debotaro/Debotaro.github.io' +

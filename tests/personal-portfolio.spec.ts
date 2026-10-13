@@ -25,8 +25,8 @@ test('Personal portfolio presents the supplied identity and contacts, with its o
         ),
       ),
   ).toBeTruthy();
-  await expect(page.locator('[data-case]')).toHaveCount(10);
-  await expect(page.locator('.card')).toHaveCount(9);
+  await expect(page.locator('[data-case]')).toHaveCount(11);
+  await expect(page.locator('.card')).toHaveCount(10);
   await expect(page.locator('.card').first()).toHaveAttribute('href', 'relay-os/');
   for (const [name, href] of [
     ['GitHub', 'https://github.com/Debotaro'],
@@ -111,7 +111,7 @@ test('Background, availability and verifiable credentials match the updated rés
   }
 });
 
-test('Ten case studies expose their working details, demo scope and keyboard focus restoration', async ({
+test('Eleven case studies expose their working details, demo scope and keyboard focus restoration', async ({
   page,
 }) => {
   await page.goto('/');
@@ -126,6 +126,7 @@ test('Ten case studies expose their working details, demo scope and keyboard foc
     ['rasa', 'RASA Experience'],
     ['ssc-chsl', 'Debotaro CHSL'],
     ['rrb-ntpc', 'Debotaro Rail'],
+    ['adre-hs', 'Debotaro Assam'],
   ];
   for (const [id, title] of cases) {
     const trigger = page.locator(`[data-case="${id}"]`);
@@ -164,6 +165,17 @@ test('Ten case studies expose their working details, demo scope and keyboard foc
         'rrb-ntpc/Debotaro-Rail-Offline.html',
       );
       await expect(dialog.locator('.case-limitations')).toContainText('not official RRB');
+    }
+    if (id === 'adre-hs') {
+      await expect(dialog.getByRole('link', { name: 'Explore the demo' })).toHaveAttribute(
+        'href',
+        'adre-hs/',
+      );
+      await expect(dialog.getByRole('link', { name: 'Download offline HTML' })).toHaveAttribute(
+        'href',
+        'adre-hs/Debotaro-Assam-Offline.html',
+      );
+      await expect(dialog.locator('.case-limitations')).toContainText('not official ADRE');
     }
     if (id === 'relay') {
       await expect(dialog.getByRole('link', { name: 'Explore the demo' })).toHaveAttribute(

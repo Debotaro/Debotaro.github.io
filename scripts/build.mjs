@@ -48,6 +48,7 @@ for (const name of [
   'rasa',
   'ssc-chsl',
   'rrb-ntpc',
+  'adre-hs',
   'previews',
   'assets',
   'data',
@@ -57,4 +58,4 @@ for (const name of [
 cpSync(path.join(root, 'index.html'), path.join(target, 'index.html'));
 await minifyStaticEntries(target);
 writeFileSync(path.join(target, '.nojekyll'), '');
-console.log('All nine projects built. Run npm run preview, then open http://localhost:4173.');
+console.log('All ten projects built. Run npm run preview, then open http://localhost:4173.');

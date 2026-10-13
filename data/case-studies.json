@@ -3,15 +3,15 @@
     "id": "portfolio",
     "title": "Debotaro Portfolio",
     "category": "Personal portfolio",
-    "summary": "A personal showcase that connects professional context, considered visual design and nine working project concepts.",
+    "summary": "A personal showcase that connects professional context, considered visual design and ten working project concepts.",
     "role": "Visual direction, interface review and iteration; AI-assisted implementation",
     "stack": ["HTML", "CSS", "JavaScript"],
     "challenge": "Give recruiters a quick way to understand Deboraj’s frontend focus, explore working examples and start a conversation.",
-    "approach": "Lead with a clear professional introduction, place the portfolio itself first, and connect nine distinct demos through a consistent gallery. Concise case studies explain the implementation choices behind the visuals.",
+    "approach": "Lead with a clear professional introduction, place the portfolio itself first, and connect ten distinct demos through a consistent gallery. Concise case studies explain the implementation choices behind the visuals.",
     "highlights": [
       "Responsive layouts with clear project navigation",
       "Category filtering with an announced result count",
-      "Nine working demos and public source code",
+      "Ten working demos and public source code",
       "Contact profiles and a downloadable résumé"
     ],
     "validation": "Browser regressions cover identity, filters, demo/source links, keyboard dialogs, menu behaviour, clipboard success/failure, résumé download and layout. The quality review includes axe scans, keyboard checks and matched mobile lab measurements. See the repository validation report for browser coverage, results and limits.",
@@ -180,5 +180,24 @@
     "validation": "This addition uses branding, offline delivery and portfolio integration checks recorded in VALIDATION.md. The supplied file is published unchanged; its question content was not re-audited. The dated performance and accessibility reports cover the earlier seven demos and do not establish results for this app.",
     "limitations": "Personal concept project • AI-assisted implementation and content preparation. Original practice material, not official RRB questions or an RRB-endorsed product. The six stages organise learning rather than official exam levels. Local progress depends on the current browser and available storage. This app does not award a certification or guarantee exam results.",
     "download": "rrb-ntpc/Debotaro-Rail-Offline.html"
+  },
+  {
+    "id": "adre-hs",
+    "title": "Debotaro Assam",
+    "category": "Product system / Offline learning",
+    "summary": "A self-contained ADRE Grade III HS practice tool with 4,000 original practice MCQs, guided learning and timed papers.",
+    "role": "Visual direction, interface review and iteration; AI-assisted implementation and content preparation",
+    "stack": ["HTML", "CSS", "JavaScript", "Browser-local storage"],
+    "challenge": "Bring guided question practice, answer review, timed papers and Office concept practice together in an offline learning interface.",
+    "approach": "Publish the supplied single-file interface with its embedded fonts and study material. Six learning stages connect guided practice with timed papers and Office concept practice. The existing Debotaro Assam identity and Deboraj Sarkar creator credit are retained; implementation and content preparation are AI-assisted.",
+    "highlights": [
+      "4,000 original practice MCQs in one offline HTML file",
+      "Six learning stages for guided practice",
+      "Timed papers and answer review",
+      "Office concept practice and browser-local progress"
+    ],
+    "validation": "This addition uses branding, offline delivery and portfolio integration checks recorded in VALIDATION.md. The supplied file is published unchanged; its question content was not re-audited. The dated performance and accessibility reports cover the earlier seven demos and do not establish results for this app.",
+    "limitations": "Personal concept project • AI-assisted implementation and content preparation. Original practice material, not official ADRE questions or an ADRE-endorsed product. The six stages organise learning rather than official exam levels. Local progress depends on the current browser and available storage. This app does not award a certification or guarantee exam results.",
+    "download": "adre-hs/Debotaro-Assam-Offline.html"
   }
 ]
