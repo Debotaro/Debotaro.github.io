@@ -548,6 +548,102 @@ button:focus-visible {
   transform: rotate(-5deg);
   box-shadow: 0 5px 15px #0003;
 }
+.studio-spotlight {
+  scroll-margin-top: 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: 40px;
+  margin-top: 28px;
+  padding: 40px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface);
+}
+.studio-story {
+  min-width: 0;
+}
+.studio-story h3 {
+  margin: 19px 0;
+  font: 500 clamp(30px, 3vw, 42px) / 1.1 var(--display);
+  letter-spacing: -1.7px;
+}
+.studio-story h3 em {
+  color: var(--lime);
+  font-family: var(--serif);
+  font-weight: 400;
+}
+.studio-story > p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.85;
+}
+.studio-story > .studio-summary {
+  margin-bottom: 13px;
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.6;
+}
+.studio-story .tags {
+  margin: 20px 0 16px;
+}
+.studio-story > .studio-contribution {
+  font-size: 12px;
+}
+.studio-story .actions {
+  gap: 18px;
+  margin-block: 24px 20px;
+}
+.studio-story .button,
+.studio-story .text-link {
+  min-height: 44px;
+}
+.studio-story > .studio-availability {
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+}
+.studio-availability strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+.studio-evidence {
+  min-width: 0;
+  margin: 0;
+}
+.studio-evidence img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #59614e;
+  border-radius: 6px;
+}
+.studio-evidence figcaption {
+  margin-top: 13px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
+@media (max-width: 1024px) {
+  .studio-spotlight {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding: 32px;
+  }
+}
+@media (max-width: 640px) {
+  .studio-spotlight {
+    gap: 24px;
+    margin-top: 24px;
+    padding: 24px 20px;
+  }
+  .studio-story h3 {
+    letter-spacing: -1px;
+  }
+  .studio-story .actions {
+    align-items: flex-start;
+    gap: 15px;
+  }
+}
 .workbar {
   display: flex;
   justify-content: space-between;

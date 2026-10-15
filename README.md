@@ -12,6 +12,16 @@ The portfolio itself is featured first, followed by **ten independent, working p
 
 Seeking **full-time junior frontend/React roles**, available to start **within one week**, with remote opportunities and relocation for the right role. Contact: [mail.deborajsarkar@gmail.com](mailto:mail.deborajsarkar@gmail.com). Profiles: [GitHub](https://github.com/Debotaro), [LinkedIn](https://www.linkedin.com/in/deborajsarkar/) and [Dribbble](https://dribbble.com/Debotaro).
 
+## Flagship product — Debotaro Studio
+
+[Read the Studio case study](https://github.com/Debotaro/debotaro-studio/blob/main/docs/CASE_STUDY.md) · [View Studio source and local setup](https://github.com/Debotaro/debotaro-studio)
+
+The portfolio's [Studio spotlight](https://debotaro.github.io/#studio) has a direct entry link that keeps its heading below the sticky navigation.
+
+The portfolio now includes an additional Studio spotlight, while retaining the portfolio feature, all ten existing demos and their case studies. Debotaro Studio is an original visual application builder for fictional customer-support workspaces, with a documented supported React/TypeScript subset, collaboration, reviewed changes and independent React export. Deboraj's contribution is product direction, visual direction and review; implementation is AI-assisted.
+
+The spotlight uses an actual running-product capture in `previews/studio-editor.png`. Its links open the verified source and documented case study. Studio is a working local product; the full online Studio service is not hosted yet. It requires a Node/WebSocket service and persistent SQLite storage, which GitHub Pages alone does not provide. Live AI is unconfigured; local editing and export work without it. No unhosted **Open Studio** link is published.
+
 ## Explore the ten demos
 
 Project names open their source folders. Demo links open the published applications.

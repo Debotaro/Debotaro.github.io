@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+const port = Number(process.env.PORT || 4173);
 export default defineConfig({
   testDir: './tests',
   timeout: 45000,
@@ -11,14 +12,14 @@ export default defineConfig({
     ['json', { outputFile: 'output/quality-playwright.json' }],
   ],
   use: {
-    baseURL: 'http://localhost:4173',
+    baseURL: `http://localhost:${port}`,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     reducedMotion: 'reduce',
   },
   webServer: {
     command: 'npm run preview',
-    url: 'http://localhost:4173',
+    url: `http://localhost:${port}`,
     reuseExistingServer: !process.env.CI,
     timeout: 15000,
   },
