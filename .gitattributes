@@ -1,2 +1,8 @@
 * text=auto eol=lf
 *.pdf binary
+
+# Preserve the exact reviewed bytes used by the integrity checks on every OS.
+career/ats/*.json -text
+career/ats/evidence/*.json -text
+engineering/reports/*.json -text
+downloads/*.txt -text
