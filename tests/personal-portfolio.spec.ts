@@ -6,14 +6,16 @@ test('Personal portfolio presents the supplied identity and contacts, with its o
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/', { waitUntil: 'networkidle' });
-  await expect(page).toHaveTitle('Deboraj Sarkar (Debotaro) — Frontend Developer');
-  await expect(page.locator('.hero .eyebrow')).toHaveText('Deboraj Sarkar / Frontend Developer');
+  await expect(page).toHaveTitle('Deboraj Sarkar (Debotaro) — AI Software & Automation Developer');
+  await expect(page.locator('.hero .eyebrow')).toHaveText(
+    'Deboraj Sarkar / AI Software & Automation Developer',
+  );
   await expect(page.locator('.hero-intro')).toContainText(
-    'AI-assisted web projects through visual direction',
+    'building AI-assisted software around source evidence',
   );
   await expect(page.locator('.hero-location')).toContainText('Kokrajhar, Assam, India');
   await expect(page.locator('.availability')).toHaveText(
-    'Available to start within one week. Open to remote frontend roles and relocation for the right opportunity.',
+    'Open to junior software, applied AI and automation opportunities in India, including remote roles.',
   );
   expect(
     await page
@@ -75,19 +77,18 @@ test('Background, availability and verifiable credentials match the updated rés
   await expect(experience).toContainText('Jun 2022 — Jul 2023');
   await expect(experience).toContainText('Full-time');
   await expect(page.locator('.contact-copy')).toContainText(
-    'full-time junior frontend or React role',
+    'junior or associate software, applied AI or automation role',
   );
-  await expect(page.locator('.contact-copy')).toContainText('Available within one week');
+  await expect(page.locator('.contact-copy')).toContainText('verification and their limits');
   await expect(page.locator('.skill-note')).toContainText(
     'Codex handles AI-assisted implementation',
   );
   await expect(page.locator('.about-notes')).toContainText('reviewing generated interfaces');
   const credentials = page.locator('.credential-list a');
-  await expect(credentials).toHaveCount(3);
+  await expect(credentials).toHaveCount(2);
   for (const [name, id] of [
     ['Google UX Design Professional Certificate', 'ZR76Q3CG6VAX'],
     ['IBM DevOps, Cloud, and Agile Foundations Specialization', 'ZS82DMJQ6E5H'],
-    ['AWS Cloud Solutions Architect Professional Certificate', 'XRDNDZE8TZ2P'],
   ]) {
     const link = credentials.filter({ hasText: name });
     await expect(link).toHaveAttribute(
@@ -107,6 +108,47 @@ test('Background, availability and verifiable credentials match the updated rés
       expect(bounds).not.toBeNull();
       expect(bounds!.x).toBeGreaterThanOrEqual(0);
       expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(width);
+    }
+  }
+});
+
+test('Engineering case studies resolve locally without unavailable repository or service links', async ({
+  page,
+  request,
+}) => {
+  await page.goto('/#engineering');
+  await expect(page.locator('.engineering-card')).toHaveCount(2);
+  await expect(page.locator('.engineering-attribution')).toContainText(
+    'implementation is AI-assisted',
+  );
+  const person = JSON.parse(
+    (await page.locator('script[type="application/ld+json"]').textContent()) || '{}',
+  );
+  expect(person.name).toBe('Deboraj Sarkar');
+  expect(person.description).toContain('Computer Science student');
+  for (const [path, title] of [
+    ['engineering/evidence-desk.html', 'EvidenceDesk'],
+    ['engineering/flow-ledger.html', 'FlowLedger'],
+  ]) {
+    const response = await request.get(`/${path}`);
+    expect(response.ok()).toBeTruthy();
+    await page.goto(`/${path}`);
+    await expect(page.getByRole('heading', { level: 1, name: title, exact: true })).toBeVisible();
+    await expect(page.locator('.case-status')).toBeVisible();
+    await expect(page.getByRole('link', { name: /Back to engineering projects/ })).toHaveAttribute(
+      'href',
+      '../#engineering',
+    );
+    await expect(
+      page.locator(
+        'a[href*="github.com/Debotaro/evidence-desk"], a[href*="github.com/Debotaro/flow-ledger"]',
+      ),
+    ).toHaveCount(0);
+    for (const width of [320, 390, 1440]) {
+      await page.setViewportSize({ width, height: 1000 });
+      expect(
+        await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+      ).toBeTruthy();
     }
   }
 });
@@ -217,7 +259,8 @@ test('Résumé download serves a real PDF and the printable résumé retains the
   expect((await downloading).suggestedFilename()).toBe('Deboraj-Sarkar-Resume.pdf');
   await page.goto('/downloads/Deboraj-Sarkar-Resume.html');
   await expect(page.getByRole('heading', { name: 'Deboraj Sarkar', exact: true })).toBeVisible();
-  await expect(page.locator('main')).toContainText('AI-assisted');
+  await expect(page).toHaveTitle('Deboraj Sarkar - AI Software & Automation Resume');
+  await expect(page.locator('main')).toContainText('Codex assistance');
   await expect(
     page.getByRole('link', { name: 'mail.deborajsarkar@gmail.com', exact: true }),
   ).toHaveAttribute('href', 'mailto:mail.deborajsarkar@gmail.com');

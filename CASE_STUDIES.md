@@ -1,4 +1,14 @@
-# Debotaro — Selected frontend work
+# Debotaro — Software, automation and interface work
+
+## Engineering case studies — local review edition
+
+**[EvidenceDesk](engineering/evidence-desk.html)** connects versioned support knowledge, lexical and real local semantic retrieval, cited source excerpts and abstention. Python/FastAPI and SQLite support an inspectable knowledge lifecycle. On 16 October 2026, hybrid holdout Recall@3 was 14/18 (77.78%) vs BM25 11/18 (61.11%); all eight unsupported/adversarial holdout cases were refused and citation snapshot traceability was 100%. Forty-six backend tests and Ruff passed locally. The [executed report](engineering/reports/evidence-desk-evaluation.json) includes four development and 26 holdout author-created fixtures. It measures retrieval and source integrity, not generative LLM quality, customer adoption or business outcomes. Public source and hosting await approval.
+
+**[FlowLedger](engineering/flow-ledger.html)** is in preparation: typed intake, idempotency, approval decisions, transactional outbox records, leased workers, bounded retries and recovery are acceptance requirements. No completed functionality, test results, external connectors or business impact is claimed before verification.
+
+These are personal projects with AI-assisted implementation and Deboraj's requirements, visual direction and review. They do not represent prior professional AI/software employment or independent authorship of all implementation and tests. Local source/setup and final evidence must be reviewed before publication.
+
+## Interface collection
 
 Ten independent demos plus the portfolio explore responsive interfaces, useful interactions and distinct visual identities. Each is a **personal concept project with AI-assisted implementation**. Deboraj Sarkar (Debotaro) directs the visual work, reviews generated interfaces, requests revisions and makes the final decisions. Codex performs the implementation and supports iteration. Operational and business demonstrations use sample data; NOVA additionally reads live public GitHub repositories/milestones, and ATLAS reads live public GitHub issues. RELAY adds a browser-local creative handoff workflow and optional Supabase backend source requiring separate setup. Debotaro CHSL, Debotaro Rail and Debotaro Assam add offline learning with original AI-assisted practice material. Project results describe implemented behaviour and documented validation; they do not imply independent coding or test authorship.
 
@@ -10,15 +20,15 @@ The [current validation report](VALIDATION.md), [accessibility review](reports/A
 
 **Personal portfolio · HTML, CSS, JavaScript**
 
-**Challenge.** Give recruiters a quick way to understand Deboraj’s frontend focus, explore working examples and start a conversation.
+**Challenge.** Give recruiters a quick way to understand Deboraj’s software and automation direction, distinguish project evidence from employment and explore working examples.
 
-**Approach.** Lead with a clear professional introduction, place the portfolio itself first, and connect ten distinct demos through a consistent project gallery. Concise case studies explain the implementation choices behind the visuals.
+**Approach.** Lead with engineering evidence and clear contribution boundaries, retain the established design identity and connect ten distinct interface demos through a consistent gallery. Concise case studies explain implementation choices and distinguish local validation from public hosting.
 
 **Implementation highlights.** Responsive layouts; category filtering with an announced result count; working demos and public source links; email, professional profiles and a downloadable résumé.
 
 **Evidence.** Desktop/mobile Chromium checks cover identity, filters, local demo/source links, keyboard dialogs, mobile menu behavior, actual clipboard contents, résumé download and overflow.
 
-**Scope.** A frontend showcase with a résumé covering confirmed education, paid design experience and selected projects. Contact uses an email link; there is no contact backend.
+**Scope.** A software and frontend showcase with a résumé covering owner-reported education, paid design experience and selected projects. Contact uses an email link; there is no contact backend.
 
 ## 02 / RELAY OS
 

@@ -53,6 +53,7 @@ for (const name of [
   'assets',
   'data',
   'downloads',
+  'engineering',
 ])
   cpSync(path.join(root, name), path.join(target, name), { recursive: true });
 cpSync(path.join(root, 'index.html'), path.join(target, 'index.html'));

@@ -54,6 +54,22 @@ const experiences: { name: string; route: string; trigger: (page: Page) => Locat
   },
 ];
 
+test('Engineering case pages expose accessible content and a working keyboard skip link', async ({
+  page,
+  browserName,
+}) => {
+  for (const route of ['/engineering/evidence-desk.html', '/engineering/flow-ledger.html']) {
+    await page.goto(route, { waitUntil: 'networkidle' });
+    await expectNoViolations(page);
+    const skip = page.getByRole('link', { name: /^Skip to/ });
+    if (browserName === 'webkit') await skip.focus();
+    else await page.keyboard.press('Tab');
+    await expect(skip).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(page.locator('main')).toBeFocused();
+  }
+});
+
 for (const experience of experiences) {
   test(`${experience.name}: accessible initial view, skip target and keyboard dialog lifecycle`, async ({
     page,

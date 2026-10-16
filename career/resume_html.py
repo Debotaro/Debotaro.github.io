@@ -1,7 +1,9 @@
-"""Create a self-contained responsive companion to the editorial PDF resume."""
+"""Create a responsive HTML resume from explicit content; default output is local review only."""
 from pathlib import Path
+import argparse
 import base64
 import html
+import json
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -98,10 +100,27 @@ section{margin:0 0 13pt}h2{font-size:8.4pt;line-height:1.2;text-transform:upperc
 @media screen and (max-width:850px){.sheet{width:calc(100% - 24px);min-height:0;padding:24px;margin-bottom:20px}.controls{margin-inline:12px;padding:0}.print-note{padding-inline:24px}.masthead{margin-inline:-8px;padding:20px}.contact,.profiles{line-height:1.6}h1{font-size:28pt}.supporting{gap:18px}}
 @media screen and (max-width:520px){body{font-size:10.5pt}.controls{align-items:flex-start;flex-direction:column}.sheet{padding:24px}.masthead{padding:18px}.eyebrow{font-size:7.5pt}h1{font-size:24pt;margin-right:43pt}.mark{width:28pt;height:28pt;right:15pt;top:33pt}.mark img,.mark svg{width:28pt;height:28pt}.contact,.profiles{font-size:9pt;overflow-wrap:anywhere}h2{font-size:8.3pt;gap:8pt;white-space:normal}h3{font-size:11.5pt}h3 span{display:block;font-size:10pt;margin-top:2pt}section{margin-bottom:18pt}.project{padding-right:10pt}.supporting{display:block}.supporting section{margin-bottom:18pt}footer{font-size:9.5pt}}
 """
+    page_title = data.get("page_title", f'{data["name"]} - {data["title"]} Resume')
+    description = data.get("description", data.get("summary", ""))
+    eyebrow = data.get("resume_eyebrow", data["title"])
     document = f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author" content="{esc(data["name"])}"><meta name="description" content="Frontend resume with verified experience, ongoing Computer Science education and selected AI-assisted personal projects."><title>{esc(data["name"])} - Frontend Developer Resume</title><style>{css}</style></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author" content="{esc(data["name"])}"><meta name="description" content="{esc(description)}"><title>{esc(page_title)}</title><style>{css}</style></head>
 <body><div class="controls"><p>Debotaro / Resume</p><div class="actions"><a href="Deboraj-Sarkar-Resume.pdf" download>Download PDF</a><button type="button" onclick="window.print()">Print resume</button></div></div><p class="print-note">For consistent printing, download the PDF and use A4 at Actual size (100%). Choose High/Best quality in the printer settings; the document cannot override Draft mode. For browser printing, disable headers and footers.</p>
-<main class="sheet"><header class="masthead"><div class="mark" aria-hidden="true">{logo}</div><p class="eyebrow">{esc(data.get("alias", "Debotaro").upper())} / FRONTEND &amp; DESIGN</p><h1>{esc(data["name"])}</h1><p class="role">{esc(data["title"])}</p><p class="contact">{" | ".join(contacts)}</p><p class="profiles">{" | ".join(profiles)}</p></header>{"".join(sections)}{footer}</main></body></html>'''
+<main class="sheet"><header class="masthead"><div class="mark" aria-hidden="true">{logo}</div><p class="eyebrow">{esc(data.get("alias", "Debotaro").upper())} / {esc(eyebrow)}</p><h1>{esc(data["name"])}</h1><p class="role">{esc(data["title"])}</p><p class="contact">{" | ".join(contacts)}</p><p class="profiles">{" | ".join(profiles)}</p></header>{"".join(sections)}{footer}</main></body></html>'''
     path = output_dir / "Deboraj-Sarkar-Resume.html"
     path.write_text(document, encoding="utf-8")
     return path
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--source", type=Path, default=ROOT / "career/resume.json")
+    parser.add_argument("--output-dir", type=Path, default=ROOT / "output/html",
+                        help="Local HTML review folder; no PDF is created or modified.")
+    args = parser.parse_args()
+    data = json.loads(args.source.read_text(encoding="utf-8-sig"))
+    print(build_html(data, args.output_dir))
+
+
+if __name__ == "__main__":
+    main()

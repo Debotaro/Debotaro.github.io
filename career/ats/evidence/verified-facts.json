@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "audited_on": "2026-10-16",
+  "timezone": "Asia/Calcutta",
+  "method": "Read-only public GitHub API/raw source, direct public HTTP requests, web page fetches, public Coursera issuer HTML and root agent's authenticated in-app browser LinkedIn inspection on 16 October 2026. No remote changes and no project tests executed by this profile audit.",
+  "interpretation": {
+    "issuer_verified": "Observed in primary course issuer's public payload; scope limited to the stated course record.",
+    "platform_observed": "Observed in platform metadata, public source or HTTP response; not proof of business impact or individual proficiency.",
+    "public_self_report": "Published by the account holder; not independently confirmed by employer or institution.",
+    "historical_confirmation_note": "An existing public note says the user previously confirmed this; not a fresh confirmation in this session.",
+    "source_reported_execution": "An existing project document reports a test or benchmark run; this audit has not reproduced it."
+  },
+  "identity": {
+    "name": {
+      "value": "Deboraj Sarkar",
+      "status": "public_self_report",
+      "sources": ["https://github.com/Debotaro", "https://debotaro.github.io/"],
+      "note": "Also appears in the two checked Coursera credential payloads; no legal identity verification performed."
+    },
+    "alias": {"value": "Debotaro", "status": "platform_observed", "source": "https://api.github.com/users/Debotaro"},
+    "location": {"value": "Kokrajhar, Assam, India", "status": "public_self_report", "source": "https://api.github.com/users/Debotaro"},
+    "profiles": {
+      "portfolio": "https://debotaro.github.io/",
+      "github": "https://github.com/Debotaro",
+      "linkedin": "https://www.linkedin.com/in/deborajsarkar/"
+    },
+    "contact_policy": "Phone and email were not copied into this ledger. Use existing public contact fields only where required in a reviewed artifact."
+  },
+  "education": [
+    {
+      "qualification": "Bachelor's degree in Computer Science",
+      "institution": "University of the People",
+      "start": "2025-06",
+      "completion_status": "in progress",
+      "end": null,
+      "gpa": null,
+      "evidence_status": "public_self_report",
+      "source": "https://github.com/Debotaro/Debotaro.github.io/blob/main/career/resume.json",
+      "historical_note": "Public RESUME_REVIEW_NOTES.md says these details were supplied by Deboraj in an earlier conversation; root agent also observed the same degree/start in the current LinkedIn About. No enrolment document was inspected in this audit.",
+      "additional_source": "https://www.linkedin.com/in/deborajsarkar/"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Graphic Designer",
+      "organization": "Wecanstore.com",
+      "start": "2022-06",
+      "end": "2023-07",
+      "employment_type": "Full-time",
+      "location": "Bongaigaon, Assam, India",
+      "responsibilities": ["Digital banners, social media graphics and marketing materials", "Design feedback with marketing and sales teams"],
+      "evidence_status": "public_self_report",
+      "source": "https://github.com/Debotaro/Debotaro.github.io/blob/main/career/resume.json",
+      "historical_note": "Existing public review notes say this paid role was user-confirmed and read from LinkedIn previously. Root agent's current authenticated browser inspection also observed the same role and dates in LinkedIn About. No independent employer verification was performed.",
+      "additional_source": "https://www.linkedin.com/in/deborajsarkar/",
+      "unsupported_extensions": ["Software engineering employment", "AI engineering employment", "Management responsibility", "Quantified commercial results"]
+    }
+  ],
+  "credentials": [
+    {
+      "name": "Google UX Design Professional Certificate",
+      "provider": "Google / Coursera",
+      "credential_id": "ZR76Q3CG6VAX",
+      "source": "https://www.coursera.org/account/accomplishments/specialization/ZR76Q3CG6VAX",
+      "status": "issuer_verified",
+      "verification": "Public issuer HTML linked firstName Deboraj, lastName Sarkar, specialization Google UX Design and course CertificateV1 grant records.",
+      "completion_month_in_resume": "2023-11",
+      "date_verification": "Course grant timestamps are consistent with November 2023; separate specialization award timestamp not extracted.",
+      "type": "Course professional certificate; not an independently passed vendor certification exam"
+    },
+    {
+      "name": "IBM DevOps, Cloud, and Agile Foundations Specialization",
+      "provider": "IBM / Coursera",
+      "credential_id": "ZS82DMJQ6E5H",
+      "source": "https://www.coursera.org/account/accomplishments/specialization/ZS82DMJQ6E5H",
+      "status": "issuer_verified",
+      "verification": "Public issuer HTML linked firstName Deboraj, lastName Sarkar, specialization IBM DevOps, Cloud, and Agile Foundations and course CertificateV1 grant records.",
+      "completion_month_in_resume": "2023-04",
+      "date_verification": "Course grant timestamps are consistent with April 2023; separate specialization award timestamp not extracted.",
+      "type": "Course specialization; not an independently passed vendor certification exam"
+    }
+  ],
+  "credential_limit": "Ten other course credentials in the existing public resume.json were not independently checked in this audit. Do not label AWS Coursera courses as AWS certification exams.",
+  "contribution": {
+    "status": "public_self_report",
+    "source": "https://github.com/Debotaro/Debotaro/blob/main/README.md",
+    "user_contribution": ["Product and visual direction", "Requirements and visual goals", "Interface review", "Iteration and final decisions"],
+    "implementation": "Codex-assisted implementation",
+    "not_established": ["Unaided coding proficiency", "Individual authorship of all implementation or tests", "Prior professional AI engineering experience"]
+  },
+  "repositories": [
+    {
+      "name": "Debotaro.github.io",
+      "url": "https://github.com/Debotaro/Debotaro.github.io",
+      "audited_commit": "a4b6b0c4ecc8b4e5f07e8fb3b1a091fc90c7a994",
+      "status": "platform_observed",
+      "evidence": ["Static portfolio and ten concept demos", "GitHub Pages workflow", "Browser and unit test source", "Screenshots, case studies and resume source"],
+      "workflow": {"id": 38741209874, "conclusion": "success", "completed_utc": "2026-10-15T13:29:02Z", "source": "https://github.com/Debotaro/Debotaro.github.io/actions/runs/38741209874", "status": "platform_observed"},
+      "limits": ["Public HTTP availability is not browser functionality verification", "Most applications use sample data and local browser state", "Optional backend adapters are not evidence of deployed cloud services"]
+    },
+    {
+      "name": "debotaro-studio",
+      "url": "https://github.com/Debotaro/debotaro-studio",
+      "audited_commit": "09a632b45e533eed86b291dd08506d85c4d8a04f",
+      "status": "platform_observed",
+      "evidence": ["React and TypeScript source", "Babel import/generation", "Express and WebSocket service", "Yjs collaboration", "SQLite persistence", "Permission and recovery tests", "Independent export source", "28 test/spec files in public tree"],
+      "test_report": {"status": "source_reported_execution", "date": "2026-10-15", "unit_integration_tests": 302, "browser_tests": 23, "source": "https://github.com/Debotaro/debotaro-studio/blob/main/docs/VERIFICATION.md", "reexecuted_in_this_audit": false},
+      "limits": ["Backend not externally hosted at audited checkpoint", "Real model inference and model quality unverified", "No .github/workflows entries in audited public tree", "UNLICENSED package metadata", "No customer adoption, business impact or production load verification"]
+    },
+    {"name": "Debotaro", "url": "https://github.com/Debotaro/Debotaro", "status": "platform_observed", "purpose": "Public profile README and resume asset"}
+  ],
+  "availability": {"value": "Available within one week; open to remote roles and relocation for the right opportunity", "status": "public_self_report", "source": "https://github.com/Debotaro/Debotaro.github.io/blob/main/career/resume.json", "note": "Time-sensitive historical claim; reconfirm before using in active applications."},
+  "http_checks": [
+    {"url": "https://debotaro.github.io/", "status": 200},
+    {"url": "https://debotaro.github.io/relay-os/", "status": 200},
+    {"url": "https://debotaro.github.io/nova-os/app/", "status": 200},
+    {"url": "https://debotaro.github.io/atlas-ops/", "status": 200},
+    {"url": "https://debotaro.github.io/nila-ledger/", "status": 200},
+    {"url": "https://debotaro.github.io/downloads/Deboraj-Sarkar-Resume.pdf", "status": 200}
+  ],
+  "linkedin_observation": {
+    "observed_on": "2026-10-16",
+    "method": "Root agent authenticated in-app browser read; no write",
+    "source": "https://www.linkedin.com/in/deborajsarkar/",
+    "headline": "Digital Designer | AI-Assisted Product Design & Development",
+    "about_self_reports": ["Graphic Designer at Wecanstore.com, June 2022 to July 2023", "Computer Science bachelor's at University of the People from June 2025, in progress", "Google UX Design learning, November 2023", "AI-assisted Debotaro Studio; live LLM unverified"],
+    "featured_observed": ["Digital-designer resume", "Older frontend resume marked archived", "Debotaro Studio", "Portfolio"],
+    "status": "public_self_report",
+    "privacy": "No private analytics or follower counts recorded.",
+    "publication": "No changes applied. Final profile and Featured changes await user approval."
+  },
+  "access_limitations": [{"url": "https://www.linkedin.com/in/deborajsarkar/", "result": "Public web fetch HTTP 999; current content was nevertheless read through root's authenticated in-app browser. This is a method caveat, not an access blocker."}],
+  "prohibited_inferences": ["A completed CS degree", "A GPA or graduation date", "Paid AI/software engineering employment", "Years of engineering experience", "AWS vendor exam certification from a Coursera course", "Live LLM integration from mocked tests", "Customer adoption or financial/time-saving impact from demo records", "Public hosting of a local-only backend", "Current LinkedIn updates without authenticated execution and inspection"]
+}

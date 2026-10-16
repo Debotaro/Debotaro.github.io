@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "prepared_on": "2026-10-16",
+  "finalization_status": "ready",
+  "provenance": {
+    "background": "career/verified-facts.json; public self-report and historical user-confirmation notes, not new employer/institution verification",
+    "contact": "Existing public repositories/portfolio/career/resume.json email and profile fields",
+    "evidencedesk": "repositories/evidence-desk/reports/evaluation.json; 4 development and 26 holdout cases; synthetic author-created corpus",
+    "flowledger": "repositories/flow-ledger/reports/verification.json: 9/9 isolated fictional SQLite/local-case experiments; 12 concurrent submissions create 1 job; 8 worker threads process 16 jobs with 0 duplicate local cases; independent polling subprocess processes 5 jobs; real os._exit(86) after durable case commit and before acknowledgement on attempts 1 and 3 recovers 1 case in each experiment. Retry and lease boundary experiments use injected UTC. No external connector, customer impact or general exactly-once delivery claim.",
+    "policy": "Personal projects, not software employment; project technologies do not imply independently assessed proficiency. No phone or time-sensitive availability claim."
+  },
+  "candidate": {
+    "name": "Deboraj Sarkar",
+    "location": "Kokrajhar, Assam, India",
+    "email": "mail.deborajsarkar@gmail.com",
+    "links": [
+      {"label": "debotaro.github.io", "url": "https://debotaro.github.io/"},
+      {"label": "github.com/Debotaro", "url": "https://github.com/Debotaro"},
+      {"label": "linkedin.com/in/deborajsarkar", "url": "https://www.linkedin.com/in/deborajsarkar/"}
+    ]
+  },
+  "ownership_disclosure": "Personal projects developed with Codex assistance.",
+  "education": {
+    "qualification": "Bachelor's degree in Computer Science - in progress",
+    "institution": "University of the People",
+    "dates": "Jun 2025 - Present"
+  },
+  "experience": {
+    "title": "Graphic Designer",
+    "organization": "Wecanstore.com",
+    "dates": "Jun 2022 - Jul 2023",
+    "location": "Bongaigaon, Assam, India | Full-time",
+    "bullets": [
+      "Created digital banners, social media graphics and marketing materials aligned with brand guidelines.",
+      "Collaborated with marketing and sales teams and incorporated feedback across design projects."
+    ]
+  },
+  "course_credentials": [
+    {"name": "IBM DevOps, Cloud, and Agile Foundations Specialization", "issuer": "IBM / Coursera", "date": "Apr 2023", "url": "https://www.coursera.org/account/accomplishments/specialization/ZS82DMJQ6E5H"},
+    {"name": "Google UX Design Professional Certificate", "issuer": "Google / Coursera", "date": "Nov 2023", "url": "https://www.coursera.org/account/accomplishments/specialization/ZR76Q3CG6VAX"}
+  ],
+  "projects": {
+    "evidencedesk": {
+      "name": "EvidenceDesk",
+      "descriptor": "Evidence-grounded support knowledge workbench",
+      "status": "verified_local",
+      "bullets": [
+        "Python/FastAPI service with real local MiniLM embeddings, BM25/hybrid retrieval, source excerpts, citations and explicit weak-evidence refusal.",
+        "Extractive responses with document revisions, stale-write conflicts, deletion and immutable citation snapshots in SQLite.",
+        "On a 26-case synthetic holdout, hybrid found the expected source for 14/18 answerable queries versus 11/18 for BM25; refused 8/8 unsupported or adversarial queries."
+      ],
+      "automation_bullets": [
+        "Python/FastAPI knowledge service with atomic source revisions, duplicate detection, stale-write conflict handling, deletion and auditable citation snapshots.",
+        "On a 26-case synthetic holdout, MiniLM/BM25 hybrid retrieved the expected source for 14/18 answerable queries versus 11/18 for BM25; refused 8/8 unsupported/adversarial queries."
+      ]
+    },
+    "flowledger": {
+      "name": "FlowLedger",
+      "descriptor": "Auditable workflow automation service",
+      "status": "verified_local",
+      "bullets": [
+        "Python/FastAPI workflow service with typed routing, SQLite durable outbox, approvals, retries, dead-letter replay and lease-token fencing.",
+        "Passed 9/9 local SQLite experiments: 12 repeated submissions produced one job; eight workers completed 16 jobs with zero duplicate local cases; real worker crash recovery retained one case."
+      ],
+      "automation_bullets": [
+        "Python/FastAPI service with typed event routing, SQLite durable outbox, approvals, exponential retries, dead-letter replay and lease-token fencing.",
+        "Passed 9/9 local SQLite experiments: 12 concurrent repeated submissions created one job; eight workers completed 16 jobs with zero duplicate local cases.",
+        "Real subprocess exits after case commit and before acknowledgement recovered one case on first and final attempts; an independent polling worker processed five jobs."
+      ]
+    }
+  },
+  "variants": [
+    {
+      "id": "ai-software",
+      "filename": "Deboraj-Sarkar-AI-Software-Resume",
+      "target": "AI SOFTWARE / APPLIED AI - ENTRY LEVEL",
+      "summary": "Computer Science student with paid graphic design experience and Codex-assisted Python application projects. Seeking entry-level AI software and backend roles, with portfolio evidence in retrieval evaluation, API design and usable interfaces.",
+      "project_order": ["evidencedesk", "flowledger"],
+      "skills": [
+        {"label": "Application stack", "text": "Python, FastAPI, Pydantic, SQLite, SQL, HTML, CSS, JavaScript"},
+        {"label": "Retrieval and quality", "text": "MiniLM, FastEmbed, ONNX Runtime, BM25, hybrid retrieval, evaluation fixtures, pytest"},
+        {"label": "Tools and collaboration", "text": "Git, GitHub, Codex, technical documentation, interface review and design iteration"}
+      ]
+    },
+    {
+      "id": "python-automation",
+      "filename": "Deboraj-Sarkar-Python-Automation-Resume",
+      "target": "PYTHON AUTOMATION DEVELOPER - ENTRY LEVEL",
+      "summary": "Computer Science student with paid graphic design experience and Codex-assisted Python application projects. Seeking entry-level Python automation and integration roles, with a focus on reliable workflows, inspectable state and clear operator interfaces.",
+      "project_order": ["flowledger", "evidencedesk"],
+      "skills": [
+        {"label": "Application stack", "text": "Python, FastAPI, Pydantic, SQLite, SQL, HTML, CSS, JavaScript"},
+        {"label": "Quality and workflows", "text": "pytest, API validation, idempotency, outbox, retries, worker leases, fault injection, retrieval evaluation"},
+        {"label": "Tools and collaboration", "text": "Git, GitHub, Codex, technical documentation, requirements review and design iteration"}
+      ]
+    }
+  ]
+}

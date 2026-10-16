@@ -1,46 +1,48 @@
 # Deboraj Sarkar
 
-Frontend Developer | Debotaro
+AI Software & Automation Developer | Entry Level
 
-Kokrajhar, Assam, India | [+91 7099869194](tel:+917099869194) | [mail.deborajsarkar@gmail.com](mailto:mail.deborajsarkar@gmail.com)
+Kokrajhar, Assam, India | mail.deborajsarkar@gmail.com
 
-[Portfolio](https://debotaro.github.io/) | [github.com/Debotaro](https://github.com/Debotaro) | [linkedin.com/in/deborajsarkar](https://www.linkedin.com/in/deborajsarkar/)
+https://debotaro.github.io/
 
 ## Profile
 
-Frontend Developer and Computer Science student with paid graphic design experience. Guides AI-assisted projects through visual direction, interface review, iterative feedback and final design decisions. Seeking a full-time junior frontend or React role.
+Computer Science student with paid graphic design experience and Codex-assisted Python application projects. Seeking entry-level AI software and backend roles, with portfolio evidence in retrieval evaluation, API design and usable interfaces. Personal projects developed with Codex assistance. Repositories document implementation, executable checks and limits.
 
 ## Selected personal projects
 
-### RELAY OS | Creative review studio
+### EvidenceDesk / Evidence-grounded support knowledge workbench
 
-React, TypeScript, Vite | [View demo](https://debotaro.github.io/relay-os/)
+Python, FastAPI, SQLite, MiniLM, BM25
 
-- Directed the review studio's identity and interface revisions for versioned artwork, pinned feedback, approvals and comment-to-task conversion.
+- Python/FastAPI service with real local MiniLM embeddings, BM25/hybrid retrieval, source excerpts, citations and explicit weak-evidence refusal.
 
-### NOVA OS | Daily planning workspace
+- Extractive responses with document revisions, stale-write conflicts, deletion and immutable citation snapshots in SQLite.
 
-Next.js, React, TypeScript, Tailwind CSS | [View demo](https://debotaro.github.io/nova-os/app/)
+- On a 26-case synthetic holdout, hybrid found the expected source for 14/18 answerable queries versus 11/18 for BM25; refused 8/8 unsupported or adversarial queries.
 
-- Guided the calm workspace design and review iterations for tasks, task-linked focus sessions, browser-local persistence and public GitHub milestone imports.
+### FlowLedger / Auditable workflow automation service
 
-### NILA Ledger | Personal finance interface
+Python, FastAPI, SQLite, outbox, worker leases
 
-React, TypeScript, Vite, Recharts | [View demo](https://debotaro.github.io/nila-ledger/)
+- Python/FastAPI workflow service with typed routing, SQLite durable outbox, approvals, retries, dead-letter replay and lease-token fencing.
 
-- Reviewed a finance interface combining transaction editing, budget tracking, filtered CSV exports and printable monthly reports.
+- Passed 9/9 local SQLite experiments: 12 repeated submissions produced one job; eight workers completed 16 jobs with zero duplicate local cases; real worker crash recovery retained one case.
 
-## Technologies used in portfolio projects
+Both projects are locally verified; public source and service hosting await approval. Measurements use synthetic records and do not represent customer outcomes.
 
-**Frontend:** HTML, CSS, JavaScript, React, Next.js, TypeScript, Tailwind CSS
+## Project technologies
 
-**Tools and workflow:** Git, GitHub, Figma, Codex, visual review and design iteration
+- Application stack: Python, FastAPI, Pydantic, SQLite, SQL, HTML, CSS, JavaScript
+
+- Retrieval and quality: MiniLM, FastEmbed, ONNX Runtime, BM25, hybrid retrieval, evaluation fixtures, pytest
+
+- Tools and collaboration: Git, GitHub, Codex, technical documentation, interface review and design iteration
 
 ## Professional experience
 
-**Graphic Designer - Wecanstore.com**
-
-Jun 2022 - Jul 2023 | Bongaigaon, Assam, India | Full-time
+Graphic Designer | Wecanstore.com | Jun 2022 - Jul 2023 | Bongaigaon, Assam, India | Full-time
 
 - Created digital banners, social media graphics and marketing materials aligned with brand guidelines.
 
@@ -48,16 +50,10 @@ Jun 2022 - Jul 2023 | Bongaigaon, Assam, India | Full-time
 
 ## Education
 
-**Bachelor's degree in Computer Science - in progress**
+Bachelor's degree in Computer Science - in progress | University of the People | Jun 2025 - Present
 
-University of the People | Jun 2025 - Present
+## Selected course credentials
 
-## Selected Coursera certificates
+- Google UX Design Professional Certificate | Nov 2023 | https://www.coursera.org/account/accomplishments/specialization/ZR76Q3CG6VAX
 
-[Google UX Design Professional Certificate](https://www.coursera.org/account/accomplishments/specialization/ZR76Q3CG6VAX) - Google / Coursera | Nov 2023
-
-[IBM DevOps, Cloud, and Agile Foundations Specialization](https://www.coursera.org/account/accomplishments/specialization/ZS82DMJQ6E5H) - IBM / Coursera | Apr 2023
-
-## Availability
-
-Available within one week. Open to remote roles and relocation for the right opportunity.
+- IBM DevOps, Cloud, and Agile Foundations Specialization | Apr 2023 | https://www.coursera.org/account/accomplishments/specialization/ZS82DMJQ6E5H

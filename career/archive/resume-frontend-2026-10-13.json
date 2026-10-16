@@ -1,0 +1,167 @@
+{
+  "name": "Deboraj Sarkar",
+  "alias": "Debotaro",
+  "title": "Frontend Developer",
+  "email": "mail.deborajsarkar@gmail.com",
+  "phone": "+91 7099869194",
+  "location": "Kokrajhar, Assam, India",
+  "portfolio": "https://debotaro.github.io/",
+  "profiles": [
+    { "label": "github.com/Debotaro", "url": "https://github.com/Debotaro" },
+    {
+      "label": "linkedin.com/in/deborajsarkar",
+      "url": "https://www.linkedin.com/in/deborajsarkar/"
+    }
+  ],
+  "summary": "Frontend Developer and Computer Science student with paid graphic design experience. Guides AI-assisted projects through visual direction, interface review, iterative feedback and final design decisions. Seeking a full-time junior frontend or React role.",
+  "skills_heading": "Technologies used in portfolio projects",
+  "certifications_heading": "Selected Coursera certificates",
+  "skills": [
+    {
+      "label": "Frontend",
+      "text": "HTML, CSS, JavaScript, React, Next.js, TypeScript, Tailwind CSS"
+    },
+    {
+      "label": "Tools and workflow",
+      "text": "Git, GitHub, Figma, Codex, visual review and design iteration"
+    }
+  ],
+  "projects": [
+    {
+      "name": "RELAY OS",
+      "descriptor": "Creative review studio",
+      "stack": "React, TypeScript, Vite",
+      "url": "https://debotaro.github.io/relay-os/",
+      "bullets": [
+        "Directed the review studio's identity and interface revisions for versioned artwork, pinned feedback, approvals and comment-to-task conversion."
+      ]
+    },
+    {
+      "name": "NOVA OS",
+      "descriptor": "Daily planning workspace",
+      "stack": "Next.js, React, TypeScript, Tailwind CSS",
+      "url": "https://debotaro.github.io/nova-os/app/",
+      "bullets": [
+        "Guided the calm workspace design and review iterations for tasks, task-linked focus sessions, browser-local persistence and public GitHub milestone imports."
+      ]
+    },
+    {
+      "name": "NILA Ledger",
+      "descriptor": "Personal finance interface",
+      "stack": "React, TypeScript, Vite, Recharts",
+      "url": "https://debotaro.github.io/nila-ledger/",
+      "bullets": [
+        "Reviewed a finance interface combining transaction editing, budget tracking, filtered CSV exports and printable monthly reports."
+      ]
+    }
+  ],
+  "additional": "",
+  "process_heading": "Availability",
+  "process": "Available within one week. Open to remote roles and relocation for the right opportunity.",
+  "availability": "",
+  "education": [
+    {
+      "qualification": "Bachelor's degree in Computer Science - in progress",
+      "institution": "University of the People",
+      "dates": "Jun 2025 - Present"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Graphic Designer",
+      "organization": "Wecanstore.com",
+      "dates": "Jun 2022 - Jul 2023",
+      "location": "Bongaigaon, Assam, India | Full-time",
+      "bullets": [
+        "Created digital banners, social media graphics and marketing materials aligned with brand guidelines.",
+        "Collaborated with marketing and sales teams and incorporated feedback across design projects."
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Google UX Design Professional Certificate",
+      "issuer": "Google / Coursera",
+      "date": "Nov 2023",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/ZR76Q3CG6VAX",
+      "selected": true
+    },
+    {
+      "name": "IBM DevOps, Cloud, and Agile Foundations Specialization",
+      "issuer": "IBM / Coursera",
+      "date": "Apr 2023",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/ZS82DMJQ6E5H",
+      "selected": true
+    },
+    {
+      "name": "AWS Cloud Solutions Architect Professional Certificate",
+      "issuer": "Amazon Web Services / Coursera",
+      "date": "Apr 2023",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/XRDNDZE8TZ2P",
+      "selected": false
+    },
+    {
+      "name": "Introduction to Data Science Specialization",
+      "issuer": "IBM / Coursera",
+      "date": "Jun 2025",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/L4HGITCYVHR2",
+      "selected": false
+    },
+    {
+      "name": "Tally Bookkeeper Professional Certificate",
+      "issuer": "Tally Education and Distribution Services Private Limited / Coursera",
+      "date": "May 2025",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/HWXH30J8GVNY",
+      "selected": false
+    },
+    {
+      "name": "AWS Fundamentals Specialization",
+      "issuer": "Amazon Web Services / Coursera",
+      "date": "Apr 2023",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/2PW3KRRUX6NB",
+      "selected": false
+    },
+    {
+      "name": "Business Foundations Specialization",
+      "issuer": "University of Pennsylvania / Coursera",
+      "date": "Jun 2023",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/RUS2CNTHNK57",
+      "selected": false
+    },
+    {
+      "name": "Google Digital Marketing & E-commerce Professional Certificate",
+      "issuer": "Google / Coursera",
+      "date": "Nov 2022",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/WSLL9R7Z4CRF",
+      "selected": false
+    },
+    {
+      "name": "Management Consulting Specialization",
+      "issuer": "Emory University / Coursera",
+      "date": "May 2023",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/C294SY9J34AD",
+      "selected": false
+    },
+    {
+      "name": "Microsoft 365 Fundamentals Specialization",
+      "issuer": "Microsoft / Coursera",
+      "date": "May 2023",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/9X4QU24V5XXQ",
+      "selected": false
+    },
+    {
+      "name": "Business and Marketing Strategies Specialization",
+      "issuer": "University of London / Coursera",
+      "date": "Dec 2022",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/6DBGML95DNH3",
+      "selected": false
+    },
+    {
+      "name": "Google Project Management Professional Certificate",
+      "issuer": "Google / Coursera",
+      "date": "Dec 2022",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/8FYWD2NVQA94",
+      "selected": false
+    }
+  ]
+}

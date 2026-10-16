@@ -15,3 +15,10 @@ downloads/
 ssc-chsl/*.html
 rrb-ntpc/*.html
 adre-hs/*.html
+
+# Immutable reviewed ATS source and evidence snapshots; hashes are validated by --check.
+career/ats/evidence/evidence-desk-evaluation.json
+career/ats/evidence/flow-ledger-verification.json
+career/ats/evidence/verified-facts.json
+career/ats/resume-source.json
+career/ats/verification.json

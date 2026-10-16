@@ -1,0 +1,92 @@
+{
+  "prepared_on": "2026-10-16",
+  "results": [
+    {
+      "pdf": "downloads/Deboraj-Sarkar-AI-Software-Resume.pdf",
+      "plaintext": "downloads/Deboraj-Sarkar-AI-Software-Resume.txt",
+      "pages": 1,
+      "extracted_words": 302,
+      "hyperlink_targets": [
+        "mailto:mail.deborajsarkar@gmail.com",
+        "https://debotaro.github.io/",
+        "https://github.com/Debotaro",
+        "https://www.linkedin.com/in/deborajsarkar/",
+        "https://www.coursera.org/account/accomplishments/specialization/ZS82DMJQ6E5H",
+        "https://www.coursera.org/account/accomplishments/specialization/ZR76Q3CG6VAX"
+      ],
+      "text_checks": "passed",
+      "section_order": [
+        "SUMMARY",
+        "PERSONAL PROJECTS",
+        "PROJECT TECHNOLOGIES",
+        "EXPERIENCE",
+        "EDUCATION",
+        "COURSE CREDENTIALS"
+      ],
+      "visual_review": "passed - all pages rendered at 144 dpi and visually inspected; no clipping, overlap, missing glyphs or unreadable text",
+      "full_source_text_checks": {
+        "pypdf": "passed",
+        "pdfplumber": "passed",
+        "plaintext": "passed"
+      },
+      "rendered_pages": [
+        "career/ats/evidence/rendered/ai-software-1.png"
+      ],
+      "text_bounds_points": {
+        "left": 48.0,
+        "right": 545.21,
+        "top": 44.42,
+        "bottom": 658.19
+      },
+      "pdf_sha256": "f2d5d3386d00a518a19a09c4075aad8cd0f2f2c8b09748cbed129687222fda70",
+      "plaintext_sha256": "cc346756562db4052599963d028e91de021a75897f353ebfea65cddd69b759d0",
+      "render_sha256": "3ae2c137575d7e85cd5ef12335bf7ab3b7febe4fcb24068395c6e9d448420cd3"
+    },
+    {
+      "pdf": "downloads/Deboraj-Sarkar-Python-Automation-Resume.pdf",
+      "plaintext": "downloads/Deboraj-Sarkar-Python-Automation-Resume.txt",
+      "pages": 1,
+      "extracted_words": 308,
+      "hyperlink_targets": [
+        "mailto:mail.deborajsarkar@gmail.com",
+        "https://debotaro.github.io/",
+        "https://github.com/Debotaro",
+        "https://www.linkedin.com/in/deborajsarkar/",
+        "https://www.coursera.org/account/accomplishments/specialization/ZS82DMJQ6E5H",
+        "https://www.coursera.org/account/accomplishments/specialization/ZR76Q3CG6VAX"
+      ],
+      "text_checks": "passed",
+      "section_order": [
+        "SUMMARY",
+        "PERSONAL PROJECTS",
+        "PROJECT TECHNOLOGIES",
+        "EXPERIENCE",
+        "EDUCATION",
+        "COURSE CREDENTIALS"
+      ],
+      "visual_review": "passed - all pages rendered at 144 dpi and visually inspected; no clipping, overlap, missing glyphs or unreadable text",
+      "full_source_text_checks": {
+        "pypdf": "passed",
+        "pdfplumber": "passed",
+        "plaintext": "passed"
+      },
+      "rendered_pages": [
+        "career/ats/evidence/rendered/python-automation-1.png"
+      ],
+      "text_bounds_points": {
+        "left": 48.0,
+        "right": 545.88,
+        "top": 44.42,
+        "bottom": 670.49
+      },
+      "pdf_sha256": "c1212f35932e3bbb5b9c86d236207883aa0f181f2452e010bba2256c35489759",
+      "plaintext_sha256": "49ccb8f6edb7df09b59f2fff3d4ff8dc87eea8c158ba89bc7bc975605d501412",
+      "render_sha256": "ecd405258283b04ee0f9e9f790dfd7d51f561ec4ba8b34caee1441598c9fc267"
+    }
+  ],
+  "status": "passed",
+  "scope": "Two one-page A4 single-column local resumes. Source fidelity checked with pypdf, pdfplumber and plaintext. All pages rendered and visually inspected. Six existing profile/contact/course links per PDF checked. Not an external ATS ranking or delivery to an employer.",
+  "layout": "Embedded Arial; 9.6pt body; 21pt name; 42pt side margins",
+  "publication": "Not published; public updates require user approval.",
+  "path_base": "Portfolio repository root; the artifacts are unchanged copies of the reviewed delivery files."
+}

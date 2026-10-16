@@ -53,3 +53,13 @@ Employment dates and design responsibilities are supported by the existing Linke
 - The factual boundaries remain unchanged: personal concepts with AI-assisted implementation, visual direction and review as the applicant's contribution, paid graphic-design employment, an in-progress degree, two selected Coursera credentials and one-week availability. No new independent coding, client, revenue, banking or live cloud-deployment claim is added.
 - The reviewed PDF is one exact A4 page, 75,877 bytes, with three embedded TrueType fonts and ten URI links. The vector logo uses no image XObject. The output, download and built PDF copies match SHA-256 `770ae3543c91238100281f170674e379e39cf7bfb8c192dab3c822a3580b3442`; the matching HTML prints to one A4 page and fits 360px/390px screens without horizontal overflow.
 - The LinkedIn cover was rebuilt separately at 3168 x 792 pixels with larger type and a photo-safe left area. Its clean vector source avoids the old raster transparency noise. The saved LinkedIn preview still uses the platform's 640px derivative; the source artwork and typography are designed to remain legible at that size. The earlier notes above remain historical release records.
+
+## Current local review edition — 16 October 2026
+
+The notes above describe historical frontend releases. They do not establish that today's AI software / automation update has been published.
+
+The current `resume.json`, `RESUME.md` and printable HTML companion use the evidence-aligned personal projects, an in-progress CS degree, actual Graphic Designer work and two selected issuer-checked course credentials. All course records remain in the source, with unselected records retained. The current draft omits phone and time-sensitive immediate availability.
+
+The two new one-page ATS PDF/TXT variants were rendered, visually reviewed and fully text-checked in the delivery workspace before copying into `downloads/`. The default PDF is the AI software variant. Previous frontend PDF/HTML/source are preserved under dated names. No PDF was regenerated through the older branded layout in this update. New project capabilities and tests are evidence about Codex-assisted software artifacts, not independently demonstrated personal coding proficiency or professional AI engineering employment.
+
+No public website, GitHub account or LinkedIn change has been applied. The final delivery record must verify publication separately after approval.

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="EvidenceDesk: Deboraj Sarkar's AI-assisted retrieval workbench with source citations, lexical and semantic baselines, abstention and reproducible local evaluation."
+    />
+    <title>EvidenceDesk — Deboraj Sarkar / Debotaro</title>
+    <link rel="icon" type="image/png" href="../assets/favicon.png" />
+    <link rel="stylesheet" href="../assets/fonts/portfolio-fonts.css" />
+    <link rel="stylesheet" href="../assets/portfolio.css" />
+  </head>
+  <body>
+    <a class="skip" href="#case-main">Skip to case study</a>
+    <main class="container engineering-page" id="case-main" tabindex="-1">
+      <a class="case-back" href="../#engineering">← Back to engineering projects</a>
+      <p class="eyebrow">Personal project / Applied AI &amp; retrieval</p>
+      <h1>EvidenceDesk</h1>
+      <p class="case-lead">
+        Support answers should come with evidence a person can inspect. A local workbench for
+        retrieving, citing and versioning support knowledge.
+      </p>
+      <div class="case-status">
+        <strong>Local validation.</strong> Public source and service hosting await approval. This
+        page is a project case study; it does not connect to a hosted EvidenceDesk service.
+      </div>
+      <div class="tags">
+        <span>Python</span><span>FastAPI</span><span>SQLite</span><span>MiniLM embeddings</span
+        ><span>BM25</span>
+      </div>
+      <figure class="case-capture">
+        <img
+          src="../previews/evidence-workbench.png"
+          width="1440"
+          height="1051"
+          alt="EvidenceDesk running locally with a refund-policy answer, versioned source passages and query history"
+        />
+        <figcaption>
+          Actual local workbench capture. Policies and questions are fictional support fixtures.
+        </figcaption>
+      </figure>
+      <section aria-labelledby="problem-title">
+        <h2 id="problem-title">The problem</h2>
+        <p>
+          Policies change. A fluent answer is difficult to trust if its source is missing, outdated
+          or unrelated. EvidenceDesk makes the retrieval decision visible: which source supports
+          this response, and when should the system abstain?
+        </p>
+      </section>
+      <section aria-labelledby="flow-title">
+        <h2 id="flow-title">How the system works</h2>
+        <ol>
+          <li>
+            Ingest bounded text documents with stable identities and versioned source snapshots.
+          </li>
+          <li>
+            Compare a BM25 lexical baseline with actual local MiniLM embedding inference and hybrid
+            retrieval.
+          </li>
+          <li>
+            Return extractive source excerpts with citations, or abstain when support is
+            insufficient.
+          </li>
+          <li>
+            Inspect query history, update knowledge with stale-write protection and delete stored
+            documents.
+          </li>
+        </ol>
+        <p>
+          FastAPI validates the request boundary. SQLite holds documents, versions and query
+          records. CPU inference runs locally after the initial public model download. There is no
+          remote URL ingestion or arbitrary tool execution.
+        </p>
+      </section>
+      <section aria-labelledby="evidence-title">
+        <h2 id="evidence-title">Verification and limits</h2>
+        <p>
+          The 16 October 2026 local evaluation used five fictional policies, four development cases
+          and a separate 26-case holdout: 18 answerable questions and eight unsupported/adversarial
+          questions. The threshold was fixed before holdout execution. Actual MiniLM CPU inference
+          was executed; no paid API or generative LLM is involved.
+        </p>
+        <div
+          class="case-table-wrap"
+          role="region"
+          aria-label="Local synthetic retrieval evaluation results"
+          tabindex="0"
+        >
+          <table class="case-results">
+            <caption>
+              Holdout retrieval results · author-created fixtures
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Measure</th>
+                <th scope="col">BM25 baseline</th>
+                <th scope="col">Hybrid</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Answerable Recall@3</th>
+                <td>11/18 (61.11%)</td>
+                <td>14/18 (77.78%)</td>
+              </tr>
+              <tr>
+                <th scope="row">Unsupported/adversarial refusals</th>
+                <td>8/8</td>
+                <td>8/8</td>
+              </tr>
+              <tr>
+                <th scope="row">Citation snapshot traceability</th>
+                <td>100%</td>
+                <td>100%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          <a class="text-link" href="reports/evidence-desk-evaluation.json"
+            >Read the executed evaluation report <span aria-hidden="true">↗</span></a
+          >
+        </p>
+        <p>
+          Forty-six backend tests and Ruff checks passed locally. Hybrid retrieval missed four of
+          the 18 answerable holdout cases. This small regression set is not an independent
+          benchmark; traceability proves a citation matches stored source, not that the source
+          itself is correct.
+        </p>
+        <p>
+          This measures retrieval, refusal and citation integrity. It does not evaluate generative
+          LLM output, customer satisfaction, business savings or production scale. The project is a
+          bounded single-workspace service; multi-tenant authorization is outside its scope.
+        </p>
+      </section>
+      <section aria-labelledby="contribution-title">
+        <h2 id="contribution-title">Contribution and local setup</h2>
+        <p>
+          Personal project developed with Codex assistance. The repository documents implementation,
+          executable checks and limits. Runnable capabilities are project evidence, not a claim of
+          prior professional AI engineering employment or independently assessed individual
+          proficiency.
+        </p>
+        <p>
+          From the reviewed EvidenceDesk project folder, create a Python 3.12+ environment and run
+          the commands below. The first semantic ingestion downloads the public MiniLM model;
+          subsequent inference uses the local cache. No API key is required. Public source links
+          will be added after publication approval.
+        </p>
+        <pre
+          tabindex="0"
+          role="region"
+          aria-label="PowerShell local setup and verification commands"
+        ><code>python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -c requirements.lock -e '.[dev]'
+python -m evidencedesk
+
+# Reproduce backend checks and retrieval evaluation
+python -m pytest -q
+python -m evidencedesk.evaluate</code></pre>
+        <p>
+          Open <code>http://127.0.0.1:8011</code>. A model-free BM25 mode is documented. Docker and
+          CI files are prepared; file availability alone is not a claim of executed container or
+          cloud deployment.
+        </p>
+      </section>
+      <p class="case-footer">
+        <a class="text-link" href="../#engineering"
+          >Explore the portfolio <span aria-hidden="true">↗</span></a
+        >
+      </p>
+    </main>
+  </body>
+</html>

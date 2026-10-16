@@ -1,35 +1,39 @@
-# Frontend job application materials
+# AI software and automation hiring materials
 
-This folder contains Deboraj Sarkar's résumé source and interview preparation. The résumé uses the supplied professional details and verified personal projects. Employment, education, certifications and results are added only when confirmed.
+Local review edition prepared 16 October 2026. **No public profile or portfolio update has been applied.** Historical publication records describe earlier frontend editions.
 
-- `resume.json`: editable résumé content used by the PDF and HTML builder.
-- `RESUME.md`: readable editable résumé.
-- `INTERVIEW_PREPARATION.md`: explanations, exercises and a practice schedule grounded in the project source.
-- `QUALITY_INTERVIEW_PRACTICE.md`: follow-up questions and hands-on exercises for the 9 October accessibility, storage and performance changes.
+## Current deliveries
 
-The public résumé deliveries live in `downloads/`. Source and QA helpers remain separate from those downloads.
+- `downloads/Deboraj-Sarkar-Resume.pdf`: default AI software / applied AI ATS résumé; identical to the reviewed `Deboraj-Sarkar-AI-Software-Resume.pdf`.
+- `downloads/Deboraj-Sarkar-AI-Software-Resume.pdf` and `.txt`: AI software / applied AI variant.
+- `downloads/Deboraj-Sarkar-Python-Automation-Resume.pdf` and `.txt`: Python automation variant.
+- `downloads/Deboraj-Sarkar-Resume.html`: responsive companion with current project evidence and metadata.
+- `resume.json` and `RESUME.md`: current website companion content; `resume-evidence-source.json` records both variants and evidence provenance.
+- `GITHUB_PROFILE.md` and `SOCIAL_PROFILE_COPY.md`: current review copy, with publication still pending.
 
-The 8 October 2026 update was generated and visually reviewed in `output/pdf/`, then promoted into `downloads/` and published through the successful GitHub Pages release of `903c78c`. It includes confirmed education, paid design experience, contact details, one-week availability and selected Coursera credentials. [`PUBLICATION_RECORD.md`](PUBLICATION_RECORD.md) records the verified deployment and profile updates. `RESUME_REVIEW_NOTES.md` records sources and editorial decisions; `resume.json` retains all twelve verified specialization/professional certificates, with a `selected` flag controlling the concise résumé.
+The two ATS PDFs were generated and reviewed in the delivery workspace's `career/resumes/` package, then copied without regeneration. Each is one A4 page with selectable text, six verified links and complete linear extraction checked by pypdf and pdfplumber. Every page was rendered and visually inspected. The portable source, pinned dependencies, evidence snapshots, reviewed page images and QA record are included in `career/ats/`, with no dependency on the outer delivery workspace.
 
-To generate the local review copy:
+These are personal projects developed with Codex assistance. The repositories document implementation, executable checks and limits. Project technologies do not establish independently assessed proficiency. Education remains in progress; paid employment remains Graphic Designer at Wecanstore.com. There are no invented AI engineering jobs, graduation dates or customer results. Immediate availability and phone are omitted from this current edition.
 
-```text
-python career/build_resume.py --output-dir output/pdf
+## Reproduce the current artifacts
+
+From this repository root, set up Python 3.12+ and install the ATS dependencies:
+
+```powershell
+python -m pip install -r career/ats/requirements.txt
+python career/ats/build-resumes.py --check
+python career/ats/build-resumes.py --draft
+python career/resume_html.py
 ```
 
-To regenerate the résumé after editing confirmed facts in `resume.json`:
+`--check` is a read-only audit against the bundled evidence and reviewed downloads. `--draft` writes only an internal content preview to ignored `output/ats/`. A full ATS rebuild also writes only to `output/ats/`; it cannot overwrite reviewed downloads or their QA. See `ats/README.md` for font portability and render/review commands. Every regenerated PDF needs fresh rendering and visual review before promotion.
 
-```text
-python -m pip install -r career/requirements.txt
-python career/build_resume.py
-```
+`python career/resume_html.py` regenerates the current HTML companion from `career/resume.json` into ignored `output/html/Deboraj-Sarkar-Resume.html`. Title, description, role and masthead are driven by that JSON. This command does not create a PDF or change published downloads. After local review, copying that HTML into `downloads/` is an explicit promotion step.
 
-The builder defaults to the local review folder `output/pdf/` and produces a text-based PDF, responsive printable HTML and Markdown content. `resume_layout.py` controls the branded PDF layout; `resume_html.py` controls the self-contained HTML companion. The design uses forest green, warm ivory, lime, the existing D/T monogram and embedded sans/italic serif typography. The PDF checks column bounds and fails if new content exceeds the footer rather than silently clipping it.
+## Preservation and regeneration
 
-Review the rendered PDF after any content change; it should stay legible and fit one page with the current content. A longer education or employment history may need a second page rather than smaller text. Updating the public copy is a separate publication step; the existing `downloads/` files remain unchanged by the default command.
+The previous frontend PDF/HTML are retained as `downloads/Deboraj-Sarkar-Frontend-Resume-2026-10-13.*`. Its source, Markdown and profile copy are preserved in `archive/`. Existing frontend interview guides, all twelve course records and historical publication notes remain available; only the two freshly checked course credentials are selected in the current concise résumé.
 
-The interview guide includes sample explanations to learn and adapt. Keep a record of changes you personally practise; the kit does not create employment history or substitute for your own code understanding.
+`build_resume.py` and `resume_layout.py` preserve the established branded PDF layout for historical/local review work and write to `output/pdf/` by default. They are not the source generator for the approved ATS PDFs. `resume_html.py` now accepts data-driven metadata and supplies the current safe HTML-only command above; it remains compatible with the legacy builder. Neither default command overwrites reviewed ATS downloads. Historical frontend JSON is preserved explicitly in `archive/`; the current default JSON is the AI software/automation edition.
 
-Job-specific drafts are kept privately in the ignored `output/applications/` folder. The 9 October pack contains three tailored one-page résumés, matching cover letters, a sourced vacancy shortlist and a tracking sheet. These are review drafts; no application has been submitted. Each draft preserves the ongoing degree, paid graphic design background and stated AI-assisted contribution.
-
-The print master preserves vector text/line art, embeds every used font, and embeds the full-resolution 1254px logo with lossless compression. Its A4 CropBox/TrimBox match the page. Compatible readers are asked to print at actual size. `output/pdf/PRINT_SETTINGS.txt` explains the remaining printer settings; driver quality cannot be forced by a PDF. The HTML companion also shows a screen-only print note. No operating-system printer defaults are changed.
+Publishing is a separate approval step. After publication, verify the PDF routes, source links, GitHub Pages release and actual LinkedIn saved state before recording any public update as complete.

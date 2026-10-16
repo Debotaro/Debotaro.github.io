@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="FlowLedger: Deboraj Sarkar's AI-assisted durable support automation service with approvals, an outbox, fenced worker leases and executed local crash-recovery experiments."
+    />
+    <title>FlowLedger — Deboraj Sarkar / Debotaro</title>
+    <link rel="icon" type="image/png" href="../assets/favicon.png" />
+    <link rel="stylesheet" href="../assets/fonts/portfolio-fonts.css" />
+    <link rel="stylesheet" href="../assets/portfolio.css" />
+  </head>
+  <body>
+    <a class="skip" href="#case-main">Skip to case study</a>
+    <main class="container engineering-page" id="case-main" tabindex="-1">
+      <a class="case-back" href="../#engineering">← Back to engineering projects</a>
+      <p class="eyebrow">Personal project / Reliable automation</p>
+      <h1>FlowLedger</h1>
+      <p class="case-lead">
+        An automation is only useful if its effects remain understandable after a duplicate event, a
+        retry or a worker crash. A durable support workflow service with an inspectable operator
+        console.
+      </p>
+      <div class="case-status">
+        <strong>Local validation.</strong> Public source and service hosting await approval. This
+        page describes the verified local application; it does not connect to a hosted FlowLedger
+        service.
+      </div>
+      <div class="tags">
+        <span>Python</span><span>FastAPI</span><span>SQLite transactions</span
+        ><span>Worker leases</span><span>Fault injection</span>
+      </div>
+      <figure class="case-capture">
+        <picture>
+          <source media="(max-width: 600px)" srcset="../previews/flow-queue-mobile.png" />
+          <img
+            src="../previews/flow-queue.png"
+            width="1440"
+            height="1089"
+            alt="FlowLedger running locally with five fictional jobs, approval requests, retries and one persisted local case"
+          />
+        </picture>
+        <figcaption>
+          Actual local operator console. The captured fictional workspace has five jobs: one queued,
+          one retrying, two awaiting approval and one succeeded.
+        </figcaption>
+      </figure>
+      <section aria-labelledby="problem-title">
+        <h2 id="problem-title">The problem</h2>
+        <p>
+          Support automations can receive the same event twice or fail after applying an effect but
+          before recording success. FlowLedger makes that lifecycle explicit: what was requested,
+          who approved it, what actually happened and whether retrying will create a second case.
+        </p>
+      </section>
+      <section aria-labelledby="flow-title">
+        <h2 id="flow-title">How the system works</h2>
+        <ol>
+          <li>
+            Validate typed support events and idempotency keys. Repeated matching input returns the
+            existing job; a conflicting payload is rejected.
+          </li>
+          <li>
+            Persist the event, outbox intent and initial audit atomically. Refund and security
+            events wait for an explicit approval or rejection decision.
+          </li>
+          <li>
+            Claim due work with bounded leases and fencing tokens. A separate polling worker
+            executes local case actions; stale workers cannot acknowledge another worker's job.
+          </li>
+          <li>
+            Retry transient failures, preserve exhausted work for inspection and allow deliberate
+            replay. Reconcile a committed effect after an interrupted acknowledgement using the
+            connector's unique event identity.
+          </li>
+        </ol>
+        <p>
+          FastAPI and Pydantic provide the request contracts. SQLite WAL holds durable jobs, audit
+          events and case effects. The same-origin console reads real queue state, attempts,
+          decisions, due times and errors. Routing is deterministic; rules are not presented as AI.
+        </p>
+      </section>
+      <figure class="case-capture">
+        <img
+          src="../previews/flow-job.png"
+          width="1440"
+          height="1412"
+          loading="lazy"
+          alt="Actual FlowLedger job detail with a persistent local case, worker attempt and auditable workflow history"
+        />
+        <figcaption>
+          Actual job detail from the local application, showing the durable state and audit history
+          of a fictional support event.
+        </figcaption>
+      </figure>
+      <section aria-labelledby="verification-title">
+        <h2 id="verification-title">Executed reliability evidence</h2>
+        <p>
+          On 16 October 2026, 20 backend tests and Ruff checks passed locally. The independent
+          verification command passed all nine experiments below against isolated fictional SQLite
+          workspaces. Counts are local correctness checks, not a throughput benchmark.
+        </p>
+        <div
+          class="case-table-wrap"
+          role="region"
+          aria-label="Executed local workflow reliability experiments"
+          tabindex="0"
+        >
+          <table class="case-results">
+            <caption>
+              Local SQLite / persistent case connector · 9 of 9 passed
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Experiment</th>
+                <th scope="col">Observed result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Concurrent duplicate intake</th>
+                <td>12 submissions → 1 job, 11 duplicates; conflicting payload rejected</td>
+              </tr>
+              <tr>
+                <th scope="row">Concurrent worker claims</th>
+                <td>8 worker threads → 16 completed jobs, 16 cases, 0 duplicate effects</td>
+              </tr>
+              <tr>
+                <th scope="row">Approval and rejection</th>
+                <td>0 effects before approval; 1 approved case and 1 rejected job</td>
+              </tr>
+              <tr>
+                <th scope="row">Retry timing and exhaustion</th>
+                <td>Early claims blocked; 2s/4s backoff; exhausted work dead-lettered</td>
+              </tr>
+              <tr>
+                <th scope="row">Expired lease fencing</th>
+                <td>3 stale mutations rejected; 0 stale audit writes</td>
+              </tr>
+              <tr>
+                <th scope="row">Replay after committed effect</th>
+                <td>1 replay retained 1 local case and 1 event; 0 duplicate effects</td>
+              </tr>
+              <tr>
+                <th scope="row">Independent polling process</th>
+                <td>Separate Python process completed 5 jobs and persisted 5 cases</td>
+              </tr>
+              <tr>
+                <th scope="row">Crash after first-attempt effect</th>
+                <td>Real process exit 86; restart recovered success with 1 local case</td>
+              </tr>
+              <tr>
+                <th scope="row">Crash after final-attempt effect</th>
+                <td>Real process exit 86 on attempt 3; restart retained 1 local case</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          <a class="text-link" href="reports/flow-ledger-verification.json"
+            >Read the executed reliability report <span aria-hidden="true">↗</span></a
+          >
+        </p>
+        <p>
+          Retry and lease-boundary experiments inject UTC while executing real SQLite transitions.
+          The two crash experiments use actual subprocess <code>os._exit(86)</code> after case
+          commit and before acknowledgement, a one-second lease override and a real system-clock
+          wait. The ordinary lease setting is 30 seconds.
+        </p>
+        <p>
+          Sixteen browser checks passed, including five tests containing explicitly simulated error
+          boundaries, plus a separate screenshot-capture check. The tested desktop, mobile and
+          narrow views had no page overflow or Axe WCAG A/AA violations. These checks cover the
+          inspected views and interactions, not a complete accessibility certification.
+        </p>
+      </section>
+      <section aria-labelledby="limits-title">
+        <h2 id="limits-title">The effect boundary</h2>
+        <p>
+          The connector writes persistent local case records with a unique event key. That contract
+          prevents duplicate local effects during these retries; it is not a universal exactly-once
+          delivery guarantee. A remote connector needs its own idempotency and reconciliation
+          contract. The service does not issue refunds, send messages or lock customer accounts.
+        </p>
+        <p>
+          This is a bounded single-workspace service. Decision actors are owner-supplied labels, not
+          independently verified identities. No multi-tenant authorization, external integration,
+          customer usage, business savings or production-scale reliability is claimed.
+        </p>
+      </section>
+      <section aria-labelledby="contribution-title">
+        <h2 id="contribution-title">Contribution and local setup</h2>
+        <p>
+          Personal project developed with Codex assistance. The repository documents implementation,
+          executable checks and limits. This is personal project work, not prior automation
+          engineering employment or independently assessed individual proficiency.
+        </p>
+        <p>
+          From the reviewed FlowLedger project folder, run the commands below with Python 3.12+. No
+          API key, model download or paid service is required. Demo mode explicitly enables clearly
+          fictional example events and controlled failure injection.
+        </p>
+        <pre
+          tabindex="0"
+          role="region"
+          aria-label="PowerShell local setup and verification commands"
+        ><code>python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -c requirements.lock -e '.[dev]'
+$env:FLOW_DEMO_MODE = '1'
+python -m flowledger --port 8012
+
+# In another terminal, using the same environment and database
+python -m flowledger.worker
+
+# Reproduce backend checks and isolated fault experiments
+python -m pytest -q
+python -m flowledger.verify</code></pre>
+        <p>
+          Open <code>http://127.0.0.1:8012</code>. Public source links will be added after
+          publication approval. Docker, Compose and CI files are prepared; their availability alone
+          does not establish a successful container run, hosted CI result or cloud deployment.
+        </p>
+      </section>
+      <p class="case-footer">
+        <a class="text-link" href="../#engineering"
+          >Explore the portfolio <span aria-hidden="true">↗</span></a
+        >
+      </p>
+    </main>
+  </body>
+</html>

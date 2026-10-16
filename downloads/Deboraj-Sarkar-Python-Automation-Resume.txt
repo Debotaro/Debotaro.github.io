@@ -1,0 +1,59 @@
+Deboraj Sarkar
+
+PYTHON AUTOMATION DEVELOPER - ENTRY LEVEL
+
+mail.deborajsarkar@gmail.com | Kokrajhar, Assam, India
+
+debotaro.github.io | github.com/Debotaro | linkedin.com/in/deborajsarkar
+
+SUMMARY
+
+Computer Science student with paid graphic design experience and Codex-assisted Python application projects. Seeking entry-level Python automation and integration roles, with a focus on reliable workflows, inspectable state and clear operator interfaces.
+
+PERSONAL PROJECTS
+
+Personal projects developed with Codex assistance.
+
+FlowLedger | Auditable workflow automation service
+
+- Python/FastAPI service with typed event routing, SQLite durable outbox, approvals, exponential retries, dead-letter replay and lease-token fencing.
+
+- Passed 9/9 local SQLite experiments: 12 concurrent repeated submissions created one job; eight workers completed 16 jobs with zero duplicate local cases.
+
+- Real subprocess exits after case commit and before acknowledgement recovered one case on first and final attempts; an independent polling worker processed five jobs.
+
+EvidenceDesk | Evidence-grounded support knowledge workbench
+
+- Python/FastAPI knowledge service with atomic source revisions, duplicate detection, stale-write conflict handling, deletion and auditable citation snapshots.
+
+- On a 26-case synthetic holdout, MiniLM/BM25 hybrid retrieved the expected source for 14/18 answerable queries versus 11/18 for BM25; refused 8/8 unsupported/adversarial queries.
+
+PROJECT TECHNOLOGIES
+
+Application stack: Python, FastAPI, Pydantic, SQLite, SQL, HTML, CSS, JavaScript
+
+Quality and workflows: pytest, API validation, idempotency, outbox, retries, worker leases, fault injection, retrieval evaluation
+
+Tools and collaboration: Git, GitHub, Codex, technical documentation, requirements review and design iteration
+
+EXPERIENCE
+
+Graphic Designer | Wecanstore.com
+
+Jun 2022 - Jul 2023 | Bongaigaon, Assam, India | Full-time
+
+- Created digital banners, social media graphics and marketing materials aligned with brand guidelines.
+
+- Collaborated with marketing and sales teams and incorporated feedback across design projects.
+
+EDUCATION
+
+Bachelor's degree in Computer Science - in progress
+
+University of the People | Jun 2025 - Present
+
+COURSE CREDENTIALS
+
+IBM DevOps, Cloud, and Agile Foundations Specialization | IBM / Coursera | Apr 2023
+
+Google UX Design Professional Certificate | Google / Coursera | Nov 2023

@@ -548,6 +548,213 @@ button:focus-visible {
   transform: rotate(-5deg);
   box-shadow: 0 5px 15px #0003;
 }
+.engineering-work {
+  scroll-margin-top: 24px;
+  margin-bottom: 28px;
+}
+.engineering-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+  align-items: end;
+  gap: 32px;
+  padding-bottom: 28px;
+}
+.engineering-heading h3 {
+  margin-top: 16px;
+  font: 500 clamp(24px, 2.7vw, 37px) / 1.25 var(--display);
+  letter-spacing: -1.3px;
+}
+.engineering-heading > p,
+.engineering-attribution {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.engineering-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.engineering-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface);
+}
+.engineering-status {
+  color: var(--lime);
+  font-size: 11px;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+.engineering-card h4 {
+  margin: 20px 0;
+  font: 500 30px/1.15 var(--display);
+  letter-spacing: -1px;
+}
+.engineering-card h4 span {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+  font:
+    400 13px/1.6 'DM Sans',
+    sans-serif;
+  letter-spacing: 0;
+}
+.engineering-card > p:not(.engineering-status) {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.85;
+}
+.engineering-card .tags {
+  margin-block: 22px 14px;
+}
+.engineering-card ul {
+  padding-left: 18px;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.9;
+}
+.engineering-card > .engineering-boundary {
+  margin-block: 14px 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+}
+.engineering-card > .text-link {
+  align-self: flex-start;
+  margin-top: auto;
+  min-height: 44px;
+}
+.engineering-attribution {
+  margin-top: 22px;
+  max-width: 880px;
+  font-size: 12px;
+}
+.engineering-page {
+  max-width: 1000px;
+  padding-block: 48px 88px;
+}
+.engineering-page .case-back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-bottom: 42px;
+  color: var(--lime);
+  font-size: 14px;
+}
+.engineering-page h1 {
+  margin-block: 20px;
+  font: 500 clamp(38px, 7vw, 72px) / 1.1 var(--display);
+  letter-spacing: -2px;
+}
+.engineering-page .case-lead {
+  max-width: 760px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.7;
+}
+.engineering-page .case-status {
+  margin-block: 30px;
+  padding: 20px 24px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--lime);
+  background: var(--surface);
+  font-size: 14px;
+}
+.engineering-page section {
+  margin-top: 38px;
+}
+.engineering-page h2 {
+  margin-bottom: 16px;
+  font: 500 25px/1.3 var(--display);
+  letter-spacing: -0.6px;
+}
+.engineering-page section p,
+.engineering-page section li {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+.engineering-page section p + p {
+  margin-top: 16px;
+}
+.engineering-page section ul,
+.engineering-page section ol {
+  padding-left: 22px;
+}
+.engineering-page code {
+  overflow-wrap: anywhere;
+}
+.engineering-page .case-capture {
+  margin: 36px 0 0;
+}
+.engineering-page .case-capture img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.engineering-page .case-capture figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.engineering-page .case-table-wrap {
+  overflow-x: auto;
+  margin-block: 24px;
+}
+.engineering-page .case-results {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.case-results caption {
+  padding-block: 0 16px;
+  color: var(--lime);
+  text-align: left;
+}
+.case-results th,
+.case-results td {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  text-align: left;
+}
+.case-results thead {
+  background: var(--surface);
+}
+.engineering-page pre {
+  max-width: 100%;
+  overflow-x: auto;
+  margin-block: 24px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  background: var(--surface);
+  font-size: 13px;
+  line-height: 1.9;
+}
+.engineering-page .case-footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+@media (max-width: 768px) {
+  .engineering-heading,
+  .engineering-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .engineering-heading {
+    gap: 18px;
+  }
+  .engineering-card {
+    padding: 26px 22px;
+  }
+}
 .studio-spotlight {
   scroll-margin-top: 24px;
   display: grid;
