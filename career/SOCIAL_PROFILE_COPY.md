@@ -1,6 +1,6 @@
 # Current hiring profile copy — local review edition
 
-Prepared 16 October 2026 for AI software, applied AI and Python automation opportunities. **Not published.** The previous frontend copy remains in `archive/SOCIAL_PROFILE_COPY-frontend-2026-10-13.md`; historical publication records describe that earlier release.
+Prepared 16 October 2026 for AI software, applied AI and Python automation opportunities. **Approved copy; actual platform saves are verified separately.** The previous frontend copy remains in `archive/SOCIAL_PROFILE_COPY-frontend-2026-10-13.md`; historical publication records describe that earlier release.
 
 ## LinkedIn headline
 
@@ -27,7 +27,7 @@ Title: Deboraj Sarkar — Entry-Level AI Software / Applied AI Résumé
 
 Description: Computer Science student with paid graphic design experience and Codex-assisted Python application projects. Local project evidence covers retrieval evaluation, API design, approvals, retries and workflow recovery. Ongoing degree and actual Graphic Designer employment are preserved. Latest portfolio résumé destination: https://debotaro.github.io/downloads/Deboraj-Sarkar-Resume.pdf
 
-Only apply this copy when the approved matching PDF and portfolio release have been published and checked. The new services remain local; no hosted backend is implied. Python automation has a separate reviewed résumé variant.
+Apply this copy only with the matching published and checked PDF/portfolio release. The new services remain local; no hosted backend is implied. Python automation has a separate reviewed résumé variant.
 
 ## GitHub fields
 

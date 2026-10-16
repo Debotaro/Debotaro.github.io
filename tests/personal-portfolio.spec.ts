@@ -112,7 +112,7 @@ test('Background, availability and verifiable credentials match the updated rés
   }
 });
 
-test('Engineering case studies resolve locally without unavailable repository or service links', async ({
+test('Engineering case studies resolve with published source and accurate hosting status', async ({
   page,
   request,
 }) => {
@@ -126,9 +126,9 @@ test('Engineering case studies resolve locally without unavailable repository or
   );
   expect(person.name).toBe('Deboraj Sarkar');
   expect(person.description).toContain('Computer Science student');
-  for (const [path, title] of [
-    ['engineering/evidence-desk.html', 'EvidenceDesk'],
-    ['engineering/flow-ledger.html', 'FlowLedger'],
+  for (const [path, title, repository] of [
+    ['engineering/evidence-desk.html', 'EvidenceDesk', 'evidence-desk'],
+    ['engineering/flow-ledger.html', 'FlowLedger', 'flow-ledger'],
   ]) {
     const response = await request.get(`/${path}`);
     expect(response.ok()).toBeTruthy();
@@ -139,11 +139,11 @@ test('Engineering case studies resolve locally without unavailable repository or
       'href',
       '../#engineering',
     );
-    await expect(
-      page.locator(
-        'a[href*="github.com/Debotaro/evidence-desk"], a[href*="github.com/Debotaro/flow-ledger"]',
-      ),
-    ).toHaveCount(0);
+    await expect(page.getByRole('link', { name: /Source and local setup/ })).toHaveAttribute(
+      'href',
+      `https://github.com/Debotaro/${repository}`,
+    );
+    await expect(page.locator('.case-status')).toContainText('not publicly hosted');
     for (const width of [320, 390, 1440]) {
       await page.setViewportSize({ width, height: 1000 });
       expect(

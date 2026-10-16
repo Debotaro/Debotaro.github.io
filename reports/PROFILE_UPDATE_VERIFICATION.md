@@ -1,6 +1,6 @@
 # Profile and portfolio review verification — 16 October 2026
 
-This is evidence for the current **local review edition**. No GitHub push, public repository creation, LinkedIn write or website deployment was performed. The current public site may still display its previous edition.
+This report preserves the **prepublication local verification**. Public publishing was approved afterward; the publication handoff records the actual GitHub pushes, Pages runs and public checks. Backend service hosting is a separate deployment step.
 
 ## Executed checks
 
@@ -41,3 +41,7 @@ EvidenceDesk remains an extractive retrieval workbench, with synthetic author-cr
 The new projects were developed with Codex assistance under the portfolio mission. The artifacts demonstrate software behavior and executable evidence; they do not establish independent personal proficiency, new employment, customer adoption or commercial impact. Education remains in progress and paid employment remains Graphic Designer.
 
 Current LinkedIn headline/About/project/post copy is prepared separately from internal execution notes. Proposed new repository and case-study destinations are clearly marked as unpublished. A final public update requires user approval, followed by actual repository/CI/Pages/profile verification.
+
+## Approved public-source publication check
+
+The two public source repositories were read through GitHub, and successful hosted verification plus Docker image-build jobs were confirmed. The website/profile copy now links those actual repositories while retaining the unhosted-backend boundary. A fresh all-ten-project production build, full ESLint and full formatting check passed. Sixteen affected portfolio/case/accessibility/PDF-HTML browser checks passed across Chromium and WebKit desktop/mobile profiles. Every tracked PDF/TXT download remains byte-identical to the reviewed release. Public Pages status is recorded separately after its hosted run finishes.

@@ -23,9 +23,18 @@
         retrieving, citing and versioning support knowledge.
       </p>
       <div class="case-status">
-        <strong>Local validation.</strong> Public source and service hosting await approval. This
-        page is a project case study; it does not connect to a hosted EvidenceDesk service.
+        <strong>Local validation.</strong> Public source and reproducible local setup are available.
+        The backend service is not publicly hosted; this page is a static project case study.
       </div>
+      <p class="case-source">
+        <a
+          class="text-link"
+          href="https://github.com/Debotaro/evidence-desk"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Source and local setup <span aria-hidden="true">↗</span></a
+        >
+      </p>
       <div class="tags">
         <span>Python</span><span>FastAPI</span><span>SQLite</span><span>MiniLM embeddings</span
         ><span>BM25</span>
@@ -146,8 +155,8 @@
         <p>
           From the reviewed EvidenceDesk project folder, create a Python 3.12+ environment and run
           the commands below. The first semantic ingestion downloads the public MiniLM model;
-          subsequent inference uses the local cache. No API key is required. Public source links
-          will be added after publication approval.
+          subsequent inference uses the local cache. No API key is required. The public repository
+          contains the complete setup, source and evaluation commands.
         </p>
         <pre
           tabindex="0"
@@ -162,9 +171,15 @@ python -m evidencedesk
 python -m pytest -q
 python -m evidencedesk.evaluate</code></pre>
         <p>
-          Open <code>http://127.0.0.1:8011</code>. A model-free BM25 mode is documented. Docker and
-          CI files are prepared; file availability alone is not a claim of executed container or
-          cloud deployment.
+          Open <code>http://127.0.0.1:8011</code>. A model-free BM25 mode is documented.
+          <a
+            href="https://github.com/Debotaro/evidence-desk/actions/runs/38913708995"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Hosted verification and the Docker image build passed</a
+          >
+          for commit <code>5982dc1</code>. An image build is distinct from a running public service;
+          cloud deployment remains pending.
         </p>
       </section>
       <p class="case-footer">

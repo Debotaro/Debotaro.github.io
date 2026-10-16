@@ -56,7 +56,7 @@
       ]
     }
   ],
-  "additional": "Both projects are locally verified; public source and service hosting await approval. Measurements use synthetic records and do not represent customer outcomes.",
+  "additional": "Both projects have public source and reproducible local setup; their backend services are not publicly hosted. Measurements use synthetic records and do not represent customer outcomes.",
   "process_heading": "Career focus",
   "process": "",
   "availability": "",
@@ -166,7 +166,7 @@
     }
   ],
   "prepared_on": "2026-10-16",
-  "publication_status": "local review package; no public update applied",
+  "publication_status": "approved public portfolio release; deployment verification recorded separately",
   "provenance": "career/resumes/resume-source.json in the reviewed delivery workspace; background facts audited on 2026-10-16. Historical frontend edition is preserved in career/archive.",
   "page_title": "Deboraj Sarkar - AI Software & Automation Resume",
   "description": "Entry-level AI software and automation resume with local project evidence, ongoing Computer Science education and paid graphic design experience.",

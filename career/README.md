@@ -1,6 +1,6 @@
 # AI software and automation hiring materials
 
-Local review edition prepared 16 October 2026. **No public profile or portfolio update has been applied.** Historical publication records describe earlier frontend editions.
+Approved publication edition prepared 16 October 2026. Historical verification and publication records retain their original scope; the Python backend services are not publicly hosted.
 
 ## Current deliveries
 
@@ -9,7 +9,7 @@ Local review edition prepared 16 October 2026. **No public profile or portfolio 
 - `downloads/Deboraj-Sarkar-Python-Automation-Resume.pdf` and `.txt`: Python automation variant.
 - `downloads/Deboraj-Sarkar-Resume.html`: responsive companion with current project evidence and metadata.
 - `resume.json` and `RESUME.md`: current website companion content; `resume-evidence-source.json` records both variants and evidence provenance.
-- `GITHUB_PROFILE.md` and `SOCIAL_PROFILE_COPY.md`: current review copy, with publication still pending.
+- `GITHUB_PROFILE.md` and `SOCIAL_PROFILE_COPY.md`: approved profile copy, with actual platform saves verified separately.
 
 The two ATS PDFs were generated and reviewed in the delivery workspace's `career/resumes/` package, then copied without regeneration. Each is one A4 page with selectable text, six verified links and complete linear extraction checked by pypdf and pdfplumber. Every page was rendered and visually inspected. The portable source, pinned dependencies, evidence snapshots, reviewed page images and QA record are included in `career/ats/`, with no dependency on the outer delivery workspace.
 
@@ -36,4 +36,4 @@ The previous frontend PDF/HTML are retained as `downloads/Deboraj-Sarkar-Fronten
 
 `build_resume.py` and `resume_layout.py` preserve the established branded PDF layout for historical/local review work and write to `output/pdf/` by default. They are not the source generator for the approved ATS PDFs. `resume_html.py` now accepts data-driven metadata and supplies the current safe HTML-only command above; it remains compatible with the legacy builder. Neither default command overwrites reviewed ATS downloads. Historical frontend JSON is preserved explicitly in `archive/`; the current default JSON is the AI software/automation edition.
 
-Publishing is a separate approval step. After publication, verify the PDF routes, source links, GitHub Pages release and actual LinkedIn saved state before recording any public update as complete.
+Public source repositories are available. Verify PDF routes, source links, the GitHub Pages release and actual LinkedIn saved state before recording each platform update as complete. Backend hosting remains a separate authorized deployment step.

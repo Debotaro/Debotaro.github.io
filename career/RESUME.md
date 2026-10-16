@@ -30,7 +30,7 @@ Python, FastAPI, SQLite, outbox, worker leases
 
 - Passed 9/9 local SQLite experiments: 12 repeated submissions produced one job; eight workers completed 16 jobs with zero duplicate local cases; real worker crash recovery retained one case.
 
-Both projects are locally verified; public source and service hosting await approval. Measurements use synthetic records and do not represent customer outcomes.
+Both projects have public source and reproducible local setup; their backend services are not publicly hosted. Measurements use synthetic records and do not represent customer outcomes.
 
 ## Project technologies
 

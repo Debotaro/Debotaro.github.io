@@ -30,7 +30,7 @@ Personal projects developed with **Codex assistance**. The repositories and case
 
 A support knowledge workbench that versions policies and runbooks, compares BM25 with real local MiniLM embeddings, returns cited source excerpts and can abstain when a question is unsupported. Python/FastAPI, SQLite and a browser interface connect ingestion, retrieval, query history and deletion.
 
-Responses are extractive. On 16 October 2026, hybrid retrieval found supporting sources in 14/18 answerable synthetic holdout questions at Recall@3, versus 11/18 for BM25; all 8 unsupported/adversarial holdout questions were refused, with 100% citation snapshot traceability. Forty-six backend tests and Ruff checks passed locally. The small fixture measures retrieval, refusal and source integrity, not generative LLM quality or customer impact. Public source and service hosting await approval.
+Responses are extractive. On 16 October 2026, hybrid retrieval found supporting sources in 14/18 answerable synthetic holdout questions at Recall@3, versus 11/18 for BM25; all 8 unsupported/adversarial holdout questions were refused, with 100% citation snapshot traceability. Forty-six backend tests and Ruff checks passed locally. The small fixture measures retrieval, refusal and source integrity, not generative LLM quality or customer impact. Public source and local setup are available; the backend service is not publicly hosted.
 
 ### FlowLedger · Local validation
 
@@ -38,9 +38,9 @@ Responses are extractive. On 16 October 2026, hybrid retrieval found supporting 
 
 A complete bounded Python/FastAPI workflow service with typed events, deterministic routing, approval decisions, a transactional outbox, fenced worker leases, bounded retries and an inspectable audit trail. A separate polling worker executes real persistent local case actions.
 
-On 16 October 2026, 20 backend tests and Ruff checks passed, together with 9/9 isolated local SQLite experiments. Twelve concurrent repeated submissions created one job; eight workers completed 16 jobs with zero duplicate local cases. Real subprocess exits after effect commit and before acknowledgement on first and final attempts recovered one local case in each experiment, using an explicit one-second lease override. Retry/lease boundary checks use injected UTC. This is local effect reconciliation, not a general exactly-once guarantee, external integration or customer outcome. Public source and service hosting await approval.
+On 16 October 2026, 20 backend tests and Ruff checks passed, together with 9/9 isolated local SQLite experiments. Twelve concurrent repeated submissions created one job; eight workers completed 16 jobs with zero duplicate local cases. Real subprocess exits after effect commit and before acknowledgement on first and final attempts recovered one local case in each experiment, using an explicit one-second lease override. Retry/lease boundary checks use injected UTC. This is local effect reconciliation, not a general exactly-once guarantee, external integration or customer outcome. Public source and local setup are available; the backend service is not publicly hosted.
 
-The portfolio's local review edition includes separate case-study pages for these projects. Public links will be added after approved publication; no unavailable repository or hosted-demo URL is presented here.
+Explore the complete source and reproducible setup: [EvidenceDesk](https://github.com/Debotaro/evidence-desk) · [FlowLedger](https://github.com/Debotaro/flow-ledger). Their hosted verification workflows and Docker image builds have passed. The portfolio includes static case studies; neither Python backend is publicly hosted.
 
 ## Flagship project · Debotaro Studio
 
@@ -84,7 +84,7 @@ These are personal concepts using sample records and browser-local state. NOVA a
 
 **Tools and workflow:** Git · GitHub · Figma · Codex · Visual review and design iteration
 
-Project technologies describe the software artifacts; they do not establish independently assessed proficiency. EvidenceDesk and FlowLedger are locally verified; public source release and service hosting await approval.
+Project technologies describe the software artifacts; they do not establish independently assessed proficiency. EvidenceDesk and FlowLedger have public source, local verification and successful hosted CI/image builds; backend hosting remains pending.
 
 ## Education and selected learning
 
