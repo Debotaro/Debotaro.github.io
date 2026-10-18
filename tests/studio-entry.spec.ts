@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('Studio spotlight connects to real source and evidence without presenting an unhosted demo', async ({
+test('Studio spotlight connects to the verified live application, source and evidence', async ({
   page,
   request,
 }) => {
@@ -9,9 +9,11 @@ test('Studio spotlight connects to real source and evidence without presenting a
   await page.goto('/');
   const spotlight = page.getByRole('article', { name: 'Debotaro Studio.' });
   await expect(spotlight).toBeVisible();
-  await expect(spotlight).toContainText('Working local product.');
-  await expect(spotlight).toContainText('Online Studio hosting is pending.');
-  await expect(spotlight).toContainText('Live AI is unconfigured');
+  await expect(spotlight).toContainText('Live application.');
+  await expect(spotlight).toContainText('Server-saved workspaces');
+  await expect(spotlight).toContainText('daily allowances');
+  const live = spotlight.getByRole('link', { name: 'Open Studio' });
+  await expect(live).toHaveAttribute('href', 'https://debotaro-studio.debotaro-studio.workers.dev');
   const caseStudy = spotlight.getByRole('link', { name: 'Read Studio case study' });
   const source = spotlight.getByRole('link', { name: 'View Studio source' });
   await expect(caseStudy).toHaveAttribute(
@@ -19,12 +21,12 @@ test('Studio spotlight connects to real source and evidence without presenting a
     'https://github.com/Debotaro/debotaro-studio/blob/main/docs/CASE_STUDY.md',
   );
   await expect(source).toHaveAttribute('href', 'https://github.com/Debotaro/debotaro-studio');
-  for (const link of [caseStudy, source]) {
+  for (const link of [live, caseStudy, source]) {
     await expect(link).toHaveAttribute('target', '_blank');
     await expect(link).toHaveAttribute('rel', 'noopener noreferrer');
   }
-  await expect(spotlight.getByRole('link')).toHaveCount(2);
-  await expect(spotlight.getByRole('link', { name: /Open (Studio|demo|app)/i })).toHaveCount(0);
+  await expect(spotlight.getByRole('link')).toHaveCount(3);
+  await expect(spotlight.getByRole('link', { name: /Open (Studio|demo|app)/i })).toHaveCount(1);
   const image = spotlight.getByRole('img');
   await image.scrollIntoViewIfNeeded();
   await expect

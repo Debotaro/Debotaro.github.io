@@ -21,13 +21,13 @@ Complete source and reproducible setup: [EvidenceDesk](https://github.com/Debota
 
 ## Flagship product — Debotaro Studio
 
-[Read the Studio case study](https://github.com/Debotaro/debotaro-studio/blob/main/docs/CASE_STUDY.md) · [View Studio source and local setup](https://github.com/Debotaro/debotaro-studio)
+[Open live Studio](https://debotaro-studio.debotaro-studio.workers.dev) · [Read the Studio case study](https://github.com/Debotaro/debotaro-studio/blob/main/docs/CASE_STUDY.md) · [View Studio source and local setup](https://github.com/Debotaro/debotaro-studio)
 
 The portfolio's [Studio spotlight](https://debotaro.github.io/#studio) has a direct entry link that keeps its heading below the sticky navigation.
 
 The portfolio now includes an additional Studio spotlight, while retaining the portfolio feature, all ten existing demos and their case studies. Debotaro Studio is an original visual application builder for fictional customer-support workspaces, with a documented supported React/TypeScript subset, collaboration, reviewed changes and independent React export. Deboraj's contribution is product direction, visual direction and review; implementation is AI-assisted.
 
-The spotlight uses an actual running-product capture in `previews/studio-editor.png`. Its links open the verified source and documented case study. Studio is a working local product; the full online Studio service is not hosted yet. It requires a Node/WebSocket service and persistent SQLite storage, which GitHub Pages alone does not provide. Live AI is unconfigured; local editing and export work without it. No unhosted **Open Studio** link is published.
+The spotlight uses an actual running-product capture in `previews/studio-editor.png`. Its links open the publicly verified full Studio application, source and documented case study. The backend uses Cloudflare Workers Free, native WebSockets and a persistent SQLite Durable Object; GitHub Pages hosts this portfolio entry. Public core acceptance passed 23 actual browser cases, eight HTTP/WSS groups and a clean independent build/browser run of the public export. Bounded free Workers AI proposals require explicit review; current source, model and deployment evidence are recorded in the Studio repository. No card, paid provider or billing setup is required.
 
 ## Explore the ten demos
 
