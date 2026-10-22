@@ -126,9 +126,19 @@ test('Engineering case studies resolve with published source and accurate hostin
   );
   expect(person.name).toBe('Deboraj Sarkar');
   expect(person.description).toContain('Computer Science student');
-  for (const [path, title, repository] of [
-    ['engineering/evidence-desk.html', 'EvidenceDesk', 'evidence-desk'],
-    ['engineering/flow-ledger.html', 'FlowLedger', 'flow-ledger'],
+  for (const [path, title, repository, liveUrl] of [
+    [
+      'engineering/evidence-desk.html',
+      'EvidenceDesk',
+      'evidence-desk',
+      'https://evidence-desk.debotaro-studio.workers.dev',
+    ],
+    [
+      'engineering/flow-ledger.html',
+      'FlowLedger',
+      'flow-ledger',
+      'https://flow-ledger.debotaro-studio.workers.dev',
+    ],
   ]) {
     const response = await request.get(`/${path}`);
     expect(response.ok()).toBeTruthy();
@@ -143,7 +153,11 @@ test('Engineering case studies resolve with published source and accurate hostin
       'href',
       `https://github.com/Debotaro/${repository}`,
     );
-    await expect(page.locator('.case-status')).toContainText('not publicly hosted');
+    await expect(page.locator('.case-status')).toContainText('Public edge demo');
+    await expect(page.getByRole('link', { name: /Open live edge demo/ })).toHaveAttribute(
+      'href',
+      liveUrl,
+    );
     for (const width of [320, 390, 1440]) {
       await page.setViewportSize({ width, height: 1000 });
       expect(
