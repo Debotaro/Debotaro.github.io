@@ -151,7 +151,7 @@
           </div>
           <div class="engineering-grid">
             <article class="engineering-card" aria-labelledby="evidence-title">
-              <p class="engineering-status">01 / Local validation</p>
+              <p class="engineering-status">01 / Public edge demo</p>
               <h4 id="evidence-title">
                 EvidenceDesk<span>Source-grounded support knowledge</span>
               </h4>
@@ -169,15 +169,24 @@
               </ul>
               <p class="engineering-boundary">
                 Eight of eight unsupported/adversarial holdout questions refused. Small synthetic
-                dataset; extractive responses, not evaluated LLM generation. Public source and local
-                setup available; backend hosting remains pending.
+                dataset; extractive responses, not evaluated LLM generation. The public demo is
+                synthetic-data-only and runs extractive BM25 on Cloudflare Durable Object SQLite.
               </p>
-              <a class="text-link" href="engineering/evidence-desk.html"
-                >Read EvidenceDesk case study <span aria-hidden="true">↗</span></a
-              >
+              <div class="actions engineering-actions">
+                <a
+                  class="button"
+                  href="https://evidence-desk.debotaro-studio.workers.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Open live demo <span aria-hidden="true">↗</span></a
+                >
+                <a class="text-link" href="engineering/evidence-desk.html"
+                  >Read case study <span aria-hidden="true">↗</span></a
+                >
+              </div>
             </article>
             <article class="engineering-card" aria-labelledby="flow-title">
-              <p class="engineering-status">02 / Local validation</p>
+              <p class="engineering-status">02 / Public edge demo</p>
               <h4 id="flow-title">FlowLedger<span>Durable support operations</span></h4>
               <p>
                 Typed support events become durable local case actions, with explicit approval,
@@ -193,12 +202,21 @@
               </ul>
               <p class="engineering-boundary">
                 Real subprocess crash recovery verified after effect commit. Fictional local cases
-                and deterministic routing. Public source and local setup available; backend hosting
-                remains pending.
+                and deterministic routing. The public demo keeps approval, queue, local-case and
+                audit transitions on Cloudflare Durable Object SQLite.
               </p>
-              <a class="text-link" href="engineering/flow-ledger.html"
-                >Read FlowLedger case study <span aria-hidden="true">↗</span></a
-              >
+              <div class="actions engineering-actions">
+                <a
+                  class="button"
+                  href="https://flow-ledger.debotaro-studio.workers.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Open live demo <span aria-hidden="true">↗</span></a
+                >
+                <a class="text-link" href="engineering/flow-ledger.html"
+                  >Read case study <span aria-hidden="true">↗</span></a
+                >
+              </div>
             </article>
           </div>
           <p class="engineering-attribution">

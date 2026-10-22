@@ -629,6 +629,14 @@ button:focus-visible {
   margin-top: auto;
   min-height: 44px;
 }
+.engineering-card > .engineering-actions {
+  align-items: center;
+  margin-top: auto;
+}
+.engineering-card > .engineering-actions .button,
+.engineering-card > .engineering-actions .text-link {
+  min-height: 44px;
+}
 .engineering-attribution {
   margin-top: 22px;
   max-width: 880px;

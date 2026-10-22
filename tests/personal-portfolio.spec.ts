@@ -167,6 +167,22 @@ test('Engineering case studies resolve with published source and accurate hostin
   }
 });
 
+test('Engineering cards expose live demo buttons for both public edge editions', async ({
+  page,
+}) => {
+  await page.goto('/#engineering');
+  const buttons = page.getByRole('link', { name: /Open live demo/ });
+  await expect(buttons).toHaveCount(2);
+  await expect(buttons.nth(0)).toHaveAttribute(
+    'href',
+    'https://evidence-desk.debotaro-studio.workers.dev',
+  );
+  await expect(buttons.nth(1)).toHaveAttribute(
+    'href',
+    'https://flow-ledger.debotaro-studio.workers.dev',
+  );
+});
+
 test('Eleven case studies expose their working details, demo scope and keyboard focus restoration', async ({
   page,
 }) => {
