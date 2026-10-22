@@ -23,8 +23,9 @@
         retrieving, citing and versioning support knowledge.
       </p>
       <div class="case-status">
-        <strong>Local validation.</strong> Public source and reproducible local setup are available.
-        The backend service is not publicly hosted; this page is a static project case study.
+        <strong>Public edge demo.</strong> The card-free HTTPS demo runs on Cloudflare Workers with
+        Durable Object SQLite. It is synthetic-data-only and BM25-only; the full Python/MiniLM
+        service and its local measurements remain documented in the repository.
       </div>
       <p class="case-source">
         <a
@@ -33,6 +34,15 @@
           target="_blank"
           rel="noopener noreferrer"
           >Source and local setup <span aria-hidden="true">↗</span></a
+        >
+      </p>
+      <p class="case-source">
+        <a
+          class="text-link"
+          href="https://evidence-desk.debotaro-studio.workers.dev"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open live edge demo <span aria-hidden="true">↗</span></a
         >
       </p>
       <div class="tags">
@@ -178,8 +188,8 @@ python -m evidencedesk.evaluate</code></pre>
             rel="noopener noreferrer"
             >Hosted verification and the Docker image build passed</a
           >
-          for commit <code>5982dc1</code>. An image build is distinct from a running public service;
-          cloud deployment remains pending.
+          for the native Python service. The public edge edition is a bounded BM25 demo; use the
+          repository for the full MiniLM evaluation and authenticated local runtime.
         </p>
       </section>
       <p class="case-footer">

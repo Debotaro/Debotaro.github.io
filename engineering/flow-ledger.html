@@ -24,9 +24,9 @@
         console.
       </p>
       <div class="case-status">
-        <strong>Local validation.</strong> Public source and reproducible local setup are available.
-        The backend service is not publicly hosted; this page describes the verified local
-        application.
+        <strong>Public edge demo.</strong> The card-free HTTPS demo runs on Cloudflare Workers with
+        Durable Object SQLite. It is synthetic-data-only and keeps deterministic queue, approval,
+        local-case and audit transitions; the full Python worker remains documented in the repo.
       </div>
       <p class="case-source">
         <a
@@ -35,6 +35,15 @@
           target="_blank"
           rel="noopener noreferrer"
           >Source and local setup <span aria-hidden="true">↗</span></a
+        >
+      </p>
+      <p class="case-source">
+        <a
+          class="text-link"
+          href="https://flow-ledger.debotaro-studio.workers.dev"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open live edge demo <span aria-hidden="true">↗</span></a
         >
       </p>
       <div class="tags">
@@ -235,8 +244,8 @@ python -m flowledger.verify</code></pre>
             rel="noopener noreferrer"
             >Hosted verification and the Docker image build passed</a
           >
-          for commit <code>a4f346a</code>. A built image does not establish a running public
-          backend; cloud deployment remains pending.
+          for the native Python service. The public edge edition is a bounded synthetic workflow
+          demo; use the repository for full lease, retry and crash-recovery experiments.
         </p>
       </section>
       <p class="case-footer">
